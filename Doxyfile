@@ -5,7 +5,7 @@
 DOXYFILE_ENCODING      = UTF-8
 
 
-PROJECT_NAME           = "My Project"
+PROJECT_NAME           = "Validation-api"
 
 
 PROJECT_NUMBER         =
@@ -20,7 +20,7 @@ PROJECT_LOGO           =
 PROJECT_ICON           =
 
 
-OUTPUT_DIRECTORY       =
+OUTPUT_DIRECTORY       = docs
 
 
 CREATE_SUBDIRS         = NO
@@ -169,10 +169,10 @@ TIMESTAMP              = NO
 
 
 
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES 
 
 
-EXTRACT_PRIVATE        = NO
+EXTRACT_PRIVATE        = YES
 
 
 EXTRACT_PRIV_VIRTUAL   = NO
@@ -181,7 +181,7 @@ EXTRACT_PRIV_VIRTUAL   = NO
 EXTRACT_PACKAGE        = NO
 
 
-EXTRACT_STATIC         = NO
+EXTRACT_STATIC         = YES
 
 
 EXTRACT_LOCAL_CLASSES  = YES
