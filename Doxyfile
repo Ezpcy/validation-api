@@ -324,7 +324,7 @@ WARN_LOGFILE           =
 
 
 
-INPUT                  = inlcude src include/validation-api
+INPUT                  = inlcude src include/validation-api /
 
 
 INPUT_ENCODING         = UTF-8

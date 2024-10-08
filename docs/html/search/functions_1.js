@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]]
+  ['initialize_0',['initialize',['../classvalidation__api_1_1LoggerService.html#af4172309743b3216879cdfdc6abd0937',1,'validation_api::LoggerService']]]
 ];
