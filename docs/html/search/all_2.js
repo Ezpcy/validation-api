@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5ferror_5fmap_0',['get_error_map',['../classvalidation__api_1_1IService.html#aa3aa7906838e088a23cf5e159978acfc',1,'validation_api::IService']]]
+  ['error_0',['ERROR',['../namespacevalidation__api.html#aea57e4e9dfca4f5f83225e17ae97de44abb1ca97ec761fc37101737ba0aa2e7c5',1,'validation_api']]]
 ];

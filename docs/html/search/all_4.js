@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['level_0',['level',['../structvalidation__api_1_1LogMessage.html#a24a20a2fec660c44336212a0f30dc845',1,'validation_api::LogMessage']]],
-  ['logger_1',['Logger',['../classvalidation__api_1_1LoggerService.html#aac6934367c5cefb184707a6a745e27a3',1,'validation_api::LoggerService']]],
-  ['loggerservice_2',['LoggerService',['../classvalidation__api_1_1LoggerService.html',1,'validation_api']]],
-  ['loggerservice_2ehpp_3',['LoggerService.hpp',['../LoggerService_8hpp.html',1,'']]],
-  ['loglevel_4',['LogLevel',['../namespacevalidation__api.html#aea57e4e9dfca4f5f83225e17ae97de44',1,'validation_api']]],
-  ['logmessage_5',['LogMessage',['../structvalidation__api_1_1LogMessage.html',1,'validation_api::LogMessage'],['../structvalidation__api_1_1LogMessage.html#a58c77b653a07252609e137e7d7eb9e5a',1,'validation_api::LogMessage::LogMessage()']]],
-  ['logmessage_2ehpp_6',['LogMessage.hpp',['../LogMessage_8hpp.html',1,'']]]
+  ['info_0',['INFO',['../namespacevalidation__api.html#aea57e4e9dfca4f5f83225e17ae97de44a551b723eafd6a31d444fcb2f5920fbd3',1,'validation_api']]],
+  ['initialize_1',['initialize',['../classvalidation__api_1_1LoggerService.html#af4172309743b3216879cdfdc6abd0937',1,'validation_api::LoggerService']]],
+  ['iservice_2',['IService',['../classvalidation__api_1_1IService.html',1,'validation_api']]],
+  ['iservice_2ehpp_3',['IService.hpp',['../IService_8hpp.html',1,'']]]
 ];

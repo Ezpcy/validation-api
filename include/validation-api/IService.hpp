@@ -1,8 +1,5 @@
 #pragma once
 
-#include <map>
-#include <string>
-
 namespace validation_api {
 
 /**
@@ -35,12 +32,6 @@ class IService {
    * @brief Stop method to stop the service.
    */
   virtual void stop() = 0;
-
-  /**
-   * @brief Method to retrieve a map of errors the service encountered.
-   * @return A map with error keys and corresponding messages.
-   */
-  virtual std::map<std::string, std::string> get_error_map() const = 0;
 };
 
 }  // namespace validation_api
