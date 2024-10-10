@@ -77,6 +77,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classvalidation__api_1_1IService-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">validation_api::IService Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -86,12 +87,24 @@ $(function() {
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="IService_8hpp_source.html">IService.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for validation_api::IService:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classvalidation__api_1_1IService.png" usemap="#validation_5Fapi::IService_map" alt=""/>
+  <map id="validation_5Fapi::IService_map" name="validation_5Fapi::IService_map">
+<area href="classvalidation__api_1_1ConfigWatcher.html" alt="validation_api::ConfigWatcher" shape="rect" coords="0,56,180,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adea7c6d0eea21cb0329a782dc57a8764" id="r_adea7c6d0eea21cb0329a782dc57a8764"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adea7c6d0eea21cb0329a782dc57a8764">~IService</a> ()=default</td></tr>
 <tr class="memdesc:adea7c6d0eea21cb0329a782dc57a8764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor to ensure proper cleanup.  <br /></td></tr>
 <tr class="separator:adea7c6d0eea21cb0329a782dc57a8764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
 <tr class="memitem:a5e79d17ea6ca3b5bb8661b70f5aaa7b6" id="r_a5e79d17ea6ca3b5bb8661b70f5aaa7b6"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e79d17ea6ca3b5bb8661b70f5aaa7b6">setup</a> ()=0</td></tr>
 <tr class="memdesc:a5e79d17ea6ca3b5bb8661b70f5aaa7b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup method to initialize the service.  <br /></td></tr>
 <tr class="separator:a5e79d17ea6ca3b5bb8661b70f5aaa7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,13 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9e9658a3495101ae5fada236110e399" id="r_ab9e9658a3495101ae5fada236110e399"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9e9658a3495101ae5fada236110e399">stop</a> ()=0</td></tr>
 <tr class="memdesc:ab9e9658a3495101ae5fada236110e399"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop method to stop the service.  <br /></td></tr>
 <tr class="separator:ab9e9658a3495101ae5fada236110e399"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3aa7906838e088a23cf5e159978acfc" id="r_aa3aa7906838e088a23cf5e159978acfc"><td class="memItemLeft" align="right" valign="top">virtual std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3aa7906838e088a23cf5e159978acfc">get_error_map</a> () const =0</td></tr>
-<tr class="memdesc:aa3aa7906838e088a23cf5e159978acfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to retrieve a map of errors the service encountered.  <br /></td></tr>
-<tr class="separator:aa3aa7906838e088a23cf5e159978acfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for all services. </p>
-<p>This interface defines the methods that all services must implement. The methods are used to setup, run, and stop the service. The interface also defines a method to retrieve a map of errors that the service has encountered. </p>
+<p>This interface defines the methods that all services must implement. The methods are used to setup, run, and stop the service. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="adea7c6d0eea21cb0329a782dc57a8764" name="adea7c6d0eea21cb0329a782dc57a8764"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adea7c6d0eea21cb0329a782dc57a8764">&#9670;&#160;</a></span>~IService()</h2>
@@ -137,34 +147,6 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa3aa7906838e088a23cf5e159978acfc" name="aa3aa7906838e088a23cf5e159978acfc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3aa7906838e088a23cf5e159978acfc">&#9670;&#160;</a></span>get_error_map()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual std::map&lt; std::string, std::string &gt; validation_api::IService::get_error_map </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Method to retrieve a map of errors the service encountered. </p>
-<dl class="section return"><dt>Returns</dt><dd>A map with error keys and corresponding messages. </dd></dl>
-
-</div>
-</div>
 <a id="a5b9b0bb70e360af3dd2c9bb1239f2a20" name="a5b9b0bb70e360af3dd2c9bb1239f2a20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b9b0bb70e360af3dd2c9bb1239f2a20">&#9670;&#160;</a></span>run()</h2>
 
@@ -183,12 +165,14 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Run method to start the service. </p>
+
+<p>Implemented in <a class="el" href="classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78">validation_api::ConfigWatcher</a>.</p>
 
 </div>
 </div>
@@ -210,13 +194,15 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Setup method to initialize the service. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if setup was successful, false otherwise. </dd></dl>
+
+<p>Implemented in <a class="el" href="classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395">validation_api::ConfigWatcher</a>.</p>
 
 </div>
 </div>
@@ -238,12 +224,14 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Stop method to stop the service. </p>
+
+<p>Implemented in <a class="el" href="classvalidation__api_1_1ConfigWatcher.html#ac67b7bc5802f99796c903d2fdac92648">validation_api::ConfigWatcher</a>.</p>
 
 </div>
 </div>

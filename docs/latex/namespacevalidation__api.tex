@@ -3,53 +3,26 @@
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classvalidation__api_1_1IService}{IService}}
-\begin{DoxyCompactList}\small\item\em Interface for all services. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classvalidation__api_1_1LoggerService}{Logger\+Service}}
+class \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}}
 \item 
-struct \mbox{\hyperlink{structvalidation__api_1_1LogMessage}{Log\+Message}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
+class \mbox{\hyperlink{classvalidation__api_1_1IService}{IService}}
+\begin{DoxyCompactList}\small\item\em Interface for all services. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-enum class \mbox{\hyperlink{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44}{Log\+Level}} \{ \mbox{\hyperlink{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44a551b723eafd6a31d444fcb2f5920fbd3}{INFO}}
-, \mbox{\hyperlink{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44a059e9861e0400dfbe05c98a841f3f96b}{WARNING}}
-, \mbox{\hyperlink{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44abb1ca97ec761fc37101737ba0aa2e7c5}{ERROR}}
- \}
-\begin{DoxyCompactList}\small\item\em Enum class to define the log levels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c}{setup\+\_\+logger}} ()
+\begin{DoxyCompactList}\small\item\em Sets up and configures the logger using spdlog. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Enumeration Type Documentation}
-\Hypertarget{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44}\label{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44} 
-\index{validation\_api@{validation\_api}!LogLevel@{LogLevel}}
-\index{LogLevel@{LogLevel}!validation\_api@{validation\_api}}
-\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
-{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44}{validation\+\_\+api\+::\+Log\+Level}}\hspace{0.3cm}{\ttfamily [strong]}}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c}\label{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c} 
+\index{validation\_api@{validation\_api}!setup\_logger@{setup\_logger}}
+\index{setup\_logger@{setup\_logger}!validation\_api@{validation\_api}}
+\doxysubsubsection{\texorpdfstring{setup\_logger()}{setup\_logger()}}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::setup\+\_\+logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Enum class to define the log levels. 
+Sets up and configures the logger using spdlog. 
 
-The log levels are used to categorize log messages. The levels are used to determine the severity of the message.
-
-{\ttfamily INFO} is used for general information messages. ~\newline
- {\ttfamily WARNING} is used for messages that indicate a potential problem. ~\newline
- {\ttfamily ERROR} is used for messages that indicate a problem that needs to be.
-
-\begin{DoxySeeAlso}{See also}
-\doxylink{classvalidation__api_1_1LoggerService}{Logger\+Service} 
-\end{DoxySeeAlso}
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{INFO@{INFO}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!INFO@{INFO}}}\Hypertarget{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44a551b723eafd6a31d444fcb2f5920fbd3}\label{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44a551b723eafd6a31d444fcb2f5920fbd3} 
-INFO&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!WARNING@{WARNING}}}\Hypertarget{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44a059e9861e0400dfbe05c98a841f3f96b}\label{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44a059e9861e0400dfbe05c98a841f3f96b} 
-WARNING&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!ERROR@{ERROR}}}\Hypertarget{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44abb1ca97ec761fc37101737ba0aa2e7c5}\label{namespacevalidation__api_aea57e4e9dfca4f5f83225e17ae97de44abb1ca97ec761fc37101737ba0aa2e7c5} 
-ERROR&\\
-\hline
-
-\end{DoxyEnumFields}
+This function initializes the logger with a file sink and a console sink. It ensures thread-\/safe access and supports multi-\/threaded logging. 

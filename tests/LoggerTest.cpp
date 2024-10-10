@@ -15,7 +15,7 @@ TEST(LoggerTest, Initialization)
     (void)system("rm -rf logs");
   }
   // Setup
-  ASSERT_TRUE(validation_api::setup());
+  ASSERT_TRUE(validation_api::setup_logger());
   auto logger = spdlog::get("Logger");
   // Check if logger is not null
   ASSERT_NE(logger, nullptr);

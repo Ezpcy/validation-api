@@ -1,0 +1,176 @@
+\doxysection{validation\+\_\+api\+::Config\+Watcher Class Reference}
+\hypertarget{classvalidation__api_1_1ConfigWatcher}{}\label{classvalidation__api_1_1ConfigWatcher}\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+
+
+{\ttfamily \#include $<$Config\+Watcher.\+hpp$>$}
+
+Inheritance diagram for validation\+\_\+api\+::Config\+Watcher\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvalidation__api_1_1ConfigWatcher}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}} = std\+::function$<$void(const std\+::string \&path, const std\+::string \&action)$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_af9535ccbde11b50d6f15df43562f4385}{Config\+Watcher}} (boost\+::asio\+::io\+\_\+context \&io\+\_\+context, const std\+::string \&path, \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}} callback)
+\begin{DoxyCompactList}\small\item\em Class to watch for changes in a directory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_aa5d21697f9480b92ba184e0f006952cc}{\texorpdfstring{$\sim$}{\string~}\+Config\+Watcher}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvalidation__api_1_1IService}{validation\+\_\+api\+::\+IService}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764}{\texorpdfstring{$\sim$}{\string~}\+IService}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor to ensure proper cleanup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{setup}} () override
+\begin{DoxyCompactList}\small\item\em Sets up the inotify instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{run}} () override
+\begin{DoxyCompactList}\small\item\em Run method to start the service. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}{stop}} () override
+\begin{DoxyCompactList}\small\item\em Stop method to stop the service. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_acca94f1d00a599a3b7aaa3fe82c6be46}{read\+\_\+file}} (const std\+::string \&path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::asio\+::io\+\_\+context \& \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a36e4e69c21e4089b30edd73ad1714d7c}{\+\_\+io\+\_\+context\+\_\+}}
+\item 
+std\+::string \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a54544d9bfed0c67c85f34db202814966}{\+\_\+path\+\_\+}}
+\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}} \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9e602a13bdcd07854f39277e64871be8}{\+\_\+callback\+\_\+}}
+\item 
+int \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a770faed2d7b92b4c1e0544f07b9b1db7}{\+\_\+inotify\+\_\+fd\+\_\+}}
+\item 
+int \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6547eec8ddf152c290379158b8bcced8}{\+\_\+watch\+\_\+descriptor\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}\label{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!Callback@{Callback}}
+\index{Callback@{Callback}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{Callback}{Callback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{validation\+\_\+api\+::\+Config\+Watcher\+::\+Callback}} = std\+::function$<$void(const std\+::string \&path, const std\+::string \&action)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_af9535ccbde11b50d6f15df43562f4385}\label{classvalidation__api_1_1ConfigWatcher_af9535ccbde11b50d6f15df43562f4385} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!ConfigWatcher@{ConfigWatcher}}
+\index{ConfigWatcher@{ConfigWatcher}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{ConfigWatcher()}{ConfigWatcher()}}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Config\+Watcher\+::\+Config\+Watcher (\begin{DoxyParamCaption}\item[{boost\+::asio\+::io\+\_\+context \&}]{io\+\_\+context,  }\item[{const std\+::string \&}]{path,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}}}]{callback }\end{DoxyParamCaption})}
+
+
+
+Class to watch for changes in a directory. 
+
+This class uses the boost\+::asio library to watch for changes in a directory. When a change is detected, the callback function is called. Used for watching changes inside a configuration directory where xml files are stored. \Hypertarget{classvalidation__api_1_1ConfigWatcher_aa5d21697f9480b92ba184e0f006952cc}\label{classvalidation__api_1_1ConfigWatcher_aa5d21697f9480b92ba184e0f006952cc} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!````~ConfigWatcher@{\texorpdfstring{$\sim$}{\string~}ConfigWatcher}}
+\index{````~ConfigWatcher@{\texorpdfstring{$\sim$}{\string~}ConfigWatcher}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ConfigWatcher()}{\string~ConfigWatcher()}}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Config\+Watcher\+::\texorpdfstring{$\sim$}{\string~}\+Config\+Watcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_acca94f1d00a599a3b7aaa3fe82c6be46}\label{classvalidation__api_1_1ConfigWatcher_acca94f1d00a599a3b7aaa3fe82c6be46} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::read\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}\label{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!run@{run}}
+\index{run@{run}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Run method to start the service. 
+
+
+
+Implements \mbox{\hyperlink{classvalidation__api_1_1IService_a5b9b0bb70e360af3dd2c9bb1239f2a20}{validation\+\_\+api\+::\+IService}}.
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}\label{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!setup@{setup}}
+\index{setup@{setup}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::\+Config\+Watcher\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Sets up the inotify instance. 
+
+\begin{DoxyReturn}{Returns}
+true if the setup is successful 
+
+false if the setup fails 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classvalidation__api_1_1IService_a5e79d17ea6ca3b5bb8661b70f5aaa7b6}{validation\+\_\+api\+::\+IService}}.
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}\label{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!stop@{stop}}
+\index{stop@{stop}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Stop method to stop the service. 
+
+
+
+Implements \mbox{\hyperlink{classvalidation__api_1_1IService_ab9e9658a3495101ae5fada236110e399}{validation\+\_\+api\+::\+IService}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a9e602a13bdcd07854f39277e64871be8}\label{classvalidation__api_1_1ConfigWatcher_a9e602a13bdcd07854f39277e64871be8} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!\_callback\_@{\_callback\_}}
+\index{\_callback\_@{\_callback\_}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{\_callback\_}{\_callback\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}} validation\+\_\+api\+::\+Config\+Watcher\+::\+\_\+callback\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a770faed2d7b92b4c1e0544f07b9b1db7}\label{classvalidation__api_1_1ConfigWatcher_a770faed2d7b92b4c1e0544f07b9b1db7} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!\_inotify\_fd\_@{\_inotify\_fd\_}}
+\index{\_inotify\_fd\_@{\_inotify\_fd\_}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{\_inotify\_fd\_}{\_inotify\_fd\_}}
+{\footnotesize\ttfamily int validation\+\_\+api\+::\+Config\+Watcher\+::\+\_\+inotify\+\_\+fd\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a36e4e69c21e4089b30edd73ad1714d7c}\label{classvalidation__api_1_1ConfigWatcher_a36e4e69c21e4089b30edd73ad1714d7c} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!\_io\_context\_@{\_io\_context\_}}
+\index{\_io\_context\_@{\_io\_context\_}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{\_io\_context\_}{\_io\_context\_}}
+{\footnotesize\ttfamily boost\+::asio\+::io\+\_\+context\& validation\+\_\+api\+::\+Config\+Watcher\+::\+\_\+io\+\_\+context\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a54544d9bfed0c67c85f34db202814966}\label{classvalidation__api_1_1ConfigWatcher_a54544d9bfed0c67c85f34db202814966} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!\_path\_@{\_path\_}}
+\index{\_path\_@{\_path\_}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{\_path\_}{\_path\_}}
+{\footnotesize\ttfamily std\+::string validation\+\_\+api\+::\+Config\+Watcher\+::\+\_\+path\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classvalidation__api_1_1ConfigWatcher_a6547eec8ddf152c290379158b8bcced8}\label{classvalidation__api_1_1ConfigWatcher_a6547eec8ddf152c290379158b8bcced8} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!\_watch\_descriptor\_@{\_watch\_descriptor\_}}
+\index{\_watch\_descriptor\_@{\_watch\_descriptor\_}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{\_watch\_descriptor\_}{\_watch\_descriptor\_}}
+{\footnotesize\ttfamily int validation\+\_\+api\+::\+Config\+Watcher\+::\+\_\+watch\+\_\+descriptor\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/validation-\/api/\mbox{\hyperlink{ConfigWatcher_8hpp}{Config\+Watcher.\+hpp}}\item 
+src/\mbox{\hyperlink{ConfigWatcher_8cpp}{Config\+Watcher.\+cpp}}\end{DoxyCompactItemize}

@@ -9,25 +9,32 @@ Interface for all services.
 
 {\ttfamily \#include $<$IService.\+hpp$>$}
 
+Inheritance diagram for validation\+\_\+api\+::IService\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classvalidation__api_1_1IService}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 virtual \mbox{\hyperlink{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764}{\texorpdfstring{$\sim$}{\string~}\+IService}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor to ensure proper cleanup. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Virtual destructor to ensure proper cleanup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
 virtual bool \mbox{\hyperlink{classvalidation__api_1_1IService_a5e79d17ea6ca3b5bb8661b70f5aaa7b6}{setup}} ()=0
 \begin{DoxyCompactList}\small\item\em Setup method to initialize the service. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classvalidation__api_1_1IService_a5b9b0bb70e360af3dd2c9bb1239f2a20}{run}} ()=0
 \begin{DoxyCompactList}\small\item\em Run method to start the service. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classvalidation__api_1_1IService_ab9e9658a3495101ae5fada236110e399}{stop}} ()=0
-\begin{DoxyCompactList}\small\item\em Stop method to stop the service. \end{DoxyCompactList}\item 
-virtual std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classvalidation__api_1_1IService_aa3aa7906838e088a23cf5e159978acfc}{get\+\_\+error\+\_\+map}} () const =0
-\begin{DoxyCompactList}\small\item\em Method to retrieve a map of errors the service encountered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Stop method to stop the service. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Interface for all services. 
 
-This interface defines the methods that all services must implement. The methods are used to setup, run, and stop the service. The interface also defines a method to retrieve a map of errors that the service has encountered. 
+This interface defines the methods that all services must implement. The methods are used to setup, run, and stop the service. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764}\label{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764} 
@@ -43,34 +50,25 @@ Virtual destructor to ensure proper cleanup.
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classvalidation__api_1_1IService_aa3aa7906838e088a23cf5e159978acfc}\label{classvalidation__api_1_1IService_aa3aa7906838e088a23cf5e159978acfc} 
-\index{validation\_api::IService@{validation\_api::IService}!get\_error\_map@{get\_error\_map}}
-\index{get\_error\_map@{get\_error\_map}!validation\_api::IService@{validation\_api::IService}}
-\doxysubsubsection{\texorpdfstring{get\_error\_map()}{get\_error\_map()}}
-{\footnotesize\ttfamily virtual std\+::map$<$ std\+::string, std\+::string $>$ validation\+\_\+api\+::\+IService\+::get\+\_\+error\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
-
-
-
-Method to retrieve a map of errors the service encountered. 
-
-\begin{DoxyReturn}{Returns}
-A map with error keys and corresponding messages. 
-\end{DoxyReturn}
 \Hypertarget{classvalidation__api_1_1IService_a5b9b0bb70e360af3dd2c9bb1239f2a20}\label{classvalidation__api_1_1IService_a5b9b0bb70e360af3dd2c9bb1239f2a20} 
 \index{validation\_api::IService@{validation\_api::IService}!run@{run}}
 \index{run@{run}!validation\_api::IService@{validation\_api::IService}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily virtual void validation\+\_\+api\+::\+IService\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void validation\+\_\+api\+::\+IService\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
 
 
 
 Run method to start the service. 
 
+
+
+Implemented in \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{validation\+\_\+api\+::\+Config\+Watcher}}.
+
 \Hypertarget{classvalidation__api_1_1IService_a5e79d17ea6ca3b5bb8661b70f5aaa7b6}\label{classvalidation__api_1_1IService_a5e79d17ea6ca3b5bb8661b70f5aaa7b6} 
 \index{validation\_api::IService@{validation\_api::IService}!setup@{setup}}
 \index{setup@{setup}!validation\_api::IService@{validation\_api::IService}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
-{\footnotesize\ttfamily virtual bool validation\+\_\+api\+::\+IService\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual bool validation\+\_\+api\+::\+IService\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
 
 
 
@@ -79,15 +77,23 @@ Setup method to initialize the service.
 \begin{DoxyReturn}{Returns}
 true if setup was successful, false otherwise. 
 \end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{validation\+\_\+api\+::\+Config\+Watcher}}.
+
 \Hypertarget{classvalidation__api_1_1IService_ab9e9658a3495101ae5fada236110e399}\label{classvalidation__api_1_1IService_ab9e9658a3495101ae5fada236110e399} 
 \index{validation\_api::IService@{validation\_api::IService}!stop@{stop}}
 \index{stop@{stop}!validation\_api::IService@{validation\_api::IService}}
 \doxysubsubsection{\texorpdfstring{stop()}{stop()}}
-{\footnotesize\ttfamily virtual void validation\+\_\+api\+::\+IService\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void validation\+\_\+api\+::\+IService\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
 
 
 
 Stop method to stop the service. 
+
+
+
+Implemented in \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}{validation\+\_\+api\+::\+Config\+Watcher}}.
 
 
 

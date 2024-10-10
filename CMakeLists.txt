@@ -30,29 +30,33 @@ find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
 
 # Add the executable
-add_executable(validation-api src/main.cpp)
+add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp)
 
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(validation-api PRIVATE Boost::boost spdlog::spdlog)
+target_link_libraries(validation-api PRIVATE Boost::boost spdlog::spdlog Boost::filesystem 
+    Boost::system)
 
 # Test setup
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/Logger.cpp
+    ${CMAKE_SOURCE_DIR}/src/ConfigWatcher.cpp
 )
 
 # Add your test files
 set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/LoggerTest.cpp
+    ${CMAKE_SOURCE_DIR}/tests/ConfigWatcherTest.cpp
 )
 
-add_executable(LoggerTest ${TEST_SOURCES} ${SOURCES})
+add_executable(tests ${TEST_SOURCES} ${SOURCES})
 
-set_target_properties(LoggerTest PROPERTIES
+set_target_properties(tests PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
 )
 
-target_link_libraries(LoggerTest PRIVATE gtest::gtest spdlog::spdlog Boost::boost)
+target_link_libraries(tests PRIVATE gtest::gtest spdlog::spdlog Boost::boost Boost::filesystem)
 add_test(NAME LoggerTest COMMAND LoggerTest)
+add_test(Name ConfigWatcherTest COMMAND ConfigWatcherTest)
 
 

@@ -1,0 +1,44 @@
+\doxysection{Config\+Watcher.\+hpp}
+\hypertarget{ConfigWatcher_8hpp_source}{}\label{ConfigWatcher_8hpp_source}\index{include/validation-\/api/ConfigWatcher.hpp@{include/validation-\/api/ConfigWatcher.hpp}}
+\mbox{\hyperlink{ConfigWatcher_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <boost/asio.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <boost/filesystem.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{IService_8hpp}{validation-\/api/IService.hpp}}>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher}{ConfigWatcher}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classvalidation__api_1_1IService}{IService}}}
+\DoxyCodeLine{00015\ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}}\ =\ std::function<void(\textcolor{keyword}{const}\ std::string\ \&path,\ \textcolor{keyword}{const}\ std::string\ \&action)>;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_af9535ccbde11b50d6f15df43562f4385}{ConfigWatcher}}(boost::asio::io\_context\ \&io\_context,\ \textcolor{keyword}{const}\ std::string\ \&path,\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}}\ callback);}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_aa5d21697f9480b92ba184e0f006952cc}{\string~ConfigWatcher}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{setup}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}{stop}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_acca94f1d00a599a3b7aaa3fe82c6be46}{read\_file}}(\textcolor{keyword}{const}\ std::string\ \&path);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ boost::asio::io\_context\ \&\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a36e4e69c21e4089b30edd73ad1714d7c}{\_io\_context\_}};}
+\DoxyCodeLine{00038\ \ \ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a54544d9bfed0c67c85f34db202814966}{\_path\_}};}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a5d80462e727be93be10300ad8040ff68}{Callback}}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9e602a13bdcd07854f39277e64871be8}{\_callback\_}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a770faed2d7b92b4c1e0544f07b9b1db7}{\_inotify\_fd\_}};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6547eec8ddf152c290379158b8bcced8}{\_watch\_descriptor\_}};}
+\DoxyCodeLine{00043\ \ \ \};}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}
