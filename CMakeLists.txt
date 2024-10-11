@@ -31,7 +31,7 @@ find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
 
 # Add the executable
-add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp)
+add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp src/ConfigActor.cpp)
 
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)

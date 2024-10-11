@@ -17,21 +17,20 @@ namespace validation_api
      */
     virtual ~IService() = default;
 
-    /**
-     * @brief Stop method to stop the service.
-     */
-    virtual void stop() = 0;
+  private:
     /**
      * @brief Run method to start the service.
      */
     virtual void run() = 0;
-
-  private:
     /**
      * @brief Setup method to initialize the service.
      * @return true if setup was successful, false otherwise.
      */
     virtual bool setup() = 0;
+    /**
+     * @brief Stop method to stop the service.
+     */
+    virtual void stop() = 0;
   };
 
 } // namespace validation_api

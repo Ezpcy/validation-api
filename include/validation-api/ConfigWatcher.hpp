@@ -26,14 +26,13 @@ namespace validation_api
     ConfigWatcher(boost::asio::io_context &io_context, const std::string &path, Callback callback);
     ~ConfigWatcher() override;
 
-    void run() override;
-
-    void stop() override;
-
     void read_file(const std::string &path);
 
+
   private:
+    void run() override;
     bool setup() override;
+    void stop() override;
     boost::asio::io_context &_io_context_;
     std::string _path_;
     Callback _callback_;
