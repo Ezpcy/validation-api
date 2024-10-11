@@ -5,6 +5,10 @@
 #include "validation-api/Logger.hpp"
 #include <sys/inotify.h>
 #include <unistd.h>
+#include <semaphore>
+
+constexpr int MAX_CONCURRENT_READS = 5;
+std::counting_semaphore<MAX_CONCURRENT_READS> semaphore(MAX_CONCURRENT_READS);
 
 namespace validation_api
 {
@@ -18,7 +22,11 @@ namespace validation_api
   ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context, const std::string &path, Callback callback)
       : _io_context_(io_context), _path_(path), _callback_(callback)
   {
-    setup();
+    if(!setup()) {
+      auto logger = spdlog::get("Logger");
+      logger->error("Config watcher failed to initialize inotify");
+      stop();
+    };
   }
 
   /**
@@ -28,6 +36,7 @@ namespace validation_api
   ConfigWatcher::~ConfigWatcher()
   {
   }
+
   /**
    * @brief Sets up the inotify instance.
    *
@@ -65,17 +74,26 @@ namespace validation_api
     }
 
     // Buffer for reading inotify events
-    char buffer[4096];
+    constexpr size_t EVENT_SIZE = sizeof(inotify_event);
+    constexpr size_t BUF_LEN = 1024 * (EVENT_SIZE + 16);
+    char buffer[BUF_LEN];
+
     // Loop to read inotify events$
     while (true)
     {
+
+      semaphore.acquire();
       // Read 4096 bytes from inotify file descriptor into buffer
-      int length = read(_inotify_fd_, buffer, sizeof(buffer));
+
+      int length = read(_inotify_fd_, buffer, BUF_LEN);
       if (length < 0)
       {
         logger->error("Config watcher failed to read inotify events");
         return;
       }
+
+      // Debounce the events
+      std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 
       // Iterate over the buffer
       for (int i = 0; i < length;)
@@ -99,13 +117,17 @@ namespace validation_api
           }
           _callback_(event->name, action);
         }
-        i += sizeof(struct inotify_event) + event->len;
+        i += EVENT_SIZE + event->len;
       }
+      semaphore.release();
     }
   }
 
   void ConfigWatcher::stop()
   {
+    close(_inotify_fd_);
+    auto logger = spdlog::get("Logger");
+    logger->info("Config watcher stopped");
   }
 
   void ConfigWatcher::read_file(const std::string &path)

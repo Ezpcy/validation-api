@@ -11,7 +11,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 
 # Set Boost multithreading support
 set(Boost_USE_MULTITHREAD ON)
@@ -35,7 +35,7 @@ add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp)
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(validation-api PRIVATE Boost::boost spdlog::spdlog Boost::filesystem 
-    Boost::system)
+    Boost::system Boost::thread)
 
 # Test setup
 set(SOURCES
