@@ -1,7 +1,6 @@
 #include "validation-api/ConfigWatcher.hpp"
 #include <iostream>
 #include <fstream>
-#include <thread>
 #include "validation-api/Logger.hpp"
 #include <sys/inotify.h>
 #include <unistd.h>
@@ -22,11 +21,18 @@ namespace validation_api
   ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context, const std::string &path, Callback callback)
       : _io_context_(io_context), _path_(path), _callback_(callback)
   {
-    if(!setup()) {
+    running = true;
+
+    watcherThread = boost::thread([this]
+                                  { 
       auto logger = spdlog::get("Logger");
-      logger->error("Config watcher failed to initialize inotify");
-      stop();
-    };
+      if (!setup())
+      {
+        logger->error("Config watcher failed to initialize inotify");
+        stop();
+      };
+      logger->info("Config watcher initialized");
+      run(); });
   }
 
   /**
@@ -35,6 +41,7 @@ namespace validation_api
    */
   ConfigWatcher::~ConfigWatcher()
   {
+    stop();
   }
 
   /**
@@ -69,7 +76,7 @@ namespace validation_api
     _watch_descriptor_ = inotify_add_watch(_inotify_fd_, _path_.c_str(), IN_MODIFY | IN_CREATE | IN_DELETE);
     if (_watch_descriptor_ < 0)
     {
-      logger->error("Config watcher failed to add watch to directory: {}", _path_);
+      logger->error("Config watcher failed to add watch to directory: {}, {}", _path_, std::strerror(errno));
       return;
     }
 
@@ -78,46 +85,82 @@ namespace validation_api
     constexpr size_t BUF_LEN = 1024 * (EVENT_SIZE + 16);
     char buffer[BUF_LEN];
 
-    // Loop to read inotify events$
-    while (true)
+    std::unordered_map<std::string, std::chrono::steady_clock::time_point> event_times;
+    constexpr auto DEBOUNCE_INTERVAL = std::chrono::milliseconds(100);
+
+    // Use poll to avoid blocking indefinitely
+    struct pollfd fds;
+    fds.fd = _inotify_fd_;
+    fds.events = POLLIN;
+
+    // Loop to read inotify events
+    while (running)
     {
-
       semaphore.acquire();
-      // Read 4096 bytes from inotify file descriptor into buffer
-
-      int length = read(_inotify_fd_, buffer, BUF_LEN);
-      if (length < 0)
+      int poll_result = poll(&fds, 1, 1000); // Timeout after 1000 ms
+      if (poll_result < 0)
       {
-        logger->error("Config watcher failed to read inotify events");
+        logger->error("Config watcher poll failed");
+        semaphore.release();
         return;
       }
-
-      // Debounce the events
-      std::this_thread::sleep_for(std::chrono::milliseconds(1500));
-
-      // Iterate over the buffer
-      for (int i = 0; i < length;)
+      else if (poll_result == 0)
       {
-        // Cast the buffer to an inotify_event struct
-        struct inotify_event *event = (struct inotify_event *)&buffer[i];
-        if (event->len)
+        // Timeout - check if we should continue running
+        semaphore.release();
+        continue;
+      }
+
+      if (fds.revents & POLLIN)
+      {
+        int no_of_event = read(_inotify_fd_, buffer, BUF_LEN);
+        if (no_of_event < 0)
         {
-          std::string action;
-          if (event->mask & IN_CREATE)
-          {
-            action = "created";
-          }
-          else if (event->mask & IN_DELETE)
-          {
-            action = "deleted";
-          }
-          else if (event->mask & IN_MODIFY)
-          {
-            action = "modified";
-          }
-          _callback_(event->name, action);
+          logger->error("Config watcher failed to read inotify events");
+          semaphore.release();
+          return;
         }
-        i += EVENT_SIZE + event->len;
+
+        int count = 0;
+        while (count < no_of_event)
+        {
+          struct inotify_event *event = (struct inotify_event *)&buffer[count];
+          if (event->len)
+          {
+            std::string action;
+            if (event->mask & IN_CREATE)
+            {
+              action = "created";
+            }
+            else if (event->mask & IN_DELETE)
+            {
+              action = "deleted";
+            }
+            else if (event->mask & IN_MODIFY)
+            {
+              action = "modified";
+            }
+
+            std::string file_name = event->name;
+            auto now = std::chrono::steady_clock::now();
+
+            auto last_time_it = event_times.find(file_name);
+            if (last_time_it != event_times.end())
+            {
+              auto time_diff = now - last_time_it->second;
+              if (time_diff < DEBOUNCE_INTERVAL)
+              {
+                // Debounce - skip this event
+                count += EVENT_SIZE + event->len;
+                continue;
+              }
+            }
+
+            event_times[file_name] = now;
+            _callback_(file_name, action);
+          }
+          count += EVENT_SIZE + event->len;
+        }
       }
       semaphore.release();
     }
@@ -125,8 +168,23 @@ namespace validation_api
 
   void ConfigWatcher::stop()
   {
-    close(_inotify_fd_);
     auto logger = spdlog::get("Logger");
+    running = false; // Set running to false to stop the loop
+
+    // Interrupt the inotify read by closing the file descriptor
+    close(_inotify_fd_);
+
+    if (watcherThread.joinable())
+    {
+      watcherThread.join();
+    }
+
+    // Remove the watch and log the shutdown
+    if (_watch_descriptor_ >= 0)
+    {
+      inotify_rm_watch(_inotify_fd_, _watch_descriptor_);
+    }
+
     logger->info("Config watcher stopped");
   }
 

@@ -8,3 +8,5 @@
 [2024-10-10 15:42:28.828] [Logger] [error] Config watcher failed to add watch to directory: ./configs
 [2024-10-10 16:01:58.174] [Logger] [error] Config watcher failed to initialize inotify
 [2024-10-10 16:02:03.450] [Logger] [error] Config watcher failed to add watch to directory: ./configs
+[2024-10-11 10:42:12.090] [Logger] [error] Config watcher failed to add watch to directory: ./configs
+[2024-10-11 10:42:12.090] [Logger] [info] Config watcher stopped

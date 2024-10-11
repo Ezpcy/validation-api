@@ -2,6 +2,7 @@
 
 #include <boost/asio.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/thread.hpp>
 #include <iostream>
 #include <unordered_map>
 #include <chrono>
@@ -36,6 +37,8 @@ namespace validation_api
     boost::asio::io_context &_io_context_;
     std::string _path_;
     Callback _callback_;
+    std::atomic<bool> running;
+    boost::thread watcherThread;
 
     // Inotify variables fd = file descriptor
     int _inotify_fd_;

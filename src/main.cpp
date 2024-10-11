@@ -4,6 +4,7 @@
 #include <spdlog/spdlog.h>
 #include <validation-api/Logger.hpp>
 #include "validation-api/ConfigWatcher.hpp"
+#include <boost/thread.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -34,12 +35,14 @@ int main(int argc, char *argv[])
 
   boost::asio::io_context io_context;
 
+  // Create a work guard to keep the io_context alive
+  boost::asio::executor_work_guard<boost::asio::io_context::executor_type>
+      work_guard(io_context.get_executor());
+      
   validation_api::ConfigWatcher watcher(io_context, "./configs", [](const std::string &path, const std::string &action)
                                         { std::cout << "File " << path << " was " << action << std::endl; });
-
-  watcher.run();
   io_context.run();
-
   std::cout << "Hello world" << std::endl;
+
   return 0;
 }

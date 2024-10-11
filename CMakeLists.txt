@@ -11,7 +11,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 
 # Set Boost multithreading support
 set(Boost_USE_MULTITHREAD ON)
@@ -25,17 +25,17 @@ set(Boost_USE_MULTITHREAD ON)
 
 
 # Find Boost, spdlog, and gtest components
-find_package(Boost REQUIRED)
+find_package(Boost REQUIRED COMPONENTS)
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
+find_package(Threads REQUIRED)
 
 # Add the executable
 add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp)
 
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(validation-api PRIVATE Boost::boost spdlog::spdlog Boost::filesystem 
-    Boost::system Boost::thread)
+target_link_libraries(validation-api PRIVATE Boost::boost spdlog::spdlog Boost::filesystem Boost::system Boost::thread Threads::Threads)
 
 # Test setup
 set(SOURCES
@@ -55,7 +55,7 @@ set_target_properties(tests PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
 )
 
-target_link_libraries(tests PRIVATE gtest::gtest spdlog::spdlog Boost::boost Boost::filesystem)
+target_link_libraries(tests PRIVATE gtest::gtest spdlog::spdlog Boost::boost Boost::filesystem Boost::system Boost::thread Threads::Threads)
 add_test(NAME LoggerTest COMMAND LoggerTest)
 add_test(Name ConfigWatcherTest COMMAND ConfigWatcherTest)
 
