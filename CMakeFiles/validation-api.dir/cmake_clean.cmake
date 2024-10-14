@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o.d"
   "CMakeFiles/validation-api.dir/src/Logger.cpp.o"
   "CMakeFiles/validation-api.dir/src/Logger.cpp.o.d"
+  "CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o"
+  "CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o.d"
   "CMakeFiles/validation-api.dir/src/main.cpp.o"
   "CMakeFiles/validation-api.dir/src/main.cpp.o.d"
   "validation-api"

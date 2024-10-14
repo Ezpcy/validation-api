@@ -57,10 +57,10 @@ RM = /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_SOURCE_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_BINARY_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -220,6 +220,30 @@ src/Logger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/Logger.cpp.s
 .PHONY : src/Logger.cpp.s
 
+src/lib/Helpers.o: src/lib/Helpers.cpp.o
+.PHONY : src/lib/Helpers.o
+
+# target to build an object file
+src/lib/Helpers.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o
+.PHONY : src/lib/Helpers.cpp.o
+
+src/lib/Helpers.i: src/lib/Helpers.cpp.i
+.PHONY : src/lib/Helpers.i
+
+# target to preprocess a source file
+src/lib/Helpers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.i
+.PHONY : src/lib/Helpers.cpp.i
+
+src/lib/Helpers.s: src/lib/Helpers.cpp.s
+.PHONY : src/lib/Helpers.s
+
+# target to generate assembly for a file
+src/lib/Helpers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.s
+.PHONY : src/lib/Helpers.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -311,6 +335,9 @@ help:
 	@echo "... src/Logger.o"
 	@echo "... src/Logger.i"
 	@echo "... src/Logger.s"
+	@echo "... src/lib/Helpers.o"
+	@echo "... src/lib/Helpers.i"
+	@echo "... src/lib/Helpers.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

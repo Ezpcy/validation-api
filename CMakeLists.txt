@@ -4,7 +4,6 @@ project(validation-api)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
-add_library(helper_lib src/lib/XmlToJson.cpp)
 
 # Set build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -34,7 +33,7 @@ find_package(pugixml REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
 # Add the executable
-add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp src/ConfigService.cpp)
+add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp src/ConfigService.cpp src/lib/Helpers.cpp)
 
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
@@ -54,12 +53,14 @@ target_link_libraries(validation-api PRIVATE
 set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/Logger.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigWatcher.cpp
+    ${CMAKE_SOURCE_DIR}/src/ConfigService.cpp
 )
 
 # Add your test files
 set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/LoggerTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ConfigWatcherTest.cpp
+    ${CMAKE_SOURCE_DIR}/tests/ConfigServiceTest.cpp}
 )
 
 add_executable(tests ${TEST_SOURCES} ${SOURCES})
@@ -78,7 +79,7 @@ target_link_libraries(tests PRIVATE
   pugixml::pugixml
   Threads::Threads
   nlohmann_json::nlohmann_json
-  helepr_lib
+  helper_lib
 )
 add_test(NAME
   LoggerTest
@@ -86,5 +87,5 @@ add_test(NAME
   LoggerTest
 )
 add_test(Name ConfigWatcherTest COMMAND ConfigWatcherTest)
-
+add_test(Name ConfigServiceTest COMMAND ConfigServiceTest)
 

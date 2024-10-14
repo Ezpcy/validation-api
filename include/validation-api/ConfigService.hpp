@@ -15,7 +15,9 @@ namespace validation_api {
 
 class ConfigService {
  public:
-  typedef std::unordered_map<std::string, pugi::xml_document> Configs;
+  typedef std::unordered_map<std::string, std::shared_ptr<pugi::xml_document>>
+      Configs;
+  typedef std::unordered_map<std::string, std::string> Errors;
 
   ConfigService();
 
@@ -25,7 +27,7 @@ class ConfigService {
 
   void deleteConfig(std::string &name);
 
-  void validateConfig(nlohmann::json &jsonData);
+  Errors validateConfig(nlohmann::json &jsonData);
 
  private:
   mutable boost::shared_mutex _rwMutex_;

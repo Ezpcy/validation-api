@@ -6,20 +6,20 @@
 #include <boost/filesystem/operations.hpp>
 #include <unordered_map>
 #include <validation-api/ConfigService.hpp>
-#include <validation-api/
 
 namespace validation_api {
 
 ConfigService::ConfigService() = default;
 
-// Get a configuration with a shared lock (allows concurren:q
-// t reads)
-nlohmann::json ConfigService::getConfig(std::string &name) {
-  boost::shared_lock<boost::shared_mutex> lock(_rwMutex_);  // Shared lock
-  auto it = _configs_.find(name);
-  if (it != _configs_.end()) {
-    xmlToJson();
-    return nlohmann::json();  // Return empty if not found
+void ConfigService::createConfig(std::string &name, pugi::xml_document doc) {
+  try {
+    boost::unique_lock<boost::shared_mutex> lock(_rwMutex_);
+    auto logger = spdlog::get("Logger");
+    _configs_[name] = std::make_shared<pugi::xml_document>(doc);
+    logger->info("Configuration named: \"{}\" has been created.", name);
+  } catch (const std::exception &e) {
+    spdlog::get("Logger")->error("Error while creating configuration: {}",
+                                 e.what());
   }
-
+}
 };  // namespace validation_api
