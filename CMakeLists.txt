@@ -4,6 +4,7 @@ project(validation-api)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
+add_library(helper_lib src/lib/XmlToJson.cpp)
 
 # Set build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -25,17 +26,29 @@ set(Boost_USE_MULTITHREAD ON)
 
 
 # Find Boost, spdlog, and gtest components
-find_package(Boost REQUIRED COMPONENTS)
+find_package(Boost REQUIRED )
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
+find_package(pugixml REQUIRED)
+find_package(nlohmann_json REQUIRED)
 
 # Add the executable
-add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp src/ConfigActor.cpp)
+add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp src/ConfigService.cpp)
 
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_link_libraries(validation-api PRIVATE Boost::boost spdlog::spdlog Boost::filesystem Boost::system Boost::thread Threads::Threads)
+target_link_libraries(validation-api PRIVATE 
+  Boost::boost
+  spdlog::spdlog
+  Boost::filesystem
+  Boost::system
+  Boost::thread
+  Threads::Threads
+  pugixml::pugixml
+  nlohmann_json::nlohmann_json
+  helper_lib
+)
 
 # Test setup
 set(SOURCES
@@ -55,8 +68,23 @@ set_target_properties(tests PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
 )
 
-target_link_libraries(tests PRIVATE gtest::gtest spdlog::spdlog Boost::boost Boost::filesystem Boost::system Boost::thread Threads::Threads)
-add_test(NAME LoggerTest COMMAND LoggerTest)
+target_link_libraries(tests PRIVATE
+  gtest::gtest
+  spdlog::spdlog
+  Boost::boost
+  Boost::filesystem
+  Boost::system
+  Boost::thread
+  pugixml::pugixml
+  Threads::Threads
+  nlohmann_json::nlohmann_json
+  helepr_lib
+)
+add_test(NAME
+  LoggerTest
+  COMMAND
+  LoggerTest
+)
 add_test(Name ConfigWatcherTest COMMAND ConfigWatcherTest)
 
 

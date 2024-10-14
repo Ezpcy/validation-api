@@ -2,6 +2,8 @@
 boost/1.86.0
 gtest/1.15.0
 spdlog/1.14.1
+pugixml/1.14
+nlohmann_json/3.11.3
 
 [generators]
 CMakeDeps
