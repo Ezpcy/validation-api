@@ -57,10 +57,10 @@ RM = /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_SOURCE_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_BINARY_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -148,6 +148,7 @@ src/ConfigService.o: src/ConfigService.cpp.o
 # target to build an object file
 src/ConfigService.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/ConfigService.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/ConfigService.cpp.o
 .PHONY : src/ConfigService.cpp.o
 
 src/ConfigService.i: src/ConfigService.cpp.i
@@ -156,6 +157,7 @@ src/ConfigService.i: src/ConfigService.cpp.i
 # target to preprocess a source file
 src/ConfigService.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/ConfigService.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/ConfigService.cpp.i
 .PHONY : src/ConfigService.cpp.i
 
 src/ConfigService.s: src/ConfigService.cpp.s
@@ -164,6 +166,7 @@ src/ConfigService.s: src/ConfigService.cpp.s
 # target to generate assembly for a file
 src/ConfigService.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/ConfigService.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/ConfigService.cpp.s
 .PHONY : src/ConfigService.cpp.s
 
 src/ConfigWatcher.o: src/ConfigWatcher.cpp.o
@@ -268,6 +271,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/ConfigServiceTest.o: tests/ConfigServiceTest.cpp.o
+.PHONY : tests/ConfigServiceTest.o
+
+# target to build an object file
+tests/ConfigServiceTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ConfigServiceTest.cpp.o
+.PHONY : tests/ConfigServiceTest.cpp.o
+
+tests/ConfigServiceTest.i: tests/ConfigServiceTest.cpp.i
+.PHONY : tests/ConfigServiceTest.i
+
+# target to preprocess a source file
+tests/ConfigServiceTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ConfigServiceTest.cpp.i
+.PHONY : tests/ConfigServiceTest.cpp.i
+
+tests/ConfigServiceTest.s: tests/ConfigServiceTest.cpp.s
+.PHONY : tests/ConfigServiceTest.s
+
+# target to generate assembly for a file
+tests/ConfigServiceTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ConfigServiceTest.cpp.s
+.PHONY : tests/ConfigServiceTest.cpp.s
+
 tests/ConfigWatcherTest.o: tests/ConfigWatcherTest.cpp.o
 .PHONY : tests/ConfigWatcherTest.o
 
@@ -341,6 +368,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/ConfigServiceTest.o"
+	@echo "... tests/ConfigServiceTest.i"
+	@echo "... tests/ConfigServiceTest.s"
 	@echo "... tests/ConfigWatcherTest.o"
 	@echo "... tests/ConfigWatcherTest.i"
 	@echo "... tests/ConfigWatcherTest.s"

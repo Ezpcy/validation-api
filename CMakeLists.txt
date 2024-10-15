@@ -46,7 +46,6 @@ target_link_libraries(validation-api PRIVATE
   Threads::Threads
   pugixml::pugixml
   nlohmann_json::nlohmann_json
-  helper_lib
 )
 
 # Test setup
@@ -60,7 +59,7 @@ set(SOURCES
 set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/LoggerTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ConfigWatcherTest.cpp
-    ${CMAKE_SOURCE_DIR}/tests/ConfigServiceTest.cpp}
+    ${CMAKE_SOURCE_DIR}/tests/ConfigServiceTest.cpp
 )
 
 add_executable(tests ${TEST_SOURCES} ${SOURCES})
@@ -79,13 +78,19 @@ target_link_libraries(tests PRIVATE
   pugixml::pugixml
   Threads::Threads
   nlohmann_json::nlohmann_json
-  helper_lib
 )
-add_test(NAME
-  LoggerTest
-  COMMAND
-  LoggerTest
+# For LoggerTest suite
+add_test(NAME LoggerTest
+  COMMAND tests --gtest_filter=LoggerTest.*
 )
-add_test(Name ConfigWatcherTest COMMAND ConfigWatcherTest)
-add_test(Name ConfigServiceTest COMMAND ConfigServiceTest)
+
+# For ConfigWatcherTest suite
+add_test(NAME ConfigWatcherTest
+  COMMAND tests --gtest_filter=ConfigWatcherTest.*
+)
+
+# For ConfigServiceTest suite
+add_test(NAME ConfigServiceTest
+  COMMAND tests --gtest_filter=ConfigServiceTest.*
+)
 

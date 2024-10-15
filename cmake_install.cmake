@@ -1,4 +1,4 @@
-# Install script for directory: /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
+# Install script for directory: /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

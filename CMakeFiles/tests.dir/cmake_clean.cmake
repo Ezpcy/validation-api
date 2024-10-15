@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/tests.dir/src/ConfigService.cpp.o"
+  "CMakeFiles/tests.dir/src/ConfigService.cpp.o.d"
   "CMakeFiles/tests.dir/src/ConfigWatcher.cpp.o"
   "CMakeFiles/tests.dir/src/ConfigWatcher.cpp.o.d"
   "CMakeFiles/tests.dir/src/Logger.cpp.o"
   "CMakeFiles/tests.dir/src/Logger.cpp.o.d"
+  "CMakeFiles/tests.dir/tests/ConfigServiceTest.cpp.o"
+  "CMakeFiles/tests.dir/tests/ConfigServiceTest.cpp.o.d"
   "CMakeFiles/tests.dir/tests/ConfigWatcherTest.cpp.o"
   "CMakeFiles/tests.dir/tests/ConfigWatcherTest.cpp.o.d"
   "CMakeFiles/tests.dir/tests/LoggerTest.cpp.o"

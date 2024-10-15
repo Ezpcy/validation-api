@@ -9,6 +9,7 @@
 #include <pugixml.hpp>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <validation-api/IService.hpp>
 
 namespace validation_api {
@@ -17,7 +18,7 @@ class ConfigService {
  public:
   typedef std::unordered_map<std::string, std::shared_ptr<pugi::xml_document>>
       Configs;
-  typedef std::unordered_map<std::string, std::string> Errors;
+  typedef std::vector<std::pair<std::string, std::string>> Errors;
 
   ConfigService();
 

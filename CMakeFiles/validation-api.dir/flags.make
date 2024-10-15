@@ -4,7 +4,7 @@
 # compile CXX with /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++
 CXX_DEFINES = -DSPDLOG_COMPILED_LIB -DSPDLOG_FMT_EXTERNAL
 
-CXX_INCLUDES = -I/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/include -isystem /home/ezpz/.conan2/p/b/boost1ab0474347848/p/include -isystem /home/ezpz/.conan2/p/b/spdlo74c621c6aae94/p/include -isystem /home/ezpz/.conan2/p/b/fmt6a22b379edd5d/p/include -isystem /home/ezpz/.conan2/p/b/pugixea4c72c82f6d6/p/include -isystem /home/ezpz/.conan2/p/nlohm0567ffc90cfc1/p/include
+CXX_INCLUDES = -I/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/include -isystem /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/include -isystem /home/ezpz/.conan2/p/b/spdlo82da955bfb1c4/p/include -isystem /home/ezpz/.conan2/p/b/fmt7bcf00f37b3ef/p/include -isystem /home/ezpz/.conan2/p/b/pugixf34cdf4af5557/p/include -isystem /home/ezpz/.conan2/p/nlohm0567ffc90cfc1/p/include
 
 CXX_FLAGS = -m64 -stdlib=libstdc++ -g -std=gnu++20
 
