@@ -33,7 +33,13 @@ find_package(pugixml REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
 # Add the executable
-add_executable(validation-api src/main.cpp src/Logger.cpp src/ConfigWatcher.cpp src/ConfigService.cpp src/lib/Helpers.cpp)
+add_executable(validation-api
+  src/main.cpp
+  src/Logger.cpp
+  src/ConfigWatcher.cpp
+  src/ConfigService.cpp
+  src/lib/Helpers.cpp
+)
 
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
@@ -53,6 +59,7 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/Logger.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigWatcher.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigService.cpp
+    ${CMAKE_SOURCE_DIR}/src/lib/Helpers.cpp
 )
 
 # Add your test files

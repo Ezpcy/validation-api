@@ -4,6 +4,8 @@
 #include <pugixml.hpp>
 #include <validation-api/ConfigService.hpp>
 
+#include "lib/Helpers.hpp"
+
 static const std::string xml = R"(<RioPartner>
   <PartnerEntity>
     <Salutation type="Uuid" notNull="true"/>
@@ -47,10 +49,18 @@ static const std::string jsonOb = R"({
 })";
 
 TEST(ConfigServiceTest, CreatingConfig) {
+  using json = nlohmann::json;
   validation_api::ConfigService service = validation_api::ConfigService();
 
   pugi::xml_document doc;
   pugi::xml_parse_result result = doc.load_string(xml.c_str());
+  json jj = json::parse(jsonOb);
+
+  std::string key = jj.begin().key();
+
+  validation_api::ConfigService::Errors errors;
+
+  validation_api::traverseAndValidate(jj[key], doc, errors);
 
   ASSERT_TRUE(result);
 }

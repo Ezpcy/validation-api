@@ -5,15 +5,19 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <exception>
+#include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
+#include <string>
 #include <unordered_map>
 #include <validation-api/ConfigService.hpp>
 
 namespace validation_api {
 
 ConfigService::ConfigService() = default;
+ConfigService::~ConfigService() = default;
 
-void ConfigService::createConfig(std::string &name, pugi::xml_document doc) {
+void ConfigService::createConfig(const std::string &name,
+                                 const pugi::xml_document doc) {
   try {
     boost::unique_lock<boost::shared_mutex> lock(_rwMutex_);
     auto logger = spdlog::get("Logger");
@@ -27,7 +31,7 @@ void ConfigService::createConfig(std::string &name, pugi::xml_document doc) {
   }
 }
 
-void ConfigService::deleteConfig(std::string &name) {
+void ConfigService::deleteConfig(const std::string &name) {
   try {
     boost::unique_lock<boost::shared_mutex> lock(_rwMutex_);
     auto logger = spdlog::get("Logger");
@@ -39,16 +43,21 @@ void ConfigService::deleteConfig(std::string &name) {
   }
 }
 
-ConfigService::Errors ConfigService::validateConfig(nlohmann::json &jsonData) {
+ConfigService::Errors ConfigService::validateConfig(
+    const nlohmann::json &jsonData) {
   Errors errors;
   try {
     boost::unique_lock<boost::shared_mutex> lock(_rwMutex_);
     std::string key = jsonData.begin().key();
-    std::shared_ptr<pugi::xml_document> doc = _configs_[key];
+    pugi::xml_node doc = _configs_[key]->child(key.c_str());
 
     if (!doc) {
-      std::cout << "balls" << '\n';
+      errors.push_back(
+          {std::string("Can't find configuration: "), std::string(key)});
+      return errors;
     }
+
+    validation_api::traverseAndValidate(jsonData[key], doc, errors);
 
   } catch (const std::exception &e) {
     spdlog::get("Logger")->error("Error while trying to validate request: {}",
