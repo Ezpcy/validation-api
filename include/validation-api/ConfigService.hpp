@@ -36,7 +36,7 @@ class ConfigService {
    * @details This typedef is used to store the errors found in the
    * configuration files.
    */
-  typedef std::vector<std::pair<std::string, std::string>> Errors;
+  typedef std::deque<std::pair<std::string, std::string>> Errors;
 
   /**
    * @brief ConfigService constructor
@@ -66,7 +66,7 @@ class ConfigService {
    * @params doc  The configuration file.
    *
    */
-  void createConfig(const std::string &name, const pugi::xml_document doc);
+  void createConfig(const std::string &name, const pugi::xml_document &doc);
 
   /**
    * @brief getConfigs method

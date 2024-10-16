@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <algorithm>
+#include <memory>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
 #include <validation-api/ConfigService.hpp>
@@ -31,7 +33,7 @@ static const std::string jsonOb = R"({
       "PartnerEntity": {
           "Salutation": "00000000-0000-0000-0000-000000000001",
           "Name": "string",
-          "Surname": "string",
+          "Surname": 12,
           "Institution": "00000000-0000-0000-0000-000000000001",
           "Street": "string",
           "PostalCode": "string",
@@ -56,11 +58,9 @@ TEST(ConfigServiceTest, CreatingConfig) {
   pugi::xml_parse_result result = doc.load_string(xml.c_str());
   json jj = json::parse(jsonOb);
 
-  std::string key = jj.begin().key();
-
   validation_api::ConfigService::Errors errors;
-
-  validation_api::traverseAndValidate(jj[key], doc, errors);
+  service.createConfig("RioPartner", doc);
+  service.validateConfig(jj);
 
   ASSERT_TRUE(result);
 }

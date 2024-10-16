@@ -1,11 +1,1 @@
-[2024-10-10 15:41:48.373] [Logger] [error] Failed to initialize inotify
-[2024-10-10 15:41:48.373] [Logger] [error] Config watcher failed to add watch to directory: ./configs
-[2024-10-10 15:41:55.408] [Logger] [error] Failed to initialize inotify
-[2024-10-10 15:41:55.408] [Logger] [error] Config watcher failed to add watch to directory: ./configs
-[2024-10-10 15:42:00.107] [Logger] [error] Failed to initialize inotify
-[2024-10-10 15:42:00.107] [Logger] [error] Config watcher failed to add watch to directory: ./configs
-[2024-10-10 15:42:28.828] [Logger] [error] Failed to initialize inotify
-[2024-10-10 15:42:28.828] [Logger] [error] Config watcher failed to add watch to directory: ./configs
-[2024-10-10 16:01:58.174] [Logger] [error] Config watcher failed to initialize inotify
-[2024-10-10 16:02:03.450] [Logger] [error] Config watcher failed to add watch to directory: ./configs
-[2024-10-11 10:42:12.090] [Logger] [error] Config watcher failed to add watch to directory: ./configs
+[2024-10-16 16:12:04.467] [Logger] [error] Logger error message

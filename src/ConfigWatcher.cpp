@@ -120,6 +120,7 @@ void ConfigWatcher::run() {
         struct inotify_event *event = (struct inotify_event *)&buffer[count];
         if (event->len) {
           std::string action;
+          // TODO: Create boost threads
           if (event->mask & IN_CREATE) {
             action = "created";
           } else if (event->mask & IN_DELETE) {

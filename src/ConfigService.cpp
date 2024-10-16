@@ -1,9 +1,9 @@
 #include <spdlog/spdlog.h>
 
 #include <boost/asio.hpp>
-#include <boost/fiber/all.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <boost/thread.hpp>
 #include <exception>
 #include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
@@ -17,7 +17,7 @@ ConfigService::ConfigService() = default;
 ConfigService::~ConfigService() = default;
 
 void ConfigService::createConfig(const std::string &name,
-                                 const pugi::xml_document doc) {
+                                 const pugi::xml_document &doc) {
   try {
     boost::unique_lock<boost::shared_mutex> lock(_rwMutex_);
     auto logger = spdlog::get("Logger");
@@ -56,8 +56,11 @@ ConfigService::Errors ConfigService::validateConfig(
           {std::string("Can't find configuration: "), std::string(key)});
       return errors;
     }
+    boost::thread validationThread([this, &jsonData, &doc, &errors, &key]() {
+      validation_api::traverseAndValidate(jsonData[key], doc, errors);
+    });
 
-    validation_api::traverseAndValidate(jsonData[key], doc, errors);
+    validationThread.join();
 
   } catch (const std::exception &e) {
     spdlog::get("Logger")->error("Error while trying to validate request: {}",
