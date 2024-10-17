@@ -41,7 +41,6 @@ int main(int argc, char *argv[]) {
         std::cout << "File " << path << " was " << action << std::endl;
       });
   io_context.run();
-  std::cout << "Hello world" << std::endl;
 
   return 0;
 }

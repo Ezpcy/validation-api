@@ -53,10 +53,10 @@ RM = /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_SOURCE_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_BINARY_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 # Include any dependencies generated for this target.
 include CMakeFiles/validation-api.dir/depend.make
@@ -72,72 +72,72 @@ include CMakeFiles/validation-api.dir/flags.make
 CMakeFiles/validation-api.dir/src/main.cpp.o: CMakeFiles/validation-api.dir/flags.make
 CMakeFiles/validation-api.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/validation-api.dir/src/main.cpp.o: CMakeFiles/validation-api.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/validation-api.dir/src/main.cpp.o"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/main.cpp.o -MF CMakeFiles/validation-api.dir/src/main.cpp.o.d -o CMakeFiles/validation-api.dir/src/main.cpp.o -c /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/validation-api.dir/src/main.cpp.o"
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/main.cpp.o -MF CMakeFiles/validation-api.dir/src/main.cpp.o.d -o CMakeFiles/validation-api.dir/src/main.cpp.o -c /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/main.cpp
 
 CMakeFiles/validation-api.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validation-api.dir/src/main.cpp.i"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/main.cpp > CMakeFiles/validation-api.dir/src/main.cpp.i
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/main.cpp > CMakeFiles/validation-api.dir/src/main.cpp.i
 
 CMakeFiles/validation-api.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validation-api.dir/src/main.cpp.s"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/main.cpp -o CMakeFiles/validation-api.dir/src/main.cpp.s
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/main.cpp -o CMakeFiles/validation-api.dir/src/main.cpp.s
 
 CMakeFiles/validation-api.dir/src/Logger.cpp.o: CMakeFiles/validation-api.dir/flags.make
 CMakeFiles/validation-api.dir/src/Logger.cpp.o: src/Logger.cpp
 CMakeFiles/validation-api.dir/src/Logger.cpp.o: CMakeFiles/validation-api.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/validation-api.dir/src/Logger.cpp.o"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/Logger.cpp.o -MF CMakeFiles/validation-api.dir/src/Logger.cpp.o.d -o CMakeFiles/validation-api.dir/src/Logger.cpp.o -c /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/Logger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/validation-api.dir/src/Logger.cpp.o"
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/Logger.cpp.o -MF CMakeFiles/validation-api.dir/src/Logger.cpp.o.d -o CMakeFiles/validation-api.dir/src/Logger.cpp.o -c /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/Logger.cpp
 
 CMakeFiles/validation-api.dir/src/Logger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validation-api.dir/src/Logger.cpp.i"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/Logger.cpp > CMakeFiles/validation-api.dir/src/Logger.cpp.i
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/Logger.cpp > CMakeFiles/validation-api.dir/src/Logger.cpp.i
 
 CMakeFiles/validation-api.dir/src/Logger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validation-api.dir/src/Logger.cpp.s"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/Logger.cpp -o CMakeFiles/validation-api.dir/src/Logger.cpp.s
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/Logger.cpp -o CMakeFiles/validation-api.dir/src/Logger.cpp.s
 
 CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o: CMakeFiles/validation-api.dir/flags.make
 CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o: src/ConfigWatcher.cpp
 CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o: CMakeFiles/validation-api.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o -MF CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o.d -o CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o -c /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigWatcher.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o"
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o -MF CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o.d -o CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o -c /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigWatcher.cpp
 
 CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.i"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigWatcher.cpp > CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.i
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigWatcher.cpp > CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.i
 
 CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.s"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigWatcher.cpp -o CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.s
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigWatcher.cpp -o CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.s
 
 CMakeFiles/validation-api.dir/src/ConfigService.cpp.o: CMakeFiles/validation-api.dir/flags.make
 CMakeFiles/validation-api.dir/src/ConfigService.cpp.o: src/ConfigService.cpp
 CMakeFiles/validation-api.dir/src/ConfigService.cpp.o: CMakeFiles/validation-api.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/validation-api.dir/src/ConfigService.cpp.o"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/ConfigService.cpp.o -MF CMakeFiles/validation-api.dir/src/ConfigService.cpp.o.d -o CMakeFiles/validation-api.dir/src/ConfigService.cpp.o -c /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigService.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/validation-api.dir/src/ConfigService.cpp.o"
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/ConfigService.cpp.o -MF CMakeFiles/validation-api.dir/src/ConfigService.cpp.o.d -o CMakeFiles/validation-api.dir/src/ConfigService.cpp.o -c /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigService.cpp
 
 CMakeFiles/validation-api.dir/src/ConfigService.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validation-api.dir/src/ConfigService.cpp.i"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigService.cpp > CMakeFiles/validation-api.dir/src/ConfigService.cpp.i
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigService.cpp > CMakeFiles/validation-api.dir/src/ConfigService.cpp.i
 
 CMakeFiles/validation-api.dir/src/ConfigService.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validation-api.dir/src/ConfigService.cpp.s"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigService.cpp -o CMakeFiles/validation-api.dir/src/ConfigService.cpp.s
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/ConfigService.cpp -o CMakeFiles/validation-api.dir/src/ConfigService.cpp.s
 
 CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o: CMakeFiles/validation-api.dir/flags.make
 CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o: src/lib/Helpers.cpp
 CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o: CMakeFiles/validation-api.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o -MF CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o.d -o CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o -c /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/lib/Helpers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o"
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o -MF CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o.d -o CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o -c /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/lib/Helpers.cpp
 
 CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.i"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/lib/Helpers.cpp > CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.i
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/lib/Helpers.cpp > CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.i
 
 CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.s"
-	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/lib/Helpers.cpp -o CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.s
+	/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/src/lib/Helpers.cpp -o CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.s
 
 # Object files for target validation-api
 validation__api_OBJECTS = \
@@ -156,18 +156,18 @@ validation-api: CMakeFiles/validation-api.dir/src/ConfigWatcher.cpp.o
 validation-api: CMakeFiles/validation-api.dir/src/ConfigService.cpp.o
 validation-api: CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o
 validation-api: CMakeFiles/validation-api.dir/build.make
-validation-api: /home/ezpz/.conan2/p/b/spdlo82da955bfb1c4/p/lib/libspdlogd.a
-validation-api: /home/ezpz/.conan2/p/b/fmt7bcf00f37b3ef/p/lib/libfmtd.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_filesystem.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_thread.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_atomic.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_chrono.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_container.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_date_time.a
-validation-api: /home/ezpz/.conan2/p/b/boostfbccd637683d3/p/lib/libboost_exception.a
-validation-api: /home/ezpz/.conan2/p/b/pugixf34cdf4af5557/p/lib/libpugixml.a
+validation-api: /home/ezpz/.conan2/p/b/spdlo74c621c6aae94/p/lib/libspdlogd.a
+validation-api: /home/ezpz/.conan2/p/b/fmt6a22b379edd5d/p/lib/libfmtd.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_filesystem.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_thread.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_atomic.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_chrono.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_container.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_date_time.a
+validation-api: /home/ezpz/.conan2/p/b/boost1ab0474347848/p/lib/libboost_exception.a
+validation-api: /home/ezpz/.conan2/p/b/pugixea4c72c82f6d6/p/lib/libpugixml.a
 validation-api: CMakeFiles/validation-api.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable validation-api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable validation-api"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/validation-api.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -179,6 +179,6 @@ CMakeFiles/validation-api.dir/clean:
 .PHONY : CMakeFiles/validation-api.dir/clean
 
 CMakeFiles/validation-api.dir/depend:
-	cd /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/validation-api.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/validation-api.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/validation-api.dir/depend
 

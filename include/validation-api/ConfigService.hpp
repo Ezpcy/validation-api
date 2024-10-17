@@ -1,16 +1,14 @@
 #pragma once
 
-#include <boost/asio.hpp>
-#include <boost/fiber/all.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/thread/shared_mutex.hpp>
+#include <spdlog/spdlog.h>
+
+#include <boost/thread.hpp>
 #include <nlohmann/json.hpp>
-#include <nlohmann/json_fwd.hpp>
 #include <pugixml.hpp>
 #include <string>
 #include <unordered_map>
-#include <utility>
 #include <validation-api/IService.hpp>
+#include <vector>
 
 namespace validation_api {
 
@@ -36,7 +34,7 @@ class ConfigService {
    * @details This typedef is used to store the errors found in the
    * configuration files.
    */
-  typedef std::deque<std::pair<std::string, std::string>> Errors;
+  typedef std::vector<std::pair<std::string, std::string>> Errors;
 
   /**
    * @brief ConfigService constructor
@@ -51,13 +49,13 @@ class ConfigService {
   /**
    * @brief getConfig method
    * @params name  The name of the configuration file.
-   * @return nlohmann::json object
+   * @return pugi::xml_document
    *
-   * @details This method returns the configuration files.
+   * @details This method returns the configuration
    *
    * @return Configs
    */
-  nlohmann::json getConfig(const std::string &name);
+  pugi::xml_document getConfig(const std::string &name);
 
   /**
    * @brief getConfigs method
@@ -86,17 +84,24 @@ class ConfigService {
 
  private:
   /**
-   * @brief _rwMutex_ member
+   * @brief rwMutex_ member
    *
    * @details This member is used to lock the map of configuration files.
    */
-  mutable boost::shared_mutex _rwMutex_;
+  mutable boost::shared_mutex rwMutex_;
 
   /**
-   * @brief _configs_ member
+   * @brief configs_ member
    *
    * @details This member is used to store the configuration files.
    */
-  Configs _configs_;
+  Configs configs_;
+
+  /**
+   * @brief logger_ member
+   *
+   * @details This member is used to log messages.
+   */
+  std::shared_ptr<spdlog::logger> logger_;
 };
 }  // namespace validation_api

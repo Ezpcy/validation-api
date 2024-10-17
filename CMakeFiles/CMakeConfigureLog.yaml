@@ -3441,3 +3441,1119 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.10.13 - x86_64
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang 
+      Build flags: -m64
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is Clang, found in:
+        /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/3.29.6/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ 
+      Build flags: -m64;-stdlib=libstdc++
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/3.29.6/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf"
+      binary: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/nix/store/6z74d6fyqjh9rb0f0z9nihf0vjdd0iz7-clang-tools-18.1.8/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: "-m64"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-m64"
+      CMAKE_MODULE_PATH: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/build/Debug/generators"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf'
+        
+        Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make -f Makefile cmTC_d5e97/fast
+        /nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_d5e97.dir/build.make CMakeFiles/cmTC_d5e97.dir/build
+        make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf'
+        Building C object CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang   -m64    -v -MD -MT CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang-18" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -x c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu
+        ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"
+        ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"
+        ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"
+        ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"
+        ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include
+         /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include
+         /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include
+         /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include
+         /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include
+         /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include
+         /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include
+        End of search list.
+        Linking C executable cmTC_d5e97
+        /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5e97.dir/link.txt --verbose=1
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang -m64  -m64 -v -Wl,-v CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -o cmTC_d5e97
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_d5e97 /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o
+        GNU ld (GNU Binutils) 2.42
+        make[1]: Leaving directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:137 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+          add: [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+          add: [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+          add: [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+          add: [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+          add: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+          add: [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        end of search list found
+        collapse include dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        collapse include dir [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include] ==> [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        collapse include dir [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include] ==> [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        collapse include dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        collapse include dir [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include] ==> [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        collapse include dir [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include] ==> [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        collapse include dir [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include] ==> [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        implicit include dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include;/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include;/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include;/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include;/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include;/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf']
+        ignore line: []
+        ignore line: [Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make -f Makefile cmTC_d5e97/fast]
+        ignore line: [/nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_d5e97.dir/build.make CMakeFiles/cmTC_d5e97.dir/build]
+        ignore line: [make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf']
+        ignore line: [Building C object CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang   -m64    -v -MD -MT CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang-18" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0y7Nf -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -x c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu]
+        ignore line: [ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        ignore line: [ /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        ignore line: [ /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        ignore line: [ /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        ignore line: [ /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        ignore line: [ /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        ignore line: [ /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_d5e97]
+        ignore line: [/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5e97.dir/link.txt --verbose=1]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang -m64  -m64 -v -Wl -v CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -o cmTC_d5e97]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_d5e97 /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+          arg [/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_d5e97] ==> ignore
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o]
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib]
+          arg [-L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+          arg [-L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_d5e97.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        linker tool for 'C': /nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib]
+        collapse library dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+        collapse library dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        implicit dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib;/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib;/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib;/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64;/lib64;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.42
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW"
+      binary: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/nix/store/6z74d6fyqjh9rb0f0z9nihf0vjdd0iz7-clang-tools-18.1.8/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: "-m64 -stdlib=libstdc++"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "-m64"
+      CMAKE_MODULE_PATH: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/build/Debug/generators"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW'
+        
+        Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make -f Makefile cmTC_fbffe/fast
+        /nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_fbffe.dir/build.make CMakeFiles/cmTC_fbffe.dir/build
+        make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW'
+        Building CXX object CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++   -m64 -stdlib=libstdc++  -std=gnu++17   -v -MD -MT CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+        clang++: warning: argument unused during compilation: '-stdlib=libstdc++' [-Wunused-command-line-argument]
+         (in-process)
+         "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang++" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0 -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -std=gnu++17 -fdeprecated-macro -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -x c++ /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu
+        ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"
+        ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"
+        ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"
+        ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"
+        ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include
+         /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include
+         /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include
+         /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include
+         /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include
+         /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0
+         /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu
+         /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include
+         /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include
+        End of search list.
+        Linking CXX executable cmTC_fbffe
+        /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbffe.dir/link.txt --verbose=1
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ -m64 -stdlib=libstdc++  -m64 -v -Wl,-v CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_fbffe
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_fbffe /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o
+        GNU ld (GNU Binutils) 2.42
+        make[1]: Leaving directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:137 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+          add: [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+          add: [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+          add: [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+          add: [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+          add: [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0]
+          add: [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu]
+          add: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+          add: [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        end of search list found
+        collapse include dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        collapse include dir [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include] ==> [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        collapse include dir [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include] ==> [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        collapse include dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        collapse include dir [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include] ==> [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        collapse include dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0]
+        collapse include dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu]
+        collapse include dir [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include] ==> [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        collapse include dir [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include] ==> [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        implicit include dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include;/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include;/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include;/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu;/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include;/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW']
+        ignore line: []
+        ignore line: [Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make -f Makefile cmTC_fbffe/fast]
+        ignore line: [/nix/store/qgsv4qck6z0plwz2mmxw76473pipb0zn-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_fbffe.dir/build.make CMakeFiles/cmTC_fbffe.dir/build]
+        ignore line: [make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW']
+        ignore line: [Building CXX object CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++   -m64 -stdlib=libstdc++  -std=gnu++17   -v -MD -MT CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [clang++: warning: argument unused during compilation: '-stdlib=libstdc++' [-Wunused-command-line-argument]]
+        ignore line: [ (in-process)]
+        ignore line: [ "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang++" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-i7pfFW -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0 -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -std=gnu++17 -fdeprecated-macro -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -x c++ /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu]
+        ignore line: [ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        ignore line: [ /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        ignore line: [ /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        ignore line: [ /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        ignore line: [ /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        ignore line: [ /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0]
+        ignore line: [ /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu]
+        ignore line: [ /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        ignore line: [ /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_fbffe]
+        ignore line: [/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbffe.dir/link.txt --verbose=1]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ -m64 -stdlib=libstdc++  -m64 -v -Wl -v CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_fbffe]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_fbffe /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+          arg [/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_fbffe] ==> ignore
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o]
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib]
+          arg [-L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+          arg [-L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_fbffe.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        linker tool for 'CXX': /nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib]
+        collapse library dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+        collapse library dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        implicit dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib;/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib;/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib;/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64;/lib64;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.42
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.10.13 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang 
+      Build flags: -m64
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is Clang, found in:
+        /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/3.29.6/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ 
+      Build flags: -m64;-stdlib=libstdc++
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/3.29.6/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN"
+      binary: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/nix/store/6z74d6fyqjh9rb0f0z9nihf0vjdd0iz7-clang-tools-18.1.8/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: "-m64"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-m64"
+      CMAKE_MODULE_PATH: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/build/Debug/generators"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN'
+        
+        Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make -f Makefile cmTC_54f7c/fast
+        /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_54f7c.dir/build.make CMakeFiles/cmTC_54f7c.dir/build
+        make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN'
+        Building C object CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang   -m64    -v -MD -MT CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         (in-process)
+         "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang-18" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -x c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu
+        ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"
+        ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"
+        ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"
+        ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"
+        ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include
+         /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include
+         /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include
+         /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include
+         /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include
+         /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include
+         /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include
+        End of search list.
+        Linking C executable cmTC_54f7c
+        /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54f7c.dir/link.txt --verbose=1
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang -m64  -m64 -v -Wl,-v CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -o cmTC_54f7c
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_54f7c /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o
+        GNU ld (GNU Binutils) 2.42
+        make[1]: Leaving directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:137 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+          add: [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+          add: [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+          add: [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+          add: [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+          add: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+          add: [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        end of search list found
+        collapse include dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        collapse include dir [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include] ==> [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        collapse include dir [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include] ==> [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        collapse include dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        collapse include dir [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include] ==> [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        collapse include dir [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include] ==> [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        collapse include dir [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include] ==> [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        implicit include dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include;/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include;/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include;/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include;/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include;/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN']
+        ignore line: []
+        ignore line: [Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make -f Makefile cmTC_54f7c/fast]
+        ignore line: [/nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_54f7c.dir/build.make CMakeFiles/cmTC_54f7c.dir/build]
+        ignore line: [make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN']
+        ignore line: [Building C object CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang   -m64    -v -MD -MT CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [ (in-process)]
+        ignore line: [ "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang-18" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-qYfNkN -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -x c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu]
+        ignore line: [ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        ignore line: [ /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        ignore line: [ /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        ignore line: [ /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        ignore line: [ /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        ignore line: [ /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        ignore line: [ /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_54f7c]
+        ignore line: [/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54f7c.dir/link.txt --verbose=1]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang -m64  -m64 -v -Wl -v CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -o cmTC_54f7c]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_54f7c /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+          arg [/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_54f7c] ==> ignore
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o]
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib]
+          arg [-L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+          arg [-L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_54f7c.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        linker tool for 'C': /nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib]
+        collapse library dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+        collapse library dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        implicit dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib;/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib;/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib;/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64;/lib64;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.42
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf"
+      binary: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/nix/store/6z74d6fyqjh9rb0f0z9nihf0vjdd0iz7-clang-tools-18.1.8/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: "-m64 -stdlib=libstdc++"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "-m64"
+      CMAKE_MODULE_PATH: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/build/Debug/generators"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf'
+        
+        Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make -f Makefile cmTC_4db3e/fast
+        /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_4db3e.dir/build.make CMakeFiles/cmTC_4db3e.dir/build
+        make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf'
+        Building CXX object CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++   -m64 -stdlib=libstdc++  -std=gnu++17   -v -MD -MT CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+        clang++: warning: argument unused during compilation: '-stdlib=libstdc++' [-Wunused-command-line-argument]
+         (in-process)
+         "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang++" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0 -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -std=gnu++17 -fdeprecated-macro -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -x c++ /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu
+        ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"
+        ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"
+        ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"
+        ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"
+        ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include
+         /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include
+         /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include
+         /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include
+         /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include
+         /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0
+         /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu
+         /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include
+         /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include
+        End of search list.
+        Linking CXX executable cmTC_4db3e
+        /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4db3e.dir/link.txt --verbose=1
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ -m64 -stdlib=libstdc++  -m64 -v -Wl,-v CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_4db3e
+        clang version 18.1.8
+        Target: x86_64-unknown-linux-gnu
+        Thread model: posix
+        InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0
+        Candidate multilib: .;@m64
+        Selected multilib: .;@m64
+         "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_4db3e /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o
+        GNU ld (GNU Binutils) 2.42
+        make[1]: Leaving directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:137 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+          add: [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+          add: [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+          add: [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+          add: [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+          add: [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0]
+          add: [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu]
+          add: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+          add: [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        end of search list found
+        collapse include dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        collapse include dir [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include] ==> [/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        collapse include dir [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include] ==> [/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        collapse include dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        collapse include dir [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include] ==> [/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        collapse include dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0]
+        collapse include dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu]
+        collapse include dir [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include] ==> [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        collapse include dir [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include] ==> [/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        implicit include dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include;/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include;/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include;/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu;/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include;/nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf']
+        ignore line: []
+        ignore line: [Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make -f Makefile cmTC_4db3e/fast]
+        ignore line: [/nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_4db3e.dir/build.make CMakeFiles/cmTC_4db3e.dir/build]
+        ignore line: [make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf']
+        ignore line: [Building CXX object CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++   -m64 -stdlib=libstdc++  -std=gnu++17   -v -MD -MT CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -c /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        ignore line: [clang++: warning: argument unused during compilation: '-stdlib=libstdc++' [-Wunused-command-line-argument]]
+        ignore line: [ (in-process)]
+        ignore line: [ "/nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin/clang++" -cc1 -triple x86_64-unknown-linux-gnu -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -fhalf-no-semantic-interposition -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf -v -fcoverage-compilation-dir=/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-ueZfcf -nostdsysteminc -resource-dir /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root -dependency-file CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -idirafter /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include -isystem /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include -isystem /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include -isystem /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include -isystem /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0 -isystem /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu -U _FORTIFY_SOURCE -U _FORTIFY_SOURCE -D _FORTIFY_SOURCE=2 -internal-isystem /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include -source-date-epoch 315532800 -O2 -Wformat -Wformat-security -Werror=format-security -std=gnu++17 -fdeprecated-macro -ferror-limit 19 -fzero-call-used-regs=used-gpr -fwrapv -stack-protector 2 -stack-protector-buffer-size 4 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -vectorize-loops -vectorize-slp -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -x c++ /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 18.1.8 based upon LLVM 18.1.8 default target x86_64-unknown-linux-gnu]
+        ignore line: [ignoring duplicate directory "/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include"]
+        ignore line: [ignoring duplicate directory "/nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/include]
+        ignore line: [ /nix/store/lfqxgrwhsl5ifasw58xc5f5xb5d99zv7-gtest-1.14.0-dev/include]
+        ignore line: [ /nix/store/7yxkrxnz40cyz3vim4azn431fksgh5v9-glibc-iconv-2.39/include]
+        ignore line: [ /nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/include]
+        ignore line: [ /nix/store/vzfjgxs10idzlk3v8fv5pqyjvgl10d7p-compiler-rt-libc-18.1.8-dev/include]
+        ignore line: [ /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0]
+        ignore line: [ /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/include/c++/13.3.0/x86_64-unknown-linux-gnu]
+        ignore line: [ /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/resource-root/include]
+        ignore line: [ /nix/store/wlavaybjbzgllhq11lib6qgr7rm8imgp-glibc-2.39-52-dev/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_4db3e]
+        ignore line: [/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4db3e.dir/link.txt --verbose=1]
+        ignore line: [/nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang++ -m64 -stdlib=libstdc++  -m64 -v -Wl -v CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_4db3e]
+        ignore line: [clang version 18.1.8]
+        ignore line: [Target: x86_64-unknown-linux-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /nix/store/bgs9im0bhq5a2zrnnv01ivg8240kyzis-clang-18.1.8/bin]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Found candidate GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Selected GCC installation: /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        ignore line: [Candidate multilib: .]
+        ignore line: [@m64]
+        ignore line: [Selected multilib: .]
+        ignore line: [@m64]
+        link line: [ "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" --hash-style=gnu --eh-frame-hdr -m elf_x86_64 -pie -o cmTC_4db3e /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib -L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib -L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib -L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib -L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib -L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0 -L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64 -L/lib/../lib64 -L/lib -dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2 -v CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o -rpath /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o /nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+          arg [/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_4db3e] ==> ignore
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o]
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+          arg [-L/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+          arg [-L/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+          arg [-L/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib]
+          arg [-L/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+          arg [-L/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+          arg [-L/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/lib] ==> dir [/lib]
+          arg [-dynamic-linker=/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/ld-linux-x86-64.so.2] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_4db3e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/outputs/out/lib] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o] ==> obj [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o]
+          arg [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o] ==> obj [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        linker tool for 'CXX': /nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib] ==> [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib]
+        collapse library dir [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib] ==> [/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib]
+        collapse library dir [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib] ==> [/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib]
+        collapse library dir [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib] ==> [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib] ==> [/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0//lib] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib]
+        collapse library dir [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib] ==> [/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib]
+        collapse library dir [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib] ==> [/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0]
+        collapse library dir [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0/../../../../lib64] ==> [/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/lib] ==> [/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/Scrt1.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crti.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtbeginS.o;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0/crtendS.o;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib/crtn.o]
+        implicit dirs: [/nix/store/h3i0acpmr8mrjx07519xxmidv8mpax4y-python3-3.12.5/lib;/nix/store/hdwkfimyyawj5w990ihpar827w43pmpg-gtest-1.14.0/lib;/nix/store/g3nca8ynriliw6zvgdv0gm8wql7yxjkl-gdb-15.1/lib;/nix/store/3dyw8dzj9ab4m8hv5dpyx7zii8d0w6fi-glibc-2.39-52/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/22nxhmsfcv2q2rpkmfvzwg2w5z1l231z-gcc-13.3.0-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib;/nix/store/q0iz2x35ki1aaqpjagjfi8s7q053cmc5-gcc-13.3.0-libgcc/lib;/nix/store/p3bv60x7rzlnfz7ms7i1rm5ps0481idg-clang-18.1.8-lib/lib;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64/gcc/x86_64-unknown-linux-gnu/13.3.0;/nix/store/x8rg4vhgd20i8vzykm1196f9qdb8klhh-gcc-13.3.0/lib64;/lib64;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/nix/store/yp6j8185dlkljgcdl0xsf73dr7mv1v1y-binutils-wrapper-2.42/bin/ld" "-v"
+      GNU ld (GNU Binutils) 2.42
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/share/cmake-3.29/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "CMakeLists.txt:31 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0er9A"
+      binary: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0er9A"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/nix/store/6z74d6fyqjh9rb0f0z9nihf0vjdd0iz7-clang-tools-18.1.8/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: "-m64"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-m64"
+      CMAKE_MODULE_PATH: "/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/build/Debug/generators"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0er9A'
+        
+        Run Build Command(s): /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E env VERBOSE=1 /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make -f Makefile cmTC_b7b79/fast
+        /nix/store/axrdky652lsmif6m5i8b55q91v4ly4gy-gnumake-4.4.1/bin/make  -f CMakeFiles/cmTC_b7b79.dir/build.make CMakeFiles/cmTC_b7b79.dir/build
+        make[1]: Entering directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0er9A'
+        Building C object CMakeFiles/cmTC_b7b79.dir/src.c.o
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang -DCMAKE_HAVE_LIBC_PTHREAD  -m64  -MD -MT CMakeFiles/cmTC_b7b79.dir/src.c.o -MF CMakeFiles/cmTC_b7b79.dir/src.c.o.d -o CMakeFiles/cmTC_b7b79.dir/src.c.o -c /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0er9A/src.c
+        Linking C executable cmTC_b7b79
+        /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7b79.dir/link.txt --verbose=1
+        /nix/store/4rz4z2bkb68vwbdxcwq0jxh2fyhhiqkh-clang-wrapper-18.1.8/bin/clang -m64  -m64  CMakeFiles/cmTC_b7b79.dir/src.c.o -o cmTC_b7b79
+        make[1]: Leaving directory '/home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/CMakeScratch/TryCompile-P0er9A'
+        
+      exitCode: 0
+...
