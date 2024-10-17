@@ -22,6 +22,7 @@ void ConfigService::createConfig(const std::string &name,
     boost::unique_lock<boost::shared_mutex> lock(_rwMutex_);
     std::cout << "here" << '\n';
     auto logger = spdlog::get("Logger");
+
     auto new_doc = std::make_shared<pugi::xml_document>();
     new_doc->reset(doc);
     _configs_[name] = new_doc;
