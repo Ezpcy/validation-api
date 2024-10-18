@@ -1,4 +1,0 @@
-/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/validation-api.dir
-/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/tests.dir
-/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/edit_cache.dir
-/home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles/rebuild_cache.dir

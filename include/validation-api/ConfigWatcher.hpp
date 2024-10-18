@@ -1,11 +1,6 @@
 #pragma once
 
 #include <boost/asio.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/thread.hpp>
-#include <functional>
-#include <memory>
-#include <string>
 #include <validation-api/ConfigService.hpp>
 #include <validation-api/IService.hpp>
 
@@ -38,11 +33,11 @@ class ConfigWatcher : public IService {
   std::atomic<bool> running;
   boost::thread watcherThread;
 
-  // Including ConfigService
-  std::unique_ptr<ConfigService> service_;
   // Inotify variables fd = file descriptor
   int inotify_fd_;
   // Watch descriptor
   int watch_descriptor_;
+
+  std::shared_ptr<spdlog::logger> logger_;
 };
 }  // namespace validation_api

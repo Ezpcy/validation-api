@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cctype>
 #include <format>
+#include <iostream>
 #include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
@@ -28,10 +29,26 @@ void validate(const std::string &optName, const std::string &optValue,
       switch (it->second) {
         case 1:
           if (!reqValue.is_string()) {
-            errors.push_back({std::format("{}: ", fieldName),
-                              std::format("Expected String, received {}",
-                                          reqValue.type_name())});
+            errors.push_back({std::format("Field \"{}\": ", fieldName),
+                              std::format("Expected \"{}\", received {}",
+                                          it->first, reqValue.type_name())});
           }
+          break;
+        case 2:
+          if (!reqValue.is_number_float()) {
+            errors.push_back({std::format("Field \"{}\": ", fieldName),
+                              std::format("Expected \"{}\", received {}",
+                                          it->first, reqValue.type_name())});
+          }
+          break;
+        case 3:
+          if (!reqValue.is_number()) {
+            errors.push_back({std::format("Field \"{}\": ", fieldName),
+                              std::format("Expected \"{}\", received {}",
+                                          it->first, reqValue.type_name())});
+          }
+          break;
+          // Date
       }
     }
   }

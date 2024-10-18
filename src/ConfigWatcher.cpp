@@ -1,13 +1,8 @@
 #include "validation-api/ConfigWatcher.hpp"
 
-#include <spdlog/spdlog.h>
 #include <sys/inotify.h>
-#include <unistd.h>
 
-#include <memory>
 #include <semaphore>
-
-#include "validation-api/ConfigService.hpp"
 
 constexpr int MAX_CONCURRENT_READS = 5;
 std::counting_semaphore<MAX_CONCURRENT_READS> semaphore(MAX_CONCURRENT_READS);
@@ -25,15 +20,15 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
     : io_context_(io_context),
       path_(path),
       callback_(callback),
-      service_(std::make_unique<ConfigService>()) {
+      logger_(spdlog::get("Logger") ? spdlog::get("Logger")
+                                    : spdlog::default_logger()) {
   running = true;
   watcherThread = boost::thread([this] {
-    auto logger = spdlog::get("Logger");
     if (!setup()) {
-      logger->error("Config watcher failed to initialize inotify");
+      logger_->error("Config watcher failed to initialize inotify");
       stop();
     };
-    logger->info("Config watcher initialized");
+    logger_->info("Config watcher initialized");
     run();
   });
 }
@@ -54,10 +49,8 @@ ConfigWatcher::~ConfigWatcher() { stop(); }
 bool ConfigWatcher::setup() {
   inotify_fd_ = inotify_init();
 
-  auto logger = spdlog::get("Logger");
-
   if (inotify_fd_ < 0) {
-    logger->error("Config watcher failed to initialize inotify");
+    logger_->error("Config watcher failed to initialize inotify");
     return false;
   }
   return true;
@@ -68,14 +61,12 @@ bool ConfigWatcher::setup() {
  * @return * void
  */
 void ConfigWatcher::run() {
-  auto logger = spdlog::get("Logger");
-
   // Add watch to the directory
   watch_descriptor_ = inotify_add_watch(inotify_fd_, path_.c_str(),
                                         IN_MODIFY | IN_CREATE | IN_DELETE);
   if (watch_descriptor_ < 0) {
-    logger->error("Config watcher failed to add watch to directory: {}, {}",
-                  path_, std::strerror(errno));
+    logger_->error("Config watcher failed to add watch to directory: {}, {}",
+                   path_, std::strerror(errno));
     return;
   }
 
@@ -98,7 +89,7 @@ void ConfigWatcher::run() {
     semaphore.acquire();
     int poll_result = poll(&fds, 1, 1000);  // Timeout after 1000 ms
     if (poll_result < 0) {
-      logger->error("Config watcher poll failed");
+      logger_->error("Config watcher poll failed");
       semaphore.release();
       return;
     } else if (poll_result == 0) {
@@ -110,7 +101,7 @@ void ConfigWatcher::run() {
     if (fds.revents & POLLIN) {
       int no_of_event = read(inotify_fd_, buffer, BUF_LEN);
       if (no_of_event < 0) {
-        logger->error("Config watcher failed to read inotify events");
+        logger_->error("Config watcher failed to read inotify events");
         semaphore.release();
         return;
       }
@@ -153,7 +144,6 @@ void ConfigWatcher::run() {
 }
 
 void ConfigWatcher::stop() {
-  auto logger = spdlog::get("Logger");
   running = false;  // Set running to false to stop the loop
 
   // Interrupt the inotify read by closing the file descriptor
@@ -168,7 +158,7 @@ void ConfigWatcher::stop() {
     inotify_rm_watch(inotify_fd_, watch_descriptor_);
   }
 
-  logger->info("Config watcher stopped");
+  logger_->info("Config watcher stopped");
 }
 
 void ConfigWatcher::read_file(const std::string &path) {}

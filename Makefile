@@ -229,6 +229,7 @@ src/lib/Helpers.o: src/lib/Helpers.cpp.o
 # target to build an object file
 src/lib/Helpers.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Helpers.cpp.o
 .PHONY : src/lib/Helpers.cpp.o
 
 src/lib/Helpers.i: src/lib/Helpers.cpp.i
@@ -237,6 +238,7 @@ src/lib/Helpers.i: src/lib/Helpers.cpp.i
 # target to preprocess a source file
 src/lib/Helpers.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Helpers.cpp.i
 .PHONY : src/lib/Helpers.cpp.i
 
 src/lib/Helpers.s: src/lib/Helpers.cpp.s
@@ -245,6 +247,7 @@ src/lib/Helpers.s: src/lib/Helpers.cpp.s
 # target to generate assembly for a file
 src/lib/Helpers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Helpers.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Helpers.cpp.s
 .PHONY : src/lib/Helpers.cpp.s
 
 src/main.o: src/main.cpp.o
