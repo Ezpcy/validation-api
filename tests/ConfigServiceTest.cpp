@@ -36,7 +36,7 @@ static const std::string xml = R"(
 </RioProvision>)";
 
 static const std::string jsonOb = R"({
-  "RIOProvision": {
+  "RioProvision": {
     "IvProvisionConfig": {
       "IvProvisionNumber": 12345678901234,
       "CostApproval": true
@@ -67,13 +67,17 @@ TEST(ConfigServiceTest, CreatingConfig) {
   pugi::xml_parse_result result = doc.load_string(xml.c_str());
   json jj = json::parse(jsonOb);
 
-  std::string key = validation_api::toLower(jj.begin().key());
+  std::string key = jj.begin().key();
 
   std::cout << key << '\n';
 
   service.createConfig(key, doc);
 
   validation_api::ConfigService::Errors errors = service.validateConfig(jj);
+
+  for (const auto &error : errors) {
+    std::cout << error.first << error.second << '\n';
+  }
 
   // if(!errors.empty)
 

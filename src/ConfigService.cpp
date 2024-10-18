@@ -18,7 +18,7 @@ void ConfigService::createConfig(const std::string &name,
     auto new_doc = std::make_shared<pugi::xml_document>();
     new_doc->reset(doc);
     configs_[name] = new_doc;
-    logger_->info("Configuration named: \"{}\" has been created.", name);
+    logger_->info("Configuration \"{}\" has been created.", name);
   } catch (const std::exception &e) {
     logger_->error("Error while creating configuration \"{}\": {}", name,
                    e.what());
@@ -29,7 +29,7 @@ void ConfigService::deleteConfig(const std::string &name) {
   try {
     boost::unique_lock<boost::shared_mutex> lock(rwMutex_);
     if (configs_.erase(name) > 0) {
-      logger_->info("Configuration named: \"{}\" has been deleted.", name);
+      logger_->info("Configuration \"{}\" has been deleted.", name);
     } else {
       logger_->warn("Configuration \"{}\" does not exist.", name);
     }
@@ -57,7 +57,7 @@ ConfigService::Errors ConfigService::validateConfig(
       return errors;
     }
 
-    validation_api::traverseAndValidate(jsonData[key], doc, errors);
+    validation_api::startValidation(jsonData[key], doc, errors);
 
   } catch (const std::exception &e) {
     logger_->error("Error while trying to validate request: {}", e.what());
