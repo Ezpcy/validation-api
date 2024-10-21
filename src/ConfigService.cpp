@@ -1,6 +1,8 @@
 #include <spdlog/spdlog.h>
 
 #include <lib/Helpers.hpp>
+#include <lib/Validation.hpp>
+#include <validation-api/ConfigService.hpp>
 
 namespace validation_api {
 
@@ -57,7 +59,7 @@ ConfigService::Errors ConfigService::validateConfig(
       return errors;
     }
 
-    validation_api::startValidation(jsonData[key], doc, errors);
+    Validation(jsonData[key], doc, errors).run();
 
   } catch (const std::exception &e) {
     logger_->error("Error while trying to validate request: {}", e.what());

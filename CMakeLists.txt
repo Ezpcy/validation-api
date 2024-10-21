@@ -39,6 +39,7 @@ add_executable(validation-api
   src/ConfigWatcher.cpp
   src/ConfigService.cpp
   src/lib/Helpers.cpp
+  src/lib/Validation.cpp
 )
 
 # Link libraries
@@ -60,6 +61,7 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/ConfigWatcher.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigService.cpp
     ${CMAKE_SOURCE_DIR}/src/lib/Helpers.cpp
+    ${CMAKE_SOURCE_DIR}/src/lib/Validation.cpp
 )
 
 # Add your test files

@@ -250,6 +250,33 @@ src/lib/Helpers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Helpers.cpp.s
 .PHONY : src/lib/Helpers.cpp.s
 
+src/lib/Validation.o: src/lib/Validation.cpp.o
+.PHONY : src/lib/Validation.o
+
+# target to build an object file
+src/lib/Validation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Validation.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Validation.cpp.o
+.PHONY : src/lib/Validation.cpp.o
+
+src/lib/Validation.i: src/lib/Validation.cpp.i
+.PHONY : src/lib/Validation.i
+
+# target to preprocess a source file
+src/lib/Validation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Validation.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Validation.cpp.i
+.PHONY : src/lib/Validation.cpp.i
+
+src/lib/Validation.s: src/lib/Validation.cpp.s
+.PHONY : src/lib/Validation.s
+
+# target to generate assembly for a file
+src/lib/Validation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/Validation.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/Validation.cpp.s
+.PHONY : src/lib/Validation.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -368,6 +395,9 @@ help:
 	@echo "... src/lib/Helpers.o"
 	@echo "... src/lib/Helpers.i"
 	@echo "... src/lib/Helpers.s"
+	@echo "... src/lib/Validation.o"
+	@echo "... src/lib/Validation.i"
+	@echo "... src/lib/Validation.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
