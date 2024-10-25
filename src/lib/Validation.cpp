@@ -11,6 +11,7 @@
 #include <regex>
 #include <unordered_map>
 
+#include "lib/ErrorBuilder.hpp"
 #include "validation-api/ConfigService.hpp"
 
 namespace validation_api {
@@ -80,11 +81,18 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     for (const auto &[key, value] : it) {
       // Look up the values and compare them
       json nullCheckField = findJsonField(request_, key);
+      std::cout << nullCheckField << " " << value << '\n';
       // If the uuid is set then this field can be empty
       if (nullCheckField == value) {
         canBeEmpty = true;
       }
     }
+  }
+
+  if (reqValue.empty() || reqValue.is_null() || reqValue == "" && !canBeEmpty) {
+    errors_.push_back(
+        {ErrorBuilder(ErrorType::ValidaionEmptyError, fieldName).build()});
+    return;
   }
 
   std::string configTypeOpt = toLower(node.attribute("type").value());
@@ -94,37 +102,23 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     switch (it->second) {
       case 1:
         if (!reqValue.is_string()) {
-          errors_.push_back(
-              {std::format("Field \"{}\" is not valid: ", fieldName),
-               std::format("Expected \"{}\", received {}", it->first,
-                           reqValue.type_name())});
-        } else if (reqValue.empty() || reqValue.is_null() ||
-                   reqValue.get<std::string>() == "" && !canBeEmpty) {
-          errors_.push_back(
-              {std::format("Field \"{}\" is not valid: ", fieldName),
-               std::format("Is not allowed to be empty.")});
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg(it->first, reqValue.type_name())
+                                 .build()});
         }
         break;
       case 2:
         if (!reqValue.is_number_float()) {
-          errors_.push_back(
-              {std::format("Field \"{}\" is not valid: ", fieldName),
-               std::format("Expected \"{}\", received {}.", it->first,
-                           reqValue.type_name())});
-        } else if (reqValue.empty() || reqValue.is_null() && !canBeEmpty) {
-          errors_.push_back({std::format("Field \"{}\" :) ", fieldName),
-                             std::format("Is not allowed to be empty.")});
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg(it->first, reqValue.type_name())
+                                 .build()});
         }
         break;
       case 3:
         if (!reqValue.is_number()) {
-          errors_.push_back(
-              {std::format("Field \"{}\" is not valid: ", fieldName),
-               std::format("Expected \"{}\", received {}.", it->first,
-                           reqValue.type_name())});
-        } else if (reqValue.empty() || reqValue.is_null() && !canBeEmpty) {
-          errors_.push_back({std::format("Field \"{}\" :) ", fieldName),
-                             std::format("Is not allowed to be empty.")});
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg(it->first, reqValue.type_name())
+                                 .build()});
         }
         break;
       case 4: {
@@ -137,10 +131,10 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           std::string date = reqValue.get<std::string>();
           if (!std::regex_match(date, date_regex)) {
             errors_.push_back(
-                {std::format("Field \"{}\" is not valid: ", fieldName),
-                 std::format(
-                     "Expected \"yyyy-mm-dd\" date format, received \"{}\"",
-                     date)});
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(std::string("\"yyyy-mm-dd\" date format"),
+                                   date)
+                     .build()});
           };
         }
       } break;
@@ -148,11 +142,29 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         const std::regex email_regex(R"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+$)");
         std::string email = reqValue.get<std::string>();
         if (!std::regex_match(email, email_regex)) {
-          errors_.push_back(
-              {std::format("Field \"{}\" is not valid: ", fieldName),
-               std::format("Expected email, received \"{}\"", email)});
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg("\"Email\"", reqValue)
+                                 .build()});
         }
       } break;
+      case 6: {
+        if (canBeEmpty && reqValue.get<std::string>() == "" ||
+            reqValue.is_null() || reqValue.empty()) {
+          break;
+        }
+        if (!isValidUuid(reqValue.get<std::string>())) {
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg("Uuid", reqValue)
+                                 .build()});
+        }
+      }
+      case 7: {
+        if (!reqValue.is_boolean()) {
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg(it->first, reqValue.type_name())
+                                 .build()});
+        }
+      }
       default:
         break;
     }

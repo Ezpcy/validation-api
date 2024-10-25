@@ -223,6 +223,33 @@ src/Logger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/Logger.cpp.s
 .PHONY : src/Logger.cpp.s
 
+src/lib/ErrorBuilder.o: src/lib/ErrorBuilder.cpp.o
+.PHONY : src/lib/ErrorBuilder.o
+
+# target to build an object file
+src/lib/ErrorBuilder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/ErrorBuilder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/ErrorBuilder.cpp.o
+.PHONY : src/lib/ErrorBuilder.cpp.o
+
+src/lib/ErrorBuilder.i: src/lib/ErrorBuilder.cpp.i
+.PHONY : src/lib/ErrorBuilder.i
+
+# target to preprocess a source file
+src/lib/ErrorBuilder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/ErrorBuilder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/ErrorBuilder.cpp.i
+.PHONY : src/lib/ErrorBuilder.cpp.i
+
+src/lib/ErrorBuilder.s: src/lib/ErrorBuilder.cpp.s
+.PHONY : src/lib/ErrorBuilder.s
+
+# target to generate assembly for a file
+src/lib/ErrorBuilder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/lib/ErrorBuilder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/lib/ErrorBuilder.cpp.s
+.PHONY : src/lib/ErrorBuilder.cpp.s
+
 src/lib/Helpers.o: src/lib/Helpers.cpp.o
 .PHONY : src/lib/Helpers.o
 
@@ -392,6 +419,9 @@ help:
 	@echo "... src/Logger.o"
 	@echo "... src/Logger.i"
 	@echo "... src/Logger.s"
+	@echo "... src/lib/ErrorBuilder.o"
+	@echo "... src/lib/ErrorBuilder.i"
+	@echo "... src/lib/ErrorBuilder.s"
 	@echo "... src/lib/Helpers.o"
 	@echo "... src/lib/Helpers.i"
 	@echo "... src/lib/Helpers.s"

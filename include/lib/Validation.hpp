@@ -2,6 +2,7 @@
 
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
+#include <utility>
 
 #include "validation-api/ConfigService.hpp"
 
@@ -23,6 +24,22 @@ class Validation {
   ~Validation();
 
   void run();
+
+  enum ValidationError {
+    EmptyForbidden,
+    ExpectedError,
+    DateError,
+  };
+
+  /*
+   * @brief Build eror message
+   * @details given the type build an error message upon it and return it as a
+   * pair
+   * @params string fieldName, string exp, string typeName
+   */
+  std::pair<std::string, std::string> errorBuilder(
+      ValidationError type, const std::string &fieldName = "",
+      const std::string &exp = "", const std::string &typeName = "");
 
   /*
    * @brief checks of an Uuid is valid

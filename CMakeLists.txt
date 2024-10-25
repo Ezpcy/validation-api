@@ -40,6 +40,7 @@ add_executable(validation-api
   src/ConfigService.cpp
   src/lib/Helpers.cpp
   src/lib/Validation.cpp
+  src/lib/ErrorBuilder.cpp
 )
 
 # Link libraries
@@ -62,6 +63,7 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/ConfigService.cpp
     ${CMAKE_SOURCE_DIR}/src/lib/Helpers.cpp
     ${CMAKE_SOURCE_DIR}/src/lib/Validation.cpp
+    ${CMAKE_SOURCE_DIR}/src/lib/ErrorBuilder.cpp
 )
 
 # Add your test files
