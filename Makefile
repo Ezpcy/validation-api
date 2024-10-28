@@ -400,6 +400,30 @@ tests/LoggerTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/LoggerTest.cpp.s
 .PHONY : tests/LoggerTest.cpp.s
 
+tests/ValidationTest.o: tests/ValidationTest.cpp.o
+.PHONY : tests/ValidationTest.o
+
+# target to build an object file
+tests/ValidationTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ValidationTest.cpp.o
+.PHONY : tests/ValidationTest.cpp.o
+
+tests/ValidationTest.i: tests/ValidationTest.cpp.i
+.PHONY : tests/ValidationTest.i
+
+# target to preprocess a source file
+tests/ValidationTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ValidationTest.cpp.i
+.PHONY : tests/ValidationTest.cpp.i
+
+tests/ValidationTest.s: tests/ValidationTest.cpp.s
+.PHONY : tests/ValidationTest.s
+
+# target to generate assembly for a file
+tests/ValidationTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ValidationTest.cpp.s
+.PHONY : tests/ValidationTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -440,6 +464,9 @@ help:
 	@echo "... tests/LoggerTest.o"
 	@echo "... tests/LoggerTest.i"
 	@echo "... tests/LoggerTest.s"
+	@echo "... tests/ValidationTest.o"
+	@echo "... tests/ValidationTest.i"
+	@echo "... tests/ValidationTest.s"
 .PHONY : help
 
 

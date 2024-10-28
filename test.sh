@@ -5,4 +5,9 @@ cmake ../.. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=generators/conan_too
 cmake --build .
 
 cd tests
-./tests --gtest_filter=ConfigServiceTest.CreatingConfig
+
+if [[ "$1" == "conf" ]]; then
+  ./tests --gtest_filter=ConfigServiceTest.CreatingConfig
+elif [[ "$1" == "val" ]]; then
+  ./tests --gtest_filter=ValidationTest.Types
+fi

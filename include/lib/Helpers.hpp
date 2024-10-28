@@ -10,4 +10,6 @@ namespace validation_api {
  * @params std::string
  */
 std::string toLower(std::string value);
+
+bool validateAhv(std::string &val);
 }  // namespace validation_api

@@ -71,6 +71,7 @@ set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/LoggerTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ConfigWatcherTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ConfigServiceTest.cpp
+    ${CMAKE_SOURCE_DIR}/tests/ValidationTest.cpp
 )
 
 add_executable(tests ${TEST_SOURCES} ${SOURCES})
@@ -104,4 +105,26 @@ add_test(NAME ConfigWatcherTest
 add_test(NAME ConfigServiceTest
   COMMAND tests --gtest_filter=ConfigServiceTest.*
 )
+ 
+# For ValidationTest suite
+add_test(NAME ValidationTest
+  COMMAND tests --gtest_filter=ValidationTest.*
+)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 

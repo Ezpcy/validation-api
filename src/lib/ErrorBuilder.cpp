@@ -9,8 +9,8 @@ ErrorBuilder::ErrorBuilder(ErrorType type, const std::string &fieldName)
       break;
     case ErrorType::ValidationError:
     case ErrorType::ValidaionEmptyError:
-      firstMsg_ = std::format("Field \"{}\" is not valid: ", fieldName);
-      secondMsg_ = std::string("Not allowed to be empty.");
+      firstMsg_ = std::format("\"{}\": ", fieldName);
+      secondMsg_ = std::string("Field is not allowed to be empty.");
       break;
     case ErrorType::XmlConfigError:
       firstMsg_ =
@@ -26,7 +26,8 @@ ErrorBuilder &ErrorBuilder::setSecondMsg(const std::string &msgMain,
       secondMsg_ = "";
       break;
     case ErrorType::ValidationError:
-      secondMsg_ = std::format("Expected \"{}\", received {}", msgMain, msgSec);
+      secondMsg_ =
+          std::format("Expected \"{}\", received \"{}\"", msgMain, msgSec);
       break;
     case ErrorType::ValidaionEmptyError:
       break;

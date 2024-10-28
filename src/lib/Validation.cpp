@@ -89,6 +89,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     }
   }
 
+  // Check if field is emtpy
   if (reqValue.empty() || reqValue.is_null() || reqValue == "" && !canBeEmpty) {
     errors_.push_back(
         {ErrorBuilder(ErrorType::ValidaionEmptyError, fieldName).build()});
@@ -101,6 +102,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
   if (it != getType.end()) {
     switch (it->second) {
       case 1:
+        // Chedk if the value is a string
         if (!reqValue.is_string()) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
@@ -108,6 +110,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         }
         break;
       case 2:
+        // Check if the value is a float
         if (!reqValue.is_number_float()) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
@@ -115,6 +118,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         }
         break;
       case 3:
+        // Check if the value is a number
         if (!reqValue.is_number()) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
@@ -122,6 +126,8 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         }
         break;
       case 4: {
+        // Check if the value is a date
+        // We can skip special string types when it's empty and allowed to be
         if (canBeEmpty && reqValue.get<std::string>() == "") {
           break;
 
@@ -137,8 +143,10 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
                      .build()});
           };
         }
-      } break;
+        break;
+      }
       case 5: {
+        // Check if the value is an email
         const std::regex email_regex(R"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+$)");
         std::string email = reqValue.get<std::string>();
         if (!std::regex_match(email, email_regex)) {
@@ -146,8 +154,10 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
                                  .setSecondMsg("\"Email\"", reqValue)
                                  .build()});
         }
-      } break;
+        break;
+      }
       case 6: {
+        // Check if the value is a uuid
         if (canBeEmpty && reqValue.get<std::string>() == "" ||
             reqValue.is_null() || reqValue.empty()) {
           break;
@@ -157,13 +167,29 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
                                  .setSecondMsg("Uuid", reqValue)
                                  .build()});
         }
+        break;
       }
       case 7: {
+        // Check if the value is a boolean
         if (!reqValue.is_boolean()) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
                                  .build()});
         }
+        break;
+      }
+      case 8: {
+        std::string val = reqValue.get<std::string>();
+        // Check if the value is a ahv
+        if (canBeEmpty && val == "" || reqValue.is_null() || reqValue.empty()) {
+          break;
+        }
+        if (!validateAhv(val)) {
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg(it->first, reqValue.type_name())
+                                 .build()});
+        }
+        break;
       }
       default:
         break;
