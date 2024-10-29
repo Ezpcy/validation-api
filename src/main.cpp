@@ -37,8 +37,9 @@ int main(int argc, char *argv[]) {
       work_guard(io_context.get_executor());
 
   validation_api::ConfigWatcher watcher(
-      io_context, path, [](const std::string &path, const std::string &action) {
-        std::cout << "File " << path << " was " << action << std::endl;
+      io_context, path,
+      [&logger](const std::string &path, const std::string &action) {
+        logger->info("File {} was {} \n", path, action);
       });
   io_context.run();
 
