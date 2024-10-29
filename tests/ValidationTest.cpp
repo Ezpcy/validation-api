@@ -58,13 +58,22 @@ TEST(ValidationTest, Types) {
   json jjf = json::parse(json_false);
   validation_api::ConfigService::Errors errors;
 
+  std::cout << "Running correct" << '\n';
   validation_api::Validation(jj, doc, errors).run();
-
-  ASSERT_TRUE(errors.empty());
-
-  validation_api::Validation(jjf, doc, errors).run();
 
   for (const auto &[key, value] : errors) {
     std::cout << key << value << '\n';
   }
+
+  ASSERT_TRUE(errors.empty());
+  errors.clear();
+
+  validation_api::Validation(jjf, doc, errors).run();
+  std::cout << "Running fails" << '\n';
+  for (const auto &[key, value] : errors) {
+    std::cout << key << value << '\n';
+  }
+
+  ASSERT_FALSE(errors.empty());
+  ASSERT_EQ(errors.size(), 9);
 }

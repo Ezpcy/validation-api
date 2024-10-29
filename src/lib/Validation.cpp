@@ -119,7 +119,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         break;
       case 3:
         // Check if the value is a number
-        if (!reqValue.is_number()) {
+        if (!reqValue.is_number_integer()) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
                                  .build()});
@@ -151,7 +151,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         std::string email = reqValue.get<std::string>();
         if (!std::regex_match(email, email_regex)) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg("\"Email\"", reqValue)
+                                 .setSecondMsg(it->first, reqValue)
                                  .build()});
         }
         break;
@@ -164,7 +164,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         }
         if (!isValidUuid(reqValue.get<std::string>())) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg("Uuid", reqValue)
+                                 .setSecondMsg(it->first, reqValue)
                                  .build()});
         }
         break;
@@ -179,14 +179,27 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         break;
       }
       case 8: {
+        // Check if the value is a valid Ahv
         std::string val = reqValue.get<std::string>();
-        // Check if the value is a ahv
         if (canBeEmpty && val == "" || reqValue.is_null() || reqValue.empty()) {
           break;
         }
         if (!validateAhv(val)) {
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue.type_name())
+                                 .setSecondMsg(it->first, reqValue)
+                                 .build()});
+        }
+        break;
+      }
+      case 9: {
+        // Check if the value is a valid Iban
+        std::string val = reqValue.get<std::string>();
+        if (canBeEmpty && val == "" || reqValue.is_null() || reqValue.empty()) {
+          break;
+        }
+        if (!validateIban(val)) {
+          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
+                                 .setSecondMsg(it->first, reqValue)
                                  .build()});
         }
         break;
@@ -266,6 +279,7 @@ json Validation::findJsonField(const json &jsonObj,
   return nullptr;
 }
 
+// Recursive function to traverse and validate the request
 void Validation::traverseAndValidate(const pugi::xml_node &node) {
   for (pugi::xml_node field : node.children()) {
     if (std::string(field.name()) == "Null") {
@@ -284,33 +298,5 @@ void Validation::traverseAndValidate(const pugi::xml_node &node) {
 
     traverseAndValidate(field);
   }
-  /*  for (json::const_iterator it = jsonObj.begin(); it != jsonObj.end();
-   ++it) { std::string jsonKey = it.key(); json jsonValue = it.value();
-   pugi::xml_node xmlNode = doc.child(jsonKey.c_str());
-
-     if (!xmlNode) {
-       errors.push_back(
-           // TODO: check for <Null>
-           {std::string(jsonKey), std::string(": Field can't be found.")});
-       continue;
-     }
-
-     if (it->is_structured() || it->is_array() || it->is_object()) {
-       traverseAndValidate(jsonObj[jsonKey], xmlNode, errors);
-     } else {
-       std::cout << "Key: " << jsonKey << " Value: " << jsonValue << '\n';
-       for (pugi::xml_attribute_iterator attr = xmlNode.attributes_begin();
-            attr != xmlNode.attributes_end(); ++attr) {
-         std::string optName = toLower(attr->name());
-         std::string optValue = toLower(attr->value());
-
-         validate(optName, optValue, jsonValue, jsonKey, errors);
-
-         std::cout << attr->name() << " " << attr->value() << " "
-                   << jsonValue.type_name() << '\n';
-       }
-
-     }
-   } */
 }
 }  // namespace validation_api

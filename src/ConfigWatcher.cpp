@@ -19,7 +19,6 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
                              const std::string &path, Callback callback)
     : io_context_(io_context),
       path_(path),
-      callback_(callback),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()) {
   running = true;
