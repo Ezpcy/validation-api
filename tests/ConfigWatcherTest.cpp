@@ -4,9 +4,10 @@
 #include <boost/filesystem.hpp>
 #include <chrono>
 #include <condition_variable>
-#include <fstream>
 #include <mutex>
 #include <validation-api/ConfigWatcher.hpp>
+
+#include "validation-api/ConfigService.hpp"
 
 class FileWatcherTest : public ::testing::Test {
  protected:
@@ -20,6 +21,7 @@ class FileWatcherTest : public ::testing::Test {
   std::string path;
   std::string action;
   bool event_received = false;
+  validation_api::ConfigService service;
 
   void SetUp() override {
     work_guard.emplace(boost::asio::make_work_guard(io_context));
@@ -39,7 +41,7 @@ class FileWatcherTest : public ::testing::Test {
 
   validation_api::ConfigWatcher initializeWatcher() {
     return validation_api::ConfigWatcher(
-        io_context, "./configs",
+        io_context, "./configs", service,
         [this](const std::string &p, const std::string &a) {
           std::lock_guard<std::mutex> lock(mtx);
           path = p;

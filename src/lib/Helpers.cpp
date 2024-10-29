@@ -1,5 +1,4 @@
 #include <cmath>
-#include <iostream>
 #include <lib/Helpers.hpp>
 #include <regex>
 #include <string>

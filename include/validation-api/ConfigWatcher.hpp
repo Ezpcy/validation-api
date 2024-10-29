@@ -18,13 +18,20 @@ class ConfigWatcher : public IService {
       std::function<void(const std::string &path, const std::string &action)>;
 
   ConfigWatcher(boost::asio::io_context &io_context, const std::string &path,
-                Callback callback);
+                ConfigService &service, Callback callback);
   ~ConfigWatcher() override;
 
   void read_file(const std::string &path);
 
  private:
   Callback callback_;
+
+  /**
+   * @brief Reference to the ConfigService.
+   * @details Allows for interaction with the ConfigService in cases of event.
+   * @see ConfigService
+   */
+  ConfigService &service_;
 
   /**
    * @brief Start ConfigWatcher

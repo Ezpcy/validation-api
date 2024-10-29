@@ -16,9 +16,11 @@ namespace validation_api {
  * @param callback
  */
 ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
-                             const std::string &path, Callback callback)
+                             const std::string &path, ConfigService &service,
+                             Callback callback)
     : io_context_(io_context),
       path_(path),
+      service_(service),
       callback_(callback),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()) {

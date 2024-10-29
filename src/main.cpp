@@ -36,8 +36,10 @@ int main(int argc, char *argv[]) {
   boost::asio::executor_work_guard<boost::asio::io_context::executor_type>
       work_guard(io_context.get_executor());
 
+  validation_api::ConfigService service;
+
   validation_api::ConfigWatcher watcher(
-      io_context, path,
+      io_context, path, service,
       [&logger](const std::string &path, const std::string &action) {
         logger->info("File {} was {} \n", path, action);
       });
