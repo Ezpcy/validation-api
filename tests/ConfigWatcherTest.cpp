@@ -4,6 +4,7 @@
 #include <boost/filesystem.hpp>
 #include <chrono>
 #include <condition_variable>
+#include <fstream>
 #include <mutex>
 #include <validation-api/ConfigWatcher.hpp>
 
@@ -85,14 +86,14 @@ TEST_F(FileWatcherTest, CreatingFile) {
 
   {
     std::unique_lock<std::mutex> lock(mtx);
-    (void)system("touch ./configs/somefile.txt");
+    (void)system("touch ./configs/test.xml");
     if (!cv.wait_for(lock, std::chrono::seconds(2),
                      [this] { return event_received; })) {
       FAIL() << "Timeout waiting for file creation event";
     }
   }
 
-  ASSERT_EQ(path, "somefile.txt");
+  ASSERT_EQ(path, "test.xml");
   ASSERT_EQ(action, "created");
 }
 
@@ -101,14 +102,29 @@ TEST_F(FileWatcherTest, ModifyingFile) {
 
   {
     std::unique_lock<std::mutex> lock(mtx);
-    (void)system("echo 'some text' >> ./configs/somefile.txt");
+    std::ofstream file("configs/test.xml");
+    std::string content = R"(
+      <Types>
+        <String type="string" />
+        <Float type="float" />
+        <Number type="number" />
+        <Date type="date" />
+        <Email type="email" />
+        <Uuid type="uuid" />
+        <Bool type="boolean" />
+        <Ahv type="ahv" />
+        <Iban type="iban" />
+      </Types>
+    )";
+    file.write(content.c_str(), content.size());
+    file.close();
     if (!cv.wait_for(lock, std::chrono::seconds(2),
                      [this] { return event_received; })) {
       FAIL() << "Timeout waiting for file modification event";
     }
   }
 
-  ASSERT_EQ(path, "somefile.txt");
+  ASSERT_EQ(path, "test.xml");
   ASSERT_EQ(action, "modified");
 }
 
@@ -117,13 +133,13 @@ TEST_F(FileWatcherTest, DeletingFile) {
 
   {
     std::unique_lock<std::mutex> lock(mtx);
-    (void)system("rm ./configs/somefile.txt");
+    (void)system("rm ./configs/test.xml");
     if (!cv.wait_for(lock, std::chrono::seconds(2),
                      [this] { return event_received; })) {
       FAIL() << "Timeout waiting for file deletion event";
     }
   }
 
-  ASSERT_EQ(path, "somefile.txt");
+  ASSERT_EQ(path, "test.xml");
   ASSERT_EQ(action, "deleted");
 }

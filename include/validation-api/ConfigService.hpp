@@ -60,7 +60,7 @@ class ConfigService {
    * @params doc  The configuration file.
    *
    */
-  void createConfig(const std::string &name, const pugi::xml_document &doc);
+  bool createConfig(const std::string &name, const pugi::xml_document &doc);
 
   /**
    * @brief getConfigs method

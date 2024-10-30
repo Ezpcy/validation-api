@@ -32,7 +32,10 @@ ErrorBuilder &ErrorBuilder::setSecondMsg(const std::string &msgMain,
     case ErrorType::ValidaionEmptyError:
       break;
     case ErrorType::XmlConfigError:
-      secondMsg_ = msgMain;
+      secondMsg_ = std::format(
+          "Value \"{}\" resulted into an error (make sure there are no "
+          "duplicates)",
+          msgMain);
   }
   return *this;
 }

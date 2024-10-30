@@ -1,9 +1,6 @@
 #include <boost/uuid.hpp>
 #include <cctype>
 #include <cstdio>
-#include <exception>
-#include <format>
-#include <iostream>
 #include <lib/Helpers.hpp>
 #include <lib/Validation.hpp>
 #include <nlohmann/json.hpp>

@@ -7,7 +7,9 @@ cmake --build .
 cd tests
 
 if [[ "$1" == "conf" ]]; then
-  ./tests --gtest_filter=ConfigServiceTest.CreatingConfig
+  ./tests --gtest_filter=ConfigServiceTest.*
 elif [[ "$1" == "val" ]]; then
-  ./tests --gtest_filter=ValidationTest.Types
+  ./tests --gtest_filter=ValidationTest.*
+elif [[ "$1" == "watch" ]];then
+  ./tests --gtest_filter=FileWatcherTest.*
 fi

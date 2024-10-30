@@ -8,11 +8,11 @@
 #include "lib/Helpers.hpp"
 
 static const std::string xml = R"(
-<RioProvision>
-    <IvProvisionConfig notNull="true">
-        <IvProvisionNumber type="Number" notNull="true" eqLength="14"/>
+<Test>
+    <Provision notNull="true">
+        <ProvisionNumber type="Number" notNull="true" eqLength="14"/>
         <CostApproval type="Boolean" notNull="true" />
-    </IvProvisionConfig>
+    </Provision>
     <TypeOfProvision type="Uuid" notNull="false" />
     <Profession type="Uuid" notNull="true" />
     <SalaryType type="Uuid" notNull="false" />
@@ -32,13 +32,14 @@ static const std::string xml = R"(
     </Institution>
     <Schule type="String" notNull="false" />
     <LehrgangsBezeichnung type="Uuid" notNull="false" />
-    <UekOrt type="Uuid" notNull="false" />
-</RioProvision>)";
+    <Ort type="Uuid" notNull="false" />
+</Test>
+)";
 
 static const std::string jsonOb = R"({
-  "RioProvision": {
-    "IvProvisionConfig": {
-      "IvProvisionNumber": 12345678901234,
+  "Test": {
+    "Provision": {
+      "ProvisionNumber": 12345678901234,
       "CostApproval": true
     },
     "TypeOfProvision": "123e4567-e89b-12d3-a456-526614174000",
@@ -55,8 +56,7 @@ static const std::string jsonOb = R"({
     "Institution": "",
     "Schule": "Test",
     "LehrgangsBezeichnung": "123e4567-e89b-12d3-a456-426614174000",
-    "UekOrt": ""
-
+    "Ort": ""
   }
 })";
 
@@ -68,6 +68,8 @@ TEST(ConfigServiceTest, CreatingConfig) {
   pugi::xml_parse_result result = doc.load_string(xml.c_str());
   json jj = json::parse(jsonOb);
 
+  std::cout << doc.begin()->name() << '\n';
+  std::cout << doc.name() << '\n';
   std::string key = jj.begin().key();
 
   std::cout << key << '\n';

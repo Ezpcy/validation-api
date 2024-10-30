@@ -2,7 +2,11 @@
 
 #include <sys/inotify.h>
 
+#include <boost/filesystem.hpp>
+#include <fstream>
 #include <semaphore>
+
+#include "lib/Helpers.hpp"
 
 constexpr int MAX_CONCURRENT_READS = 5;
 std::counting_semaphore<MAX_CONCURRENT_READS> semaphore(MAX_CONCURRENT_READS);
@@ -22,6 +26,7 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
       path_(path),
       service_(service),
       callback_(callback),
+      fileAssocation_(),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()) {
   running = true;
@@ -42,6 +47,35 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
  */
 ConfigWatcher::~ConfigWatcher() { stop(); }
 
+void ConfigWatcher::read_file(const std::string &file_name) {
+  // Assemble the direct path
+  std::string endPath = path_ + "/" + file_name;
+
+  // Check if the file is empty (likely newly created)
+  std::ifstream file(endPath);
+
+  if (!file.is_open()) {
+    logger_->error("Failed to open file {}.", file_name);
+  } else if (file.peek() != std::ifstream::traits_type::eof()) {
+    pugi::xml_document doc;
+
+    // Convert it for usage with load_file()
+    const char *cEndPath = endPath.c_str();
+    pugi::xml_parse_result result = doc.load_file(cEndPath);
+
+    if (result) {
+      std::string name = doc.begin()->name();
+      pugi::xml_node node = doc.child(name.c_str());
+      validateXmlConfig(node);
+      if (service_.createConfig(name, doc)) {
+        fileAssocation_[file_name] = name;
+      }
+    } else {
+      logger_->error("Failed to parse {} to a Xml object.", file_name);
+    }
+  }
+}
+
 /**
  * @brief Sets up the inotify instance.
  *
@@ -50,13 +84,23 @@ ConfigWatcher::~ConfigWatcher() { stop(); }
  */
 bool ConfigWatcher::setup() {
   inotify_fd_ = inotify_init();
-
   if (inotify_fd_ < 0) {
     logger_->error("Config watcher failed to initialize inotify");
     return false;
   }
+
+  // Read the files inside the "confgis" folder
+  if (std::filesystem::exists(path_)) {
+    for (const auto &entry : std::filesystem::directory_iterator(path_)) {
+      const auto &path = entry.path();
+      if (std::filesystem::is_regular_file(path)) {
+        read_file(path.filename());
+      }
+    }
+  }
   return true;
 }
+
 /**
  * @brief Run the inotify instance and watch for changes in the directory.
  *
@@ -91,7 +135,7 @@ void ConfigWatcher::run() {
     semaphore.acquire();
     int poll_result = poll(&fds, 1, 1000);  // Timeout after 1000 ms
     if (poll_result < 0) {
-      logger_->error("Config watcher poll failed");
+      logger_->error("Config watcher poll failed.");
       semaphore.release();
       return;
     } else if (poll_result == 0) {
@@ -103,7 +147,7 @@ void ConfigWatcher::run() {
     if (fds.revents & POLLIN) {
       int no_of_event = read(inotify_fd_, buffer, BUF_LEN);
       if (no_of_event < 0) {
-        logger_->error("Config watcher failed to read inotify events");
+        logger_->error("Config watcher failed to read inotify events.");
         semaphore.release();
         return;
       }
@@ -113,16 +157,21 @@ void ConfigWatcher::run() {
         struct inotify_event *event = (struct inotify_event *)&buffer[count];
         if (event->len) {
           std::string action;
-          // TODO: Create boost threads
+          std::string file_name = event->name;
           if (event->mask & IN_CREATE) {
             action = "created";
+            read_file(file_name);
           } else if (event->mask & IN_DELETE) {
             action = "deleted";
+            if (fileAssocation_.contains(file_name)) {
+              std::string configName = fileAssocation_[file_name];
+              service_.deleteConfig(configName);
+              fileAssocation_.erase(file_name);
+            }
           } else if (event->mask & IN_MODIFY) {
             action = "modified";
+            read_file(file_name);
           }
-
-          std::string file_name = event->name;
           auto now = std::chrono::steady_clock::now();
 
           auto last_time_it = event_times.find(file_name);
@@ -135,8 +184,8 @@ void ConfigWatcher::run() {
             }
           }
 
-          event_times[file_name] = now;
           callback_(file_name, action);
+          event_times[file_name] = now;
         }
         count += EVENT_SIZE + event->len;
       }
@@ -160,9 +209,7 @@ void ConfigWatcher::stop() {
     inotify_rm_watch(inotify_fd_, watch_descriptor_);
   }
 
-  logger_->info("Config watcher stopped");
+  logger_->info("Config watcher stopped.");
 }
-
-void ConfigWatcher::read_file(const std::string &path) {}
 
 }  // namespace validation_api

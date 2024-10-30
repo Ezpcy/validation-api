@@ -57,10 +57,10 @@ RM = /nix/store/yzi080r2c1zn2jzrhcfdv7dmr92yw07l-cmake-3.29.6/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_SOURCE_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api
+CMAKE_BINARY_DIR = /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ezpz/Nextcloud/NextcloudData/DevStuff/cpp/validation-api/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

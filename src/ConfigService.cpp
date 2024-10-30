@@ -13,17 +13,27 @@ ConfigService::ConfigService()
                                     : spdlog::default_logger()) {}
 ConfigService::~ConfigService() = default;
 
-void ConfigService::createConfig(const std::string &name,
+bool ConfigService::createConfig(const std::string &name,
                                  const pugi::xml_document &doc) {
   try {
     boost::unique_lock<boost::shared_mutex> lock(rwMutex_);
-    auto new_doc = std::make_shared<pugi::xml_document>();
-    new_doc->reset(doc);
-    configs_[name] = new_doc;
-    logger_->info("Configuration \"{}\" has been created.", name);
+    if (configs_.contains(name)) {
+      logger_->error(
+          "A configuration called \"{}\" already exists and it's not going to "
+          "be overwritten.",
+          name);
+      return false;
+    } else {
+      auto new_doc = std::make_shared<pugi::xml_document>();
+      new_doc->reset(doc);
+      configs_[name] = new_doc;
+      logger_->info("Configuration \"{}\" has been created.", name);
+      return true;
+    }
   } catch (const std::exception &e) {
     logger_->error("Error while creating configuration \"{}\": {}", name,
                    e.what());
+    return false;
   }
 }
 

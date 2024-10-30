@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boost/asio.hpp>
+#include <unordered_map>
 #include <validation-api/ConfigService.hpp>
 #include <validation-api/IService.hpp>
 
@@ -21,9 +22,10 @@ class ConfigWatcher : public IService {
                 ConfigService &service, Callback callback);
   ~ConfigWatcher() override;
 
-  void read_file(const std::string &path);
+  void read_file(const std::string &file_name);
 
  private:
+  std::unordered_map<std::string, std::string> fileAssocation_;
   Callback callback_;
 
   /**

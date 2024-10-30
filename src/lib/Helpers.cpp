@@ -1,7 +1,12 @@
 #include <cmath>
+#include <iostream>
 #include <lib/Helpers.hpp>
 #include <regex>
 #include <string>
+#include <unordered_set>
+
+#include "lib/ErrorBuilder.hpp"
+#include "validation-api/ConfigService.hpp"
 
 namespace validation_api {
 // Conversion of string to lowercase
@@ -129,6 +134,39 @@ bool validateIban(const std::string& val) {
   }
 
   return true;
+}
+
+void validateXmlConfig(const pugi::xml_node& node,
+                       validation_api::ConfigService::Errors& errors) {
+  std::unordered_set<std::string> options = {"type", "max", "min", "eq",
+                                             "notnull"};
+  std::unordered_set<std::string> types = {
+      "string", "number", "float", "date", "uuid", "boolean", "ahv", "iban"};
+
+  // Print node name and value (if any)
+  std::cout << "Node: " << node.name();
+  if (node.text()) {
+    std::cout << ", Value: " << node.text().get();
+  }
+  std::cout << std::endl;
+
+  // Iterate through all attributes of the node
+  for (pugi::xml_attribute attr = node.first_attribute(); attr;
+       attr = attr.next_attribute()) {
+    if (options.find(attr.name()) != options.end()) {
+      options.erase(attr.name());
+    } else {
+      errors.push_back()
+    }
+    std::cout << "  Attribute: " << attr.name() << " = " << attr.value()
+              << std::endl;
+  }
+
+  // Recursively traverse through child nodes
+  for (pugi::xml_node child = node.first_child(); child;
+       child = child.next_sibling()) {
+    validateXmlConfig(child, errors);  // Recursion for nested elements
+  }
 }
 
 }  // namespace validation_api
