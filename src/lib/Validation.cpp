@@ -159,8 +159,8 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
             errors_.push_back(
                 {ErrorBuilder(ErrorType::ValidationError, fieldName)
                      .setSecondMsg(
-                         std::format("max value of {:.2f},", max.value()),
-                         reqValue)
+                         std::format("value lower than {}", max.value()),
+                         std::format("{:.2f}", value))
                      .build()});
           }
 
@@ -169,8 +169,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
             errors_.push_back(
                 {ErrorBuilder(ErrorType::ValidationError, fieldName)
                      .setSecondMsg(
-                         std::format("min value of {:.2f}.", min.value()),
-                         reqValue)
+                         std::format("value higher than {}.", min.value()))
                      .build()});
           }
 
@@ -179,8 +178,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
             errors_.push_back(
                 {ErrorBuilder(ErrorType::ValidationError, fieldName)
                      .setSecondMsg(
-                         std::format("exact value of {:.2f}.", eq.value()),
-                         reqValue)
+                         std::format("exact value of {}.", eq.value()))
                      .build()});
           }
         }

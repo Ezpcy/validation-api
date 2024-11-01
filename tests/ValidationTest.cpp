@@ -12,7 +12,7 @@ TEST(ValidationTest, Types) {
   static const std::string xml = R"(
     <Types>
       <String type="string" />
-      <Float type="float" max="20"/>
+      <Float type="float" max="5" min="3"/>
       <Number type="number" />
       <Date type="date" />
       <Email type="email" />
@@ -40,7 +40,7 @@ TEST(ValidationTest, Types) {
   static const std::string json_false = R"({
   "Types": {
     "String": 12,
-    "Float": 23,
+    "Float": 2,
     "Number": 10.2,
     "Date": "202401-01", 
     "Email": "testmail.com", 
