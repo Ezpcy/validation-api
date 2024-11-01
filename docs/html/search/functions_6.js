@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7eiservice_0',['~IService',['../classvalidation__api_1_1IService.html#adea7c6d0eea21cb0329a782dc57a8764',1,'validation_api::IService']]],
-  ['_7elogger_1',['~Logger',['../classvalidation__api_1_1LoggerService.html#a81a54db7ae4530d0c8e9f59c996eeccd',1,'validation_api::LoggerService']]]
+  ['validateconfig_0',['validateConfig',['../classvalidation__api_1_1ConfigService.html#a654e84f4f588f7391f93210c1e08344f',1,'validation_api::ConfigService']]]
 ];

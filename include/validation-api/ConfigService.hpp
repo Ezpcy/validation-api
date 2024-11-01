@@ -44,7 +44,6 @@ class ConfigService {
 
   /**
    * @brief getConfig method
-   * @params name  The name of the configuration file.
    * @return pugi::xml_document
    *
    * @details This method returns the configuration
@@ -56,9 +55,6 @@ class ConfigService {
   /**
    * @brief getConfigs method
    * @details Insert the configuration files into the map.
-   * @params name  The name of the configuration file.
-   * @params doc  The configuration file.
-   *
    */
   bool createConfig(const std::string &name, const pugi::xml_document &doc);
 

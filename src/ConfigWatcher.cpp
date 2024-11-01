@@ -3,7 +3,9 @@
 #include <sys/inotify.h>
 
 #include <boost/filesystem.hpp>
+#include <format>
 #include <fstream>
+#include <iostream>
 #include <semaphore>
 
 #include "lib/Helpers.hpp"
@@ -47,6 +49,11 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
  */
 ConfigWatcher::~ConfigWatcher() { stop(); }
 
+/**
+ * @brief Reads a file
+ * @details Reads and validates a file expecting a Xml configuration
+ * @param file_name
+ */
 void ConfigWatcher::read_file(const std::string &file_name) {
   // Assemble the direct path
   std::string endPath = path_ + "/" + file_name;
@@ -66,7 +73,17 @@ void ConfigWatcher::read_file(const std::string &file_name) {
     if (result) {
       std::string name = doc.begin()->name();
       pugi::xml_node node = doc.child(name.c_str());
-      validateXmlConfig(node);
+      ConfigService::Errors errors;
+      validateXmlConfig(node, errors);
+      if (!errors.empty()) {
+        errors.push_back({std::format("Errors on configuration file: "),
+                          std::format("\"{} ", file_name)});
+        for (const auto &error : errors) {
+          // debugging
+          logger_->error("{}{}", error.first, error.second);
+        }
+        return;
+      }
       if (service_.createConfig(name, doc)) {
         fileAssocation_[file_name] = name;
       }

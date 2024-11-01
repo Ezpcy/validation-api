@@ -1,0 +1,18 @@
+<map id="validation_api::ConfigWatcher::ConfigWatcher" name="validation_api::ConfigWatcher::ConfigWatcher">
+<area shape="rect" id="Node000001" title="Construct a new validation api::ConfigWatcher::ConfigWatcher object." alt="" coords="5,125,221,170"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78" title="Start ConfigWatcher." alt="" coords="269,74,513,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,122,268,110,305,103,306,108,269,116,216,127"/>
+<area shape="rect" id="Node000007" href="$classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395" title="Setup the ConfigWatcher." alt="" coords="283,125,499,170"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="221,145,267,145,267,150,221,150"/>
+<area shape="rect" id="Node000008" href="$classvalidation__api_1_1ConfigWatcher.html#ac67b7bc5802f99796c903d2fdac92648" title="Stop the ConfigWatcher." alt="" coords="283,195,499,239"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="206,168,285,188,283,193,205,173"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigService.html#a72b9695e86a85502ea559e009a878e4c" title="getConfigs method" alt="" coords="564,5,774,50"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="458,71,547,51,549,56,459,76"/>
+<area shape="rect" id="Node000004" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title=" " alt="" coords="561,125,776,170"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="462,99,514,110,552,119,551,124,512,116,461,105"/>
+<area shape="rect" id="Node000006" href="$ConfigWatcher_8cpp.html#af492780bc7786abac56fa242d4fc3045" title=" " alt="" coords="622,74,716,102"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="514,85,606,85,606,90,514,90"/>
+<area shape="rect" id="Node000005" href="$classvalidation__api_1_1ConfigService.html#a8fee54d1f3f5eb92a17c3ecd72780f00" title="getConfigs method" alt="" coords="824,125,1035,170"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="777,145,809,145,809,150,777,150"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="499,145,545,145,545,150,499,150"/>
+</map>

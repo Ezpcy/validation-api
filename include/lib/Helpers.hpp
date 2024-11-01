@@ -7,6 +7,17 @@
 
 namespace validation_api {
 
+/*
+ * @brief checks of an Uuid is valid
+ * @params uuidStr
+ */
+bool isValidUuid(const std::string &uuidStr);
+
+/**
+ * @brief Convert string to float
+ */
+bool isFloat(const std::string &str, float &out);
+
 /**
  * @brief Converts string to all lowercase
  * @params std::string value
@@ -36,4 +47,5 @@ bool validateIban(const std::string &val);
  */
 void validateXmlConfig(const pugi::xml_node &node,
                        validation_api::ConfigService::Errors &erros);
+
 }  // namespace validation_api

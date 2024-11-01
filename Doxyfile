@@ -847,7 +847,7 @@ EXTERNAL_PAGES         = YES
 HIDE_UNDOC_RELATIONS   = YES
 
 
-HAVE_DOT               = NO
+HAVE_DOT               = YES
 
 
 DOT_NUM_THREADS        = 0
@@ -874,7 +874,7 @@ COLLABORATION_GRAPH    = YES
 GROUP_GRAPHS           = YES
 
 
-UML_LOOK               = NO
+UML_LOOK               = YES
 
 
 UML_LIMIT_NUM_FIELDS   = 10
@@ -895,10 +895,10 @@ INCLUDE_GRAPH          = YES
 INCLUDED_BY_GRAPH      = YES
 
 
-CALL_GRAPH             = NO
+CALL_GRAPH             = YES
 
 
-CALLER_GRAPH           = NO
+CALLER_GRAPH           = YES
 
 
 GRAPHICAL_HIERARCHY    = YES
@@ -910,7 +910,7 @@ DIRECTORY_GRAPH        = YES
 DIR_GRAPH_MAX_DEPTH    = 1
 
 
-DOT_IMAGE_FORMAT       = png
+DOT_IMAGE_FORMAT       = svg
 
 
 INTERACTIVE_SVG        = NO
@@ -928,7 +928,7 @@ DIA_PATH               =
 DIAFILE_DIRS           =
 
 
-PLANTUML_JAR_PATH      =
+PLANTUML_JAR_PATH      = ./plantuml.jar
 
 
 PLANTUML_CFG_FILE      =

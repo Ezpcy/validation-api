@@ -12,7 +12,7 @@ TEST(ValidationTest, Types) {
   static const std::string xml = R"(
     <Types>
       <String type="string" />
-      <Float type="float" />
+      <Float type="float" max="20"/>
       <Number type="number" />
       <Date type="date" />
       <Email type="email" />

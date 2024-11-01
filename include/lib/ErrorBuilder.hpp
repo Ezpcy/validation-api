@@ -9,6 +9,7 @@ enum class ErrorType {
   ValidationError,
   ValidaionEmptyError,
   XmlConfigError,
+  XmlConfigValueError
 
 };
 

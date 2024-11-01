@@ -1,4 +1,7 @@
+#include <boost/uuid.hpp>
+#include <cctype>
 #include <cmath>
+#include <format>
 #include <iostream>
 #include <lib/Helpers.hpp>
 #include <regex>
@@ -6,9 +9,29 @@
 #include <unordered_set>
 
 #include "lib/ErrorBuilder.hpp"
+#include "lib/Validation.hpp"
 #include "validation-api/ConfigService.hpp"
 
 namespace validation_api {
+bool isValidUuid(const std::string& uuidStr) {
+  try {
+    boost::uuids::string_generator gen;
+    boost::uuids::uuid u = gen(uuidStr);
+    return true;
+  } catch (const std::exception&) {
+    return false;
+  }
+}
+
+bool isFloat(const std::string& str, float& out) {
+  try {
+    size_t pos;
+    out = std::stof(str, &pos);
+    return pos == str.length();  // Ensure entire string is a valid number
+  } catch (...) {
+    return false;
+  }
+}
 // Conversion of string to lowercase
 std::string toLower(std::string value) {
   std::transform(value.begin(), value.end(), value.begin(), ::tolower);
@@ -138,34 +161,128 @@ bool validateIban(const std::string& val) {
 
 void validateXmlConfig(const pugi::xml_node& node,
                        validation_api::ConfigService::Errors& errors) {
-  std::unordered_set<std::string> options = {"type", "max", "min", "eq",
-                                             "notnull"};
+  std::unordered_set<std::string> options = {"type", "max",     "min",
+                                             "eq",   "notnull", "uuid"};
   std::unordered_set<std::string> types = {
       "string", "number", "float", "date", "uuid", "boolean", "ahv", "iban"};
 
-  // Print node name and value (if any)
-  std::cout << "Node: " << node.name();
-  if (node.text()) {
-    std::cout << ", Value: " << node.text().get();
-  }
-  std::cout << std::endl;
+  std::optional<float> min;
+  std::optional<float> max;
+  std::optional<float> eq;
 
   // Iterate through all attributes of the node
   for (pugi::xml_attribute attr = node.first_attribute(); attr;
        attr = attr.next_attribute()) {
-    if (options.find(attr.name()) != options.end()) {
+    // Check if option name exists, remove it from the set
+    std::string fieldName = toLower(attr.name());
+    if (options.find(fieldName) != options.end()) {
       options.erase(attr.name());
+      // Validate value
+      if (fieldName == "type") {
+        // check if value exist
+        std::string typeName = toLower(attr.value());
+        if (types.find(typeName) != types.end()) {
+          // Remove from set
+          types.erase(fieldName);
+        } else {
+          errors.push_back(
+              {ErrorBuilder(ErrorType::XmlConfigValueError, attr.value())
+                   .setSecondMsg({std::format(
+                       "Type option doesn't exist or is a duplicate",
+                       attr.value())})
+                   .build()});
+        }
+        // Check the max option
+      } else if (fieldName == "max") {
+        if (attr.value()) {
+          std::string maxVal = attr.value();
+          max = 0;
+          if (!isFloat(maxVal, max.value())) {
+            errors.push_back(
+                {ErrorBuilder(ErrorType::XmlConfigValueError, attr.value())
+                     .setSecondMsg({std::format("Not a valid number")})
+                     .build()});
+          }
+        }
+      } else if (fieldName == "min") {
+        if (attr.value()) {
+          std::string minVal = attr.value();
+          min = 0;
+          if (!isFloat(minVal, min.value())) {
+            errors.push_back(
+                {ErrorBuilder(ErrorType::XmlConfigValueError, attr.value())
+                     .setSecondMsg({std::format("Not a valid number")})
+                     .build()});
+          }
+        }
+      } else if (fieldName == "eq") {
+        if (attr.value()) {
+          std::string eqVal = attr.value();
+          eq = 0;
+          if (!isFloat(eqVal, eq.value())) {
+            errors.push_back(
+                {ErrorBuilder(ErrorType::XmlConfigValueError, attr.value())
+                     .setSecondMsg({std::format("Not a valid number")})
+                     .build()});
+          }
+        }
+      } else if (fieldName == "notnull") {
+        std::string notNullVall = toLower(attr.value());
+
+        if (notNullVall != "true" && notNullVall != "false") {
+          errors.push_back(
+              {ErrorBuilder(ErrorType::XmlConfigValueError, attr.value())
+                   .setSecondMsg(
+                       {std::format("Can only be \"false\" or \"true\".")})
+                   .build()});
+        }
+      } else if (fieldName == "uuid") {
+        std::string uuidVal = attr.value();
+
+        // validate uuid
+        if (!isValidUuid(uuidVal)) {
+          errors.push_back(
+              {ErrorBuilder(ErrorType::XmlConfigValueError, attr.value())
+                   .setSecondMsg({std::format("Not a valid Uuid.")})
+                   .build()});
+        }
+      }
+
     } else {
-      errors.push_back()
+      // Option name doesn't exist
+      errors.push_back(
+          {ErrorBuilder(ErrorType::XmlConfigError, attr.name())
+               .setSecondMsg({std::format(
+                   "Either this option doesn't exist or is a duplicate.")})
+               .build()});
     }
-    std::cout << "  Attribute: " << attr.name() << " = " << attr.value()
-              << std::endl;
   }
 
   // Recursively traverse through child nodes
   for (pugi::xml_node child = node.first_child(); child;
        child = child.next_sibling()) {
     validateXmlConfig(child, errors);  // Recursion for nested elements
+  }
+
+  // Check max and min values
+  if (max.has_value() || min.has_value()) {
+    if (max < min) {
+      errors.push_back(
+          {ErrorBuilder(ErrorType::XmlConfigValueError, "min")
+               .setSecondMsg({std::format("Min value ( {} ) is not allowed to "
+                                          "be greater then max value ({}).",
+                                          max.value(), min.value())})
+               .build()});
+    }
+
+    // Check if eq value is set
+    if (eq.has_value()) {
+      errors.push_back(
+          ErrorBuilder(ErrorType::XmlConfigError, "eq")
+              .setSecondMsg({std::format(
+                  "Eq option can not be set if max or min have been set.")})
+              .build());
+    }
   }
 }
 

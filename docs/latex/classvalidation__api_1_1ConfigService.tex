@@ -1,0 +1,215 @@
+\doxysection{validation\+\_\+api\+::Config\+Service Class Reference}
+\hypertarget{classvalidation__api_1_1ConfigService}{}\label{classvalidation__api_1_1ConfigService}\index{validation\_api::ConfigService@{validation\_api::ConfigService}}
+
+
+\doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} class.  
+
+
+
+
+{\ttfamily \#include $<$Config\+Service.\+hpp$>$}
+
+
+
+Collaboration diagram for validation\+\_\+api\+::Config\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classvalidation__api_1_1ConfigService__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ pugi\+::xml\+\_\+document $>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{Configs}}
+\begin{DoxyCompactList}\small\item\em Configs typedef. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Errors}}
+\begin{DoxyCompactList}\small\item\em Errors typedef. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ae78fa8e3a91b9c5245f7a494a7d56bc2}{Config\+Service}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac044ac2b2884a0cde8afbb5c198302a5}{\texorpdfstring{$\sim$}{\string~}\+Config\+Service}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} destructor. \end{DoxyCompactList}\item 
+pugi\+::xml\+\_\+document \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a8f07a8cc4ed07c7de2d67981ccd1835c}{get\+Config}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em get\+Config method \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a8fee54d1f3f5eb92a17c3ecd72780f00}{create\+Config}} (const std\+::string \&name, const pugi\+::xml\+\_\+document \&doc)
+\begin{DoxyCompactList}\small\item\em get\+Configs method \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a72b9695e86a85502ea559e009a878e4c}{delete\+Config}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em get\+Configs method \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Errors}} \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f}{validate\+Config}} (const nlohmann\+::json \&json\+Data)
+\begin{DoxyCompactList}\small\item\em get\+Configs method \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::shared\+\_\+mutex \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a6ba13abe172e1597477cea1ae4870601}{rw\+Mutex\+\_\+}}
+\begin{DoxyCompactList}\small\item\em rw\+Mutex\+\_\+ member \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{Configs}} \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a0b154ed905abb80d6e79d505c65b5b4a}{configs\+\_\+}}
+\begin{DoxyCompactList}\small\item\em configs\+\_\+ member \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a26e4feb5b0b16ea8b8e1b847778ba4dd}{logger\+\_\+}}
+\begin{DoxyCompactList}\small\item\em logger\+\_\+ member \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} class. 
+
+This class is responsible for managing the configuration files. It provides methods to create, delete, get and validate configuration files. 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}\label{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!Configs@{Configs}}
+\index{Configs@{Configs}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{Configs}{Configs}}
+{\footnotesize\ttfamily typedef std\+::unordered\+\_\+map$<$std\+::string, std\+::shared\+\_\+ptr$<$pugi\+::xml\+\_\+document$>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{validation\+\_\+api\+::\+Config\+Service\+::\+Configs}}}
+
+
+
+Configs typedef. 
+
+This typedef is used to store the configuration files in a map. \Hypertarget{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}\label{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!Errors@{Errors}}
+\index{Errors@{Errors}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{Errors}{Errors}}
+{\footnotesize\ttfamily typedef std\+::vector$<$std\+::pair$<$std\+::string, std\+::string$>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}}}
+
+
+
+Errors typedef. 
+
+This typedef is used to store the errors found in the configuration files. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigService_ae78fa8e3a91b9c5245f7a494a7d56bc2}\label{classvalidation__api_1_1ConfigService_ae78fa8e3a91b9c5245f7a494a7d56bc2} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!ConfigService@{ConfigService}}
+\index{ConfigService@{ConfigService}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{ConfigService()}{ConfigService()}}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Config\+Service\+::\+Config\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} constructor. 
+
+\Hypertarget{classvalidation__api_1_1ConfigService_ac044ac2b2884a0cde8afbb5c198302a5}\label{classvalidation__api_1_1ConfigService_ac044ac2b2884a0cde8afbb5c198302a5} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!````~ConfigService@{\texorpdfstring{$\sim$}{\string~}ConfigService}}
+\index{````~ConfigService@{\texorpdfstring{$\sim$}{\string~}ConfigService}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ConfigService()}{\string~ConfigService()}}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Config\+Service\+::\texorpdfstring{$\sim$}{\string~}\+Config\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigService_a8fee54d1f3f5eb92a17c3ecd72780f00}\label{classvalidation__api_1_1ConfigService_a8fee54d1f3f5eb92a17c3ecd72780f00} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!createConfig@{createConfig}}
+\index{createConfig@{createConfig}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{createConfig()}{createConfig()}}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::\+Config\+Service\+::create\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const pugi\+::xml\+\_\+document \&}]{doc }\end{DoxyParamCaption})}
+
+
+
+get\+Configs method 
+
+Insert the configuration files into the map. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ConfigService_a8fee54d1f3f5eb92a17c3ecd72780f00_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ConfigService_a72b9695e86a85502ea559e009a878e4c}\label{classvalidation__api_1_1ConfigService_a72b9695e86a85502ea559e009a878e4c} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!deleteConfig@{deleteConfig}}
+\index{deleteConfig@{deleteConfig}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{deleteConfig()}{deleteConfig()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Service\+::delete\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+get\+Configs method 
+
+This method delete a config from the map if it exists. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ConfigService_a72b9695e86a85502ea559e009a878e4c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ConfigService_a8f07a8cc4ed07c7de2d67981ccd1835c}\label{classvalidation__api_1_1ConfigService_a8f07a8cc4ed07c7de2d67981ccd1835c} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!getConfig@{getConfig}}
+\index{getConfig@{getConfig}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{getConfig()}{getConfig()}}
+{\footnotesize\ttfamily pugi\+::xml\+\_\+document validation\+\_\+api\+::\+Config\+Service\+::get\+Config (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+get\+Config method 
+
+\begin{DoxyReturn}{Returns}
+pugi\+::xml\+\_\+document
+\end{DoxyReturn}
+This method returns the configuration
+
+\begin{DoxyReturn}{Returns}
+Configs 
+\end{DoxyReturn}
+\Hypertarget{classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f}\label{classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!validateConfig@{validateConfig}}
+\index{validateConfig@{validateConfig}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{validateConfig()}{validateConfig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} validation\+\_\+api\+::\+Config\+Service\+::validate\+Config (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Data }\end{DoxyParamCaption})}
+
+
+
+get\+Configs method 
+
+Validates a json object through a configuration if it exists. \begin{DoxySeeAlso}{See also}
+traverse\+And\+Validate 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Errors 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvalidation__api_1_1ConfigService_a0b154ed905abb80d6e79d505c65b5b4a}\label{classvalidation__api_1_1ConfigService_a0b154ed905abb80d6e79d505c65b5b4a} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!configs\_@{configs\_}}
+\index{configs\_@{configs\_}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{configs\_}{configs\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{Configs}} validation\+\_\+api\+::\+Config\+Service\+::configs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+configs\+\_\+ member 
+
+This member is used to store the configuration files. \Hypertarget{classvalidation__api_1_1ConfigService_a26e4feb5b0b16ea8b8e1b847778ba4dd}\label{classvalidation__api_1_1ConfigService_a26e4feb5b0b16ea8b8e1b847778ba4dd} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!logger\_@{logger\_}}
+\index{logger\_@{logger\_}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{logger\_}{logger\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ validation\+\_\+api\+::\+Config\+Service\+::logger\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+logger\+\_\+ member 
+
+This member is used to log messages. \Hypertarget{classvalidation__api_1_1ConfigService_a6ba13abe172e1597477cea1ae4870601}\label{classvalidation__api_1_1ConfigService_a6ba13abe172e1597477cea1ae4870601} 
+\index{validation\_api::ConfigService@{validation\_api::ConfigService}!rwMutex\_@{rwMutex\_}}
+\index{rwMutex\_@{rwMutex\_}!validation\_api::ConfigService@{validation\_api::ConfigService}}
+\doxysubsubsection{\texorpdfstring{rwMutex\_}{rwMutex\_}}
+{\footnotesize\ttfamily boost\+::shared\+\_\+mutex validation\+\_\+api\+::\+Config\+Service\+::rw\+Mutex\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+rw\+Mutex\+\_\+ member 
+
+This member is used to lock the map of configuration files. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/validation-\/api/\mbox{\hyperlink{ConfigService_8hpp}{Config\+Service.\+hpp}}\item 
+src/\mbox{\hyperlink{ConfigService_8cpp}{Config\+Service.\+cpp}}\end{DoxyCompactItemize}

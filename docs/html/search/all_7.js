@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['setup_0',['setup',['../classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395',1,'validation_api::ConfigWatcher::setup()'],['../classvalidation__api_1_1IService.html#a5e79d17ea6ca3b5bb8661b70f5aaa7b6',1,'validation_api::IService::setup()']]],
-  ['setup_5flogger_1',['setup_logger',['../namespacevalidation__api.html#add9de92f1283937ab6d7688462f67c3c',1,'validation_api']]],
-  ['stop_2',['stop',['../classvalidation__api_1_1ConfigWatcher.html#ac67b7bc5802f99796c903d2fdac92648',1,'validation_api::ConfigWatcher::stop()'],['../classvalidation__api_1_1IService.html#ab9e9658a3495101ae5fada236110e399',1,'validation_api::IService::stop()']]]
+  ['logger_2ecpp_0',['Logger.cpp',['../Logger_8cpp.html',1,'']]],
+  ['logger_2ehpp_1',['Logger.hpp',['../Logger_8hpp.html',1,'']]],
+  ['logger_5f_2',['logger_',['../classvalidation__api_1_1ConfigService.html#a26e4feb5b0b16ea8b8e1b847778ba4dd',1,'validation_api::ConfigService::logger_'],['../classvalidation__api_1_1ConfigWatcher.html#aa2e16a64de4b4a667a5fe99420eb5de6',1,'validation_api::ConfigWatcher::logger_']]]
 ];

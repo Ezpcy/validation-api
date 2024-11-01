@@ -16,6 +16,10 @@ ErrorBuilder::ErrorBuilder(ErrorType type, const std::string &fieldName)
       firstMsg_ =
           std::format("Configuration field \"{}\" is not valid: ", fieldName);
       break;
+    case ErrorType::XmlConfigValueError:
+      firstMsg_ =
+          std::format("Configuration value \"{}\" is not valid: ", fieldName);
+      break;
   }
 }
 
@@ -32,10 +36,9 @@ ErrorBuilder &ErrorBuilder::setSecondMsg(const std::string &msgMain,
     case ErrorType::ValidaionEmptyError:
       break;
     case ErrorType::XmlConfigError:
-      secondMsg_ = std::format(
-          "Value \"{}\" resulted into an error (make sure there are no "
-          "duplicates)",
-          msgMain);
+    case ErrorType::XmlConfigValueError:
+      secondMsg_ = msgMain;
+      break;
   }
   return *this;
 }

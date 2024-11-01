@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['logger_2ecpp_0',['Logger.cpp',['../Logger_8cpp.html',1,'']]],
-  ['logger_2ehpp_1',['Logger.hpp',['../Logger_8hpp.html',1,'']]]
+  ['fileassocation_5f_0',['fileAssocation_',['../classvalidation__api_1_1ConfigWatcher.html#a20ad20b9d8ea72bd718d485a482dd1f1',1,'validation_api::ConfigWatcher']]]
 ];

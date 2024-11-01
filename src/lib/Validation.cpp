@@ -1,6 +1,7 @@
 #include <boost/uuid.hpp>
 #include <cctype>
 #include <cstdio>
+#include <iostream>
 #include <lib/Helpers.hpp>
 #include <lib/Validation.hpp>
 #include <nlohmann/json.hpp>
@@ -43,21 +44,26 @@ Validation::~Validation() = default;
 
 void Validation::run() { traverseAndValidate(config_); }
 
-bool Validation::isValidUuid(const std::string &uuidStr) {
-  try {
-    boost::uuids::string_generator gen;
-    boost::uuids::uuid u = gen(uuidStr);
-    return true;
-  } catch (const std::exception &) {
-    return false;
-  }
-}
-
 // Validate a field
 void Validation::validate(const pugi::xml_node &node, const json &reqValue,
                           const std::string &fieldName) {
   // Assign a bool for the "notNull" option
   pugi::xml_attribute configNullOpt = node.attribute("notNull");
+  // Optional floats for max, min, and eq
+  std::optional<float> max;
+  std::optional<float> min;
+  std::optional<float> eq;
+
+  // Check if each attribute exists before assigning
+  if (node.attribute("max")) {
+    max = node.attribute("max").as_float();
+  }
+  if (node.attribute("min")) {
+    min = node.attribute("min").as_float();
+  }
+  if (node.attribute("eq")) {
+    eq = node.attribute("eq").as_float();
+  }
   bool canBeEmpty;
   std::string notNullVal = toLower(std::string(configNullOpt.value()));
 
@@ -104,6 +110,40 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
                                  .build()});
+        } else if (max.has_value()) {
+          // Get the string and its length
+          std::string valueStr = reqValue;
+          size_t length = valueStr.length();
+
+          // Check against 'max' constraint
+          if (max.has_value() && length > max.value()) {
+            errors_.push_back(
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(
+                         std::format("max length of {},", max.value()),
+                         valueStr)
+                     .build()});
+          }
+
+          // Check against 'min' constraint
+          if (min.has_value() && length < min.value()) {
+            errors_.push_back(
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(
+                         std::format("min length of {}.", min.value()),
+                         valueStr)
+                     .build()});
+          }
+
+          // Check against 'eq' constraint (exact length)
+          if (eq.has_value() && length != eq.value()) {
+            errors_.push_back(
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(
+                         std::format("exact length of {}.", eq.value()),
+                         valueStr)
+                     .build()});
+          }
         }
         break;
       case 2:
@@ -112,6 +152,37 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
                                  .setSecondMsg(it->first, reqValue.type_name())
                                  .build()});
+          float value = reqValue;
+
+          // Check against 'max' constraint
+          if (max.has_value() && value > max.value()) {
+            errors_.push_back(
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(
+                         std::format("max value of {:.2f},", max.value()),
+                         reqValue)
+                     .build()});
+          }
+
+          // Check against 'min' constraint
+          if (min.has_value() && value < min.value()) {
+            errors_.push_back(
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(
+                         std::format("min value of {:.2f}.", min.value()),
+                         reqValue)
+                     .build()});
+          }
+
+          // Check against 'eq' constraint (exact value)
+          if (eq.has_value() && value != eq.value()) {
+            errors_.push_back(
+                {ErrorBuilder(ErrorType::ValidationError, fieldName)
+                     .setSecondMsg(
+                         std::format("exact value of {:.2f}.", eq.value()),
+                         reqValue)
+                     .build()});
+          }
         }
         break;
       case 3:

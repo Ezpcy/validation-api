@@ -26,11 +26,6 @@ class Validation {
   void run();
 
   /*
-   * @brief checks of an Uuid is valid
-   * @params uuidStr
-   */
-  bool isValidUuid(const std::string &uuidStr);
-  /*
    * @brief validate a field
    * @details validates one field with the help of the xml field
    * @params optName optValue reqValue fieldName errors
