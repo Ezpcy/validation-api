@@ -58,11 +58,11 @@ void ConfigWatcher::read_file(const std::string &file_name) {
   // Assemble the direct path
   std::string endPath = path_ + "/" + file_name;
 
-  // Check if the file is empty (likely newly created)
   std::ifstream file(endPath);
 
   if (!file.is_open()) {
     logger_->error("Failed to open file {}.", file_name);
+    // Check if the file is not empty (likely newly created)
   } else if (file.peek() != std::ifstream::traits_type::eof()) {
     pugi::xml_document doc;
 
