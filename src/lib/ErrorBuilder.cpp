@@ -8,17 +8,16 @@ ErrorBuilder::ErrorBuilder(ErrorType type, const std::string &fieldName)
       firstMsg_ = "An Error occured";
       break;
     case ErrorType::ValidationError:
-    case ErrorType::ValidaionEmptyError:
+      firstMsg_ = std::format("{}: ", fieldName);
+      break;
+    case ErrorType::ValidationEmptyError:
       firstMsg_ = std::format("{}: ", fieldName);
       secondMsg_ = std::string("Field is not allowed to be empty.");
       break;
     case ErrorType::XmlConfigError:
-      firstMsg_ =
-          std::format("Configuration field \"{}\" is not valid: ", fieldName);
-      break;
     case ErrorType::XmlConfigValueError:
-      firstMsg_ =
-          std::format("Configuration value \"{}\" is not valid: ", fieldName);
+    case ErrorType::XmlConfigEmptyError:
+      firstMsg_ = std::format("{}: ", fieldName);
       break;
   }
 }
@@ -29,16 +28,18 @@ ErrorBuilder &ErrorBuilder::setSecondMsg(const std::string &msgMain,
     case ErrorType::Default:
       secondMsg_ = "";
       break;
+    case ErrorType::ValidationEmptyError:
+      break;
+    case ErrorType::XmlConfigError:
+      secondMsg_ = msgMain;
+      break;
     case ErrorType::ValidationError:
+    case ErrorType::XmlConfigValueError:
       secondMsg_ =
           std::format("Expected \"{}\", received \"{}\".", msgMain, msgSec);
       break;
-    case ErrorType::ValidaionEmptyError:
-      break;
-    case ErrorType::XmlConfigError:
-    case ErrorType::XmlConfigValueError:
-      secondMsg_ = msgMain;
-      break;
+    case ErrorType::XmlConfigEmptyError:
+      secondMsg_ = std::format("Option \"{}\" can not be empty", msgMain);
   }
   return *this;
 }

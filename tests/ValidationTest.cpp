@@ -5,6 +5,7 @@
 #include <pugixml.hpp>
 #include <validation-api/ConfigService.hpp>
 
+#include "lib/Helpers.hpp"
 #include "lib/Validation.hpp"
 
 TEST(ValidationTest, Types) {
@@ -12,7 +13,7 @@ TEST(ValidationTest, Types) {
   static const std::string xml = R"(
     <Types>
       <String type="string" />
-      <Float type="float" max="5" min="3"/>
+      <Float type="float"/>
       <Number type="number" />
       <Date type="date" />
       <Email type="email" />
@@ -27,7 +28,7 @@ TEST(ValidationTest, Types) {
   "Types": {
     "String": "test",
     "Float": 10.2,
-    "Number": 10,
+    "Number": 10, 
     "Date": "2024-01-01", 
     "Email": "test@mail.com", 
     "Uuid": "123e4567-e89b-12d3-a456-526614174000",
@@ -76,4 +77,92 @@ TEST(ValidationTest, Types) {
 
   ASSERT_FALSE(errors.empty());
   ASSERT_EQ(errors.size(), 9);
+}
+
+TEST(ValidationTest, Options) {
+  using json = nlohmann::json;
+  static const std::string xml = R"(
+    <Options>
+      <String type="string" min="5" max="10" eq="5" />
+      <Float type="float" min="5" max="10" eq="5" />
+      <Number type="number" min="5" max="10" eq="5" />
+    </Options>
+  )";
+  static const std::string json_true = R"({
+  "Options": {
+    "String": "test",
+    "Float": 10.2,
+    "Number": 10
+  }
+  })";
+
+  pugi::xml_document doc;
+  pugi::xml_parse_result resullt = doc.load_string(xml.c_str());
+
+  json jj = json::parse(json_true);
+  validation_api::ConfigService::Errors errors;
+
+  validation_api::Validation(jj, doc, errors).run();
+
+  for (const auto &[key, value] : errors) {
+    std::cout << key << value << '\n';
+  }
+}
+
+TEST(ValidationTest, XmlParsing) {
+  static const std::string xml = R"(
+    <Options>
+      <String type="uuid" max="1" min="2" eq="3"/>
+      <Test type="2" notNull="fle"/>
+      <Test2 max="k" min="c" eq="f"/>
+      <Test3 uuid="2" />
+      <Test4>
+        <Test5 type="fk" />
+        <Test6 type="oiqwhe" />
+      </Test4> 
+    </Options>
+  )";
+
+  static const std::string xmlT = R"(
+    <Options>
+      <String type="uuid">
+      <Test type="string" notNull="true"/>
+      <Test2 type="number" max="2"/>
+      <Test3 uuid="123e4567-e89b-12d3-a456-526614174000" />
+      <Test4>
+        <Test5 type="iban" />
+        <Test6 type="ahv" />
+      </Test4>
+    </Options>
+  )";
+
+  pugi::xml_document doc;
+
+  pugi::xml_parse_result result = doc.load_string(xml.c_str());
+
+  validation_api::ConfigService::Errors errors;
+
+  pugi::xml_node node = doc.child(doc.begin()->name());
+
+  validation_api::validateXmlConfig(node, errors);
+
+  for (const auto &error : errors) {
+    std::cout << error.first << error.second << '\n';
+  }
+
+  ASSERT_EQ(errors.size(), 13);
+
+  validation_api::ConfigService::Errors errorst;
+  pugi::xml_document docT;
+
+  docT.load_string(xmlT.c_str());
+
+  pugi::xml_node nodeT = docT.child(doc.begin()->name());
+
+  validation_api::validateXmlConfig(nodeT, errorst);
+  for (const auto &error : errorst) {
+    std::cout << error.first << error.second << '\n';
+  }
+
+  ASSERT_EQ(errorst.size(), 0);
 }

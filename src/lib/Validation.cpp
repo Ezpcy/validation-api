@@ -95,7 +95,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
   // Check if field is emtpy
   if (reqValue.empty() || reqValue.is_null() || reqValue == "" && !canBeEmpty) {
     errors_.push_back(
-        {ErrorBuilder(ErrorType::ValidaionEmptyError, fieldName).build()});
+        {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
     return;
   }
 

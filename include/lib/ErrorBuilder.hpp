@@ -7,10 +7,10 @@ namespace validation_api {
 enum class ErrorType {
   Default,
   ValidationError,
-  ValidaionEmptyError,
+  ValidationEmptyError,
   XmlConfigError,
-  XmlConfigValueError
-
+  XmlConfigValueError,
+  XmlConfigEmptyError
 };
 
 class ErrorBuilder {
