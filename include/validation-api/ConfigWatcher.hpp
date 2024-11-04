@@ -71,11 +71,11 @@ class ConfigWatcher : public IService {
   std::string path_;
 
   /**
-   * @brief running flag
+   * @brief Running flag
    * @details Flag to indicate if the watcher is running. The flag is stored as
    * an atomic bool.
    */
-  std::atomic<bool> running;
+  std::atomic<bool> running_;
 
   /**
    * @brief watcherThread

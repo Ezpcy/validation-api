@@ -25,7 +25,8 @@ set(Boost_USE_MULTITHREAD ON)
 
 
 # Find Boost, spdlog, and gtest components
-find_package(Boost REQUIRED )
+find_package(fmt REQUIRED)
+find_package(Boost REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
@@ -46,6 +47,7 @@ add_executable(validation-api
 # Link libraries
 target_include_directories(validation-api PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_link_libraries(validation-api PRIVATE 
+  fmt::fmt
   Boost::boost
   spdlog::spdlog
   Boost::filesystem
@@ -81,6 +83,7 @@ set_target_properties(tests PROPERTIES
 )
 
 target_link_libraries(tests PRIVATE
+  fmt::fmt
   gtest::gtest
   spdlog::spdlog
   Boost::boost

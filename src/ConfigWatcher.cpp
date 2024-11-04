@@ -5,7 +5,6 @@
 #include <boost/filesystem.hpp>
 #include <format>
 #include <fstream>
-#include <iostream>
 #include <semaphore>
 
 #include "lib/Helpers.hpp"
@@ -31,7 +30,7 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
       fileAssocation_(),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()) {
-  running = true;
+  running_ = true;
   watcherThread = boost::thread([this] {
     if (!setup()) {
       logger_->error("Config watcher failed to initialize inotify");
@@ -148,7 +147,7 @@ void ConfigWatcher::run() {
   fds.events = POLLIN;
 
   // Loop to read inotify events
-  while (running) {
+  while (running_) {
     semaphore.acquire();
     int poll_result = poll(&fds, 1, 1000);  // Timeout after 1000 ms
     if (poll_result < 0) {
@@ -212,7 +211,7 @@ void ConfigWatcher::run() {
 }
 
 void ConfigWatcher::stop() {
-  running = false;  // Set running to false to stop the loop
+  running_ = false;  // Set running to false to stop the loop
 
   // Interrupt the inotify read by closing the file descriptor
   close(inotify_fd_);
