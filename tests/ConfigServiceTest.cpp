@@ -26,8 +26,8 @@ static const std::string xml = R"(
     </InsuranceProductConfig>
     <Institution type="Uuid">
         <Null>
-            <TypeOfProvision Uuid="123e4567-e89b-12d3-a456-526614174000"/>
-            <Profession Uuid="123e4567-e89b-12d3-a456-226614174000"/>
+            <TypeOfProvision uuid="123e4567-e89b-12d3-a456-526614174000"/>
+            <Profession uuid="123e4567-e89b-12d3-a456-226614174000"/>
         </Null>
     </Institution>
     <Schule type="String" notNull="false" />
