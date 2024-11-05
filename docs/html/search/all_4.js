@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['fileassocation_5f_0',['fileAssocation_',['../classvalidation__api_1_1ConfigWatcher.html#a20ad20b9d8ea72bd718d485a482dd1f1',1,'validation_api::ConfigWatcher']]],
-  ['format_1',['format',['../structformatter_3_01boost_1_1asio_1_1ip_1_1tcp_1_1endpoint_01_4.html#a13b387fe65f6b998b2d73b65fe0470d1',1,'formatter&lt; boost::asio::ip::tcp::endpoint &gt;']]],
-  ['formatter_3c_20boost_3a_3aasio_3a_3aip_3a_3atcp_3a_3aendpoint_20_3e_2',['formatter&lt; boost::asio::ip::tcp::endpoint &gt;',['../structformatter_3_01boost_1_1asio_1_1ip_1_1tcp_1_1endpoint_01_4.html',1,'']]]
+  ['errorbuilder_0',['ErrorBuilder',['../classvalidation__api_1_1ErrorBuilder.html',1,'validation_api::ErrorBuilder'],['../classvalidation__api_1_1ErrorBuilder.html#ab16f7263e7b08555543a45fd533a9938',1,'validation_api::ErrorBuilder::ErrorBuilder()']]],
+  ['errorbuilder_2ecpp_1',['ErrorBuilder.cpp',['../ErrorBuilder_8cpp.html',1,'']]],
+  ['errorbuilder_2ehpp_2',['ErrorBuilder.hpp',['../ErrorBuilder_8hpp.html',1,'']]],
+  ['errors_3',['Errors',['../classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d',1,'validation_api::ConfigService']]],
+  ['errors_5f_4',['errors_',['../classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f',1,'validation_api::Validation']]],
+  ['errorstojson_5',['errorsToJson',['../namespacevalidation__api.html#ad94de3de52c70b315f5b36cce4642718',1,'validation_api']]],
+  ['errortype_6',['ErrorType',['../namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8b',1,'validation_api']]],
+  ['example_7',['Example',['../index.html#autotoc_md9',1,'']]],
+  ['extractnulloptions_8',['extractNullOptions',['../classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4',1,'validation_api::Validation']]]
 ];

@@ -9,7 +9,7 @@
 namespace validation_api {
 /**
  * @brief Class for exposing the application to the network
- * @detail This class uses the `boost::asio library` to create a server on a
+ * @details This class uses the `boost::asio library` to create a server on a
  * specified port. This network API will be used to communicate with clients.
  */
 class ValidationServer : public IService {
@@ -39,7 +39,7 @@ class ValidationServer : public IService {
  private:
   /**
    * @brief Accept a connection
-   * @detail This function is called when a connection is accepted. It will try
+   * @details This function is called when a connection is accepted. It will try
    * to find the associated configuration, convert the request to a json object,
    * and start validating it
    */
@@ -47,47 +47,47 @@ class ValidationServer : public IService {
 
   /*
    * @brief Write to the socket
-   * @detail Write messages to the socket in a asynchronous way
+   * @details Write messages to the socket in a asynchronous way
    */
   void asyncWriter(const std::string& response,
                    std::shared_ptr<boost::asio::ip::tcp::socket> socket);
 
   /**
    * @brief Running flag.
-   * @detail Flag to indicate if the server is running. The flag is stored as an
-   * atomic bool.
+   * @details Flag to indicate if the server is running. The flag is stored as
+   * an atomic bool.
    */
   std::atomic<bool> running_;
 
   /**
    * @brief The io_context object
-   * @detail The io_context object is used to perform asynchronous operations.
+   * @details The io_context object is used to perform asynchronous operations.
    */
   boost::asio::io_context& io_context_;
 
   /**
    * @brief The acceptor object
-   * @detail The acceptor object is used to listen for incoming connection
+   * @details The acceptor object is used to listen for incoming connection
    * requests.
    */
   boost::asio::ip::tcp::acceptor acceptor_;
 
   /**
    * @brief A reference to the ConfigService object
-   * @detail The ConfigService object is used to retrieve the configuration
+   * @details The ConfigService object is used to retrieve the configuration
    */
   ConfigService& service_;
 
   /**
    * @brief A semaphore to control the number of connections
-   * @detail The semaphore is used to control the number of connections that the
-   * server can handle
+   * @details The semaphore is used to control the number of connections that
+   * the server can handle
    */
   std::counting_semaphore<> semaphore_;
 
   /**
    * @brief Logger object
-   * @detail The logger object is used to log messages to the console and log
+   * @details The logger object is used to log messages to the console and log
    * files
    */
   std::shared_ptr<spdlog::logger> logger_;

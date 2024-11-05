@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['validationserver_0',['ValidationServer',['../classvalidation__api_1_1ValidationServer.html',1,'validation_api']]]
+  ['iservice_0',['IService',['../classvalidation__api_1_1IService.html',1,'validation_api']]]
 ];

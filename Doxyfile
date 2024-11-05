@@ -324,7 +324,7 @@ WARN_LOGFILE           =
 
 
 
-INPUT                  = inlcude src include/validation-api Readme.md
+INPUT                  = inlcude src include/validation-api Readme.md src/lib include/lib
 
 
 INPUT_ENCODING         = UTF-8
