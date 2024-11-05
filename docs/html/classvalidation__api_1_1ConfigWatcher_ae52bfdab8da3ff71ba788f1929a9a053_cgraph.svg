@@ -96,7 +96,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" target="_top" xlink:title="Reads a file.">
 <polygon fill="white" stroke="#666666" points="578.25,-85.5 416.75,-85.5 416.75,-52 578.25,-52 578.25,-85.5"/>
 <text text-anchor="start" x="424.75" y="-72" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ConfigWatcher</text>
 <text text-anchor="middle" x="497.5" y="-59.25" font-family="Helvetica,sans-Serif" font-size="10.00">::read_file</text>

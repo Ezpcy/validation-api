@@ -4,6 +4,8 @@
 #include <string>
 #include <validation-api/ValidationServer.hpp>
 
+#include "lib/Helpers.hpp"
+
 // For formatting the endpoint for the logger
 FMT_BEGIN_NAMESPACE
 
@@ -22,6 +24,7 @@ struct formatter<boost::asio::ip::tcp::endpoint> {
 FMT_END_NAMESPACE
 
 namespace validation_api {
+
 ValidationServer::ValidationServer(boost::asio::io_context& io_context,
                                    short port, ConfigService& configService,
                                    short maxConnections)
@@ -40,6 +43,10 @@ ValidationServer::ValidationServer(boost::asio::io_context& io_context,
   }
 }
 
+ValidationServer::~ValidationServer() {
+  stop();  // Ensure the server is stopped and resources are released
+}
+
 bool ValidationServer::setup() {
   try {
     // Initialize the work guard to keep the io_context_ alive
@@ -47,69 +54,138 @@ bool ValidationServer::setup() {
         boost::asio::io_context::executor_type>>(io_context_.get_executor());
     return true;
   } catch (const std::exception& e) {
+    logger_->error("Exception during setup: {}", e.what());
     return false;
   }
 }
 
 void ValidationServer::run() {
-  // Start the acceptor
+  if (!acceptor_.is_open()) {
+    logger_->error("Acceptor is not open; cannot accept connections.");
+    return;
+  }
+
+  // Start accepting connections
   acceptor_.async_accept([this](boost::system::error_code ec,
                                 boost::asio::ip::tcp::socket socket) {
-    // If no error code
     if (!ec) {
-      semaphore_.acquire();
-      logger_->info("Client connected: {}", socket.remote_endpoint());
-      accept(std::move(socket));
+      auto sharedSocket =
+          std::make_shared<boost::asio::ip::tcp::socket>(std::move(socket));
+      semaphore_.acquire();  // Acquire a semaphore slot for this connection
+      boost::system::error_code ep_ec;
+      auto endpoint = sharedSocket->remote_endpoint(ep_ec);
+      if (!ep_ec) {
+        logger_->info("Client connected: {}", endpoint);
+      } else {
+        logger_->warn("Could not retrieve endpoint: {}", ep_ec.message());
+      }
+      accept(sharedSocket);  // Handle the client connection
+    } else {
+      logger_->error("Error during async_accept: {}", ec.message());
     }
 
+    // Continue accepting connections
     run();
   });
 }
 
-void ValidationServer::accept(boost::asio::ip::tcp::socket socket) {
+void ValidationServer::stop() {
+  // Stop accepting new connections and cancel any ongoing operations
+  if (acceptor_.is_open()) {
+    acceptor_.close();  // Close the acceptor to stop new connections
+    logger_->info("Acceptor closed. No new connections will be accepted.");
+  }
+
+  // Release the work guard to allow io_context to finish
+  if (workGuard_) {
+    workGuard_.reset();
+    logger_->info("Work guard released.");
+  }
+
+  // Ensure all pending connections are completed
+  io_context_.stop();
+  logger_->info("Server stopped.");
+}
+
+void ValidationServer::accept(
+    std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
   auto buffer = std::make_shared<boost::asio::streambuf>();
 
-  // start an async read for the client requst
+  // Start an async read operation for the client request
   boost::asio::async_read_until(
-      socket, *buffer, "\n",
-      [this, buffer, socket = std::move(socket)](boost::system::error_code ec,
-                                                 std::size_t length) mutable {
+      *socket, *buffer, "\n",
+      [this, buffer, socket](boost::system::error_code ec,
+                             std::size_t length) mutable {
         if (!ec) {
           std::istream is(buffer.get());
           std::string requestStr;
           std::getline(is, requestStr);
-          try {
-            nlohmann::json jsonRequest = nlohmann::json::parse(requestStr);
-            ConfigService::Errors errors;
 
-            service_.validateConfig(jsonRequest);
-
-          } catch (nlohmann::json::parse_error& e) {
-            // Extract error message from the exception
-            std::string response = "Parse error: " + std::string(e.what());
+          if (requestStr.empty()) {
+            // Handle empty request case
+            std::string response = "Error: Received empty request.\n";
             asyncWriter(response, socket);
-            // Log the error
-            logger_->error("{}", response);
-            // Release the semaphore slot regardless of success or failure
+            logger_->error("Received empty request.");
             semaphore_.release();
+            return;
           }
 
+          ConfigService::Errors errors;
+          std::string keyName;
+
+          try {
+            // Parse the JSON request
+            nlohmann::json jsonRequest = nlohmann::json::parse(requestStr);
+            keyName = jsonRequest.begin().key();  // Extract the first key
+
+            // Validate the JSON using ConfigService
+            errors = service_.validateConfig(jsonRequest);
+          } catch (std::exception& e) {
+            // Handle JSON parsing error
+            std::string response =
+                "Parse error: " + std::string(e.what()) + "\n";
+            asyncWriter(response, socket);
+            logger_->error("Parse error: {}", e.what());
+            semaphore_.release();
+            return;
+          }
+
+          // Process validation results
+          if (errors.empty()) {
+            nlohmann::json response;
+            response["Success"] = keyName;
+            asyncWriter(response.dump() + "\n", socket);
+          } else {
+            // Convert errors to JSON and send them to the client
+            nlohmann::json errorResponse = errorsToJson(errors);
+            logger_->warn(
+                "Validation request from {} with configuration {} failed",
+                socket->remote_endpoint(), keyName);
+            asyncWriter(errorResponse.dump() + "\n", socket);
+          }
+
+          // Release semaphore after processing request
+          semaphore_.release();
         } else {
-          logger_->error("Failed to read request: ", ec.message());
+          // Log and handle read error
+          logger_->error("Failed to read request: {}", ec.message());
+          semaphore_.release();
         }
       });
 }
-void ValidationServer::asyncWriter(const std::string& response,
-                                   boost::asio::ip::tcp::socket& socket) {
-  // Asynchronously send the error response to the client
+
+void ValidationServer::asyncWriter(
+    const std::string& response,
+    std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
+  // Asynchronously send the response to the client
   boost::asio::async_write(
-      socket, boost::asio::buffer(response),
-      [this, socket = std::move(socket)](boost::system::error_code ec,
-                                         std::size_t) mutable {
+      *socket, boost::asio::buffer(response),
+      [this, socket](boost::system::error_code ec, std::size_t) mutable {
         if (ec) {
-          // Handle any potential write error here if necessary
-          logger_->error("Failed to send error response: {}", ec.message());
+          logger_->error("Failed to send response: {}", ec.message());
         }
+        // The connection will be closed automatically when socket goes out of
+        // scope
       });
 }
 

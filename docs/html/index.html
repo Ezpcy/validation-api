@@ -74,9 +74,138 @@ $(function() {
   <div class="headertitle"><div class="title">Validation-api </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_Readme"></a> <b>Created by</b>: Batu <br  />
- <b>Creation date</b>: October 9, 2024 <br  />
- </p>
+<div class="textblock"><p><a class="anchor" id="md_Readme"></a> <b>Created by</b>: Batu</p>
+<p><b>Creation date</b>: August 29, 2023 2:33 PM</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Code Structure</h1>
+<ul>
+<li>[<code>src</code>] contains:<ul>
+<li>[<code>lib</code>] module which contains some helper functions.<ul>
+<li>[<code>Helpers] collection of helper functions.</code></li>
+<li><code>[</code>ErrorBuilder<code>] for building error messages.</code></li>
+</ul>
+</li>
+<li><code>[</code>main<code>].</code></li>
+<li><code>[</code>ConfigService] for handling the configurations.</li>
+<li>[<code>ConfigWatcher</code>] for watching the configuration files.</li>
+<li>[<code>Logger</code>] for logging.</li>
+<li>[<code>ValidationServer</code>] for handling the incoming connections.</li>
+</ul>
+</li>
+<li>[<code>include</code>] header files.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Description</h1>
+<p>API to validate data from incoming network connections. The data must be in <code>JSON</code> format. The validation rules can be setup through a XML file, which can be modified at runtime. contains <code>structs</code>, <code>enums</code> and their associated functions; especially for reading and handling the XML configuration files.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Pre-requisites</h1>
+<ul>
+<li>CMake</li>
+<li>Conan</li>
+<li>Linux</li>
+<li>C++ 20</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Installation</h1>
+<p>Clone the repository and run <code>./build.sh r</code> inside the root folder.</p>
+<ul>
+<li>This will read the configurations and run the API on <code>127.0.0.1:8080</code>.</li>
+<li>If you want to create configuration folder run:</li>
+</ul>
+<div class="fragment"><div class="line">./validation-api example</div>
+</div><!-- fragment --><p>Connect to the API (can be done with Netcat or Telnet). The data, that has to be validated, must be in <code>JSON</code> format.</p>
+<p>The API gets the configurations from a folder named <code>configs</code>. The configurations are in <code>XML</code> format.</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+XML Configuration</h1>
+<p>The XML configuration files should be stored inside the folder called <code>configs</code> next to the executable. The files can be modified at runtime and the changes will be reflected in the API.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+XML Configuration Structure</h2>
+<p>Example of a field:</p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">Telephone</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">max</span>=<span class="stringliteral">&quot;10&quot;</span>/&gt;</div>
+</div><!-- fragment --><ul>
+<li><code>type</code>: The type of the field</li>
+<li><code>notNull</code>: If the field can be null or not</li>
+<li><code>max</code>: The length of the field it must be equal to</li>
+</ul>
+<p><b>Types</b>:</p>
+<ul>
+<li><code>string</code>: Example: "Hello"</li>
+<li><code>number</code>: Example: 123</li>
+<li><code>float</code>: Example: 123.45</li>
+<li><code>date</code>: Example: "2023-08-29"</li>
+<li><code>uuid</code>: Example: "550e8400-e29b-41d4-a716-446655440000"</li>
+<li><code>email</code></li>
+<li><code>boolean</code>: Example: true</li>
+<li><code>ahv</code>: Example: "756.1234.5678.12" (you can generate a random AHV number here <a href="https://www.uhutools.ch/ahv-nummer/de">uhutools.ch</a>)</li>
+<li><code>iban</code>: Example: "CH9300762011623852957"</li>
+</ul>
+<p><b>Options</b>:</p>
+<ul>
+<li><code>uuid</code>: uuid value inside null option (see Null Nesting)</li>
+<li><code>notNull</code>: If the field can be null or not</li>
+</ul>
+<p>For <code>string</code>, <code>number</code> and <code>float</code>:</p>
+<ul>
+<li><code>eq</code>: Length (for strings) or value (for numbers)</li>
+<li><code>min</code>: The minimum value of the field (for numbers) or the minimum length of the field (for strings)</li>
+<li><code>max</code>: The maximum value of the field (for numbers) or the maximum length of the field (for strings)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Nesting</h1>
+<p>You can nest fields in the XML configuration file.</p>
+<p>Example:</p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">InsuranceProductConfig</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">TarifNumber</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">eq</span>=<span class="stringliteral">&quot;7&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">BillingCategory</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;String&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Price</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;float&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Units</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">InsuranceProductConfig</span>&gt;</div>
+</div><!-- fragment --><p>Note that capitalization of the tag names is important. For options like <code>notNull</code>, <code>eq</code>, <code>min</code> and <code>max</code> the capitalization is not important.</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Null Nesting</h2>
+<p>With Null Nesting you can specify that a field can be null if other fields satisfy a given a <code>UUID</code>:</p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">Institution</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;uuid&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Null</span>&gt;</div>
+<div class="line">        &lt;<span class="keywordtype">TypeOfProvision</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-526614174000&quot;</span>/&gt;</div>
+<div class="line">        &lt;<span class="keywordtype">Profession</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span>/&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">Null</span>&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">Institution</span>&gt;</div>
+</div><!-- fragment --><ul>
+<li><code>Instution</code> can be null if <code>TypeOfProvision</code> and <code>Profession</code> are not null and have the given <code>UUID</code>.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md9"></a>
+Example</h1>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">Test</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Provision</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">ProvisionNumber</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">eqLength</span>=<span class="stringliteral">&quot;14&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">CostApproval</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Boolean&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">Provision</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">TypeOfProvision</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Profession</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">SalaryType</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">DateFrom</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Date&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">DateTo</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Date&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">InsuranceProductConfig</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">TarifNumber</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">eqLength</span>=<span class="stringliteral">&quot;7&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">BillingCategory</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;String&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Price</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Float&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Units</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">InsuranceProductConfig</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Institution</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Null</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">TypeOfProvision</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-526614174000&quot;</span> /&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">Profession</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span> /&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">Null</span>&gt;</div>
+<div class="line">  &lt;/<span class="keywordtype">Institution</span>&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Schule</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;String&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">LehrgangsBezeichnung</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
+<div class="line">  &lt;<span class="keywordtype">Ort</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
+<div class="line">&lt;/<span class="keywordtype">Test</span>&gt;</div>
+</div><!-- fragment --><p>This configuration file will validate the incoming data. The data must be in <code>JSON</code> format. A valid request would look like this:</p>
+<div class="fragment"><div class="line">{&quot;Test&quot;: {&quot;Provision&quot;: {&quot;ProvisionNumber&quot;: 12345678901234, &quot;CostApproval&quot;: true}, &quot;TypeOfProvision&quot;: &quot;123e4567-e89b-12d3-a456-526614174000&quot;, &quot;Profession&quot;: &quot;123e4567-e89b-12d3-a456-226614174000&quot;, &quot;SalaryType&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;, &quot;DateFrom&quot;: &quot;2020-01-01&quot;, &quot;DateTo&quot;: &quot;2020-12-31&quot;, &quot;InsuranceProductConfig&quot;: {&quot;TarifNumber&quot;: 1234567, &quot;BillingCategory&quot;: &quot;Test&quot;, &quot;Price&quot;: 123.45, &quot;Units&quot;: 3}, &quot;Institution&quot;: &quot;&quot;, &quot;Schule&quot;: &quot;Test&quot;, &quot;LehrgangsBezeichnung&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;, &quot;Ort&quot;: &quot;&quot;}}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+Logs</h1>
+<p>Information and error logs can be found within the <code>logs</code> folder (created at runtime). </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->

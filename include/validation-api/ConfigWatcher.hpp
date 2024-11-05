@@ -24,17 +24,6 @@ class ConfigWatcher : public IService {
 
   void read_file(const std::string &file_name);
 
- private:
-  std::unordered_map<std::string, std::string> fileAssocation_;
-  Callback callback_;
-
-  /**
-   * @brief Reference to the ConfigService.
-   * @details Allows for interaction with the ConfigService in cases of event.
-   * @see ConfigService
-   */
-  ConfigService &service_;
-
   /**
    * @brief Start ConfigWatcher
    * @details Also callls [ConfigWatcher::setup] to setup the watcher.
@@ -56,6 +45,16 @@ class ConfigWatcher : public IService {
    */
   void stop() override;
 
+ private:
+  std::unordered_map<std::string, std::string> fileAssocation_;
+  Callback callback_;
+
+  /**
+   * @brief Reference to the ConfigService.
+   * @details Allows for interaction with the ConfigService in cases of event.
+   * @see ConfigService
+   */
+  ConfigService &service_;
   /**
    * @brief io_context_ reference
    * @details Reference to the io_context_ object. The io_context_ object is

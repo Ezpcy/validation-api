@@ -17,11 +17,11 @@
 <text text-anchor="start" x="60.5" y="-70.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
 <text text-anchor="start" x="16.38" y="-54.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="41" y="-54.5" font-family="Helvetica,sans-Serif" font-size="10.00">~IService()</text>
-<text text-anchor="start" x="18.62" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="16.38" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="41" y="-38.5" font-family="Helvetica,sans-Serif" font-size="10.00">run()</text>
-<text text-anchor="start" x="18.62" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="16.38" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="41" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">setup()</text>
-<text text-anchor="start" x="18.62" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">&#45;</text>
+<text text-anchor="start" x="16.38" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
 <text text-anchor="start" x="41" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">stop()</text>
 <polygon fill="#666666" stroke="#666666" points="0,-82 0,-82 124,-82 124,-82 0,-82"/>
 <polygon fill="#666666" stroke="#666666" points="0,-66 0,-66 124,-66 124,-66 0,-66"/>

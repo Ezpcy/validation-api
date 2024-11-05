@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Start ConfigWatcher." alt="" coords="5,83,250,111"/>
 <area shape="rect" id="Node000002" href="$classvalidation__api_1_1ConfigService.html#a72b9695e86a85502ea559e009a878e4c" title="getConfigs method" alt="" coords="300,5,511,50"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,80,298,52,299,57,187,85"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title=" " alt="" coords="298,75,513,119"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title="Reads a file." alt="" coords="298,75,513,119"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,94,282,94,282,100,250,100"/>
 <area shape="rect" id="Node000005" href="$ConfigWatcher_8cpp.html#af492780bc7786abac56fa242d4fc3045" title=" " alt="" coords="358,143,453,171"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="196,109,343,141,342,146,195,114"/>

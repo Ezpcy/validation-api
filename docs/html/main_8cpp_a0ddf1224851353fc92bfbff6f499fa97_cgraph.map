@@ -1,15 +1,7 @@
 <map id="main" name="main">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,114,60,142"/>
-<area shape="rect" id="Node000002" href="$classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78" title="Start ConfigWatcher." alt="" coords="108,83,352,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,121,121,111,122,116,61,126"/>
-<area shape="rect" id="Node000007" href="$namespacevalidation__api.html#add9de92f1283937ab6d7688462f67c3c" title="Sets up and configures the logger using spdlog." alt="" coords="151,135,309,179"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="60,129,136,140,135,146,60,134"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigService.html#a72b9695e86a85502ea559e009a878e4c" title="getConfigs method" alt="" coords="403,5,613,50"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,80,400,52,402,57,289,85"/>
-<area shape="rect" id="Node000004" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title=" " alt="" coords="400,75,615,119"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="353,94,384,94,384,100,353,100"/>
-<area shape="rect" id="Node000006" href="$ConfigWatcher_8cpp.html#af492780bc7786abac56fa242d4fc3045" title=" " alt="" coords="461,143,555,171"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="301,109,353,120,446,141,445,146,351,125,300,114"/>
-<area shape="rect" id="Node000005" href="$classvalidation__api_1_1ConfigService.html#a8fee54d1f3f5eb92a17c3ecd72780f00" title="getConfigs method" alt="" coords="663,75,874,119"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="616,94,648,94,648,100,616,100"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,60,76"/>
+<area shape="rect" id="Node000002" href="$namespacevalidation__api.html#add9de92f1283937ab6d7688462f67c3c" title="Sets up and configures the logger using spdlog." alt="" coords="122,5,280,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,54,107,44,108,50,61,59"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ValidationServer.html#a666522eafc9b935cae058688df4f7f9d" title="Stop the server." alt="" coords="108,75,294,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,65,93,72,92,77,60,70"/>
 </map>

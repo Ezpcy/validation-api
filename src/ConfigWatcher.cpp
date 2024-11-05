@@ -122,8 +122,8 @@ bool ConfigWatcher::setup() {
  *
  * @return * void
  */
+
 void ConfigWatcher::run() {
-  // Add watch to the directory
   watch_descriptor_ = inotify_add_watch(inotify_fd_, path_.c_str(),
                                         IN_MODIFY | IN_CREATE | IN_DELETE);
   if (watch_descriptor_ < 0) {
@@ -132,30 +132,27 @@ void ConfigWatcher::run() {
     return;
   }
 
-  // Buffer for reading inotify events
   constexpr size_t EVENT_SIZE = sizeof(inotify_event);
   constexpr size_t BUF_LEN = 1024 * (EVENT_SIZE + 16);
   char buffer[BUF_LEN];
 
   std::unordered_map<std::string, std::chrono::steady_clock::time_point>
       event_times;
-  constexpr auto DEBOUNCEinTERVAL = std::chrono::milliseconds(100);
+  constexpr auto DEBOUNCE_INTERVAL =
+      std::chrono::milliseconds(200);  // Adjusted interval
 
-  // Use poll to avoid blocking indefinitely
   struct pollfd fds;
   fds.fd = inotify_fd_;
   fds.events = POLLIN;
 
-  // Loop to read inotify events
   while (running_) {
     semaphore.acquire();
-    int poll_result = poll(&fds, 1, 1000);  // Timeout after 1000 ms
+    int poll_result = poll(&fds, 1, 1000);
     if (poll_result < 0) {
       logger_->error("Config watcher poll failed.");
       semaphore.release();
       return;
     } else if (poll_result == 0) {
-      // Timeout - check if we should continue running
       semaphore.release();
       continue;
     }
@@ -172,8 +169,21 @@ void ConfigWatcher::run() {
       while (count < no_of_event) {
         struct inotify_event *event = (struct inotify_event *)&buffer[count];
         if (event->len) {
-          std::string action;
           std::string file_name = event->name;
+
+          // Debounce check
+          auto now = std::chrono::steady_clock::now();
+          auto last_time_it = event_times.find(file_name);
+          if (last_time_it != event_times.end()) {
+            auto time_diff = now - last_time_it->second;
+            if (time_diff < DEBOUNCE_INTERVAL) {
+              count += EVENT_SIZE + event->len;
+              continue;  // Skip duplicate events within the debounce interval
+            }
+          }
+          event_times[file_name] = now;
+
+          std::string action;
           if (event->mask & IN_CREATE) {
             action = "created";
             read_file(file_name);
@@ -183,25 +193,14 @@ void ConfigWatcher::run() {
               std::string configName = fileAssocation_[file_name];
               service_.deleteConfig(configName);
               fileAssocation_.erase(file_name);
+              event_times.erase(file_name);  // Remove from event_times
             }
           } else if (event->mask & IN_MODIFY) {
             action = "modified";
             read_file(file_name);
           }
-          auto now = std::chrono::steady_clock::now();
-
-          auto last_time_it = event_times.find(file_name);
-          if (last_time_it != event_times.end()) {
-            auto time_diff = now - last_time_it->second;
-            if (time_diff < DEBOUNCEinTERVAL) {
-              // Debounce - skip this event
-              count += EVENT_SIZE + event->len;
-              continue;
-            }
-          }
 
           callback_(file_name, action);
-          event_times[file_name] = now;
         }
         count += EVENT_SIZE + event->len;
       }

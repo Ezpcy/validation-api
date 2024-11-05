@@ -8,7 +8,9 @@ class \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}}
 class \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}}
 \begin{DoxyCompactList}\small\item\em Class to watch for changes in a directory. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1IService}{IService}}
-\begin{DoxyCompactList}\small\item\em Interface for all services. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interface for all services. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classvalidation__api_1_1ValidationServer}{Validation\+Server}}
+\begin{DoxyCompactList}\small\item\em Class for exposing the application to the network @detail This class uses the {\ttfamily boost\+::asio library} to create a server on a specified port. This network API will be used to communicate with clients. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,8 +29,7 @@ bool \mbox{\hyperlink{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c
 
 Sets up and configures the logger using spdlog. 
 
-This function initializes the logger with a file sink and a console sink. It ensures thread-\/safe access and supports multi-\/threaded logging. Here is the caller graph for this function\+:
-\nopagebreak
+This function initializes the logger with a file sink and a console sink. It ensures thread-\/safe access and supports multi-\/threaded logging. Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

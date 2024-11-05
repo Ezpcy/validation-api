@@ -1,0 +1,306 @@
+\doxysection{validation\+\_\+api\+::Validation\+Server Class Reference}
+\hypertarget{classvalidation__api_1_1ValidationServer}{}\label{classvalidation__api_1_1ValidationServer}\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+
+
+Class for exposing the application to the network @detail This class uses the {\ttfamily boost\+::asio library} to create a server on a specified port. This network API will be used to communicate with clients.  
+
+
+
+
+{\ttfamily \#include $<$Validation\+Server.\+hpp$>$}
+
+
+
+Inheritance diagram for validation\+\_\+api\+::Validation\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classvalidation__api_1_1ValidationServer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for validation\+\_\+api\+::Validation\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a36098376f43a053f42d163d77a893e89}{Validation\+Server}} (boost\+::asio\+::io\+\_\+context \&io\+\_\+context, short port, \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}} \&config\+Service, short max\+Connections)
+\item 
+\mbox{\hyperlink{classvalidation__api_1_1ValidationServer_af7984f7e7c6eca3e68b09a0857859520}{\texorpdfstring{$\sim$}{\string~}\+Validation\+Server}} () override
+\item 
+bool \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_aee6d6d3e85ff6a2ca7a476f15e341aa8}{setup}} () override
+\begin{DoxyCompactList}\small\item\em Setup the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df}{run}} () override
+\begin{DoxyCompactList}\small\item\em Start the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a666522eafc9b935cae058688df4f7f9d}{stop}} () override
+\begin{DoxyCompactList}\small\item\em Stop the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvalidation__api_1_1IService}{validation\+\_\+api\+::\+IService}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764}{\texorpdfstring{$\sim$}{\string~}\+IService}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor to ensure proper cleanup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215}{accept}} (std\+::shared\+\_\+ptr$<$ boost\+::asio\+::ip\+::tcp\+::socket $>$ socket)
+\begin{DoxyCompactList}\small\item\em Accept a connection @detail This function is called when a connection is accepted. It will try to find the associated configuration, convert the request to a json object, and start validating it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a59c4a313effe28cc0acca7b8bb3a26e4}{async\+Writer}} (const std\+::string \&response, std\+::shared\+\_\+ptr$<$ boost\+::asio\+::ip\+::tcp\+::socket $>$ socket)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a9246f1e3e88c29f1de1d967095538ba7}{running\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Running flag. @detail Flag to indicate if the server is running. The flag is stored as an atomic bool. \end{DoxyCompactList}\item 
+boost\+::asio\+::io\+\_\+context \& \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a381ee307f47949ee3031b674bdfb6776}{io\+\_\+context\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The io\+\_\+context object @detail The io\+\_\+context object is used to perform asynchronous operations. \end{DoxyCompactList}\item 
+boost\+::asio\+::ip\+::tcp\+::acceptor \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_adb06468f4130a28beb181eb5aaf77869}{acceptor\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The acceptor object @detail The acceptor object is used to listen for incoming connection requests. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}} \& \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a755b8ab5e31b58ef272556e84475cabf}{service\+\_\+}}
+\begin{DoxyCompactList}\small\item\em A reference to the \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} object @detail The \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} object is used to retrieve the configuration. \end{DoxyCompactList}\item 
+std\+::counting\+\_\+semaphore \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a55596c86d27d93e87d08adaef97067ac}{semaphore\+\_\+}}
+\begin{DoxyCompactList}\small\item\em A semaphore to control the number of connections @detail The semaphore is used to control the number of connections that the server can handle. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a2982ad6c1a06d52bfc70b1fa6cd2b504}{logger\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Logger object @detail The logger object is used to log messages to the console and log files. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ boost\+::asio\+::executor\+\_\+work\+\_\+guard$<$ boost\+::asio\+::io\+\_\+context\+::executor\+\_\+type $>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a39bca29a5178b64d6354754b7b153ab4}{work\+Guard\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Workguard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for exposing the application to the network @detail This class uses the {\ttfamily boost\+::asio library} to create a server on a specified port. This network API will be used to communicate with clients. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classvalidation__api_1_1ValidationServer_a36098376f43a053f42d163d77a893e89}\label{classvalidation__api_1_1ValidationServer_a36098376f43a053f42d163d77a893e89} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!ValidationServer@{ValidationServer}}
+\index{ValidationServer@{ValidationServer}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{ValidationServer()}{ValidationServer()}}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Validation\+Server\+::\+Validation\+Server (\begin{DoxyParamCaption}\item[{boost\+::asio\+::io\+\_\+context \&}]{io\+\_\+context,  }\item[{short}]{port,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}} \&}]{config\+Service,  }\item[{short}]{max\+Connections }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_a36098376f43a053f42d163d77a893e89_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ValidationServer_af7984f7e7c6eca3e68b09a0857859520}\label{classvalidation__api_1_1ValidationServer_af7984f7e7c6eca3e68b09a0857859520} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!````~ValidationServer@{\texorpdfstring{$\sim$}{\string~}ValidationServer}}
+\index{````~ValidationServer@{\texorpdfstring{$\sim$}{\string~}ValidationServer}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ValidationServer()}{\string~ValidationServer()}}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Validation\+Server\+::\texorpdfstring{$\sim$}{\string~}\+Validation\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_af7984f7e7c6eca3e68b09a0857859520_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215}\label{classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!accept@{accept}}
+\index{accept@{accept}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+Server\+::accept (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ boost\+::asio\+::ip\+::tcp\+::socket $>$}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Accept a connection @detail This function is called when a connection is accepted. It will try to find the associated configuration, convert the request to a json object, and start validating it. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ValidationServer_a59c4a313effe28cc0acca7b8bb3a26e4}\label{classvalidation__api_1_1ValidationServer_a59c4a313effe28cc0acca7b8bb3a26e4} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!asyncWriter@{asyncWriter}}
+\index{asyncWriter@{asyncWriter}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{asyncWriter()}{asyncWriter()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+Server\+::async\+Writer (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{response,  }\item[{std\+::shared\+\_\+ptr$<$ boost\+::asio\+::ip\+::tcp\+::socket $>$}]{socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_a59c4a313effe28cc0acca7b8bb3a26e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df}\label{classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!run@{run}}
+\index{run@{run}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+Server\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Start the server. 
+
+
+
+Implements \mbox{\hyperlink{classvalidation__api_1_1IService_a5b9b0bb70e360af3dd2c9bb1239f2a20}{validation\+\_\+api\+::\+IService}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ValidationServer_aee6d6d3e85ff6a2ca7a476f15e341aa8}\label{classvalidation__api_1_1ValidationServer_aee6d6d3e85ff6a2ca7a476f15e341aa8} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!setup@{setup}}
+\index{setup@{setup}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::\+Validation\+Server\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Setup the server. 
+
+\begin{DoxyReturn}{Returns}
+true if the server is setup successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classvalidation__api_1_1IService_a5e79d17ea6ca3b5bb8661b70f5aaa7b6}{validation\+\_\+api\+::\+IService}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_aee6d6d3e85ff6a2ca7a476f15e341aa8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1ValidationServer_a666522eafc9b935cae058688df4f7f9d}\label{classvalidation__api_1_1ValidationServer_a666522eafc9b935cae058688df4f7f9d} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!stop@{stop}}
+\index{stop@{stop}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+Server\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stop the server. 
+
+
+
+Implements \mbox{\hyperlink{classvalidation__api_1_1IService_ab9e9658a3495101ae5fada236110e399}{validation\+\_\+api\+::\+IService}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1ValidationServer_a666522eafc9b935cae058688df4f7f9d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classvalidation__api_1_1ValidationServer_adb06468f4130a28beb181eb5aaf77869}\label{classvalidation__api_1_1ValidationServer_adb06468f4130a28beb181eb5aaf77869} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!acceptor\_@{acceptor\_}}
+\index{acceptor\_@{acceptor\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{acceptor\_}{acceptor\_}}
+{\footnotesize\ttfamily boost\+::asio\+::ip\+::tcp\+::acceptor validation\+\_\+api\+::\+Validation\+Server\+::acceptor\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The acceptor object @detail The acceptor object is used to listen for incoming connection requests. 
+
+\Hypertarget{classvalidation__api_1_1ValidationServer_a381ee307f47949ee3031b674bdfb6776}\label{classvalidation__api_1_1ValidationServer_a381ee307f47949ee3031b674bdfb6776} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!io\_context\_@{io\_context\_}}
+\index{io\_context\_@{io\_context\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{io\_context\_}{io\_context\_}}
+{\footnotesize\ttfamily boost\+::asio\+::io\+\_\+context\& validation\+\_\+api\+::\+Validation\+Server\+::io\+\_\+context\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The io\+\_\+context object @detail The io\+\_\+context object is used to perform asynchronous operations. 
+
+\Hypertarget{classvalidation__api_1_1ValidationServer_a2982ad6c1a06d52bfc70b1fa6cd2b504}\label{classvalidation__api_1_1ValidationServer_a2982ad6c1a06d52bfc70b1fa6cd2b504} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!logger\_@{logger\_}}
+\index{logger\_@{logger\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{logger\_}{logger\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$spdlog\+::logger$>$ validation\+\_\+api\+::\+Validation\+Server\+::logger\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Logger object @detail The logger object is used to log messages to the console and log files. 
+
+\Hypertarget{classvalidation__api_1_1ValidationServer_a9246f1e3e88c29f1de1d967095538ba7}\label{classvalidation__api_1_1ValidationServer_a9246f1e3e88c29f1de1d967095538ba7} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!running\_@{running\_}}
+\index{running\_@{running\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{running\_}{running\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ validation\+\_\+api\+::\+Validation\+Server\+::running\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Running flag. @detail Flag to indicate if the server is running. The flag is stored as an atomic bool. 
+
+\Hypertarget{classvalidation__api_1_1ValidationServer_a55596c86d27d93e87d08adaef97067ac}\label{classvalidation__api_1_1ValidationServer_a55596c86d27d93e87d08adaef97067ac} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!semaphore\_@{semaphore\_}}
+\index{semaphore\_@{semaphore\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{semaphore\_}{semaphore\_}}
+{\footnotesize\ttfamily std\+::counting\+\_\+semaphore validation\+\_\+api\+::\+Validation\+Server\+::semaphore\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A semaphore to control the number of connections @detail The semaphore is used to control the number of connections that the server can handle. 
+
+\Hypertarget{classvalidation__api_1_1ValidationServer_a755b8ab5e31b58ef272556e84475cabf}\label{classvalidation__api_1_1ValidationServer_a755b8ab5e31b58ef272556e84475cabf} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!service\_@{service\_}}
+\index{service\_@{service\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{service\_}{service\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}}\& validation\+\_\+api\+::\+Validation\+Server\+::service\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A reference to the \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} object @detail The \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} object is used to retrieve the configuration. 
+
+\Hypertarget{classvalidation__api_1_1ValidationServer_a39bca29a5178b64d6354754b7b153ab4}\label{classvalidation__api_1_1ValidationServer_a39bca29a5178b64d6354754b7b153ab4} 
+\index{validation\_api::ValidationServer@{validation\_api::ValidationServer}!workGuard\_@{workGuard\_}}
+\index{workGuard\_@{workGuard\_}!validation\_api::ValidationServer@{validation\_api::ValidationServer}}
+\doxysubsubsection{\texorpdfstring{workGuard\_}{workGuard\_}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ boost\+::asio\+::executor\+\_\+work\+\_\+guard$<$boost\+::asio\+::io\+\_\+context\+::executor\+\_\+type$>$ $>$ validation\+\_\+api\+::\+Validation\+Server\+::work\+Guard\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Workguard. 
+
+Keeps the server by pretending that there is work to do 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/validation-\/api/\mbox{\hyperlink{ValidationServer_8hpp}{Validation\+Server.\+hpp}}\item 
+src/\mbox{\hyperlink{ValidationServer_8cpp}{Validation\+Server.\+cpp}}\end{DoxyCompactItemize}

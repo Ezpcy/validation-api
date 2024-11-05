@@ -223,6 +223,33 @@ src/Logger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/Logger.cpp.s
 .PHONY : src/Logger.cpp.s
 
+src/ValidationServer.o: src/ValidationServer.cpp.o
+.PHONY : src/ValidationServer.o
+
+# target to build an object file
+src/ValidationServer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/ValidationServer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/ValidationServer.cpp.o
+.PHONY : src/ValidationServer.cpp.o
+
+src/ValidationServer.i: src/ValidationServer.cpp.i
+.PHONY : src/ValidationServer.i
+
+# target to preprocess a source file
+src/ValidationServer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/ValidationServer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/ValidationServer.cpp.i
+.PHONY : src/ValidationServer.cpp.i
+
+src/ValidationServer.s: src/ValidationServer.cpp.s
+.PHONY : src/ValidationServer.s
+
+# target to generate assembly for a file
+src/ValidationServer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/validation-api.dir/build.make CMakeFiles/validation-api.dir/src/ValidationServer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/src/ValidationServer.cpp.s
+.PHONY : src/ValidationServer.cpp.s
+
 src/lib/ErrorBuilder.o: src/lib/ErrorBuilder.cpp.o
 .PHONY : src/lib/ErrorBuilder.o
 
@@ -400,6 +427,30 @@ tests/LoggerTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/LoggerTest.cpp.s
 .PHONY : tests/LoggerTest.cpp.s
 
+tests/ValidationServerTest.o: tests/ValidationServerTest.cpp.o
+.PHONY : tests/ValidationServerTest.o
+
+# target to build an object file
+tests/ValidationServerTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ValidationServerTest.cpp.o
+.PHONY : tests/ValidationServerTest.cpp.o
+
+tests/ValidationServerTest.i: tests/ValidationServerTest.cpp.i
+.PHONY : tests/ValidationServerTest.i
+
+# target to preprocess a source file
+tests/ValidationServerTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ValidationServerTest.cpp.i
+.PHONY : tests/ValidationServerTest.cpp.i
+
+tests/ValidationServerTest.s: tests/ValidationServerTest.cpp.s
+.PHONY : tests/ValidationServerTest.s
+
+# target to generate assembly for a file
+tests/ValidationServerTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/ValidationServerTest.cpp.s
+.PHONY : tests/ValidationServerTest.cpp.s
+
 tests/ValidationTest.o: tests/ValidationTest.cpp.o
 .PHONY : tests/ValidationTest.o
 
@@ -443,6 +494,9 @@ help:
 	@echo "... src/Logger.o"
 	@echo "... src/Logger.i"
 	@echo "... src/Logger.s"
+	@echo "... src/ValidationServer.o"
+	@echo "... src/ValidationServer.i"
+	@echo "... src/ValidationServer.s"
 	@echo "... src/lib/ErrorBuilder.o"
 	@echo "... src/lib/ErrorBuilder.i"
 	@echo "... src/lib/ErrorBuilder.s"
@@ -464,6 +518,9 @@ help:
 	@echo "... tests/LoggerTest.o"
 	@echo "... tests/LoggerTest.i"
 	@echo "... tests/LoggerTest.s"
+	@echo "... tests/ValidationServerTest.o"
+	@echo "... tests/ValidationServerTest.i"
+	@echo "... tests/ValidationServerTest.s"
 	@echo "... tests/ValidationTest.o"
 	@echo "... tests/ValidationTest.i"
 	@echo "... tests/ValidationTest.s"

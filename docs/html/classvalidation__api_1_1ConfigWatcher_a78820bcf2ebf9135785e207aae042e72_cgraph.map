@@ -1,5 +1,5 @@
 <map id="validation_api::ConfigWatcher::read_file" name="validation_api::ConfigWatcher::read_file">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,221,50"/>
+<area shape="rect" id="Node000001" title="Reads a file." alt="" coords="5,5,221,50"/>
 <area shape="rect" id="Node000002" href="$classvalidation__api_1_1ConfigService.html#a8fee54d1f3f5eb92a17c3ecd72780f00" title="getConfigs method" alt="" coords="269,5,479,50"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,25,253,25,253,30,221,30"/>
 </map>

@@ -10,13 +10,15 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Build type" FORCE)
 endif()
 
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native -flto -funroll-loops")
+
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
 
 # Set Boost multithreading support
 set(Boost_USE_MULTITHREAD ON)
 
-# set the toolchain based on the build type
+# # set the toolchain based on the build type
 # if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 #   set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/Debug/generators/conan_toolchain.cmake")
 # elseif(CMAKE_BUILD_TYPE STREQUAL "Release")

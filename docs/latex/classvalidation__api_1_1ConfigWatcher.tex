@@ -42,21 +42,18 @@ using \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a3c875eeff66dd9e457
 \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_aa5d21697f9480b92ba184e0f006952cc}{\texorpdfstring{$\sim$}{\string~}\+Config\+Watcher}} () override
 \begin{DoxyCompactList}\small\item\em Destroy the validation api\+::\+Config\+Watcher\+::\+Config\+Watcher object and close the inotify instance. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a78820bcf2ebf9135785e207aae042e72}{read\+\_\+file}} (const std\+::string \&file\+\_\+name)
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvalidation__api_1_1IService}{validation\+\_\+api\+::\+IService}}}
-\begin{DoxyCompactItemize}
-\item 
-virtual \mbox{\hyperlink{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764}{\texorpdfstring{$\sim$}{\string~}\+IService}} ()=default
-\begin{DoxyCompactList}\small\item\em Virtual destructor to ensure proper cleanup. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsubsection*{Private Member Functions}
-\begin{DoxyCompactItemize}
-\item 
+\begin{DoxyCompactList}\small\item\em Reads a file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{run}} () override
 \begin{DoxyCompactList}\small\item\em Start \doxylink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{setup}} () override
 \begin{DoxyCompactList}\small\item\em Setup the \doxylink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}{stop}} () override
 \begin{DoxyCompactList}\small\item\em Stop the \doxylink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classvalidation__api_1_1IService}{validation\+\_\+api\+::\+IService}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classvalidation__api_1_1IService_adea7c6d0eea21cb0329a782dc57a8764}{\texorpdfstring{$\sim$}{\string~}\+IService}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor to ensure proper cleanup. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,8 +67,8 @@ boost\+::asio\+::io\+\_\+context \& \mbox{\hyperlink{classvalidation__api_1_1Con
 \begin{DoxyCompactList}\small\item\em io\+\_\+context\+\_\+ reference \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ae4dbdae438f59175c85acabeb2bd3cd2}{path\+\_\+}}
 \begin{DoxyCompactList}\small\item\em Path to the directory to watch. \end{DoxyCompactList}\item 
-std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ad98b8cebd27bfad442c546123607ff6b}{running}}
-\begin{DoxyCompactList}\small\item\em running flag \end{DoxyCompactList}\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac14d49fde81facaa14c7b9ca4bd57ca4}{running\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Running flag. \end{DoxyCompactList}\item 
 boost\+::thread \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_adb88f94ae7ab290eb012333eb53132ea}{watcher\+Thread}}
 \begin{DoxyCompactList}\small\item\em watcher\+Thread \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9948f9813022a0466710f91815c955ba}{inotify\+\_\+fd\+\_\+}}
@@ -140,8 +137,7 @@ Here is the call graph for this function\+:
 
 Destroy the validation api\+::\+Config\+Watcher\+::\+Config\+Watcher object and close the inotify instance. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -157,6 +153,15 @@ Here is the call graph for this function\+:
 \doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
 {\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::read\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+name }\end{DoxyParamCaption})}
 
+
+
+Reads a file. 
+
+Reads and validates a file expecting a Xml configuration 
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & \\
+\hline
+\end{DoxyParams}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -177,7 +182,7 @@ Here is the caller graph for this function\+:
 \index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!run@{run}}
 \index{run@{run}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -214,7 +219,7 @@ Here is the caller graph for this function\+:
 \index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!setup@{setup}}
 \index{setup@{setup}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
 \doxysubsubsection{\texorpdfstring{setup()}{setup()}}
-{\footnotesize\ttfamily bool validation\+\_\+api\+::\+Config\+Watcher\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::\+Config\+Watcher\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -241,8 +246,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -253,7 +257,7 @@ Here is the caller graph for this function\+:
 \index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!stop@{stop}}
 \index{stop@{stop}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
 \doxysubsubsection{\texorpdfstring{stop()}{stop()}}
-{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [private]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -263,8 +267,7 @@ This function stops the watcher thread and closes the inotify watcher.
 
 Implements \mbox{\hyperlink{classvalidation__api_1_1IService_ab9e9658a3495101ae5fada236110e399}{validation\+\_\+api\+::\+IService}}.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -326,15 +329,15 @@ Reference to the logger object..
 
 Path to the directory to watch. 
 
-The path to the directory to watch for changes. The path is stored as a string. \Hypertarget{classvalidation__api_1_1ConfigWatcher_ad98b8cebd27bfad442c546123607ff6b}\label{classvalidation__api_1_1ConfigWatcher_ad98b8cebd27bfad442c546123607ff6b} 
-\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!running@{running}}
-\index{running@{running}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
-\doxysubsubsection{\texorpdfstring{running}{running}}
-{\footnotesize\ttfamily std\+::atomic$<$bool$>$ validation\+\_\+api\+::\+Config\+Watcher\+::running\hspace{0.3cm}{\ttfamily [private]}}
+The path to the directory to watch for changes. The path is stored as a string. \Hypertarget{classvalidation__api_1_1ConfigWatcher_ac14d49fde81facaa14c7b9ca4bd57ca4}\label{classvalidation__api_1_1ConfigWatcher_ac14d49fde81facaa14c7b9ca4bd57ca4} 
+\index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!running\_@{running\_}}
+\index{running\_@{running\_}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
+\doxysubsubsection{\texorpdfstring{running\_}{running\_}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ validation\+\_\+api\+::\+Config\+Watcher\+::running\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
-running flag 
+Running flag. 
 
 Flag to indicate if the watcher is running. The flag is stored as an atomic bool. \Hypertarget{classvalidation__api_1_1ConfigWatcher_a2ed415d6d1c866b60ec2b3a486ea4e51}\label{classvalidation__api_1_1ConfigWatcher_a2ed415d6d1c866b60ec2b3a486ea4e51} 
 \index{validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}!service\_@{service\_}}

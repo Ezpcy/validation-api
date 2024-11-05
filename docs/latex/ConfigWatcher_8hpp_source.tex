@@ -21,33 +21,32 @@
 \DoxyCodeLine{00024\ }
 \DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a78820bcf2ebf9135785e207aae042e72}{read\_file}}(\textcolor{keyword}{const}\ std::string\ \&file\_name);}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00028\ \ \ std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a20ad20b9d8ea72bd718d485a482dd1f1}{fileAssocation\_}};}
-\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a3c875eeff66dd9e457cd4220f3370758}{Callback}}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ae11f9d493d6e4cf27847957846643445}{callback\_}};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{ConfigService}}\ \&\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a2ed415d6d1c866b60ec2b3a486ea4e51}{service\_}};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{run}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{setup}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{run}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{setup}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}{stop}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a20ad20b9d8ea72bd718d485a482dd1f1}{fileAssocation\_}};}
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a3c875eeff66dd9e457cd4220f3370758}{Callback}}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ae11f9d493d6e4cf27847957846643445}{callback\_}};}
 \DoxyCodeLine{00051\ }
-\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac67b7bc5802f99796c903d2fdac92648}{stop}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00064\ \ \ boost::asio::io\_context\ \&\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9a0f05a132922085cf88045ff4b6bff6}{io\_context\_}};}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00071\ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ae4dbdae438f59175c85acabeb2bd3cd2}{path\_}};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00078\ \ \ std::atomic<bool>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ad98b8cebd27bfad442c546123607ff6b}{running}};}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00085\ \ \ boost::thread\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_adb88f94ae7ab290eb012333eb53132ea}{watcherThread}};}
-\DoxyCodeLine{00086\ }
-\DoxyCodeLine{00087\ \ \ \textcolor{comment}{//\ Inotify\ variables\ fd\ =\ file\ descriptor}}
-\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9948f9813022a0466710f91815c955ba}{inotify\_fd\_}};}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a70cfa8b686d447b9f667164fd256a04c}{watch\_descriptor\_}};}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00105\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_aa2e16a64de4b4a667a5fe99420eb5de6}{logger\_}};}
-\DoxyCodeLine{00106\ \};}
-\DoxyCodeLine{00107\ \}\ \ \textcolor{comment}{//\ namespace\ validation\_api}}
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{ConfigService}}\ \&\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a2ed415d6d1c866b60ec2b3a486ea4e51}{service\_}};}
+\DoxyCodeLine{00063\ \ \ boost::asio::io\_context\ \&\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9a0f05a132922085cf88045ff4b6bff6}{io\_context\_}};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ae4dbdae438f59175c85acabeb2bd3cd2}{path\_}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00077\ \ \ std::atomic<bool>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ac14d49fde81facaa14c7b9ca4bd57ca4}{running\_}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00084\ \ \ boost::thread\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_adb88f94ae7ab290eb012333eb53132ea}{watcherThread}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//\ Inotify\ variables\ fd\ =\ file\ descriptor}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a9948f9813022a0466710f91815c955ba}{inotify\_fd\_}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a70cfa8b686d447b9f667164fd256a04c}{watch\_descriptor\_}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00104\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_aa2e16a64de4b4a667a5fe99420eb5de6}{logger\_}};}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ \}\ \ \textcolor{comment}{//\ namespace\ validation\_api}}
 
 \end{DoxyCode}

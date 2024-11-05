@@ -19,7 +19,6 @@ class ValidationServer : public IService {
 
   ~ValidationServer() override;
 
- private:
   /**
    * @brief Setup the server
    * @return true if the server is setup successfully, false
@@ -33,24 +32,25 @@ class ValidationServer : public IService {
   void run() override;
 
   /**
+   * @brief Stop the server
+   */
+  void stop() override;
+
+ private:
+  /**
    * @brief Accept a connection
    * @detail This function is called when a connection is accepted. It will try
    * to find the associated configuration, convert the request to a json object,
    * and start validating it
    */
-  void accept(boost::asio::ip::tcp::socket socket);
+  void accept(std::shared_ptr<boost::asio::ip::tcp::socket> socket);
 
   /*
    * @brief Write to the socket
    * @detail Write messages to the socket in a asynchronous way
    */
   void asyncWriter(const std::string& response,
-                   boost::asio::ip::tcp::socket& socket);
-
-  /**
-   * @brief Stop the server
-   */
-  void stop() override;
+                   std::shared_ptr<boost::asio::ip::tcp::socket> socket);
 
   /**
    * @brief Running flag.

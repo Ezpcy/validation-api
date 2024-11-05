@@ -30,14 +30,6 @@ Validation::Validation(const json &jsonObj, const pugi::xml_node &doc,
                                     : spdlog::default_logger()) {
   // Extract nulloptions from xml
   extractNullOptions(config_);
-  for (const auto &option : nullOptions_) {
-    std::cout << "key: " << option.first << '\n';
-
-    for (const auto fields : option.second) {
-      std::cout << "key: " << fields.first << " value: " << fields.second
-                << '\n';
-    }
-  }
 };
 
 Validation::~Validation() = default;
@@ -84,7 +76,6 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     for (const auto &[key, value] : it) {
       // Look up the values and compare them
       json nullCheckField = findJsonField(request_, key);
-      std::cout << nullCheckField << " " << value << '\n';
       // If the uuid is set then this field can be empty
       if (nullCheckField == value) {
         canBeEmpty = true;
