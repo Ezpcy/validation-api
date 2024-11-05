@@ -28,15 +28,15 @@ class Validation {
   /*
    * @brief validate a field
    * @details validates one field with the help of the xml field
-   * @params optName optValue reqValue fieldName errors
+   * @param optName optValue reqValue fieldName errors
    */
   void validate(const pugi::xml_node &node, const nlohmann::json &reqValue,
                 const std::string &fieldName);
 
   /**
    * @brief Extract the NullOptions from a XML Configuration
-   * @params doc erros nulloptions
-   * @detail Recursive function to find and parse all "Null" field values into
+   * @param doc erros nulloptions
+   * @details Recursive function to find and parse all "Null" field values into
    * the NullOptions field
    */
   void extractNullOptions(const pugi::xml_node &doc);
@@ -46,14 +46,14 @@ class Validation {
 
   /**
    * @brief Traverse through the json object and validate the fields.
-   * @params jsonObj
+   * @param node
    * @details Validates the json with passed xml doc object.
    * */
   void traverseAndValidate(const pugi::xml_node &node);
 
   /**
    * @brief Start the validation process
-   * @params jsonObj doc error
+   * @param jsonObj doc error
    * @details Start the validation process by setting up NullOptions and calling
    * the traverseAndValidate function.
    */

@@ -1,5 +1,5 @@
 <map id="validation_api::ValidationServer::accept" name="validation_api::ValidationServer::accept">
-<area shape="rect" id="Node000001" title="Accept a connection @detail This function is called when a connection is accepted...." alt="" coords="474,29,660,74"/>
+<area shape="rect" id="Node000001" title="Accept a connection." alt="" coords="474,29,660,74"/>
 <area shape="rect" id="Node000002" href="$classvalidation__api_1_1ValidationServer.html#ad67c7031c85ea1cd6eb84f6b01c424df" title="Start the server." alt="" coords="240,29,426,74"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="459,54,426,54,426,49,459,49"/>
 <area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="371,17,357,10,333,8,311,10,297,15,292,21,293,28,288,29,287,19,294,10,310,5,333,3,358,5,373,12"/>

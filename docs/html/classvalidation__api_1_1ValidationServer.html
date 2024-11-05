@@ -84,7 +84,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Class for exposing the application to the network @detail This class uses the <code>boost::asio library</code> to create a server on a specified port. This network API will be used to communicate with clients.  
+<p>Class for exposing the application to the network.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ValidationServer_8hpp_source.html">ValidationServer.hpp</a>&gt;</code></p>
@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a7f5c5252fa7a28bef0345e6248139215" id="r_a7f5c5252fa7a28bef0345e6248139215"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f5c5252fa7a28bef0345e6248139215">accept</a> (std::shared_ptr&lt; boost::asio::ip::tcp::socket &gt; socket)</td></tr>
-<tr class="memdesc:a7f5c5252fa7a28bef0345e6248139215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a connection @detail This function is called when a connection is accepted. It will try to find the associated configuration, convert the request to a json object, and start validating it.  <br /></td></tr>
+<tr class="memdesc:a7f5c5252fa7a28bef0345e6248139215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a connection.  <br /></td></tr>
 <tr class="separator:a7f5c5252fa7a28bef0345e6248139215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59c4a313effe28cc0acca7b8bb3a26e4" id="r_a59c4a313effe28cc0acca7b8bb3a26e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59c4a313effe28cc0acca7b8bb3a26e4">asyncWriter</a> (const std::string &amp;response, std::shared_ptr&lt; boost::asio::ip::tcp::socket &gt; socket)</td></tr>
 <tr class="separator:a59c4a313effe28cc0acca7b8bb3a26e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,29 +130,30 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9246f1e3e88c29f1de1d967095538ba7" id="r_a9246f1e3e88c29f1de1d967095538ba7"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9246f1e3e88c29f1de1d967095538ba7">running_</a></td></tr>
-<tr class="memdesc:a9246f1e3e88c29f1de1d967095538ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running flag. @detail Flag to indicate if the server is running. The flag is stored as an atomic bool.  <br /></td></tr>
+<tr class="memdesc:a9246f1e3e88c29f1de1d967095538ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running flag.  <br /></td></tr>
 <tr class="separator:a9246f1e3e88c29f1de1d967095538ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a381ee307f47949ee3031b674bdfb6776" id="r_a381ee307f47949ee3031b674bdfb6776"><td class="memItemLeft" align="right" valign="top">boost::asio::io_context &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a381ee307f47949ee3031b674bdfb6776">io_context_</a></td></tr>
-<tr class="memdesc:a381ee307f47949ee3031b674bdfb6776"><td class="mdescLeft">&#160;</td><td class="mdescRight">The io_context object @detail The io_context object is used to perform asynchronous operations.  <br /></td></tr>
+<tr class="memdesc:a381ee307f47949ee3031b674bdfb6776"><td class="mdescLeft">&#160;</td><td class="mdescRight">The io_context object.  <br /></td></tr>
 <tr class="separator:a381ee307f47949ee3031b674bdfb6776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb06468f4130a28beb181eb5aaf77869" id="r_adb06468f4130a28beb181eb5aaf77869"><td class="memItemLeft" align="right" valign="top">boost::asio::ip::tcp::acceptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb06468f4130a28beb181eb5aaf77869">acceptor_</a></td></tr>
-<tr class="memdesc:adb06468f4130a28beb181eb5aaf77869"><td class="mdescLeft">&#160;</td><td class="mdescRight">The acceptor object @detail The acceptor object is used to listen for incoming connection requests.  <br /></td></tr>
+<tr class="memdesc:adb06468f4130a28beb181eb5aaf77869"><td class="mdescLeft">&#160;</td><td class="mdescRight">The acceptor object.  <br /></td></tr>
 <tr class="separator:adb06468f4130a28beb181eb5aaf77869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a755b8ab5e31b58ef272556e84475cabf" id="r_a755b8ab5e31b58ef272556e84475cabf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classvalidation__api_1_1ConfigService.html">ConfigService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a755b8ab5e31b58ef272556e84475cabf">service_</a></td></tr>
-<tr class="memdesc:a755b8ab5e31b58ef272556e84475cabf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object @detail The <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object is used to retrieve the configuration.  <br /></td></tr>
+<tr class="memdesc:a755b8ab5e31b58ef272556e84475cabf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object.  <br /></td></tr>
 <tr class="separator:a755b8ab5e31b58ef272556e84475cabf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55596c86d27d93e87d08adaef97067ac" id="r_a55596c86d27d93e87d08adaef97067ac"><td class="memItemLeft" align="right" valign="top">std::counting_semaphore&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55596c86d27d93e87d08adaef97067ac">semaphore_</a></td></tr>
-<tr class="memdesc:a55596c86d27d93e87d08adaef97067ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">A semaphore to control the number of connections @detail The semaphore is used to control the number of connections that the server can handle.  <br /></td></tr>
+<tr class="memdesc:a55596c86d27d93e87d08adaef97067ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">A semaphore to control the number of connections.  <br /></td></tr>
 <tr class="separator:a55596c86d27d93e87d08adaef97067ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2982ad6c1a06d52bfc70b1fa6cd2b504" id="r_a2982ad6c1a06d52bfc70b1fa6cd2b504"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2982ad6c1a06d52bfc70b1fa6cd2b504">logger_</a></td></tr>
-<tr class="memdesc:a2982ad6c1a06d52bfc70b1fa6cd2b504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logger object @detail The logger object is used to log messages to the console and log files.  <br /></td></tr>
+<tr class="memdesc:a2982ad6c1a06d52bfc70b1fa6cd2b504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logger object.  <br /></td></tr>
 <tr class="separator:a2982ad6c1a06d52bfc70b1fa6cd2b504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39bca29a5178b64d6354754b7b153ab4" id="r_a39bca29a5178b64d6354754b7b153ab4"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; boost::asio::executor_work_guard&lt; boost::asio::io_context::executor_type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39bca29a5178b64d6354754b7b153ab4">workGuard_</a></td></tr>
 <tr class="memdesc:a39bca29a5178b64d6354754b7b153ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Workguard.  <br /></td></tr>
 <tr class="separator:a39bca29a5178b64d6354754b7b153ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class for exposing the application to the network @detail This class uses the <code>boost::asio library</code> to create a server on a specified port. This network API will be used to communicate with clients. </p>
+<div class="textblock"><p>Class for exposing the application to the network. </p>
+<p>This class uses the <code>boost::asio library</code> to create a server on a specified port. This network API will be used to communicate with clients. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a36098376f43a053f42d163d77a893e89" name="a36098376f43a053f42d163d77a893e89"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36098376f43a053f42d163d77a893e89">&#9670;&#160;</a></span>ValidationServer()</h2>
@@ -185,7 +186,7 @@ Private Attributes</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ValidationServer_a36098376f43a053f42d163d77a893e89_cgraph.svg" width="924" height="160"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ValidationServer_a36098376f43a053f42d163d77a893e89_cgraph.svg" width="1907" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -244,11 +245,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Accept a connection @detail This function is called when a connection is accepted. It will try to find the associated configuration, convert the request to a json object, and start validating it. </p>
+<p>Accept a connection. </p>
+<p>This function is called when a connection is accepted. It will try to find the associated configuration, convert the request to a json object, and start validating it </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215_cgraph.svg" width="456" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ValidationServer_a7f5c5252fa7a28bef0345e6248139215_cgraph.svg" width="1438" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -321,7 +323,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df_cgraph.svg" width="690" height="126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ValidationServer_ad67c7031c85ea1cd6eb84f6b01c424df_cgraph.svg" width="1672" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -421,7 +423,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>The acceptor object @detail The acceptor object is used to listen for incoming connection requests. </p>
+<p>The acceptor object. </p>
+<p>The acceptor object is used to listen for incoming connection requests. </p>
 
 </div>
 </div>
@@ -445,7 +448,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>The io_context object @detail The io_context object is used to perform asynchronous operations. </p>
+<p>The io_context object. </p>
+<p>The io_context object is used to perform asynchronous operations. </p>
 
 </div>
 </div>
@@ -469,7 +473,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Logger object @detail The logger object is used to log messages to the console and log files. </p>
+<p>Logger object. </p>
+<p>The logger object is used to log messages to the console and log files </p>
 
 </div>
 </div>
@@ -493,7 +498,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Running flag. @detail Flag to indicate if the server is running. The flag is stored as an atomic bool. </p>
+<p>Running flag. </p>
+<p>Flag to indicate if the server is running. The flag is stored as an atomic bool. </p>
 
 </div>
 </div>
@@ -517,7 +523,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>A semaphore to control the number of connections @detail The semaphore is used to control the number of connections that the server can handle. </p>
+<p>A semaphore to control the number of connections. </p>
+<p>The semaphore is used to control the number of connections that the server can handle </p>
 
 </div>
 </div>
@@ -541,7 +548,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>A reference to the <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object @detail The <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object is used to retrieve the configuration. </p>
+<p>A reference to the <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object. </p>
+<p>The <a class="el" href="classvalidation__api_1_1ConfigService.html" title="ConfigService class.">ConfigService</a> object is used to retrieve the configuration </p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 <map id="validation_api::ValidationServer" name="validation_api::ValidationServer">
-<area shape="rect" id="Node000001" title="Class for exposing the application to the network @detail This class uses the boost::asio library to ..." alt="" coords="5,187,183,529"/>
+<area shape="rect" id="Node000001" title="Class for exposing the application to the network." alt="" coords="5,187,183,529"/>
 <area shape="rect" id="Node000002" href="$classvalidation__api_1_1IService.html" title="Interface for all services." alt="" coords="11,5,177,139"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,153,97,187,91,187,91,153"/>
 </map>

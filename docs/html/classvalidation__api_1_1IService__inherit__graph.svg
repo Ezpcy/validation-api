@@ -86,7 +86,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classvalidation__api_1_1ValidationServer.html" target="_top" xlink:title="Class for exposing the application to the network @detail This class uses the boost::asio library to ...">
+<g id="a_Node000003"><a xlink:href="classvalidation__api_1_1ValidationServer.html" target="_top" xlink:title="Class for exposing the application to the network.">
 <polygon fill="white" stroke="none" points="306,-266.5 173,-266.5 173,-9.5 306,-9.5 306,-266.5"/>
 <text text-anchor="start" x="177.62" y="-253" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
 <text text-anchor="start" x="223.75" y="-240.25" font-family="Helvetica,sans-Serif" font-size="10.00">Server</text>

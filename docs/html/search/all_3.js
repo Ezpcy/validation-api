@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['errors_0',['Errors',['../classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d',1,'validation_api::ConfigService']]],
-  ['example_1',['Example',['../index.html#autotoc_md9',1,'']]]
+  ['default_0',['Default',['../namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67',1,'validation_api']]],
+  ['deleteconfig_1',['deleteConfig',['../classvalidation__api_1_1ConfigService.html#a72b9695e86a85502ea559e009a878e4c',1,'validation_api::ConfigService']]],
+  ['description_2',['Description',['../index.html#autotoc_md2',1,'']]]
 ];

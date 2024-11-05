@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['iservice_2ehpp_0',['IService.hpp',['../IService_8hpp.html',1,'']]]
+  ['errorbuilder_2ecpp_0',['ErrorBuilder.cpp',['../ErrorBuilder_8cpp.html',1,'']]],
+  ['errorbuilder_2ehpp_1',['ErrorBuilder.hpp',['../ErrorBuilder_8hpp.html',1,'']]]
 ];

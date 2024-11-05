@@ -1,0 +1,14 @@
+<map id="validation_api::validateXmlConfig" name="validation_api::validateXmlConfig">
+<area shape="rect" id="Node000001" title="Ensures valid Xml configuration." alt="" coords="5,117,180,162"/>
+<area shape="poly" id="edge6_Node000001_Node000001" title=" " alt="" coords="48,117,46,107,54,98,69,93,93,91,118,93,133,100,131,105,117,98,92,96,71,98,57,103,52,109,53,116"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title=" " alt="" coords="228,5,426,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,115,174,87,227,60,241,54,243,59,229,65,177,92,131,119"/>
+<area shape="rect" id="Node000003" href="$namespacevalidation__api.html#ac497c1198e4e7f0fe71ffbdb3e6beeaa" title="Convert string to float." alt="" coords="244,74,410,102"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,118,246,103,247,108,181,123"/>
+<area shape="rect" id="Node000004" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="230,126,424,154"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="180,137,214,137,214,142,180,142"/>
+<area shape="rect" id="Node000005" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title=" " alt="" coords="228,177,426,222"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="181,159,223,170,222,176,179,165"/>
+<area shape="rect" id="Node000006" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="240,246,414,274"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="121,160,170,197,229,232,243,238,241,243,226,237,167,201,118,164"/>
+</map>

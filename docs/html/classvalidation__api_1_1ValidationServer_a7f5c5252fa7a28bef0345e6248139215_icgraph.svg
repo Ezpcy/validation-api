@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Accept a connection @detail This function is called when a connection is accepted....">
+<g id="a_Node000001"><a xlink:title="Accept a connection.">
 <polygon fill="#999999" stroke="#666666" points="491.25,-33.5 351.5,-33.5 351.5,0 491.25,0 491.25,-33.5"/>
 <text text-anchor="start" x="359.5" y="-20" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
 <text text-anchor="middle" x="421.38" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">Server::accept</text>
