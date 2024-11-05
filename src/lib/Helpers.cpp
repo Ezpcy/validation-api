@@ -313,4 +313,12 @@ void validateXmlConfig(const pugi::xml_node& node,
   }
 }
 
+nlohmann::json errorsToJson(const ConfigService::Errors& errors) {
+  nlohmann::json res;
+  for (const auto& [key, value] : errors) {
+    res[key] = value;
+  }
+  return res;
+}
+
 }  // namespace validation_api

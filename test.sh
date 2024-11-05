@@ -12,4 +12,6 @@ elif [[ "$1" == "val" ]]; then
   ./tests --gtest_filter=ValidationTest.*
 elif [[ "$1" == "watch" ]];then
   ./tests --gtest_filter=FileWatcherTest.*
+elif [[ "$1" == "server" ]];then
+  ./tests --gtest_filter=ValidationServerTest.*
 fi

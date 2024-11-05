@@ -48,4 +48,9 @@ bool validateIban(const std::string &val);
 void validateXmlConfig(const pugi::xml_node &node,
                        validation_api::ConfigService::Errors &erros);
 
+/*
+ * @brief Creates a json object from ConfigService::Errors
+ */
+nlohmann::json errorsToJson(const ConfigService::Errors &errors);
+
 }  // namespace validation_api

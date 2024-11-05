@@ -47,11 +47,6 @@ class ValidationServer : public IService {
   void asyncWriter(const std::string& response,
                    boost::asio::ip::tcp::socket& socket);
 
-  /*
-   * @brief Creates a json object from ConfigService::Errors
-   */
-  nlohmann::json errorsToJson(const ConfigService::Errors& errors);
-
   /**
    * @brief Stop the server
    */

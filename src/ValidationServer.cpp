@@ -113,10 +113,4 @@ void ValidationServer::asyncWriter(const std::string& response,
       });
 }
 
-// HERE
-nlohmann::json errorsToJson(const ConfigService::Errors& errors) {
-  nlohmann::json res;
-  for (const auto [key, value] : errors) {
-  }
-}
 }  // namespace validation_api

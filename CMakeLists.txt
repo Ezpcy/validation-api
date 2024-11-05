@@ -39,6 +39,7 @@ add_executable(validation-api
   src/Logger.cpp
   src/ConfigWatcher.cpp
   src/ConfigService.cpp
+  src/ValidationServer.cpp
   src/lib/Helpers.cpp
   src/lib/Validation.cpp
   src/lib/ErrorBuilder.cpp
@@ -63,6 +64,7 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/src/Logger.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigWatcher.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigService.cpp
+    ${CMAKE_SOURCE_DIR}/src/ValidationServer.cpp
     ${CMAKE_SOURCE_DIR}/src/lib/Helpers.cpp
     ${CMAKE_SOURCE_DIR}/src/lib/Validation.cpp
     ${CMAKE_SOURCE_DIR}/src/lib/ErrorBuilder.cpp
@@ -73,6 +75,7 @@ set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/LoggerTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ConfigWatcherTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ConfigServiceTest.cpp
+    ${CMAKE_SOURCE_DIR}/tests/ValidationServerTest.cpp
     ${CMAKE_SOURCE_DIR}/tests/ValidationTest.cpp
 )
 
@@ -112,6 +115,11 @@ add_test(NAME ConfigServiceTest
 # For ValidationTest suite
 add_test(NAME ValidationTest
   COMMAND tests --gtest_filter=ValidationTest.*
+)
+ 
+# For ServerTest suite
+add_test(NAME ValidationServerTest
+  COMMAND tests --gtest_filter=ValidationServerTest.*
 )
  
  
