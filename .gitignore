@@ -9,4 +9,4 @@ configs
 plantuml.jar
 cmake_install.cmake
 CMakeUserPresets.json
-MakeFile
+Makefile
