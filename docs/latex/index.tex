@@ -2,31 +2,33 @@
 \hypertarget{index}{}\label{index}\index{Validation-\/api@{Validation-\/api}}
 \label{index_md_Readme}%
 \Hypertarget{index_md_Readme}%
- {\bfseries{Created by}}\+: Batu
+ \href{https://ezpcy.github.io/validation-api/}{\texttt{ Docs}}
+
+{\bfseries{Version}}\+: 0.\+5
 
 {\bfseries{Creation date}}\+: August 29, 2023 2\+:33 PM\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Code Structure}{Code Structure}}\label{index_autotoc_md1}
 
 \begin{DoxyItemize}
 \item \mbox{[}{\ttfamily src}\mbox{]} contains\+:
 \begin{DoxyItemize}
-\item \mbox{[}{\ttfamily lib}\mbox{]} module which contains some helper functions.
+\item \mbox{[}{\ttfamily lib}\mbox{]} module which contains some helper functions
 \begin{DoxyItemize}
-\item \mbox{[}{\ttfamily Helpers\mbox{]} collection of helper functions.}
-\item {\ttfamily \mbox{[}}Error\+Builder{\ttfamily \mbox{]} for building error messages.}
+\item \mbox{[}{\ttfamily Helpers}\mbox{]} collection of helper functions
+\item \mbox{[}{\ttfamily Error\+Builder}\mbox{]} for building error messages
 \end{DoxyItemize}
-\item {\ttfamily \mbox{[}}main{\ttfamily \mbox{]}.}
-\item {\ttfamily \mbox{[}}Config\+Service\mbox{]} for handling the configurations.
-\item \mbox{[}{\ttfamily Config\+Watcher}\mbox{]} for watching the configuration files.
-\item \mbox{[}{\ttfamily Logger}\mbox{]} for logging.
-\item \mbox{[}{\ttfamily Validation\+Server}\mbox{]} for handling the incoming connections.
+\item \mbox{[}{\ttfamily main}\mbox{]}
+\item \mbox{[}{\ttfamily Config\+Service}\mbox{]} for handling the configurations
+\item \mbox{[}{\ttfamily Config\+Watcher}\mbox{]} for watching the configuration files
+\item \mbox{[}{\ttfamily Logger}\mbox{]} for logging
+\item \mbox{[}{\ttfamily Validation\+Server}\mbox{]} for handling the incoming requests
 \end{DoxyItemize}
-\item \mbox{[}{\ttfamily include}\mbox{]} header files.
+\item \mbox{[}{\ttfamily include}\mbox{]} header files
 \end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Description}{Description}}\label{index_autotoc_md2}
-API to validate data from incoming network connections. The data must be in {\ttfamily JSON} format. The validation rules can be setup through a XML file, which can be modified at runtime. contains {\ttfamily structs}, {\ttfamily enums} and their associated functions; especially for reading and handling the XML configuration files.\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Pre-\/requisites}{Pre-\/requisites}}\label{index_autotoc_md3}
+At runtime configurable API to validate data from incoming network requests. The API will validate the incoming data based on the rules defined in XML files.\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Pre-\/requisites}{Pre-\/requisites}}\label{index_autotoc_md3}
 
 \begin{DoxyItemize}
 \item CMake
-\item Conan
+\item Conan (for installing dependencies)
 \item Linux
 \item C++ 20
 \end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md4}
@@ -35,7 +37,7 @@ Clone the repository and run {\ttfamily ./build.sh r} inside the root folder.
 
 \begin{DoxyItemize}
 \item This will read the configurations and run the API on {\ttfamily 127.\+0.\+0.\+1\+:8080}.
-\item If you want to create configuration folder run\+:
+\item If you want to create a configuration folder run\+:
 \end{DoxyItemize}
 
 
@@ -43,11 +45,7 @@ Clone the repository and run {\ttfamily ./build.sh r} inside the root folder.
 \DoxyCodeLine{./validation-\/api\ example}
 
 \end{DoxyCode}
-
-
-Connect to the API (can be done with Netcat or Telnet). The data, that has to be validated, must be in {\ttfamily JSON} format.
-
-The API gets the configurations from a folder named {\ttfamily configs}. The configurations are in {\ttfamily XML} format.\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{XML Configuration}{XML Configuration}}\label{index_autotoc_md5}
+\hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{XML Configuration}{XML Configuration}}\label{index_autotoc_md5}
 The XML configuration files should be stored inside the folder called {\ttfamily configs} next to the executable. The files can be modified at runtime and the changes will be reflected in the API.\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{XML Configuration Structure}{XML Configuration Structure}}\label{index_autotoc_md6}
 s Example of a field\+:
 
@@ -74,7 +72,7 @@ s Example of a field\+:
 \item {\ttfamily float}\+: Example\+: 123.\+45
 \item {\ttfamily date}\+: Example\+: "{}2023-\/08-\/29"{}
 \item {\ttfamily uuid}\+: Example\+: "{}550e8400-\/e29b-\/41d4-\/a716-\/446655440000"{}
-\item {\ttfamily email}
+\item {\ttfamily email} Example\+: "{}test@gmail.\+com"{}
 \item {\ttfamily boolean}\+: Example\+: true
 \item {\ttfamily ahv}\+: Example\+: "{}756.\+1234.\+5678.\+12"{} (you can generate a random AHV number here \href{https://www.uhutools.ch/ahv-nummer/de}{\texttt{ uhutools.\+ch}})
 \item {\ttfamily iban}\+: Example\+: "{}\+CH9300762011623852957"{}
@@ -131,6 +129,8 @@ With Null Nesting you can specify that a field can be null if other fields satis
 \begin{DoxyItemize}
 \item {\ttfamily Instution} can be null if {\ttfamily Type\+Of\+Provision} and {\ttfamily Profession} are not null and have the given {\ttfamily UUID}.
 \end{DoxyItemize}\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{Example}{Example}}\label{index_autotoc_md9}
+The API gets the configurations from a folder named {\ttfamily configs}. The configurations are in {\ttfamily XML} format.
+
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{<\textcolor{keywordtype}{Test}>}
@@ -167,7 +167,35 @@ This configuration file will validate the incoming data. The data must be in {\t
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\{"{}Test"{}:\ \{"{}Provision"{}:\ \{"{}ProvisionNumber"{}:\ 12345678901234,\ "{}CostApproval"{}:\ true\},\ "{}TypeOfProvision"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{},\ "{}Profession"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{},\ "{}SalaryType"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/426614174000"{},\ "{}DateFrom"{}:\ "{}2020-\/01-\/01"{},\ "{}DateTo"{}:\ "{}2020-\/12-\/31"{},\ "{}InsuranceProductConfig"{}:\ \{"{}TarifNumber"{}:\ 1234567,\ "{}BillingCategory"{}:\ "{}Test"{},\ "{}Price"{}:\ 123.45,\ "{}Units"{}:\ 3\},\ "{}Institution"{}:\ "{}"{},\ "{}Schule"{}:\ "{}Test"{},\ "{}LehrgangsBezeichnung"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/426614174000"{},\ "{}Ort"{}:\ "{}"{}\}\}}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}Test"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}Provision"{}:\ \{\ "{}ProvisionNumber"{}:\ 12345678901234,\ "{}CostApproval"{}:\ true\ \},}
+\DoxyCodeLine{\ \ \ \ "{}TypeOfProvision"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{},}
+\DoxyCodeLine{\ \ \ \ "{}Profession"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{},}
+\DoxyCodeLine{\ \ \ \ "{}SalaryType"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/426614174000"{},}
+\DoxyCodeLine{\ \ \ \ "{}DateFrom"{}:\ "{}2020-\/01-\/01"{},}
+\DoxyCodeLine{\ \ \ \ "{}DateTo"{}:\ "{}2020-\/12-\/31"{},}
+\DoxyCodeLine{\ \ \ \ "{}InsuranceProductConfig"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}TarifNumber"{}:\ 1234567,}
+\DoxyCodeLine{\ \ \ \ \ \ "{}BillingCategory"{}:\ "{}Test"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}Price"{}:\ 123.45,}
+\DoxyCodeLine{\ \ \ \ \ \ "{}Units"{}:\ 3}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}Institution"{}:\ "{}"{},}
+\DoxyCodeLine{\ \ \ \ "{}Schule"{}:\ "{}Test"{},}
+\DoxyCodeLine{\ \ \ \ "{}LehrgangsBezeichnung"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/426614174000"{},}
+\DoxyCodeLine{\ \ \ \ "{}Ort"{}:\ "{}"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Connect to the API (can be done with Netcat or Telnet). The incoming data, that has to be validated, must be in {\ttfamily JSON} format\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{telnet\ 127.0.0.1\ 8080}
 
 \end{DoxyCode}
 \hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Logs}{Logs}}\label{index_autotoc_md10}

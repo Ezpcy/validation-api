@@ -74,34 +74,35 @@ $(function() {
   <div class="headertitle"><div class="title">Validation-api </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_Readme"></a> <b>Created by</b>: Batu</p>
+<div class="textblock"><p><a class="anchor" id="md_Readme"></a> <a href="https://ezpcy.github.io/validation-api/">Docs</a></p>
+<p><b>Version</b>: 0.5</p>
 <p><b>Creation date</b>: August 29, 2023 2:33 PM</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Code Structure</h1>
 <ul>
 <li>[<code>src</code>] contains:<ul>
-<li>[<code>lib</code>] module which contains some helper functions.<ul>
-<li>[<code>Helpers] collection of helper functions.</code></li>
-<li><code>[</code>ErrorBuilder<code>] for building error messages.</code></li>
+<li>[<code>lib</code>] module which contains some helper functions<ul>
+<li>[<code>Helpers</code>] collection of helper functions</li>
+<li>[<code>ErrorBuilder</code>] for building error messages</li>
 </ul>
 </li>
-<li><code>[</code>main<code>].</code></li>
-<li><code>[</code>ConfigService] for handling the configurations.</li>
-<li>[<code>ConfigWatcher</code>] for watching the configuration files.</li>
-<li>[<code>Logger</code>] for logging.</li>
-<li>[<code>ValidationServer</code>] for handling the incoming connections.</li>
+<li>[<code>main</code>]</li>
+<li>[<code>ConfigService</code>] for handling the configurations</li>
+<li>[<code>ConfigWatcher</code>] for watching the configuration files</li>
+<li>[<code>Logger</code>] for logging</li>
+<li>[<code>ValidationServer</code>] for handling the incoming requests</li>
 </ul>
 </li>
-<li>[<code>include</code>] header files.</li>
+<li>[<code>include</code>] header files</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Description</h1>
-<p>API to validate data from incoming network connections. The data must be in <code>JSON</code> format. The validation rules can be setup through a XML file, which can be modified at runtime. contains <code>structs</code>, <code>enums</code> and their associated functions; especially for reading and handling the XML configuration files.</p>
+<p>At runtime configurable API to validate data from incoming network requests. The API will validate the incoming data based on the rules defined in XML files.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Pre-requisites</h1>
 <ul>
 <li>CMake</li>
-<li>Conan</li>
+<li>Conan (for installing dependencies)</li>
 <li>Linux</li>
 <li>C++ 20</li>
 </ul>
@@ -110,12 +111,10 @@ Installation</h1>
 <p>Clone the repository and run <code>./build.sh r</code> inside the root folder.</p>
 <ul>
 <li>This will read the configurations and run the API on <code>127.0.0.1:8080</code>.</li>
-<li>If you want to create configuration folder run:</li>
+<li>If you want to create a configuration folder run:</li>
 </ul>
 <div class="fragment"><div class="line">./validation-api example</div>
-</div><!-- fragment --><p>Connect to the API (can be done with Netcat or Telnet). The data, that has to be validated, must be in <code>JSON</code> format.</p>
-<p>The API gets the configurations from a folder named <code>configs</code>. The configurations are in <code>XML</code> format.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
 XML Configuration</h1>
 <p>The XML configuration files should be stored inside the folder called <code>configs</code> next to the executable. The files can be modified at runtime and the changes will be reflected in the API.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
@@ -134,7 +133,7 @@ XML Configuration Structure</h2>
 <li><code>float</code>: Example: 123.45</li>
 <li><code>date</code>: Example: "2023-08-29"</li>
 <li><code>uuid</code>: Example: "550e8400-e29b-41d4-a716-446655440000"</li>
-<li><code>email</code></li>
+<li><code>email</code> Example: "test@gmail.com"</li>
 <li><code>boolean</code>: Example: true</li>
 <li><code>ahv</code>: Example: "756.1234.5678.12" (you can generate a random AHV number here <a href="https://www.uhutools.ch/ahv-nummer/de">uhutools.ch</a>)</li>
 <li><code>iban</code>: Example: "CH9300762011623852957"</li>
@@ -175,6 +174,7 @@ Null Nesting</h2>
 </ul>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Example</h1>
+<p>The API gets the configurations from a folder named <code>configs</code>. The configurations are in <code>XML</code> format.</p>
 <div class="fragment"><div class="line">&lt;<span class="keywordtype">Test</span>&gt;</div>
 <div class="line">  &lt;<span class="keywordtype">Provision</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span>&gt;</div>
 <div class="line">    &lt;<span class="keywordtype">ProvisionNumber</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">eqLength</span>=<span class="stringliteral">&quot;14&quot;</span> /&gt;</div>
@@ -202,7 +202,28 @@ Example</h1>
 <div class="line">  &lt;<span class="keywordtype">Ort</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
 <div class="line">&lt;/<span class="keywordtype">Test</span>&gt;</div>
 </div><!-- fragment --><p>This configuration file will validate the incoming data. The data must be in <code>JSON</code> format. A valid request would look like this:</p>
-<div class="fragment"><div class="line">{&quot;Test&quot;: {&quot;Provision&quot;: {&quot;ProvisionNumber&quot;: 12345678901234, &quot;CostApproval&quot;: true}, &quot;TypeOfProvision&quot;: &quot;123e4567-e89b-12d3-a456-526614174000&quot;, &quot;Profession&quot;: &quot;123e4567-e89b-12d3-a456-226614174000&quot;, &quot;SalaryType&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;, &quot;DateFrom&quot;: &quot;2020-01-01&quot;, &quot;DateTo&quot;: &quot;2020-12-31&quot;, &quot;InsuranceProductConfig&quot;: {&quot;TarifNumber&quot;: 1234567, &quot;BillingCategory&quot;: &quot;Test&quot;, &quot;Price&quot;: 123.45, &quot;Units&quot;: 3}, &quot;Institution&quot;: &quot;&quot;, &quot;Schule&quot;: &quot;Test&quot;, &quot;LehrgangsBezeichnung&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;, &quot;Ort&quot;: &quot;&quot;}}</div>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  &quot;Test&quot;: {</div>
+<div class="line">    &quot;Provision&quot;: { &quot;ProvisionNumber&quot;: 12345678901234, &quot;CostApproval&quot;: true },</div>
+<div class="line">    &quot;TypeOfProvision&quot;: &quot;123e4567-e89b-12d3-a456-526614174000&quot;,</div>
+<div class="line">    &quot;Profession&quot;: &quot;123e4567-e89b-12d3-a456-226614174000&quot;,</div>
+<div class="line">    &quot;SalaryType&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;,</div>
+<div class="line">    &quot;DateFrom&quot;: &quot;2020-01-01&quot;,</div>
+<div class="line">    &quot;DateTo&quot;: &quot;2020-12-31&quot;,</div>
+<div class="line">    &quot;InsuranceProductConfig&quot;: {</div>
+<div class="line">      &quot;TarifNumber&quot;: 1234567,</div>
+<div class="line">      &quot;BillingCategory&quot;: &quot;Test&quot;,</div>
+<div class="line">      &quot;Price&quot;: 123.45,</div>
+<div class="line">      &quot;Units&quot;: 3</div>
+<div class="line">    },</div>
+<div class="line">    &quot;Institution&quot;: &quot;&quot;,</div>
+<div class="line">    &quot;Schule&quot;: &quot;Test&quot;,</div>
+<div class="line">    &quot;LehrgangsBezeichnung&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;,</div>
+<div class="line">    &quot;Ort&quot;: &quot;&quot;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Connect to the API (can be done with Netcat or Telnet). The incoming data, that has to be validated, must be in <code>JSON</code> format:</p>
+<div class="fragment"><div class="line">telnet 127.0.0.1 8080</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Logs</h1>
 <p>Information and error logs can be found within the <code>logs</code> folder (created at runtime). </p>
