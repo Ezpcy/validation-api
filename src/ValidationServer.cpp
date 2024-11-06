@@ -1,5 +1,6 @@
 #include <fmt/format.h>
 
+#include <boost/asio/steady_timer.hpp>
 #include <boost/asio/write.hpp>
 #include <string>
 #include <validation-api/ValidationServer.hpp>
@@ -74,9 +75,7 @@ void ValidationServer::run() {
       semaphore_.acquire();  // Acquire a semaphore slot for this connection
       boost::system::error_code ep_ec;
       auto endpoint = sharedSocket->remote_endpoint(ep_ec);
-      if (!ep_ec) {
-        logger_->info("Client connected: {}", endpoint);
-      } else {
+      if (ep_ec) {
         logger_->warn("Could not retrieve endpoint: {}", ep_ec.message());
       }
       accept(sharedSocket);  // Handle the client connection
@@ -110,13 +109,32 @@ void ValidationServer::stop() {
 void ValidationServer::accept(
     std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
   auto buffer = std::make_shared<boost::asio::streambuf>();
+  auto timer =
+      std::make_shared<boost::asio::steady_timer>(socket->get_executor());
+
+  // Setting the timeout timer
+  timer->expires_after(std::chrono::seconds(60));
+
+  // Start the timeout timer
+  timer->async_wait([this, socket, timer](const boost::system::error_code& ec) {
+    if (!ec) {
+      // timer expired
+      logger_->warn("{}: Connection timed out due to inactivity.",
+                    socket->remote_endpoint());
+      socket->close();
+      semaphore_.release();
+    }
+  });
 
   // Start an async read operation for the client request
   boost::asio::async_read_until(
       *socket, *buffer, "\n",
-      [this, buffer, socket](boost::system::error_code ec,
-                             std::size_t length) mutable {
+      [this, buffer, socket, timer](boost::system::error_code ec,
+                                    std::size_t length) mutable {
         if (!ec) {
+          // Reset timer
+          timer->cancel();
+
           std::istream is(buffer.get());
           std::string requestStr;
           std::getline(is, requestStr);
