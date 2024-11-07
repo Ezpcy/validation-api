@@ -49,11 +49,11 @@ Clone the repository and run {\ttfamily ./build.sh r} inside the root folder.
 \end{DoxyCode}
 \hypertarget{index_autotoc_md5}{}\doxysection{\texorpdfstring{XML Configuration}{XML Configuration}}\label{index_autotoc_md5}
 The XML configuration files should be stored inside the folder called {\ttfamily configs} next to the executable. The files can be modified at runtime and the changes will be reflected in the API.\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{XML Configuration Structure}{XML Configuration Structure}}\label{index_autotoc_md6}
-s Example of a field\+:
+Example of a field\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{<\textcolor{keywordtype}{Telephone}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}string"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ \textcolor{keyword}{max}=\textcolor{stringliteral}{"{}10"{}}/>}
+\DoxyCodeLine{<\textcolor{keywordtype}{Telephone}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}string"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ \textcolor{keyword}{eq}=\textcolor{stringliteral}{"{}10"{}}/>}
 
 \end{DoxyCode}
 
@@ -62,7 +62,7 @@ s Example of a field\+:
 \begin{DoxyItemize}
 \item {\ttfamily type}\+: The type of the field
 \item {\ttfamily not\+Null}\+: If the field can be null or not
-\item {\ttfamily max}\+: The length of the field it must be equal to
+\item {\ttfamily eq}\+: The length of the field it must be equal to
 \end{DoxyItemize}
 
 {\bfseries{Types}}\+:
@@ -131,13 +131,11 @@ With Null Nesting you can specify that a field can be null if other fields satis
 \begin{DoxyItemize}
 \item {\ttfamily Instution} can be null if {\ttfamily Type\+Of\+Provision} and {\ttfamily Profession} are not null and have the given {\ttfamily UUID}.
 \end{DoxyItemize}\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{Example}{Example}}\label{index_autotoc_md9}
-The API gets the configurations from a folder named {\ttfamily configs}. The configurations are in {\ttfamily XML} format.
-
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{<\textcolor{keywordtype}{Test}>}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{Provision}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}>}
-\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{ProvisionNumber}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Number"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ \textcolor{keyword}{eqLength}=\textcolor{stringliteral}{"{}14"{}}\ />}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{ProvisionNumber}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Number"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ \textcolor{keyword}{eq}=\textcolor{stringliteral}{"{}14"{}}\ />}
 \DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{CostApproval}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Boolean"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
 \DoxyCodeLine{\ \ </\textcolor{keywordtype}{Provision}>}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{TypeOfProvision}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
@@ -146,7 +144,7 @@ The API gets the configurations from a folder named {\ttfamily configs}. The con
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{DateFrom}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Date"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{DateTo}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Date"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{InsuranceProductConfig}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}>}
-\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{TarifNumber}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Number"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ \textcolor{keyword}{eqLength}=\textcolor{stringliteral}{"{}7"{}}\ />}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{TarifNumber}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Number"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ \textcolor{keyword}{eq}=\textcolor{stringliteral}{"{}7"{}}\ />}
 \DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{BillingCategory}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}String"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
 \DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{Price}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Float"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
 \DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{Units}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Number"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
@@ -157,9 +155,9 @@ The API gets the configurations from a folder named {\ttfamily configs}. The con
 \DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{Profession}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{}}\ />}
 \DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{Null}>}
 \DoxyCodeLine{\ \ </\textcolor{keywordtype}{Institution}>}
-\DoxyCodeLine{\ \ <\textcolor{keywordtype}{Schule}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}String"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
-\DoxyCodeLine{\ \ <\textcolor{keywordtype}{LehrgangsBezeichnung}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
-\DoxyCodeLine{\ \ <\textcolor{keywordtype}{Ort}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{School}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}String"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{ApprenticeshipType}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
+\DoxyCodeLine{\ \ <\textcolor{keywordtype}{Location}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
 \DoxyCodeLine{</\textcolor{keywordtype}{Test}>}
 
 \end{DoxyCode}
@@ -193,7 +191,7 @@ This configuration file will validate the incoming data. The data must be in {\t
 \end{DoxyCode}
 
 
-Connect to the API (can be done with Netcat or Telnet). The incoming data, that has to be validated, must be in {\ttfamily JSON} format\+:
+Connect to the API (can be done with Netcat or Telnet)\+:
 
 
 \begin{DoxyCode}{0}

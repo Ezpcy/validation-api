@@ -27,7 +27,6 @@ set(Boost_USE_MULTITHREAD ON)
 
 
 # Find Boost, spdlog, and gtest components
-find_package(fmt REQUIRED)
 find_package(Boost REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)

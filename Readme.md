@@ -52,12 +52,12 @@ The XML configuration files should be stored inside the folder called `configs` 
 Example of a field:
 
 ```xml
- <Telephone type="string" notNull="true" max="10"/>
+ <Telephone type="string" notNull="true" eq="10"/>
 ```
 
 - `type`: The type of the field
 - `notNull`: If the field can be null or not
-- `max`: The length of the field it must be equal to
+- `eq`: The length of the field it must be equal to
 
 **Types**:
 
@@ -117,12 +117,10 @@ With Null Nesting you can specify that a field can be null if other fields satis
 
 ## Example
 
-The API gets the configurations from a folder named `configs`. The configurations are in `XML` format.
-
 ```xml
 <Test>
   <Provision notNull="true">
-    <ProvisionNumber type="Number" notNull="true" eqLength="14" />
+    <ProvisionNumber type="Number" notNull="true" eq="14" />
     <CostApproval type="Boolean" notNull="true" />
   </Provision>
   <TypeOfProvision type="Uuid" notNull="false" />
@@ -131,7 +129,7 @@ The API gets the configurations from a folder named `configs`. The configuration
   <DateFrom type="Date" notNull="true" />
   <DateTo type="Date" notNull="true" />
   <InsuranceProductConfig notNull="true">
-    <TarifNumber type="Number" notNull="true" eqLength="7" />
+    <TarifNumber type="Number" notNull="true" eq="7" />
     <BillingCategory type="String" notNull="true" />
     <Price type="Float" notNull="true" />
     <Units type="Number" notNull="true" />
@@ -142,9 +140,9 @@ The API gets the configurations from a folder named `configs`. The configuration
       <Profession uuid="123e4567-e89b-12d3-a456-226614174000" />
     </Null>
   </Institution>
-  <Schule type="String" notNull="false" />
-  <LehrgangsBezeichnung type="Uuid" notNull="false" />
-  <Ort type="Uuid" notNull="false" />
+  <School type="String" notNull="false" />
+  <ApprenticeshipType type="Uuid" notNull="false" />
+  <Location type="Uuid" notNull="false" />
 </Test>
 ```
 
@@ -173,7 +171,7 @@ This configuration file will validate the incoming data. The data must be in `JS
 }
 ```
 
-Connect to the API (can be done with Netcat or Telnet). The incoming data, that has to be validated, must be in `JSON` format:
+Connect to the API (can be done with Netcat or Telnet): 
 
 ```bash
 telnet 127.0.0.1 8080
