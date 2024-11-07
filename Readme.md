@@ -122,7 +122,7 @@ The API gets the configurations from a folder named `configs`. The configuration
 ```xml
 <Test>
   <Provision notNull="true">
-    <ProvisionNumber type="Number" notNull="true" eqLength="14" />
+    <ProvisionNumber type="Number" notNull="true" eq="14" />
     <CostApproval type="Boolean" notNull="true" />
   </Provision>
   <TypeOfProvision type="Uuid" notNull="false" />
@@ -131,7 +131,7 @@ The API gets the configurations from a folder named `configs`. The configuration
   <DateFrom type="Date" notNull="true" />
   <DateTo type="Date" notNull="true" />
   <InsuranceProductConfig notNull="true">
-    <TarifNumber type="Number" notNull="true" eqLength="7" />
+    <TarifNumber type="Number" notNull="true" eq="7" />
     <BillingCategory type="String" notNull="true" />
     <Price type="Float" notNull="true" />
     <Units type="Number" notNull="true" />
