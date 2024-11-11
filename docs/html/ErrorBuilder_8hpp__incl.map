@@ -1,7 +1,5 @@
 <map id="include/lib/ErrorBuilder.hpp" name="include/lib/ErrorBuilder.hpp">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,5,202,33"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="23,81,88,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,35,75,69,70,67,93,32"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="112,81,191,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="114,32,137,67,132,69,110,35"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="71,81,136,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,34,106,65,101,65,101,34"/>
 </map>

@@ -4,34 +4,34 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <format>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00004\ }
-\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ \{}
-\DoxyCodeLine{00008\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{Default}},}
-\DoxyCodeLine{00009\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba8180c46099f957f51b2bc31f7f0f5c42}{ValidationError}},}
-\DoxyCodeLine{00010\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba25d5eb853600229eb2a90e5575a90378}{ValidationEmptyError}},}
-\DoxyCodeLine{00011\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baffdb4b4dc2e3087490b8c8be8b6ba50d}{XmlConfigError}},}
-\DoxyCodeLine{00012\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15}{XmlConfigValueError}},}
-\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871}{XmlConfigEmptyError}}}
-\DoxyCodeLine{00014\ \};}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder}{ErrorBuilder}}\ \{}
-\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_ab16f7263e7b08555543a45fd533a9938}{ErrorBuilder}}(\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ type\ =\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{ErrorType::Default}},}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fieldName\ =\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder}{ErrorBuilder}}\ \&\mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_a014e70c2f2b4a2ee879c363b4a2174f2}{setSecondMsg}}(\textcolor{keyword}{const}\ std::string\ \&msgMain\ =\ \textcolor{stringliteral}{"{}"{}},}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&msgSec\ =\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ std::pair<std::string,\ std::string>\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_a84327bbfe6c61e7be6966acc41ba6087}{build}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_aeca1f9210552f4f80b39fef5e0dc60b1}{type\_}};}
-\DoxyCodeLine{00028\ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_aa58e853e28fbe5c22ba9e012900ce082}{firstMsg\_}};}
-\DoxyCodeLine{00029\ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_a8befdade6650fa068b254a2e1e575c42}{secondMsg\_}};}
-\DoxyCodeLine{00030\ \};}
-\DoxyCodeLine{00031\ \}\ \ \textcolor{comment}{//\ namespace\ validation\_api}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ \{}
+\DoxyCodeLine{00013\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{Default}},}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba8180c46099f957f51b2bc31f7f0f5c42}{ValidationError}},}
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba25d5eb853600229eb2a90e5575a90378}{ValidationEmptyError}},}
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baffdb4b4dc2e3087490b8c8be8b6ba50d}{XmlConfigError}},}
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15}{XmlConfigValueError}},}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871}{XmlConfigEmptyError}},}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448}{JsonMissingField}}}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder}{ErrorBuilder}}\ \{}
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_ab16f7263e7b08555543a45fd533a9938}{ErrorBuilder}}(\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ type\ =\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{ErrorType::Default}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fieldName\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder}{ErrorBuilder}}\ \&\mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_a014e70c2f2b4a2ee879c363b4a2174f2}{setSecondMsg}}(\textcolor{keyword}{const}\ std::string\ \&msgMain\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&msgSec\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ std::pair<std::string,\ std::string>\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_a84327bbfe6c61e7be6966acc41ba6087}{build}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_aeca1f9210552f4f80b39fef5e0dc60b1}{type\_}};}
+\DoxyCodeLine{00053\ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_aa58e853e28fbe5c22ba9e012900ce082}{firstMsg\_}};}
+\DoxyCodeLine{00054\ \ \ std::string\ \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder_a8befdade6650fa068b254a2e1e575c42}{secondMsg\_}};}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ \}\ \ \textcolor{comment}{//\ namespace\ validation\_api}}
 
 \end{DoxyCode}

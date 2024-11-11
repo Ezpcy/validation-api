@@ -12,28 +12,28 @@
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Traverse through the json object and validate the fields.">
-<polygon fill="#999999" stroke="#666666" points="139.75,-194.12 0,-194.12 0,-160.62 139.75,-160.62 139.75,-194.12"/>
-<text text-anchor="start" x="8" y="-180.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
-<text text-anchor="middle" x="69.88" y="-167.88" font-family="Helvetica,sans-Serif" font-size="10.00">::traverseAndValidate</text>
+<polygon fill="#999999" stroke="#666666" points="139.75,-240.12 0,-240.12 0,-206.62 139.75,-206.62 139.75,-240.12"/>
+<text text-anchor="start" x="8" y="-226.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
+<text text-anchor="middle" x="69.88" y="-213.88" font-family="Helvetica,sans-Serif" font-size="10.00">::traverseAndValidate</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node1 -->
-<g id="edge3_Node000001_Node000001" class="edge">
+<g id="edge4_Node000001_Node000001" class="edge">
 <title>Node1&#45;&gt;Node1</title>
-<g id="a_edge3_Node000001_Node000001"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M38.28,-194.54C32.91,-203.74 43.44,-212.12 69.88,-212.12 84.74,-212.12 94.58,-209.47 99.39,-205.51"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="102.76,-206.5 101.19,-196.03 95.88,-205.2 102.76,-206.5"/>
+<g id="a_edge4_Node000001_Node000001"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M38.28,-240.54C32.91,-249.74 43.44,-258.12 69.88,-258.12 84.74,-258.12 94.58,-255.47 99.39,-251.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="102.76,-252.5 101.19,-242.03 95.88,-251.2 102.76,-252.5"/>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classvalidation__api_1_1Validation.html#a2005828d7e475090ef5a895348bfb760" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="497.25,-292.12 357.5,-292.12 357.5,-258.62 497.25,-258.62 497.25,-292.12"/>
-<text text-anchor="start" x="365.5" y="-278.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
-<text text-anchor="middle" x="427.38" y="-265.88" font-family="Helvetica,sans-Serif" font-size="10.00">::findJsonField</text>
+<g id="a_Node000002"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" target="_top" xlink:title="Set the First Msg object.">
+<polygon fill="white" stroke="#666666" points="501.75,-310.12 353,-310.12 353,-276.62 501.75,-276.62 501.75,-310.12"/>
+<text text-anchor="start" x="361" y="-296.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
+<text text-anchor="middle" x="427.38" y="-283.88" font-family="Helvetica,sans-Serif" font-size="10.00">::build</text>
 </a>
 </g>
 </g>
@@ -41,64 +41,73 @@
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M133.21,-194.56C194.48,-211.45 287.99,-237.23 352.86,-255.11"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="351.79,-258.44 362.36,-257.73 353.65,-251.7 351.79,-258.44"/>
+<path fill="none" stroke="#63b8ff" d="M139.84,-236.95C197.44,-248.3 279.79,-264.51 341.44,-276.65"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="340.73,-280.08 351.22,-278.58 342.08,-273.21 340.73,-280.08"/>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="315.5,-172.12 175.75,-172.12 175.75,-138.62 315.5,-138.62 315.5,-172.12"/>
-<text text-anchor="start" x="183.75" y="-158.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
-<text text-anchor="middle" x="245.62" y="-145.88" font-family="Helvetica,sans-Serif" font-size="10.00">::validate</text>
+<g id="a_Node000003"><a xlink:href="classvalidation__api_1_1Validation.html#a2005828d7e475090ef5a895348bfb760" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="497.25,-240.12 357.5,-240.12 357.5,-206.62 497.25,-206.62 497.25,-240.12"/>
+<text text-anchor="start" x="365.5" y="-226.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
+<text text-anchor="middle" x="427.38" y="-213.88" font-family="Helvetica,sans-Serif" font-size="10.00">::findJsonField</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
-<g id="edge4_Node000001_Node000003" class="edge">
+<g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<g id="a_edge4_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M140.04,-168.62C147.96,-167.62 156.07,-166.59 164.12,-165.57"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="164.43,-169.06 173.91,-164.33 163.55,-162.11 164.43,-169.06"/>
-</a>
-</g>
-</g>
-<!-- Node2&#45;&gt;Node2 -->
-<g id="edge2_Node000002_Node000002" class="edge">
-<title>Node2&#45;&gt;Node2</title>
-<g id="a_edge2_Node000002_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M394.7,-292.54C389.15,-301.74 400.04,-310.12 427.38,-310.12 442.75,-310.12 452.92,-307.47 457.89,-303.51"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="461.26,-304.51 459.76,-294.02 454.39,-303.16 461.26,-304.51"/>
-</a>
-</g>
-</g>
-<!-- Node3&#45;&gt;Node2 -->
-<g id="edge6_Node000003_Node000002" class="edge">
-<title>Node3&#45;&gt;Node2</title>
-<g id="a_edge6_Node000003_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M263.85,-172.36C288.39,-196.27 332.54,-238.2 351.5,-249.38 353.94,-250.81 356.47,-252.18 359.06,-253.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="357.37,-256.57 367.91,-257.61 360.32,-250.22 357.37,-256.57"/>
+<g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M139.84,-223.38C198.86,-223.38 283.88,-223.38 345.98,-223.38"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="345.79,-226.88 355.79,-223.38 345.79,-219.88 345.79,-226.88"/>
 </a>
 </g>
 </g>
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="501.75,-240.12 353,-240.12 353,-206.62 501.75,-206.62 501.75,-240.12"/>
-<text text-anchor="start" x="361" y="-226.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
-<text text-anchor="middle" x="427.38" y="-213.88" font-family="Helvetica,sans-Serif" font-size="10.00">::build</text>
+<g id="a_Node000004"><a xlink:href="classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="315.5,-176.12 175.75,-176.12 175.75,-142.62 315.5,-142.62 315.5,-176.12"/>
+<text text-anchor="start" x="183.75" y="-162.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::Validation</text>
+<text text-anchor="middle" x="245.62" y="-149.88" font-family="Helvetica,sans-Serif" font-size="10.00">::validate</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node4 -->
-<g id="edge5_Node000003_Node000004" class="edge">
-<title>Node3&#45;&gt;Node4</title>
-<g id="a_edge5_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M288.3,-172.58C307.47,-180.36 330.56,-189.55 351.5,-197.38 355.92,-199.03 360.51,-200.7 365.13,-202.37"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="363.89,-205.65 374.49,-205.71 366.24,-199.05 363.89,-205.65"/>
+<!-- Node1&#45;&gt;Node4 -->
+<g id="edge5_Node000001_Node000004" class="edge">
+<title>Node1&#45;&gt;Node4</title>
+<g id="a_edge5_Node000001_Node000004"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M117.44,-206.22C138.96,-198.3 164.72,-188.81 187.41,-180.45"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="188.34,-183.84 196.51,-177.1 185.92,-177.27 188.34,-183.84"/>
+</a>
+</g>
+</g>
+<!-- Node3&#45;&gt;Node3 -->
+<g id="edge3_Node000003_Node000003" class="edge">
+<title>Node3&#45;&gt;Node3</title>
+<g id="a_edge3_Node000003_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M394.7,-240.54C389.15,-249.74 400.04,-258.12 427.38,-258.12 442.75,-258.12 452.92,-255.47 457.89,-251.51"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="461.26,-252.51 459.76,-242.02 454.39,-251.16 461.26,-252.51"/>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node2 -->
+<g id="edge6_Node000004_Node000002" class="edge">
+<title>Node4&#45;&gt;Node2</title>
+<g id="a_edge6_Node000004_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M258.97,-176.38C276.89,-199.93 312.26,-242.38 351.5,-267.38 353.62,-268.73 355.82,-270.02 358.08,-271.25"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="356.4,-274.32 366.91,-275.61 359.5,-268.05 356.4,-274.32"/>
+</a>
+</g>
+</g>
+<!-- Node4&#45;&gt;Node3 -->
+<g id="edge7_Node000004_Node000003" class="edge">
+<title>Node4&#45;&gt;Node3</title>
+<g id="a_edge7_Node000004_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M293.56,-176.53C311.65,-183.11 332.52,-190.64 351.5,-197.38 356.15,-199.02 360.96,-200.72 365.81,-202.42"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="364.38,-205.63 374.97,-205.63 366.69,-199.02 364.38,-205.63"/>
 </a>
 </g>
 </g>
@@ -106,36 +115,36 @@
 <g id="Node000005" class="node">
 <title>Node5</title>
 <g id="a_Node000005"><a xlink:href="namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="500.25,-188.75 354.5,-188.75 354.5,-168 500.25,-168 500.25,-188.75"/>
-<text text-anchor="middle" x="427.38" y="-175.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::isValidUuid</text>
+<polygon fill="white" stroke="#666666" points="500.25,-149.75 354.5,-149.75 354.5,-129 500.25,-129 500.25,-149.75"/>
+<text text-anchor="middle" x="427.38" y="-136.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::isValidUuid</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node5 -->
-<g id="edge7_Node000003_Node000005" class="edge">
-<title>Node3&#45;&gt;Node5</title>
-<g id="a_edge7_Node000003_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M315.86,-164.23C324.7,-165.36 333.81,-166.53 342.83,-167.69"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="342.33,-171.15 352.69,-168.95 343.22,-164.21 342.33,-171.15"/>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge8_Node000004_Node000005" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<g id="a_edge8_Node000004_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M315.86,-151.67C324.7,-150.69 333.81,-149.67 342.83,-148.67"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="343.14,-152.16 352.69,-147.57 342.36,-145.2 343.14,-152.16"/>
 </a>
 </g>
 </g>
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="501.75,-150.12 353,-150.12 353,-116.62 501.75,-116.62 501.75,-150.12"/>
-<text text-anchor="start" x="361" y="-136.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
-<text text-anchor="middle" x="427.38" y="-123.88" font-family="Helvetica,sans-Serif" font-size="10.00">::setSecondMsg</text>
+<g id="a_Node000006"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" target="_top" xlink:title="Set the First Msg object.">
+<polygon fill="white" stroke="#666666" points="501.75,-111.12 353,-111.12 353,-77.62 501.75,-77.62 501.75,-111.12"/>
+<text text-anchor="start" x="361" y="-97.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
+<text text-anchor="middle" x="427.38" y="-84.88" font-family="Helvetica,sans-Serif" font-size="10.00">::setSecondMsg</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node6 -->
-<g id="edge8_Node000003_Node000006" class="edge">
-<title>Node3&#45;&gt;Node6</title>
-<g id="a_edge8_Node000003_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M315.86,-146.9C324.25,-145.87 332.9,-144.82 341.48,-143.77"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="341.7,-147.27 351.2,-142.58 340.85,-140.32 341.7,-147.27"/>
+<!-- Node4&#45;&gt;Node6 -->
+<g id="edge9_Node000004_Node000006" class="edge">
+<title>Node4&#45;&gt;Node6</title>
+<g id="a_edge9_Node000004_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M292.23,-142.17C310.61,-135.3 332.03,-127.37 351.5,-120.38 356.14,-118.71 360.95,-117 365.79,-115.29"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="366.68,-118.68 374.95,-112.07 364.36,-112.08 366.68,-118.68"/>
 </a>
 </g>
 </g>
@@ -143,17 +152,17 @@
 <g id="Node000007" class="node">
 <title>Node7</title>
 <g id="a_Node000007"><a xlink:href="namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" target="_top" xlink:title="Converts string to all lowercase.">
-<polygon fill="white" stroke="#666666" points="492.38,-98.75 362.38,-98.75 362.38,-78 492.38,-78 492.38,-98.75"/>
-<text text-anchor="middle" x="427.38" y="-85.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::toLower</text>
+<polygon fill="white" stroke="#666666" points="492.38,-59.75 362.38,-59.75 362.38,-39 492.38,-39 492.38,-59.75"/>
+<text text-anchor="middle" x="427.38" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::toLower</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node7 -->
-<g id="edge9_Node000003_Node000007" class="edge">
-<title>Node3&#45;&gt;Node7</title>
-<g id="a_edge9_Node000003_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M279.99,-138.23C300.29,-128.27 326.95,-116.03 351.5,-107.38 356.74,-105.53 362.25,-103.78 367.8,-102.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="368.32,-105.64 377,-99.57 366.43,-98.9 368.32,-105.64"/>
+<!-- Node4&#45;&gt;Node7 -->
+<g id="edge10_Node000004_Node000007" class="edge">
+<title>Node4&#45;&gt;Node7</title>
+<g id="a_edge10_Node000004_Node000007"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M261.55,-142.26C280.45,-121.66 314.97,-87.47 351.5,-68.38 354.4,-66.86 357.42,-65.46 360.52,-64.17"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="361.7,-67.47 369.87,-60.71 359.27,-60.9 361.7,-67.47"/>
 </a>
 </g>
 </g>
@@ -161,17 +170,17 @@
 <g id="Node000008" class="node">
 <title>Node8</title>
 <g id="a_Node000008"><a xlink:href="namespacevalidation__api.html#aae32fd7a0b5886a49454679d46ed4bd1" target="_top" xlink:title="Validates Ahv string.">
-<polygon fill="white" stroke="#666666" points="502.12,-59.75 352.62,-59.75 352.62,-39 502.12,-39 502.12,-59.75"/>
-<text text-anchor="middle" x="427.38" y="-46.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::validateAhv</text>
+<polygon fill="white" stroke="#666666" points="502.12,-20.75 352.62,-20.75 352.62,0 502.12,0 502.12,-20.75"/>
+<text text-anchor="middle" x="427.38" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::validateAhv</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node8 -->
-<g id="edge10_Node000003_Node000008" class="edge">
-<title>Node3&#45;&gt;Node8</title>
-<g id="a_edge10_Node000003_Node000008"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M262.81,-138.27C282.14,-118.82 316.3,-87.43 351.5,-69.38 355.36,-67.39 359.44,-65.59 363.62,-63.96"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="364.46,-67.38 372.72,-60.75 362.12,-60.78 364.46,-67.38"/>
+<!-- Node4&#45;&gt;Node8 -->
+<g id="edge11_Node000004_Node000008" class="edge">
+<title>Node4&#45;&gt;Node8</title>
+<g id="a_edge11_Node000004_Node000008"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M255.75,-142.26C271.49,-114.43 306.44,-59.55 351.5,-30.38 354.2,-28.63 357.05,-27.03 359.99,-25.57"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="361.12,-28.9 368.92,-21.73 358.35,-22.47 361.12,-28.9"/>
 </a>
 </g>
 </g>
@@ -179,17 +188,17 @@
 <g id="Node000009" class="node">
 <title>Node9</title>
 <g id="a_Node000009"><a xlink:href="namespacevalidation__api.html#a0a2b975e162ced567ba3a6075684092a" target="_top" xlink:title="Validates Iban string.">
-<polygon fill="white" stroke="#666666" points="503.25,-20.75 351.5,-20.75 351.5,0 503.25,0 503.25,-20.75"/>
-<text text-anchor="middle" x="427.38" y="-7.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::validateIban</text>
+<polygon fill="white" stroke="#666666" points="503.25,-188.75 351.5,-188.75 351.5,-168 503.25,-168 503.25,-188.75"/>
+<text text-anchor="middle" x="427.38" y="-175.25" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::validateIban</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node9 -->
-<g id="edge11_Node000003_Node000009" class="edge">
-<title>Node3&#45;&gt;Node9</title>
-<g id="a_edge11_Node000003_Node000009"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M256.15,-138.36C272.21,-111.26 307.29,-58.52 351.5,-30.38 354.21,-28.65 357.07,-27.07 360.03,-25.63"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="361.15,-28.95 368.97,-21.81 358.4,-22.51 361.15,-28.95"/>
+<!-- Node4&#45;&gt;Node9 -->
+<g id="edge12_Node000004_Node000009" class="edge">
+<title>Node4&#45;&gt;Node9</title>
+<g id="a_edge12_Node000004_Node000009"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M315.86,-166.69C323.73,-167.53 331.82,-168.38 339.87,-169.23"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="339.38,-172.7 349.69,-170.27 340.12,-165.74 339.38,-172.7"/>
 </a>
 </g>
 </g>

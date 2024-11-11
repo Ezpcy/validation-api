@@ -17,13 +17,13 @@
 <area shape="rect" id="Node000006" href="$namespacevalidation__api.html#aa82c6b3a43b6e6b59b529c22944cadca" title="Ensures valid Xml configuration." alt="" coords="842,172,1017,217"/>
 <area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="777,164,827,173,826,179,776,170"/>
 <area shape="poly" id="edge11_Node000006_Node000006" title=" " alt="" coords="882,172,880,162,888,153,905,147,930,145,957,148,973,154,971,159,955,153,929,151,906,153,891,157,885,163,887,171"/>
-<area shape="rect" id="Node000007" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title=" " alt="" coords="1083,60,1281,105"/>
+<area shape="rect" id="Node000007" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title="Set the First Msg object." alt="" coords="1083,60,1281,105"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="971,169,1082,115,1097,108,1099,113,1084,119,973,174"/>
 <area shape="rect" id="Node000008" href="$namespacevalidation__api.html#ac497c1198e4e7f0fe71ffbdb3e6beeaa" title="Convert string to float." alt="" coords="1099,129,1265,156"/>
 <area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="1017,174,1096,157,1097,162,1018,179"/>
 <area shape="rect" id="Node000009" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="1085,181,1279,208"/>
 <area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="1017,192,1069,192,1069,197,1017,197"/>
-<area shape="rect" id="Node000010" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title=" " alt="" coords="1083,232,1281,277"/>
+<area shape="rect" id="Node000010" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title="Set the First Msg object." alt="" coords="1083,232,1281,277"/>
 <area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="1018,212,1071,225,1069,230,1016,218"/>
 <area shape="rect" id="Node000011" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="1095,301,1269,328"/>
 <area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="963,215,1018,252,1084,287,1100,293,1098,298,1082,291,1015,256,960,219"/>

@@ -8,7 +8,7 @@ class \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}}
 class \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}}
 \begin{DoxyCompactList}\small\item\em Class to watch for changes in a directory. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder}{Error\+Builder}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classvalidation__api_1_1ErrorBuilder}{Error\+Builder} class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1IService}{IService}}
 \begin{DoxyCompactList}\small\item\em Interface for all services. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1Validation}{Validation}}
@@ -33,8 +33,9 @@ enum class \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecef
 , \newline
 \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15}{Xml\+Config\+Value\+Error}}
 , \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871}{Xml\+Config\+Empty\+Error}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448}{Json\+Missing\+Field}}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set the Second Msg object. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,7 +53,7 @@ bool \mbox{\hyperlink{namespacevalidation__api_a0a2b975e162ced567ba3a6075684092a
 \begin{DoxyCompactList}\small\item\em Validates Iban string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validate\+Xml\+Config}} (const pugi\+::xml\+\_\+node \&node, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&erros)
 \begin{DoxyCompactList}\small\item\em Ensures valid Xml configuration. \end{DoxyCompactList}\item 
-nlohmann\+::json \mbox{\hyperlink{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718}{errors\+To\+Json}} (const \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&errors)
+nlohmann\+::json \mbox{\hyperlink{namespacevalidation__api_a402f9de5ae5cfa713cc6681b7ea2880c}{errors\+To\+Json}} (const \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&errors)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -87,6 +88,20 @@ An unordered map of \texorpdfstring{$<$}{<}string, vecto$<$string$>$ to hold all
 \doxysubsubsection{\texorpdfstring{ErrorType}{ErrorType}}
 {\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{validation\+\_\+api\+::\+Error\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
+
+
+Set the Second Msg object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg\+Main} & Main message \\
+\hline
+{\em msg\+Sec} & Secondary message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classvalidation__api_1_1ErrorBuilder}{Error\+Builder}\& 
+\end{DoxyReturn}
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Default@{Default}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!Default@{Default}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67} 
 Default&\\
@@ -112,28 +127,33 @@ Xml\+Config\+Value\+Error&\\
 Xml\+Config\+Empty\+Error&\\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JsonMissingField@{JsonMissingField}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!JsonMissingField@{JsonMissingField}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448} 
+Json\+Missing\+Field&\\
+\hline
+
 \end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718}\label{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718} 
+\Hypertarget{namespacevalidation__api_a402f9de5ae5cfa713cc6681b7ea2880c}\label{namespacevalidation__api_a402f9de5ae5cfa713cc6681b7ea2880c} 
 \index{validation\_api@{validation\_api}!errorsToJson@{errorsToJson}}
 \index{errorsToJson@{errorsToJson}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{errorsToJson()}{errorsToJson()}}
-{\footnotesize\ttfamily nlohmann\+::json validation\+\_\+api\+::errors\+To\+Json (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&}]{errors }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily inlinne nlohmann\+::json validation\+\_\+api\+::errors\+To\+Json (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&}]{errors }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718_icgraph}
+\includegraphics[width=350pt]{namespacevalidation__api_a402f9de5ae5cfa713cc6681b7ea2880c_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa}\label{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa} 
 \index{validation\_api@{validation\_api}!isFloat@{isFloat}}
 \index{isFloat@{isFloat}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{isFloat()}{isFloat()}}
-{\footnotesize\ttfamily bool validation\+\_\+api\+::is\+Float (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{float \&}]{out }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::is\+Float (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{float \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -150,7 +170,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{validation\_api@{validation\_api}!isValidUuid@{isValidUuid}}
 \index{isValidUuid@{isValidUuid}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{isValidUuid()}{isValidUuid()}}
-{\footnotesize\ttfamily bool validation\+\_\+api\+::is\+Valid\+Uuid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{uuid\+Str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::is\+Valid\+Uuid (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{uuid\+Str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -180,7 +200,7 @@ This function initializes the logger with a file sink and a console sink. It ens
 \index{validation\_api@{validation\_api}!toLower@{toLower}}
 \index{toLower@{toLower}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{toLower()}{toLower()}}
-{\footnotesize\ttfamily std\+::string validation\+\_\+api\+::to\+Lower (\begin{DoxyParamCaption}\item[{std\+::string}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::string validation\+\_\+api\+::to\+Lower (\begin{DoxyParamCaption}\item[{std\+::string}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -202,7 +222,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{validation\_api@{validation\_api}!validateAhv@{validateAhv}}
 \index{validateAhv@{validateAhv}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{validateAhv()}{validateAhv()}}
-{\footnotesize\ttfamily bool validation\+\_\+api\+::validate\+Ahv (\begin{DoxyParamCaption}\item[{std\+::string \&}]{val }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::validate\+Ahv (\begin{DoxyParamCaption}\item[{std\+::string \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -224,7 +244,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{validation\_api@{validation\_api}!validateIban@{validateIban}}
 \index{validateIban@{validateIban}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{validateIban()}{validateIban()}}
-{\footnotesize\ttfamily bool validation\+\_\+api\+::validate\+Iban (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{val }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::validate\+Iban (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -252,7 +272,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Ensures valid Xml configuration. 
 
-Checks all fields and options and ensure the rules are being followed Here is the call graph for this function\+:\nopagebreak
+Checks all fields and options and ensure the rules are being followed Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

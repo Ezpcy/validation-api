@@ -195,19 +195,4 @@ void ValidationServer::accept(
       });
 }
 
-void ValidationServer::asyncWriter(
-    const std::string& response,
-    std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
-  // Asynchronously send the response to the client
-  boost::asio::async_write(
-      *socket, boost::asio::buffer(response),
-      [this, socket](boost::system::error_code ec, std::size_t) mutable {
-        if (ec) {
-          logger_->error("Failed to send response: {}", ec.message());
-        }
-        // The connection will be closed automatically when socket goes out of
-        // scope
-      });
-}
-
 }  // namespace validation_api

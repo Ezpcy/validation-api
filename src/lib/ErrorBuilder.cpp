@@ -24,32 +24,4 @@ ErrorBuilder::ErrorBuilder(ErrorType type, const std::string &fieldName)
   }
 }
 
-ErrorBuilder &ErrorBuilder::setSecondMsg(const std::string &msgMain,
-                                         const std::string &msgSec) {
-  switch (type_) {
-    case ErrorType::Default:
-      secondMsg_ = "";
-      break;
-    case ErrorType::ValidationEmptyError:
-      break;
-    case ErrorType::XmlConfigError:
-      secondMsg_ = msgMain;
-      break;
-    case ErrorType::ValidationError:
-    case ErrorType::XmlConfigValueError:
-      secondMsg_ = std::format("Expected {}, received {}", msgMain, msgSec);
-      break;
-    case ErrorType::XmlConfigEmptyError:
-      secondMsg_ = std::format("Option {} can not be empty", msgMain);
-      break;
-    case ErrorType::JsonMissingField:
-      break;
-  }
-  return *this;
-}
-
-std::pair<std::string, std::string> ErrorBuilder::build() const {
-  return std::pair(firstMsg_, secondMsg_);
-}
-
 }  // namespace validation_api

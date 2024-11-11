@@ -32,7 +32,6 @@ set(Boost_USE_MULTITHREAD ON)
 find_package(Boost REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
-find_package(Threads REQUIRED)
 find_package(pugixml REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
@@ -57,7 +56,6 @@ target_link_libraries(validation-api PRIVATE
   Boost::filesystem
   Boost::system
   Boost::thread
-  Threads::Threads
   pugixml::pugixml
   nlohmann_json::nlohmann_json
 )
@@ -97,7 +95,6 @@ target_link_libraries(tests PRIVATE
   Boost::system
   Boost::thread
   pugixml::pugixml
-  Threads::Threads
   nlohmann_json::nlohmann_json
 )
 # For LoggerTest suite

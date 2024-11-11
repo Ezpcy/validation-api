@@ -1,7 +1,6 @@
 #include <boost/uuid.hpp>
 #include <cctype>
 #include <cstdio>
-#include <iostream>
 #include <lib/Helpers.hpp>
 #include <lib/Validation.hpp>
 #include <nlohmann/json.hpp>
@@ -83,13 +82,15 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     }
   }
 
-  // Check if field is emtpy
-  if (reqValue.empty() || reqValue.is_null() || reqValue == "" && !canBeEmpty) {
-    errors_.push_back(
-        {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
-    return;
-  } else if (reqValue.empty() || reqValue.is_null() ||
-             reqValue == "" && canBeEmpty) {
+  // Check if field is empty
+  if ((!canBeEmpty &&
+       (reqValue.empty() || reqValue.is_null() || reqValue == "")) ||
+      (canBeEmpty &&
+       (reqValue.empty() || reqValue.is_null() || reqValue == ""))) {
+    if (!canBeEmpty) {
+      errors_.push_back(
+          {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
+    }
     return;
   }
 
@@ -311,30 +312,6 @@ void Validation::extractNullOptions(const pugi::xml_node &doc) {
       continue;
     }
   }
-}
-
-// Recursive function to search for a key in the potentially nested JSON
-// object
-json Validation::findJsonField(const json &jsonObj,
-                               const std::string &nodeName) {
-  // If the key exists at the current level, return it
-  if (jsonObj.contains(nodeName)) {
-    return jsonObj;
-  }
-
-  // Otherwise, look through all objects in the current level
-  for (auto &[key, value] : jsonObj.items()) {
-    if (value.is_object() || value.is_array()) {
-      // Recursively search in nested JSON objects
-      json result = findJsonField(value, nodeName);
-      if (result != nullptr) {
-        return result;
-      }
-    }
-  }
-
-  // Return null if the key was not found
-  return nullptr;
 }
 
 // Recursive function to traverse and validate the request

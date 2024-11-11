@@ -41,8 +41,32 @@ class Validation {
    */
   void extractNullOptions(const pugi::xml_node &doc);
 
-  nlohmann::json findJsonField(const nlohmann::json &jsonObj,
-                               const std::string &nodeName);
+  /*
+   * @brief findJsonField
+   * @param jsonObj nodeName
+   * @details Recursive function to find a field in a JSON object
+   */
+  inline nlohmann::json findJsonField(const nlohmann::json &jsonObj,
+                                      const std::string &nodeName) {
+    // If the key exists at the current level, return it
+    if (jsonObj.contains(nodeName)) {
+      return jsonObj;
+    }
+
+    // Otherwise, look through all objects in the current level
+    for (auto &[key, value] : jsonObj.items()) {
+      if (value.is_object() || value.is_array()) {
+        // Recursively search in nested JSON objects
+        nlohmann::json result = findJsonField(value, nodeName);
+        if (result != nullptr) {
+          return result;
+        }
+      }
+    }
+
+    // Return null if the key was not found
+    return nullptr;
+  }
 
   /**
    * @brief Traverse through the json object and validate the fields.
@@ -50,15 +74,6 @@ class Validation {
    * @details Validates the json with passed xml doc object.
    * */
   void traverseAndValidate(const pugi::xml_node &node);
-
-  /**
-   * @brief Start the validation process
-   * @param jsonObj doc error
-   * @details Start the validation process by setting up NullOptions and calling
-   * the traverseAndValidate function.
-   */
-  void startValidation(const nlohmann::json &jsonObj, const pugi::xml_node &doc,
-                       ConfigService::Errors &error);
 
  private:
   const nlohmann::json &request_;

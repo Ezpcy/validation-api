@@ -49,8 +49,20 @@ class ValidationServer : public IService {
    * @brief Write to the socket
    * @details Write messages to the socket in a asynchronous way
    */
-  void asyncWriter(const std::string& response,
-                   std::shared_ptr<boost::asio::ip::tcp::socket> socket);
+  inline void asyncWriter(
+      const std::string& response,
+      std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
+    // Asynchronously send the response to the client
+    boost::asio::async_write(
+        *socket, boost::asio::buffer(response),
+        [this, socket](boost::system::error_code ec, std::size_t) mutable {
+          if (ec) {
+            logger_->error("Failed to send response: {}", ec.message());
+          }
+          // The connection will be closed automatically when socket goes out of
+          // scope
+        });
+  }
 
   /**
    * @brief Running flag.
