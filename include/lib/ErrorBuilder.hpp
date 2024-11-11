@@ -1,6 +1,5 @@
 #pragma once
 #include <format>
-#include <iostream>
 
 namespace validation_api {
 
@@ -10,7 +9,8 @@ enum class ErrorType {
   ValidationEmptyError,
   XmlConfigError,
   XmlConfigValueError,
-  XmlConfigEmptyError
+  XmlConfigEmptyError,
+  JsonMissingField
 };
 
 class ErrorBuilder {

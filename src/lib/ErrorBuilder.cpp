@@ -8,16 +8,18 @@ ErrorBuilder::ErrorBuilder(ErrorType type, const std::string &fieldName)
       firstMsg_ = "An Error occured";
       break;
     case ErrorType::ValidationError:
-      firstMsg_ = std::format("{}: ", fieldName);
+      firstMsg_ = std::format("{}", fieldName);
       break;
     case ErrorType::ValidationEmptyError:
-      firstMsg_ = std::format("{}: ", fieldName);
-      secondMsg_ = std::string("Field is not allowed to be empty.");
+      firstMsg_ = std::format("{}", fieldName);
+      secondMsg_ = std::string("Field is not allowed to be empty");
       break;
     case ErrorType::XmlConfigError:
     case ErrorType::XmlConfigValueError:
     case ErrorType::XmlConfigEmptyError:
-      firstMsg_ = std::format("{}: ", fieldName);
+    case ErrorType::JsonMissingField:
+      firstMsg_ = std::format("{}", fieldName);
+      secondMsg_ = std::string("Missing Field");
       break;
   }
 }
@@ -35,11 +37,13 @@ ErrorBuilder &ErrorBuilder::setSecondMsg(const std::string &msgMain,
       break;
     case ErrorType::ValidationError:
     case ErrorType::XmlConfigValueError:
-      secondMsg_ =
-          std::format("Expected \"{}\", received \"{}\".", msgMain, msgSec);
+      secondMsg_ = std::format("Expected {}, received {}", msgMain, msgSec);
       break;
     case ErrorType::XmlConfigEmptyError:
-      secondMsg_ = std::format("Option \"{}\" can not be empty", msgMain);
+      secondMsg_ = std::format("Option {} can not be empty", msgMain);
+      break;
+    case ErrorType::JsonMissingField:
+      break;
   }
   return *this;
 }

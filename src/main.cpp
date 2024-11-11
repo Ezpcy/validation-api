@@ -58,16 +58,17 @@ int main(int argc, char *argv[]) {
     validation_api::ValidationServer server(io_context, port, service,
                                             maxConnections);
 
-    // TODO Maybe Boost thread?
     // Determine the number of threads
     std::size_t num_threads = std::thread::hardware_concurrency();
-    std::vector<std::thread> threads;
+    // std::vector<std::thread> threads;
+    boost::thread_group threads;
 
     // Start multiple threads, each running the io_context
     for (std::size_t i = 0; i < num_threads; ++i) {
-      threads.emplace_back([&io_context]() {
-        io_context.run();  // Each thread handles tasks from io_context
-      });
+      // threads.emplace_back([&io_context]() {
+      //   io_context.run();  // Each thread handles tasks from io_context
+      // });
+      threads.create_thread([&io_context] { io_context.run(); });
     }
 
     // Output information about server and watcher
@@ -75,13 +76,15 @@ int main(int argc, char *argv[]) {
               << " and watching directory: " << path << std::endl;
 
     // Wait for all threads to finish
-    for (auto &thread : threads) {
-      thread.join();
-    }
+    // for (auto &thread : threads) {
+    //   thread.join();
+    // }
+
+    threads.join_all();
 
     // Ensure a graceful shutdown
     server.stop();
-    io_context.stop();  // Stop the io_context after stopping the server
+    // io_context.stop();  // Stop the io_context after stopping the server
   } catch (std::exception &e) {
     std::cerr << "Exception: " << e.what() << std::endl;
   }

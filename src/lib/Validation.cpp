@@ -88,6 +88,9 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     errors_.push_back(
         {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
     return;
+  } else if (reqValue.empty() || reqValue.is_null() ||
+             reqValue == "" && canBeEmpty) {
+    return;
   }
 
   std::string configTypeOpt = toLower(node.attribute("type").value());
@@ -265,8 +268,6 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         break;
     }
   }
-
-  // Validate if it can be empty
 }
 
 void Validation::extractNullOptions(const pugi::xml_node &doc) {
@@ -318,15 +319,15 @@ json Validation::findJsonField(const json &jsonObj,
                                const std::string &nodeName) {
   // If the key exists at the current level, return it
   if (jsonObj.contains(nodeName)) {
-    return jsonObj[nodeName];
+    return jsonObj;
   }
 
   // Otherwise, look through all objects in the current level
   for (auto &[key, value] : jsonObj.items()) {
-    if (value.is_object()) {
+    if (value.is_object() || value.is_array()) {
       // Recursively search in nested JSON objects
-      nlohmann::json result = findJsonField(value, nodeName);
-      if (!result.is_null()) {
+      json result = findJsonField(value, nodeName);
+      if (result != nullptr) {
         return result;
       }
     }
@@ -339,18 +340,22 @@ json Validation::findJsonField(const json &jsonObj,
 // Recursive function to traverse and validate the request
 void Validation::traverseAndValidate(const pugi::xml_node &node) {
   for (pugi::xml_node field : node.children()) {
+    // Check if it is a Null field
     if (std::string(field.name()) == "Null") {
       continue;
     }
     // Convert to string
     std::string nodeName = field.name();
+
     // Check if json request has the field
-    nlohmann::json jsonField = findJsonField(request_, nodeName);
-    if (!jsonField.is_null()) {
-      validate(field, jsonField, nodeName);
+    json jsonField = findJsonField(request_, nodeName);
+
+    if (jsonField != nullptr) {
+      validate(field, jsonField[nodeName], nodeName);
     } else {
-      errors_.push_back({std::format("Json request is missing field: "),
-                         std::format("\"{}\"", nodeName)});
+      errors_.push_back(
+          {ErrorBuilder(ErrorType::JsonMissingField, nodeName).build()});
+      continue;
     }
 
     traverseAndValidate(field);

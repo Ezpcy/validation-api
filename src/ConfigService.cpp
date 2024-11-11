@@ -50,25 +50,25 @@ void ConfigService::deleteConfig(const std::string &name) {
 ConfigService::Errors ConfigService::validateConfig(
     const nlohmann::json &jsonData) {
   Errors errors;
+  boost::shared_lock<boost::shared_mutex> lock(rwMutex_);
+  std::string key = jsonData.begin().key();
+
+  if (configs_.find(key) == configs_.end()) {
+    errors.push_back({"Can't find configuration: ", key});
+    return errors;
+  }
+
+  pugi::xml_node doc = configs_[key]->child(key.c_str());
+  if (!doc) {
+    errors.push_back({"Can't find child node in configuration: ", key});
+    return errors;
+  }
+
   try {
-    boost::shared_lock<boost::shared_mutex> lock(rwMutex_);
-    std::string key = jsonData.begin().key();
-
-    if (configs_.find(key) == configs_.end()) {
-      errors.push_back({"Can't find configuration: ", key});
-      return errors;
-    }
-
-    pugi::xml_node doc = configs_[key]->child(key.c_str());
-    if (!doc) {
-      errors.push_back({"Can't find child node in configuration: ", key});
-      return errors;
-    }
-
     Validation(jsonData[key], doc, errors).run();
 
   } catch (const std::exception &e) {
-    logger_->error("Error while trying to validate request: {}", e.what());
+    logger_->error("{}: {}", jsonData.begin().key(), e.what());
   }
 
   return errors;

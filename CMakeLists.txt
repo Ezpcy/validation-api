@@ -15,6 +15,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native -flto 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
 
+set(CMAKE_EXE_LINKER_FLAGS "-static")
+
 # Set Boost multithreading support
 set(Boost_USE_MULTITHREAD ON)
 

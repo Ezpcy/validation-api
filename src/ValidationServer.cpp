@@ -171,15 +171,18 @@ void ValidationServer::accept(
           // Process validation results
           if (errors.empty()) {
             nlohmann::json response;
-            response["Success"] = keyName;
+            response[keyName] = "Ok";
             asyncWriter(response.dump() + "\n", socket);
           } else {
             // Convert errors to JSON and send them to the client
             nlohmann::json errorResponse = errorsToJson(errors);
+            nlohmann::json errorWrap;
+            errorWrap["Error"] = errorResponse;
+
             logger_->warn(
                 "Validation request from {} with configuration {} failed",
                 socket->remote_endpoint(), keyName);
-            asyncWriter(errorResponse.dump() + "\n", socket);
+            asyncWriter(errorWrap.dump() + "\n", socket);
           }
 
           // Release semaphore after processing request
