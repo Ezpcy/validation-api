@@ -15,10 +15,13 @@
         <Units type="Number" notNull="true" />
     </InsuranceProductConfig>
     <Institution type="Uuid">
-        <Null>
+      <AllowNullIf>
             <TypeOfProvision uuid="123e4567-e89b-12d3-a456-526614174000" />
             <Profession uuid="123e4567-e89b-12d3-a456-226614174000" />
-        </Null>
+      </AllowNullIf>    
+      <AllowNullIf>
+            <Location uuid="123e4567-e89b-12d3-a456-526614174000" />
+        </AllowNullIf>
     </Institution>
     <School type="String" notNull="false" />
     <ApprenticeshipType type="Uuid" notNull="false" />

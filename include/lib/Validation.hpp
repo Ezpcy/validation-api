@@ -1,12 +1,12 @@
 #pragma once
 
+#include <boost/uuid.hpp>
+#include <iostream>
+#include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
 #include <unordered_set>
 #include <utility>
-
-#include <boost/uuid.hpp>
-#include <lib/Helpers.hpp>
 
 #include "validation-api/ConfigService.hpp"
 
@@ -21,7 +21,7 @@ typedef std::unordered_map<
     NullOptions;
 
 class Validation {
-public:
+ public:
   Validation(const nlohmann::json &jsonObj, const pugi::xml_node &doc,
              ConfigService::Errors &errors);
 
@@ -46,34 +46,32 @@ public:
   inline void extractNullOptions(const pugi::xml_node &doc) {
     // Store the name
     std::string forField = std::string(doc.name());
+    int currentKey = 0;
 
     for (pugi::xml_node node : doc.children()) {
       // Recursive call for child nodes
       extractNullOptions(node);
 
       if (std::string(node.name()) == "AllowNullIf") {
-        int currentKey = 0;
         for (pugi::xml_node nullId : node.children()) {
           // Iterate over attributes of the current <Null> child
           for (pugi::xml_attribute_iterator attr = nullId.attributes_begin();
                attr != nullId.attributes_end(); ++attr) {
             // Check if the UUID is valid
             if (isValidUuid(std::string(attr->value()))) {
-              std::unordered_map<int, std::pair<std::string, std::string>> ins;
-              ins[currentKey++] = std::pair(std::string(nullId.name()),
-                                            std::string(attr->value()));
-
-              auto it = nullOptions_.find(std::string(forField));
+              auto it = nullOptions_.find(forField);
 
               // If the key is not found, insert it with a new vector
               if (it == nullOptions_.end()) {
-                ins[currentKey++].second(
-                    std::pair(nullId.name(), std::string(attr->value())));
-                nullOptions_.insert({forField, ins});
+                nullOptions_.insert(
+                    {forField,
+                     {{currentKey,
+                       {nullId.name(), std::string(attr->value())}}}});
+
               } else {
                 // If the key exists, push the new UUID into the vector
-                it->second.push_back(
-                    {std::string(nullId.name()), std::string(attr->value())});
+                it->second.insert(
+                    {currentKey, {nullId.name(), std::string(attr->value())}});
               }
             } else {
               // If the UUID is invalid, log an error
@@ -84,6 +82,7 @@ public:
             }
           }
         }
+        currentKey++;
       } else {
         continue;
       }
@@ -143,7 +142,7 @@ public:
     return;
   }
 
-private:
+ private:
   /**
    * @brief Field names from the request
    * @details Keeps track of fields and removes them when validated so we can
@@ -156,4 +155,4 @@ private:
   NullOptions nullOptions_;
   std::shared_ptr<spdlog::logger> logger_;
 };
-} // namespace validation_api
+}  // namespace validation_api
