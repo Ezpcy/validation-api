@@ -1,4 +1,3 @@
-#include <boost/uuid.hpp>
 #include <cctype>
 #include <cstdio>
 #include <iostream>
@@ -6,7 +5,6 @@
 #include <lib/Validation.hpp>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
-#include <regex>
 #include <unordered_map>
 
 #include "lib/ErrorBuilder.hpp"
@@ -27,6 +25,12 @@ Validation::Validation(const json &jsonObj, const pugi::xml_node &doc,
                                     : spdlog::default_logger()) {
   // Extract nulloptions from xml
   extractNullOptions(config_);
+  for (const auto &items : nullOptions_) {
+    std::cout << items.first << '\n';
+    for (const auto &nesi : items.second) {
+      std::cout << nesi.first << " : " << nesi.second << '\n';
+    }
+  }
 };
 
 Validation::~Validation() = default;
@@ -35,9 +39,6 @@ void Validation::run() {
 
   fillRequestList(request_);
 
-  for (auto const &item : requestList_) {
-    std::cout << item << '\n';
-  }
   traverseAndValidate(config_);
 
   if (!requestList_.empty()) {
@@ -288,56 +289,13 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
   }
 }
 
-void Validation::extractNullOptions(const pugi::xml_node &doc) {
-  // Store the name
-  std::string forField = std::string(doc.name());
-
-  for (pugi::xml_node node : doc.children()) {
-    // Recursive call for child nodes
-    extractNullOptions(node);
-
-    if (std::string(node.name()) == "Null") {
-      for (pugi::xml_node nullId : node.children()) {
-        // Iterate over attributes of the current <Null> child
-        for (pugi::xml_attribute_iterator attr = nullId.attributes_begin();
-             attr != nullId.attributes_end(); ++attr) {
-          // Check if the UUID is valid
-          if (isValidUuid(std::string(attr->value()))) {
-            auto it = nullOptions_.find(std::string(forField));
-
-            // If the key is not found, insert it with a new vector
-            if (it == nullOptions_.end()) {
-              std::vector<std::pair<std::string, std::string>> vec;
-              vec.push_back(
-                  {std::string(nullId.name()), std::string(attr->value())});
-              nullOptions_.insert({forField, vec});
-            } else {
-              // If the key exists, push the new UUID into the vector
-              it->second.push_back(
-                  {std::string(nullId.name()), std::string(attr->value())});
-            }
-          } else {
-            // If the UUID is invalid, log an error
-            errors_.push_back(
-                {std::format("XML Null option: "),
-                 std::format("Field {} skipped because of invalid Uuid.",
-                             std::string(nullId.name()))});
-          }
-        }
-      }
-    } else {
-      continue;
-    }
-  }
-}
-
 // Recursive function to traverse and validate the request
 void Validation::traverseAndValidate(const pugi::xml_node &node) {
   for (pugi::xml_node field : node.children()) {
     // Convert to string
     std::string nodeName = field.name();
     // Check if it is a Null field
-    if (nodeName == "Null") {
+    if (nodeName == "AllowNullIf") {
       continue;
     }
 
