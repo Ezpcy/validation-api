@@ -30,7 +30,7 @@ inline bool isFloat(const std::string &str, float &out) {
   try {
     size_t pos;
     out = std::stof(str, &pos);
-    return pos == str.length();  // Ensure entire string is a valid number
+    return pos == str.length(); // Ensure entire string is a valid number
   } catch (...) {
     return false;
   }
@@ -152,7 +152,7 @@ inline bool validateIban(const std::string &val) {
       // Convert letters 'A'-'Z' to numbers '10'-'35'
       numerical += std::to_string(ch - 'A' + 10);
     } else {
-      return false;  // Invalid character
+      return false; // Invalid character
     }
   }
 
@@ -201,4 +201,4 @@ inline nlohmann::json errorsToJson(const ConfigService::Errors &errors) {
   }
   return res;
 }
-}  // namespace validation_api
+} // namespace validation_api

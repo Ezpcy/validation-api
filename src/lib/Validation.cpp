@@ -1,6 +1,7 @@
 #include <boost/uuid.hpp>
 #include <cctype>
 #include <cstdio>
+#include <iostream>
 #include <lib/Helpers.hpp>
 #include <lib/Validation.hpp>
 #include <nlohmann/json.hpp>
@@ -21,10 +22,7 @@ std::unordered_map<std::string, int> getType = {
 
 Validation::Validation(const json &jsonObj, const pugi::xml_node &doc,
                        ConfigService::Errors &errors)
-    : request_(jsonObj),
-      config_(doc),
-      errors_(errors),
-      nullOptions_(),
+    : request_(jsonObj), config_(doc), errors_(errors), nullOptions_(),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()) {
   // Extract nulloptions from xml
@@ -33,72 +31,88 @@ Validation::Validation(const json &jsonObj, const pugi::xml_node &doc,
 
 Validation::~Validation() = default;
 
-void Validation::run() { traverseAndValidate(config_); }
+void Validation::run() {
+
+  fillRequestList(request_);
+
+  for (auto const &item : requestList_) {
+    std::cout << item << '\n';
+  }
+  traverseAndValidate(config_);
+
+  if (!requestList_.empty()) {
+    for (const auto &field : requestList_) {
+      errors_.push_back(
+          {ErrorBuilder(ErrorType::JsonAdditionalField, field).build()});
+    }
+  }
+}
 
 // Validate a field
 void Validation::validate(const pugi::xml_node &node, const json &reqValue,
                           const std::string &fieldName) {
-  // Assign a bool for the "notNull" option
-  pugi::xml_attribute configNullOpt = node.attribute("notNull");
-  // Optional floats for max, min, and eq
-  std::optional<float> max;
-  std::optional<float> min;
-  std::optional<float> eq;
+  try {
+    // Assign a bool for the "notNull" option
+    pugi::xml_attribute configNullOpt = node.attribute("notNull");
+    // Optional floats for max, min, and eq
+    std::optional<float> max;
+    std::optional<float> min;
+    std::optional<float> eq;
 
-  // Check if each attribute exists before assigning
-  if (node.attribute("max")) {
-    max = node.attribute("max").as_float();
-  }
-  if (node.attribute("min")) {
-    min = node.attribute("min").as_float();
-  }
-  if (node.attribute("eq")) {
-    eq = node.attribute("eq").as_float();
-  }
-  bool canBeEmpty;
-  std::string notNullVal = toLower(std::string(configNullOpt.value()));
+    // Check if each attribute exists before assigning
+    if (node.attribute("max")) {
+      max = node.attribute("max").as_float();
+    }
+    if (node.attribute("min")) {
+      min = node.attribute("min").as_float();
+    }
+    if (node.attribute("eq")) {
+      eq = node.attribute("eq").as_float();
+    }
+    bool canBeEmpty;
+    std::string notNullVal = toLower(std::string(configNullOpt.value()));
 
-  // Set the bool accordingly to the attribute
-  if (notNullVal == "true") {
-    canBeEmpty = false;
-  } else if (notNullVal == "false") {
-    canBeEmpty = true;
-    // Default
-  } else {
-    canBeEmpty = false;
-  }
+    // Set the bool accordingly to the attribute
+    if (notNullVal == "true") {
+      canBeEmpty = false;
+    } else if (notNullVal == "false") {
+      canBeEmpty = true;
+      // Default
+    } else {
+      canBeEmpty = false;
+    }
 
-  // Check for nullOptions
-  if (nullOptions_.find(fieldName) != nullOptions_.end()) {
-    auto it = nullOptions_.find(fieldName)->second;
-    // Iterate over the null options
-    for (const auto &[key, value] : it) {
-      // Look up the values and compare them
-      json nullCheckField = findJsonField(request_, key);
-      // If the uuid is set then this field can be empty
-      if (nullCheckField == value) {
-        canBeEmpty = true;
+    // Check for nullOptions
+    if (nullOptions_.find(fieldName) != nullOptions_.end()) {
+      auto it = nullOptions_.find(fieldName)->second;
+      // Iterate over the null options
+      for (const auto &[key, value] : it) {
+        // Look up the values and compare them
+        json nullCheckField = findJsonField(request_, key);
+        // If the uuid is set then this field can be empty
+        if (nullCheckField == value) {
+          canBeEmpty = true;
+        }
       }
     }
-  }
 
-  // Check if field is empty
-  if ((!canBeEmpty &&
-       (reqValue.empty() || reqValue.is_null() || reqValue == "")) ||
-      (canBeEmpty &&
-       (reqValue.empty() || reqValue.is_null() || reqValue == ""))) {
-    if (!canBeEmpty) {
-      errors_.push_back(
-          {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
+    // Check if field is empty
+    if ((!canBeEmpty &&
+         (reqValue.empty() || reqValue.is_null() || reqValue == "")) ||
+        (canBeEmpty &&
+         (reqValue.empty() || reqValue.is_null() || reqValue == ""))) {
+      if (!canBeEmpty) {
+        errors_.push_back(
+            {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
+      }
+      return;
     }
-    return;
-  }
 
-  std::string configTypeOpt = toLower(node.attribute("type").value());
-  // Validate type field
-  auto it = getType.find(configTypeOpt);
-  if (it != getType.end()) {
-    switch (it->second) {
+    std::string configTypeOpt = toLower(node.attribute("type").value());
+    // Validate type field
+    auto it = getType.find(configTypeOpt);
+    if (it != getType.end()) {
+      switch (it->second) {
       case 1:
         // Chedk if the value is a string
         if (!reqValue.is_string()) {
@@ -267,7 +281,10 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
       }
       default:
         break;
+      }
     }
+  } catch (const std::exception &e) {
+    errors_.push_back({std::string(fieldName), std::string(e.what())});
   }
 }
 
@@ -302,8 +319,8 @@ void Validation::extractNullOptions(const pugi::xml_node &doc) {
           } else {
             // If the UUID is invalid, log an error
             errors_.push_back(
-                {std::format("XML \"Null\" option: "),
-                 std::format("Field \"{}\" skipped because of invalid Uuid.",
+                {std::format("XML Null option: "),
+                 std::format("Field {} skipped because of invalid Uuid.",
                              std::string(nullId.name()))});
           }
         }
@@ -317,18 +334,19 @@ void Validation::extractNullOptions(const pugi::xml_node &doc) {
 // Recursive function to traverse and validate the request
 void Validation::traverseAndValidate(const pugi::xml_node &node) {
   for (pugi::xml_node field : node.children()) {
-    // Check if it is a Null field
-    if (std::string(field.name()) == "Null") {
-      continue;
-    }
     // Convert to string
     std::string nodeName = field.name();
+    // Check if it is a Null field
+    if (nodeName == "Null") {
+      continue;
+    }
 
     // Check if json request has the field
     json jsonField = findJsonField(request_, nodeName);
 
     if (jsonField != nullptr) {
       validate(field, jsonField[nodeName], nodeName);
+      requestList_.erase(nodeName);
     } else {
       errors_.push_back(
           {ErrorBuilder(ErrorType::JsonMissingField, nodeName).build()});
@@ -338,4 +356,4 @@ void Validation::traverseAndValidate(const pugi::xml_node &node) {
     traverseAndValidate(field);
   }
 }
-}  // namespace validation_api
+} // namespace validation_api

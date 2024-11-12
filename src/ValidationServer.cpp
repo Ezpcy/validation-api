@@ -10,13 +10,12 @@
 // For formatting the endpoint for the logger
 FMT_BEGIN_NAMESPACE
 
-template <>
-struct formatter<boost::asio::ip::tcp::endpoint> {
-  constexpr auto parse(format_parse_context& ctx) { return ctx.begin(); }
+template <> struct formatter<boost::asio::ip::tcp::endpoint> {
+  constexpr auto parse(format_parse_context &ctx) { return ctx.begin(); }
 
   template <typename FormatContext>
-  auto format(const boost::asio::ip::tcp::endpoint& endpoint,
-              FormatContext& ctx) {
+  auto format(const boost::asio::ip::tcp::endpoint &endpoint,
+              FormatContext &ctx) {
     return fmt::format_to(ctx.out(), "{}:{}", endpoint.address().to_string(),
                           endpoint.port());
   }
@@ -26,14 +25,13 @@ FMT_END_NAMESPACE
 
 namespace validation_api {
 
-ValidationServer::ValidationServer(boost::asio::io_context& io_context,
-                                   short port, ConfigService& configService,
+ValidationServer::ValidationServer(boost::asio::io_context &io_context,
+                                   short port, ConfigService &configService,
                                    short maxConnections)
     : io_context_(io_context),
       acceptor_(io_context, boost::asio::ip::tcp::endpoint(
                                 boost::asio::ip::tcp::v4(), port)),
-      service_(configService),
-      semaphore_(maxConnections),
+      service_(configService), semaphore_(maxConnections),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()),
       workGuard_(nullptr) {
@@ -45,7 +43,7 @@ ValidationServer::ValidationServer(boost::asio::io_context& io_context,
 }
 
 ValidationServer::~ValidationServer() {
-  stop();  // Ensure the server is stopped and resources are released
+  stop(); // Ensure the server is stopped and resources are released
 }
 
 bool ValidationServer::setup() {
@@ -54,7 +52,7 @@ bool ValidationServer::setup() {
     workGuard_ = std::make_shared<boost::asio::executor_work_guard<
         boost::asio::io_context::executor_type>>(io_context_.get_executor());
     return true;
-  } catch (const std::exception& e) {
+  } catch (const std::exception &e) {
     logger_->error("Exception during setup: {}", e.what());
     return false;
   }
@@ -72,13 +70,13 @@ void ValidationServer::run() {
     if (!ec) {
       auto sharedSocket =
           std::make_shared<boost::asio::ip::tcp::socket>(std::move(socket));
-      semaphore_.acquire();  // Acquire a semaphore slot for this connection
+      semaphore_.acquire(); // Acquire a semaphore slot for this connection
       boost::system::error_code ep_ec;
       auto endpoint = sharedSocket->remote_endpoint(ep_ec);
       if (ep_ec) {
         logger_->warn("Could not retrieve endpoint: {}", ep_ec.message());
       }
-      accept(sharedSocket);  // Handle the client connection
+      accept(sharedSocket); // Handle the client connection
     } else {
       logger_->error("Error during async_accept: {}", ec.message());
     }
@@ -91,7 +89,7 @@ void ValidationServer::run() {
 void ValidationServer::stop() {
   // Stop accepting new connections and cancel any ongoing operations
   if (acceptor_.is_open()) {
-    acceptor_.close();  // Close the acceptor to stop new connections
+    acceptor_.close(); // Close the acceptor to stop new connections
     logger_->info("Acceptor closed. No new connections will be accepted.");
   }
 
@@ -116,7 +114,7 @@ void ValidationServer::accept(
   timer->expires_after(std::chrono::seconds(60));
 
   // Start the timeout timer
-  timer->async_wait([this, socket, timer](const boost::system::error_code& ec) {
+  timer->async_wait([this, socket, timer](const boost::system::error_code &ec) {
     if (!ec) {
       // timer expired
       logger_->warn("{}: Connection timed out due to inactivity.",
@@ -154,11 +152,11 @@ void ValidationServer::accept(
           try {
             // Parse the JSON request
             nlohmann::json jsonRequest = nlohmann::json::parse(requestStr);
-            keyName = jsonRequest.begin().key();  // Extract the first key
+            keyName = jsonRequest.begin().key(); // Extract the first key
 
             // Validate the JSON using ConfigService
             errors = service_.validateConfig(jsonRequest);
-          } catch (std::exception& e) {
+          } catch (std::exception &e) {
             // Handle JSON parsing error
             std::string response =
                 "Parse error: " + std::string(e.what()) + "\n";
@@ -177,7 +175,7 @@ void ValidationServer::accept(
             // Convert errors to JSON and send them to the client
             nlohmann::json errorResponse = errorsToJson(errors);
             nlohmann::json errorWrap;
-            errorWrap["Error"] = errorResponse;
+            errorWrap["error"] = errorResponse;
 
             logger_->warn(
                 "Validation request from {} with configuration {} failed",
@@ -195,4 +193,4 @@ void ValidationServer::accept(
       });
 }
 
-}  // namespace validation_api
+} // namespace validation_api

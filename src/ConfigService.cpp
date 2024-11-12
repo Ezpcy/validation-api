@@ -1,3 +1,4 @@
+#include <format>
 #include <spdlog/spdlog.h>
 
 #include <lib/Helpers.hpp>
@@ -7,8 +8,7 @@
 namespace validation_api {
 
 ConfigService::ConfigService()
-    : rwMutex_(),
-      configs_(),
+    : rwMutex_(), configs_(),
       logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                     : spdlog::default_logger()) {}
 ConfigService::~ConfigService() = default;
@@ -18,17 +18,16 @@ bool ConfigService::createConfig(const std::string &name,
   try {
     boost::unique_lock<boost::shared_mutex> lock(rwMutex_);
     if (configs_.contains(name)) {
-      logger_->info("Overwrting existing configuration \"{}\"  ", name);
+      logger_->info("Overwrting existing configuration {}  ", name);
     }
     auto new_doc = std::make_shared<pugi::xml_document>();
     new_doc->reset(doc);
     configs_[name] = new_doc;
-    logger_->info("Configuration \"{}\" has been created.", name);
+    logger_->info("Configuration {} has been created.", name);
     return true;
 
   } catch (const std::exception &e) {
-    logger_->error("Error while creating configuration \"{}\": {}", name,
-                   e.what());
+    logger_->error("Error while creating configuration {}: {}", name, e.what());
     return false;
   }
 }
@@ -37,18 +36,18 @@ void ConfigService::deleteConfig(const std::string &name) {
   try {
     boost::unique_lock<boost::shared_mutex> lock(rwMutex_);
     if (configs_.erase(name) > 0) {
-      logger_->info("Configuration \"{}\" has been deleted.", name);
+      logger_->info("Configuration {} has been deleted.", name);
     } else {
-      logger_->warn("Configuration \"{}\" does not exist.", name);
+      logger_->warn("Configuration {} does not exist.", name);
     }
   } catch (const std::exception &e) {
-    logger_->error("Error while trying to delete configuration \"{}\": {}",
-                   name, e.what());
+    logger_->error("Error while trying to delete configuration {}: {}", name,
+                   e.what());
   }
 }
 
-ConfigService::Errors ConfigService::validateConfig(
-    const nlohmann::json &jsonData) {
+ConfigService::Errors
+ConfigService::validateConfig(const nlohmann::json &jsonData) {
   Errors errors;
   boost::shared_lock<boost::shared_mutex> lock(rwMutex_);
   std::string key = jsonData.begin().key();
@@ -68,7 +67,9 @@ ConfigService::Errors ConfigService::validateConfig(
     Validation(jsonData[key], doc, errors).run();
 
   } catch (const std::exception &e) {
-    logger_->error("{}: {}", jsonData.begin().key(), e.what());
+    errors.push_back(
+        {std::format("{}", key), std::format("{}", std::string(e.what()))});
+    logger_->error("{}: {}", key, e.what());
   }
 
   return errors;
@@ -80,7 +81,7 @@ pugi::xml_document ConfigService::getConfig(const std::string &name) {
   pugi::xml_document doc;
 
   if (configs_.find(name) == configs_.end()) {
-    logger_->warn("Configuration \"{}\" does not exist.", name);
+    logger_->warn("Configuration {} does not exist.", name);
     return doc;
   }
 
@@ -89,4 +90,4 @@ pugi::xml_document ConfigService::getConfig(const std::string &name) {
   return doc;
 }
 
-};  // namespace validation_api
+}; // namespace validation_api

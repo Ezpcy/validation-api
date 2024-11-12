@@ -30,7 +30,7 @@ At runtime configurable API to validate data from incoming network requests. The
 - CMake
 - Conan (for installing dependencies)
 - Linux
-- C++ 20
+- Clang/gcc
 
 ## Installation
 
@@ -164,9 +164,9 @@ This configuration file will validate the incoming data. The data must be in `JS
       "Units": 3
     },
     "Institution": "",
-    "Schule": "Test",
-    "LehrgangsBezeichnung": "123e4567-e89b-12d3-a456-426614174000",
-    "Ort": ""
+    "School": "Test",
+    "ApprenticeshipType ": "123e4567-e89b-12d3-a456-426614174000",
+    "Location": ""
   }
 }
 ```

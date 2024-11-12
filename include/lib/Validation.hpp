@@ -2,6 +2,7 @@
 
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
+#include <unordered_set>
 #include <utility>
 
 #include "validation-api/ConfigService.hpp"
@@ -17,7 +18,7 @@ typedef std::unordered_map<std::string,
     NullOptions;
 
 class Validation {
- public:
+public:
   Validation(const nlohmann::json &jsonObj, const pugi::xml_node &doc,
              ConfigService::Errors &errors);
 
@@ -75,11 +76,36 @@ class Validation {
    * */
   void traverseAndValidate(const pugi::xml_node &node);
 
- private:
+  /*
+   * @brief Fills the `requestList_` with fields from the `request_`
+   * @details Recursive function to iterate over the `request_`
+   */
+  inline void fillRequestList(const nlohmann::json &request) {
+    for (auto &[key, value] : request.items()) {
+      if (key == "Null") {
+        continue;
+      }
+
+      if (value.is_object() || value.is_array()) {
+        fillRequestList(value);
+      } else {
+        requestList_.insert(key);
+      }
+    }
+    return;
+  }
+
+private:
+  /**
+   * @brief Field names from the request
+   * @details Keeps track of fields and removes them when validated so we can
+   * check if there any additional field which aren't part of the configuration
+   */
+  mutable std::unordered_set<std::string> requestList_;
   const nlohmann::json &request_;
   const pugi::xml_node &config_;
   ConfigService::Errors &errors_;
   NullOptions nullOptions_;
   std::shared_ptr<spdlog::logger> logger_;
 };
-}  // namespace validation_api
+} // namespace validation_api
