@@ -32,7 +32,7 @@ At runtime configurable API to validate data from incoming network requests. The
 \item CMake
 \item Conan (for installing dependencies)
 \item Linux
-\item C++ 20
+\item Clang/gcc
 \end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md4}
 Clone the repository and run {\ttfamily ./build.sh r} inside the root folder.
 
@@ -117,11 +117,14 @@ With Null Nesting you can specify that a field can be null if other fields satis
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{<\textcolor{keywordtype}{Institution}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}uuid"{}}>}
-\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{Null}>}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ <\textcolor{keywordtype}{TypeOfProvision}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{}}/>}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ <\textcolor{keywordtype}{Profession}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{}}/>}
-\DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{Null}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{Institution}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{AllowNullIf}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{TypeOfProvision}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{}}\ />}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{Profession}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{}}\ />}
+\DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{AllowNullIf}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{AllowNullIf}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{SalaryType}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{}}\ />}
+\DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{AllowNullIf}>}
 \DoxyCodeLine{</\textcolor{keywordtype}{Institution}>}
 
 \end{DoxyCode}
@@ -129,7 +132,7 @@ With Null Nesting you can specify that a field can be null if other fields satis
 
 
 \begin{DoxyItemize}
-\item {\ttfamily Instution} can be null if {\ttfamily Type\+Of\+Provision} and {\ttfamily Profession} are not null and have the given {\ttfamily UUID}.
+\item {\ttfamily Instution} can be null if {\ttfamily Type\+Of\+Provision} and {\ttfamily Profession} or {\ttfamily Salary\+Type} are not null and have the given {\ttfamily UUID}.
 \end{DoxyItemize}\hypertarget{index_autotoc_md9}{}\doxysection{\texorpdfstring{Example}{Example}}\label{index_autotoc_md9}
 
 \begin{DoxyCode}{0}
@@ -150,13 +153,15 @@ With Null Nesting you can specify that a field can be null if other fields satis
 \DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{Units}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Number"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}true"{}}\ />}
 \DoxyCodeLine{\ \ </\textcolor{keywordtype}{InsuranceProductConfig}>}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{Institution}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}>}
-\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{Null}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{AllowNullIf}>}
 \DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{TypeOfProvision}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{}}\ />}
 \DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{Profession}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{}}\ />}
-\DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{Null}>}
+\DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{AllowNullIf}>}
+\DoxyCodeLine{\ \ \ \ <\textcolor{keywordtype}{AllowNullIf}>}
+\DoxyCodeLine{\ \ \ \ \ \ <\textcolor{keywordtype}{SalaryType}\ \textcolor{keyword}{uuid}=\textcolor{stringliteral}{"{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{}}\ />}
+\DoxyCodeLine{\ \ \ \ </\textcolor{keywordtype}{AllowNullIf}>}
 \DoxyCodeLine{\ \ </\textcolor{keywordtype}{Institution}>}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{School}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}String"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
-\DoxyCodeLine{\ \ <\textcolor{keywordtype}{ApprenticeshipType}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
 \DoxyCodeLine{\ \ <\textcolor{keywordtype}{Location}\ \textcolor{keyword}{type}=\textcolor{stringliteral}{"{}Uuid"{}}\ \textcolor{keyword}{notNull}=\textcolor{stringliteral}{"{}false"{}}\ />}
 \DoxyCodeLine{</\textcolor{keywordtype}{Test}>}
 
@@ -167,29 +172,12 @@ This configuration file will validate the incoming data. The data must be in {\t
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\{}
-\DoxyCodeLine{\ \ "{}Test"{}:\ \{}
-\DoxyCodeLine{\ \ \ \ "{}Provision"{}:\ \{\ "{}ProvisionNumber"{}:\ 12345678901234,\ "{}CostApproval"{}:\ true\ \},}
-\DoxyCodeLine{\ \ \ \ "{}TypeOfProvision"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{},}
-\DoxyCodeLine{\ \ \ \ "{}Profession"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/226614174000"{},}
-\DoxyCodeLine{\ \ \ \ "{}SalaryType"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/426614174000"{},}
-\DoxyCodeLine{\ \ \ \ "{}DateFrom"{}:\ "{}2020-\/01-\/01"{},}
-\DoxyCodeLine{\ \ \ \ "{}DateTo"{}:\ "{}2020-\/12-\/31"{},}
-\DoxyCodeLine{\ \ \ \ "{}InsuranceProductConfig"{}:\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ "{}TarifNumber"{}:\ 1234567,}
-\DoxyCodeLine{\ \ \ \ \ \ "{}BillingCategory"{}:\ "{}Test"{},}
-\DoxyCodeLine{\ \ \ \ \ \ "{}Price"{}:\ 123.45,}
-\DoxyCodeLine{\ \ \ \ \ \ "{}Units"{}:\ 3}
-\DoxyCodeLine{\ \ \ \ \},}
-\DoxyCodeLine{\ \ \ \ "{}Institution"{}:\ "{}"{},}
-\DoxyCodeLine{\ \ \ \ "{}Schule"{}:\ "{}Test"{},}
-\DoxyCodeLine{\ \ \ \ "{}LehrgangsBezeichnung"{}:\ "{}123e4567-\/e89b-\/12d3-\/a456-\/426614174000"{},}
-\DoxyCodeLine{\ \ \ \ "{}Ort"{}:\ "{}"{}}
-\DoxyCodeLine{\ \ \}}
-\DoxyCodeLine{\}}
+\DoxyCodeLine{\{"{}Test"{}:\{"{}Provision"{}:\{"{}ProvisionNumber"{}:14,"{}CostApproval"{}:true\},"{}TypeOfProvision"{}:"{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{},"{}Profession"{}:"{}123e4567-\/e89b-\/12d3-\/a456-\/526614174001"{},"{}SalaryType"{}:"{}123e4567-\/e89b-\/12d3-\/a456-\/526614174000"{},"{}DateFrom"{}:"{}2024-\/01-\/01"{},"{}DateTo"{}:"{}2024-\/12-\/31"{},"{}InsuranceProductConfig"{}:\{"{}TarifNumber"{}:7,"{}BillingCategory"{}:"{}c"{},"{}Price"{}:0.0,"{}Units"{}:1\},"{}Institution"{}:"{}"{},"{}School"{}:"{}"{},"{}Loaction"{}:"{}"{}\}\}}
 
 \end{DoxyCode}
 
+
+The API will return a Json object with either all errors that have occured or just an "{}ok"{} message if the request is valid.
 
 Connect to the API (can be done with Netcat or Telnet)\+:
 

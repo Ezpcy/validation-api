@@ -105,9 +105,9 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a469734aa94b796d2c4565b1d121cd6f3" id="r_a469734aa94b796d2c4565b1d121cd6f3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a469734aa94b796d2c4565b1d121cd6f3">json</a> = nlohmann::json</td></tr>
 <tr class="separator:a469734aa94b796d2c4565b1d121cd6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95c4d3f95028b5dc6bfd287100cdbea9" id="r_a95c4d3f95028b5dc6bfd287100cdbea9"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; std::string, std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95c4d3f95028b5dc6bfd287100cdbea9">NullOptions</a></td></tr>
-<tr class="memdesc:a95c4d3f95028b5dc6bfd287100cdbea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">NullOptions.  <br /></td></tr>
-<tr class="separator:a95c4d3f95028b5dc6bfd287100cdbea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ba8a1f3c413529eccf1fd96717b5d6" id="r_a31ba8a1f3c413529eccf1fd96717b5d6"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; std::string, std::unordered_map&lt; int, std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31ba8a1f3c413529eccf1fd96717b5d6">NullOptions</a></td></tr>
+<tr class="memdesc:a31ba8a1f3c413529eccf1fd96717b5d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">NullOptions.  <br /></td></tr>
+<tr class="separator:a31ba8a1f3c413529eccf1fd96717b5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -120,6 +120,7 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="#a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15">XmlConfigValueError</a>
 , <a class="el" href="#a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871">XmlConfigEmptyError</a>
 , <a class="el" href="#a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448">JsonMissingField</a>
+, <a class="el" href="#a730a1da302816a69b20162ecefed2e8ba7af8f56a012f5b92871283c02f6d76df">JsonAdditionalField</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a730a1da302816a69b20162ecefed2e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Second Msg object.  <a href="#a730a1da302816a69b20162ecefed2e8b">More...</a><br /></td></tr>
@@ -130,6 +131,9 @@ Functions</h2></td></tr>
 <tr class="memitem:add9de92f1283937ab6d7688462f67c3c" id="r_add9de92f1283937ab6d7688462f67c3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add9de92f1283937ab6d7688462f67c3c">setup_logger</a> ()</td></tr>
 <tr class="memdesc:add9de92f1283937ab6d7688462f67c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up and configures the logger using spdlog.  <br /></td></tr>
 <tr class="separator:add9de92f1283937ab6d7688462f67c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa82c6b3a43b6e6b59b529c22944cadca" id="r_aa82c6b3a43b6e6b59b529c22944cadca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa82c6b3a43b6e6b59b529c22944cadca">validateXmlConfig</a> (const pugi::xml_node &amp;node, <a class="el" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">validation_api::ConfigService::Errors</a> &amp;erros)</td></tr>
+<tr class="memdesc:aa82c6b3a43b6e6b59b529c22944cadca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures valid Xml configuration.  <br /></td></tr>
+<tr class="separator:aa82c6b3a43b6e6b59b529c22944cadca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac19e25b4d8364b0f52152440dd5ecbda" id="r_ac19e25b4d8364b0f52152440dd5ecbda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac19e25b4d8364b0f52152440dd5ecbda">isValidUuid</a> (const std::string &amp;uuidStr)</td></tr>
 <tr class="separator:ac19e25b4d8364b0f52152440dd5ecbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac497c1198e4e7f0fe71ffbdb3e6beeaa" id="r_ac497c1198e4e7f0fe71ffbdb3e6beeaa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac497c1198e4e7f0fe71ffbdb3e6beeaa">isFloat</a> (const std::string &amp;str, float &amp;out)</td></tr>
@@ -144,11 +148,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a0a2b975e162ced567ba3a6075684092a" id="r_a0a2b975e162ced567ba3a6075684092a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a2b975e162ced567ba3a6075684092a">validateIban</a> (const std::string &amp;val)</td></tr>
 <tr class="memdesc:a0a2b975e162ced567ba3a6075684092a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates Iban string.  <br /></td></tr>
 <tr class="separator:a0a2b975e162ced567ba3a6075684092a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa82c6b3a43b6e6b59b529c22944cadca" id="r_aa82c6b3a43b6e6b59b529c22944cadca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa82c6b3a43b6e6b59b529c22944cadca">validateXmlConfig</a> (const pugi::xml_node &amp;node, <a class="el" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">validation_api::ConfigService::Errors</a> &amp;erros)</td></tr>
-<tr class="memdesc:aa82c6b3a43b6e6b59b529c22944cadca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures valid Xml configuration.  <br /></td></tr>
-<tr class="separator:aa82c6b3a43b6e6b59b529c22944cadca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a402f9de5ae5cfa713cc6681b7ea2880c" id="r_a402f9de5ae5cfa713cc6681b7ea2880c"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a402f9de5ae5cfa713cc6681b7ea2880c">errorsToJson</a> (const <a class="el" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">ConfigService::Errors</a> &amp;errors)</td></tr>
-<tr class="separator:a402f9de5ae5cfa713cc6681b7ea2880c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad94de3de52c70b315f5b36cce4642718" id="r_ad94de3de52c70b315f5b36cce4642718"><td class="memItemLeft" align="right" valign="top">nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad94de3de52c70b315f5b36cce4642718">errorsToJson</a> (const <a class="el" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">ConfigService::Errors</a> &amp;errors)</td></tr>
+<tr class="separator:ad94de3de52c70b315f5b36cce4642718"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -170,20 +171,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a95c4d3f95028b5dc6bfd287100cdbea9" name="a95c4d3f95028b5dc6bfd287100cdbea9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95c4d3f95028b5dc6bfd287100cdbea9">&#9670;&#160;</a></span>NullOptions</h2>
+<a id="a31ba8a1f3c413529eccf1fd96717b5d6" name="a31ba8a1f3c413529eccf1fd96717b5d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ba8a1f3c413529eccf1fd96717b5d6">&#9670;&#160;</a></span>NullOptions</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::unordered_map&lt;std::string, std::vector&lt;std::pair&lt;std::string, std::string&gt; &gt; &gt; <a class="el" href="#a95c4d3f95028b5dc6bfd287100cdbea9">validation_api::NullOptions</a></td>
+          <td class="memname">typedef std::unordered_map&lt; std::string, std::unordered_map&lt;int, std::vector&lt;std::pair&lt;std::string, std::string&gt; &gt; &gt; &gt; <a class="el" href="#a31ba8a1f3c413529eccf1fd96717b5d6">validation_api::NullOptions</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>NullOptions. </p>
-<p>An unordered map of &lt;string, vecto&lt;string&gt; to hold all uuid's with their respective key value. </p>
+<p>An unordered map of &lt;string, unordered_map&lt;int, pair&lt;string, string&gt;&gt; to hold all uuid's with their respective key value. </p>
 
 </div>
 </div>
@@ -225,29 +226,38 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15" name="a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15"></a>XmlConfigValueError&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871" name="a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871"></a>XmlConfigEmptyError&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448" name="a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448"></a>JsonMissingField&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a730a1da302816a69b20162ecefed2e8ba7af8f56a012f5b92871283c02f6d76df" name="a730a1da302816a69b20162ecefed2e8ba7af8f56a012f5b92871283c02f6d76df"></a>JsonAdditionalField&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a402f9de5ae5cfa713cc6681b7ea2880c" name="a402f9de5ae5cfa713cc6681b7ea2880c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a402f9de5ae5cfa713cc6681b7ea2880c">&#9670;&#160;</a></span>errorsToJson()</h2>
+<a id="ad94de3de52c70b315f5b36cce4642718" name="ad94de3de52c70b315f5b36cce4642718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad94de3de52c70b315f5b36cce4642718">&#9670;&#160;</a></span>errorsToJson()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">inlinne nlohmann::json validation_api::errorsToJson </td>
+          <td class="memname">nlohmann::json validation_api::errorsToJson </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">ConfigService::Errors</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>errors</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespacevalidation__api_a402f9de5ae5cfa713cc6681b7ea2880c_icgraph.svg" width="915" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718_icgraph.svg" width="915" height="80"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

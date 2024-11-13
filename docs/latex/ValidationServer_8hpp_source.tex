@@ -31,26 +31,38 @@
 \DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ *\ @brief\ Write\ to\ the\ socket}}
 \DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ *\ @details\ Write\ messages\ to\ the\ socket\ in\ a\ asynchronous\ way}}
 \DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a59c4a313effe28cc0acca7b8bb3a26e4}{asyncWriter}}(\textcolor{keyword}{const}\ std::string\&\ response,}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<boost::asio::ip::tcp::socket>\ socket);}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00060\ \ \ std::atomic<bool>\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a9246f1e3e88c29f1de1d967095538ba7}{running\_}};}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00066\ \ \ boost::asio::io\_context\&\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a381ee307f47949ee3031b674bdfb6776}{io\_context\_}};}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00073\ \ \ boost::asio::ip::tcp::acceptor\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_adb06468f4130a28beb181eb5aaf77869}{acceptor\_}};}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00079\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{ConfigService}}\&\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a755b8ab5e31b58ef272556e84475cabf}{service\_}};}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00086\ \ \ std::counting\_semaphore<>\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a55596c86d27d93e87d08adaef97067ac}{semaphore\_}};}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00093\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a2982ad6c1a06d52bfc70b1fa6cd2b504}{logger\_}};}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00099\ \ \ std::shared\_ptr<}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ boost::asio::executor\_work\_guard<boost::asio::io\_context::executor\_type>>}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a39bca29a5178b64d6354754b7b153ab4}{workGuard\_}};}
-\DoxyCodeLine{00102\ \};}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00104\ \}\ \ \textcolor{comment}{//\ namespace\ validation\_api}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a59c4a313effe28cc0acca7b8bb3a26e4}{asyncWriter}}(}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ response,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ std::shared\_ptr<boost::asio::ip::tcp::socket>\ socket)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Asynchronously\ send\ the\ response\ to\ the\ client}}
+\DoxyCodeLine{00056\ \ \ \ \ boost::asio::async\_write(}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ *socket,\ boost::asio::buffer(response),}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ [\textcolor{keyword}{this},\ socket](boost::system::error\_code\ ec,\ std::size\_t)\ \textcolor{keyword}{mutable}\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ec)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a2982ad6c1a06d52bfc70b1fa6cd2b504}{logger\_}}-\/>error(\textcolor{stringliteral}{"{}Failed\ to\ send\ response:\ \{\}"{}},\ ec.message());}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ connection\ will\ be\ closed\ automatically\ when\ socket\ goes\ out\ of}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ scope}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00065\ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00072\ \ \ std::atomic<bool>\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a9246f1e3e88c29f1de1d967095538ba7}{running\_}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ boost::asio::io\_context\&\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a381ee307f47949ee3031b674bdfb6776}{io\_context\_}};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ boost::asio::ip::tcp::acceptor\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_adb06468f4130a28beb181eb5aaf77869}{acceptor\_}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{ConfigService}}\&\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a755b8ab5e31b58ef272556e84475cabf}{service\_}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \ \ std::counting\_semaphore<>\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a55596c86d27d93e87d08adaef97067ac}{semaphore\_}};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a2982ad6c1a06d52bfc70b1fa6cd2b504}{logger\_}};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ std::shared\_ptr<}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ boost::asio::executor\_work\_guard<boost::asio::io\_context::executor\_type>>}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ValidationServer_a39bca29a5178b64d6354754b7b153ab4}{workGuard\_}};}
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \}\ \ \textcolor{comment}{//\ namespace\ validation\_api}}
 
 \end{DoxyCode}

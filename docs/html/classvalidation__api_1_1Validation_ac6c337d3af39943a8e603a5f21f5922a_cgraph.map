@@ -1,25 +1,31 @@
 <map id="validation_api::Validation::run" name="validation_api::Validation::run">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,107,221,135"/>
-<area shape="rect" id="Node000002" href="$classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2" title="Traverse through the json object and validate the fields." alt="" coords="269,99,455,143"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,118,253,118,253,124,221,124"/>
-<area shape="poly" id="edge5_Node000002_Node000002" title=" " alt="" coords="317,99,316,89,323,80,339,74,362,72,387,75,402,81,400,86,386,80,362,77,340,79,326,84,321,90,322,98"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title="Set the First Msg object." alt="" coords="739,5,938,50"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="455,100,723,47,724,53,456,106"/>
-<area shape="rect" id="Node000004" href="$classvalidation__api_1_1Validation.html#a2005828d7e475090ef5a895348bfb760" title=" " alt="" coords="745,99,932,143"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="455,118,730,118,730,124,455,124"/>
-<area shape="rect" id="Node000005" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="503,184,689,229"/>
-<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="426,141,519,176,518,181,424,146"/>
-<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="792,99,791,89,799,80,815,74,839,72,865,75,880,81,878,86,863,80,838,77,816,79,802,84,796,90,798,98"/>
-<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="612,182,663,122,698,89,736,60,745,55,747,59,739,65,701,93,667,126,616,185"/>
-<area shape="poly" id="edge8_Node000005_Node000004" title=" " alt="" coords="659,181,736,153,756,146,757,151,738,158,661,186"/>
-<area shape="rect" id="Node000006" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="741,219,936,247"/>
-<area shape="poly" id="edge9_Node000005_Node000006" title=" " alt="" coords="690,214,726,218,725,223,690,219"/>
-<area shape="rect" id="Node000007" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title="Set the First Msg object." alt="" coords="739,271,938,315"/>
-<area shape="poly" id="edge10_Node000005_Node000007" title=" " alt="" coords="659,227,738,256,757,263,755,268,736,261,657,232"/>
-<area shape="rect" id="Node000008" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="752,339,925,367"/>
-<area shape="poly" id="edge11_Node000005_Node000008" title=" " alt="" coords="619,227,670,277,703,303,739,325,750,331,748,336,736,330,700,308,667,281,616,231"/>
-<area shape="rect" id="Node000009" href="$namespacevalidation__api.html#aae32fd7a0b5886a49454679d46ed4bd1" title="Validates Ahv string." alt="" coords="739,391,938,419"/>
-<area shape="poly" id="edge12_Node000005_Node000009" title=" " alt="" coords="612,228,632,261,661,301,697,342,739,376,750,382,747,387,736,381,693,346,657,305,628,264,607,231"/>
-<area shape="rect" id="Node000010" href="$namespacevalidation__api.html#a0a2b975e162ced567ba3a6075684092a" title="Validates Iban string." alt="" coords="737,167,940,195"/>
-<area shape="poly" id="edge13_Node000005_Node000010" title=" " alt="" coords="690,194,722,191,722,196,690,199"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,221,127"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title=" " alt="" coords="739,5,938,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,96,200,72,268,52,389,33,511,23,626,19,724,20,724,25,626,24,511,28,389,38,269,57,202,77,145,101"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945" title=" " alt="" coords="269,91,455,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,110,253,110,253,116,221,116"/>
+<area shape="rect" id="Node000004" href="$classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2" title="Traverse through the json object and validate the fields." alt="" coords="269,184,455,229"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="153,125,287,176,285,181,151,130"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="317,91,316,81,323,72,339,66,362,64,387,67,402,73,400,78,386,72,362,69,340,71,326,76,321,82,322,90"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="420,181,736,60,755,53,757,58,738,65,422,186"/>
+<area shape="poly" id="edge8_Node000004_Node000004" title=" " alt="" coords="317,184,316,174,323,165,339,159,362,157,387,160,402,166,400,171,386,165,362,163,340,165,326,169,321,175,322,183"/>
+<area shape="rect" id="Node000005" href="$classvalidation__api_1_1Validation.html#a1931562aaf3ed21afc7d5f0fade04aa0" title=" " alt="" coords="988,267,1174,311"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="395,227,455,268,538,318,635,367,686,387,738,402,794,416,840,422,884,418,939,403,971,387,1001,366,1049,321,1053,325,1004,371,974,392,941,407,885,424,839,427,793,421,737,408,684,392,633,372,535,323,452,273,392,231"/>
+<area shape="rect" id="Node000006" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="503,185,689,230"/>
+<area shape="poly" id="edge9_Node000004_Node000006" title=" " alt="" coords="455,204,488,204,487,210,455,210"/>
+<area shape="poly" id="edge7_Node000005_Node000005" title=" " alt="" coords="1035,267,1033,257,1041,248,1057,242,1081,240,1107,243,1123,249,1120,254,1106,248,1081,245,1058,247,1044,252,1038,258,1040,266"/>
+<area shape="poly" id="edge10_Node000006_Node000002" title=" " alt="" coords="627,183,658,158,687,130,701,111,709,94,719,77,736,60,742,56,745,60,739,64,723,80,714,96,706,114,691,133,661,162,631,187"/>
+<area shape="rect" id="Node000007" href="$classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7" title="Checking Uuid values." alt="" coords="745,125,932,170"/>
+<area shape="poly" id="edge11_Node000006_Node000007" title=" " alt="" coords="688,182,730,172,732,177,690,187"/>
+<area shape="rect" id="Node000008" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="741,194,936,221"/>
+<area shape="poly" id="edge13_Node000006_Node000008" title=" " alt="" coords="690,205,726,205,726,210,690,210"/>
+<area shape="rect" id="Node000009" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title="Set the First Msg object." alt="" coords="739,245,938,290"/>
+<area shape="poly" id="edge14_Node000006_Node000009" title=" " alt="" coords="690,228,732,239,730,244,688,233"/>
+<area shape="rect" id="Node000010" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="752,314,925,342"/>
+<area shape="poly" id="edge15_Node000006_Node000010" title=" " alt="" coords="626,228,677,265,738,300,754,306,752,311,736,305,674,269,623,232"/>
+<area shape="rect" id="Node000011" href="$namespacevalidation__api.html#aae32fd7a0b5886a49454679d46ed4bd1" title="Validates Ahv string." alt="" coords="739,366,938,394"/>
+<area shape="poly" id="edge16_Node000006_Node000011" title=" " alt="" coords="615,229,666,290,700,323,739,351,752,357,749,362,736,355,697,327,662,294,611,232"/>
+<area shape="rect" id="Node000012" href="$namespacevalidation__api.html#a0a2b975e162ced567ba3a6075684092a" title="Validates Iban string." alt="" coords="737,74,940,101"/>
+<area shape="poly" id="edge17_Node000006_Node000012" title=" " alt="" coords="623,183,674,146,736,111,752,104,754,109,738,115,677,150,626,187"/>
+<area shape="poly" id="edge12_Node000007_Node000005" title=" " alt="" coords="916,168,941,180,997,216,1045,254,1042,258,994,220,938,185,913,173"/>
 </map>

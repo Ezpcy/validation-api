@@ -105,7 +105,7 @@ Pre-requisites</h1>
 <li>CMake</li>
 <li>Conan (for installing dependencies)</li>
 <li>Linux</li>
-<li>C++ 20</li>
+<li>Clang/gcc</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Installation</h1>
@@ -164,14 +164,17 @@ Nesting</h1>
 <h2><a class="anchor" id="autotoc_md8"></a>
 Null Nesting</h2>
 <p>With Null Nesting you can specify that a field can be null if other fields satisfy a given a <code>UUID</code>:</p>
-<div class="fragment"><div class="line">&lt;<span class="keywordtype">Institution</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;uuid&quot;</span>&gt;</div>
-<div class="line">    &lt;<span class="keywordtype">Null</span>&gt;</div>
-<div class="line">        &lt;<span class="keywordtype">TypeOfProvision</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-526614174000&quot;</span>/&gt;</div>
-<div class="line">        &lt;<span class="keywordtype">Profession</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span>/&gt;</div>
-<div class="line">    &lt;/<span class="keywordtype">Null</span>&gt;</div>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">Institution</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">AllowNullIf</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">TypeOfProvision</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-526614174000&quot;</span> /&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">Profession</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span> /&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">AllowNullIf</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">AllowNullIf</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">SalaryType</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span> /&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">AllowNullIf</span>&gt;</div>
 <div class="line">&lt;/<span class="keywordtype">Institution</span>&gt;</div>
 </div><!-- fragment --><ul>
-<li><code>Instution</code> can be null if <code>TypeOfProvision</code> and <code>Profession</code> are not null and have the given <code>UUID</code>.</li>
+<li><code>Instution</code> can be null if <code>TypeOfProvision</code> and <code>Profession</code> or <code>SalaryType</code> are not null and have the given <code>UUID</code>.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Example</h1>
@@ -192,37 +195,21 @@ Example</h1>
 <div class="line">    &lt;<span class="keywordtype">Units</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">InsuranceProductConfig</span>&gt;</div>
 <div class="line">  &lt;<span class="keywordtype">Institution</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span>&gt;</div>
-<div class="line">    &lt;<span class="keywordtype">Null</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">AllowNullIf</span>&gt;</div>
 <div class="line">      &lt;<span class="keywordtype">TypeOfProvision</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-526614174000&quot;</span> /&gt;</div>
 <div class="line">      &lt;<span class="keywordtype">Profession</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span> /&gt;</div>
-<div class="line">    &lt;/<span class="keywordtype">Null</span>&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">AllowNullIf</span>&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">AllowNullIf</span>&gt;</div>
+<div class="line">      &lt;<span class="keywordtype">SalaryType</span> <span class="keyword">uuid</span>=<span class="stringliteral">&quot;123e4567-e89b-12d3-a456-226614174000&quot;</span> /&gt;</div>
+<div class="line">    &lt;/<span class="keywordtype">AllowNullIf</span>&gt;</div>
 <div class="line">  &lt;/<span class="keywordtype">Institution</span>&gt;</div>
 <div class="line">  &lt;<span class="keywordtype">School</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;String&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
-<div class="line">  &lt;<span class="keywordtype">ApprenticeshipType</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
 <div class="line">  &lt;<span class="keywordtype">Location</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;false&quot;</span> /&gt;</div>
 <div class="line">&lt;/<span class="keywordtype">Test</span>&gt;</div>
 </div><!-- fragment --><p>This configuration file will validate the incoming data. The data must be in <code>JSON</code> format. A valid request would look like this:</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  &quot;Test&quot;: {</div>
-<div class="line">    &quot;Provision&quot;: { &quot;ProvisionNumber&quot;: 12345678901234, &quot;CostApproval&quot;: true },</div>
-<div class="line">    &quot;TypeOfProvision&quot;: &quot;123e4567-e89b-12d3-a456-526614174000&quot;,</div>
-<div class="line">    &quot;Profession&quot;: &quot;123e4567-e89b-12d3-a456-226614174000&quot;,</div>
-<div class="line">    &quot;SalaryType&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;,</div>
-<div class="line">    &quot;DateFrom&quot;: &quot;2020-01-01&quot;,</div>
-<div class="line">    &quot;DateTo&quot;: &quot;2020-12-31&quot;,</div>
-<div class="line">    &quot;InsuranceProductConfig&quot;: {</div>
-<div class="line">      &quot;TarifNumber&quot;: 1234567,</div>
-<div class="line">      &quot;BillingCategory&quot;: &quot;Test&quot;,</div>
-<div class="line">      &quot;Price&quot;: 123.45,</div>
-<div class="line">      &quot;Units&quot;: 3</div>
-<div class="line">    },</div>
-<div class="line">    &quot;Institution&quot;: &quot;&quot;,</div>
-<div class="line">    &quot;Schule&quot;: &quot;Test&quot;,</div>
-<div class="line">    &quot;LehrgangsBezeichnung&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;,</div>
-<div class="line">    &quot;Ort&quot;: &quot;&quot;</div>
-<div class="line">  }</div>
-<div class="line">}</div>
-</div><!-- fragment --><p>Connect to the API (can be done with Netcat or Telnet):</p>
+<div class="fragment"><div class="line">{&quot;Test&quot;:{&quot;Provision&quot;:{&quot;ProvisionNumber&quot;:14,&quot;CostApproval&quot;:true},&quot;TypeOfProvision&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;Profession&quot;:&quot;123e4567-e89b-12d3-a456-526614174001&quot;,&quot;SalaryType&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;DateFrom&quot;:&quot;2024-01-01&quot;,&quot;DateTo&quot;:&quot;2024-12-31&quot;,&quot;InsuranceProductConfig&quot;:{&quot;TarifNumber&quot;:7,&quot;BillingCategory&quot;:&quot;c&quot;,&quot;Price&quot;:0.0,&quot;Units&quot;:1},&quot;Institution&quot;:&quot;&quot;,&quot;School&quot;:&quot;&quot;,&quot;Loaction&quot;:&quot;&quot;}}</div>
+</div><!-- fragment --><p>The API will return a Json object with either all errors that have occured or just an "ok" message if the request is valid.</p>
+<p>Connect to the API (can be done with Netcat or Telnet):</p>
 <div class="fragment"><div class="line">telnet 127.0.0.1 8080</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Logs</h1>

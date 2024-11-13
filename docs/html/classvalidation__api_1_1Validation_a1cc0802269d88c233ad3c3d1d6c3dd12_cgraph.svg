@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" target="_top" xlink:title="Set the First Msg object.">
+<g id="a_Node000002"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="326,-310.12 177.25,-310.12 177.25,-276.62 326,-276.62 326,-310.12"/>
 <text text-anchor="start" x="185.25" y="-296.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
 <text text-anchor="middle" x="251.62" y="-283.88" font-family="Helvetica,sans-Serif" font-size="10.00">::build</text>
@@ -77,7 +77,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" target="_top" xlink:title="Set the First Msg object.">
+<g id="a_Node000005"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="326,-150.12 177.25,-150.12 177.25,-116.62 326,-116.62 326,-150.12"/>
 <text text-anchor="start" x="185.25" y="-136.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
 <text text-anchor="middle" x="251.62" y="-123.88" font-family="Helvetica,sans-Serif" font-size="10.00">::setSecondMsg</text>

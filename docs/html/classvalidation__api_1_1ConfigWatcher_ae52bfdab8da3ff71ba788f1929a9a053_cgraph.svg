@@ -180,7 +180,7 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" target="_top" xlink:title="Set the First Msg object.">
+<g id="a_Node000007"><a xlink:href="classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="956.75,-201.12 808,-201.12 808,-167.62 956.75,-167.62 956.75,-201.12"/>
 <text text-anchor="start" x="816" y="-187.62" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::ErrorBuilder</text>
 <text text-anchor="middle" x="882.38" y="-174.88" font-family="Helvetica,sans-Serif" font-size="10.00">::build</text>

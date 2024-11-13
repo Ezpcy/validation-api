@@ -1,23 +1,22 @@
 <map id="validation_api::Validation::traverseAndValidate" name="validation_api::Validation::traverseAndValidate">
-<area shape="rect" id="Node000001" title="Traverse through the json object and validate the fields." alt="" coords="5,99,192,143"/>
-<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="54,99,52,89,60,80,75,74,99,72,124,75,139,81,137,86,123,80,98,77,77,79,63,84,58,90,59,98"/>
-<area shape="rect" id="Node000002" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title="Set the First Msg object." alt="" coords="476,5,674,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="191,100,460,47,461,53,192,106"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1Validation.html#a2005828d7e475090ef5a895348bfb760" title=" " alt="" coords="482,99,668,143"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,118,467,118,467,124,192,124"/>
-<area shape="rect" id="Node000004" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="240,184,426,229"/>
-<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="163,141,256,176,254,181,161,146"/>
-<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="529,99,528,89,535,80,551,74,575,72,601,75,617,81,615,86,600,80,575,77,552,79,538,84,533,90,534,98"/>
-<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="349,182,400,122,434,89,473,60,481,55,484,59,475,65,438,93,404,126,353,185"/>
-<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="396,181,473,153,492,146,494,151,475,158,398,186"/>
-<area shape="rect" id="Node000005" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="478,219,672,247"/>
-<area shape="poly" id="edge8_Node000004_Node000005" title=" " alt="" coords="427,214,463,218,462,223,426,219"/>
-<area shape="rect" id="Node000006" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title="Set the First Msg object." alt="" coords="476,271,674,315"/>
-<area shape="poly" id="edge9_Node000004_Node000006" title=" " alt="" coords="396,227,475,256,494,263,492,268,473,261,394,232"/>
-<area shape="rect" id="Node000007" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="489,339,662,367"/>
-<area shape="poly" id="edge10_Node000004_Node000007" title=" " alt="" coords="356,227,407,277,440,303,475,325,487,331,485,336,473,330,437,308,403,281,352,231"/>
-<area shape="rect" id="Node000008" href="$namespacevalidation__api.html#aae32fd7a0b5886a49454679d46ed4bd1" title="Validates Ahv string." alt="" coords="476,391,675,419"/>
-<area shape="poly" id="edge11_Node000004_Node000008" title=" " alt="" coords="349,228,369,261,398,301,434,342,476,376,487,382,484,387,472,381,430,346,393,305,364,264,344,231"/>
-<area shape="rect" id="Node000009" href="$namespacevalidation__api.html#a0a2b975e162ced567ba3a6075684092a" title="Validates Iban string." alt="" coords="474,167,676,195"/>
-<area shape="poly" id="edge12_Node000004_Node000009" title=" " alt="" coords="426,194,458,191,459,196,427,199"/>
+<area shape="rect" id="Node000001" title="Traverse through the json object and validate the fields." alt="" coords="5,160,192,205"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="54,160,52,150,60,141,75,135,99,133,124,136,139,142,137,147,123,141,98,139,77,141,63,145,58,151,59,159"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1Validation.html#a2005828d7e475090ef5a895348bfb760" title=" " alt="" coords="482,29,668,74"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,157,475,76,477,81,184,162"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="240,189,426,234"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="192,191,224,195,224,201,192,197"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="529,29,528,19,535,10,551,5,575,3,601,5,617,12,615,17,600,10,575,8,552,10,538,15,533,21,534,28"/>
+<area shape="poly" id="edge6_Node000003_Node000002" title=" " alt="" coords="355,187,417,129,473,84,483,78,485,83,475,89,420,133,359,191"/>
+<area shape="rect" id="Node000004" href="$classvalidation__api_1_1ErrorBuilder.html#a84327bbfe6c61e7be6966acc41ba6087" title=" " alt="" coords="476,99,674,143"/>
+<area shape="poly" id="edge5_Node000003_Node000004" title=" " alt="" coords="389,186,473,153,491,147,493,152,475,158,391,191"/>
+<area shape="rect" id="Node000005" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="478,167,672,195"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="426,197,462,193,463,198,427,202"/>
+<area shape="rect" id="Node000006" href="$classvalidation__api_1_1ErrorBuilder.html#a014e70c2f2b4a2ee879c363b4a2174f2" title=" " alt="" coords="476,219,674,263"/>
+<area shape="poly" id="edge8_Node000003_Node000006" title=" " alt="" coords="427,220,461,224,460,230,426,226"/>
+<area shape="rect" id="Node000007" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="489,287,662,315"/>
+<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="380,232,475,273,497,280,495,285,473,278,378,237"/>
+<area shape="rect" id="Node000008" href="$namespacevalidation__api.html#aae32fd7a0b5886a49454679d46ed4bd1" title="Validates Ahv string." alt="" coords="476,339,675,367"/>
+<area shape="poly" id="edge10_Node000003_Node000008" title=" " alt="" coords="358,232,409,279,441,303,475,324,491,331,489,336,473,329,438,308,405,283,354,236"/>
+<area shape="rect" id="Node000009" href="$namespacevalidation__api.html#a0a2b975e162ced567ba3a6075684092a" title="Validates Iban string." alt="" coords="474,391,676,419"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="349,233,398,304,434,343,475,376,487,382,484,387,473,381,430,347,394,307,345,236"/>
 </map>
