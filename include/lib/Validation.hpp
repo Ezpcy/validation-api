@@ -17,11 +17,12 @@ namespace validation_api {
  * string>> to hold all uuid's with their respective key value.
  */
 typedef std::unordered_map<
-    std::string, std::unordered_map<int, std::pair<std::string, std::string>>>
+    std::string,
+    std::unordered_map<int, std::vector<std::pair<std::string, std::string>>>>
     NullOptions;
 
 class Validation {
- public:
+public:
   Validation(const nlohmann::json &jsonObj, const pugi::xml_node &doc,
              ConfigService::Errors &errors);
 
@@ -59,19 +60,18 @@ class Validation {
                attr != nullId.attributes_end(); ++attr) {
             // Check if the UUID is valid
             if (isValidUuid(std::string(attr->value()))) {
+
               auto it = nullOptions_.find(forField);
 
               // If the key is not found, insert it with a new vector
               if (it == nullOptions_.end()) {
-                nullOptions_.insert(
-                    {forField,
-                     {{currentKey,
-                       {nullId.name(), std::string(attr->value())}}}});
+                nullOptions_[forField].insert(
+                    {currentKey, {{nullId.name(), attr->value()}}});
 
               } else {
-                // If the key exists, push the new UUID into the vector
-                it->second.insert(
-                    {currentKey, {nullId.name(), std::string(attr->value())}});
+                // If the key is found, append the new value to the vector
+                nullOptions_[forField][currentKey].push_back(
+                    {nullId.name(), attr->value()});
               }
             } else {
               // If the UUID is invalid, log an error
@@ -98,7 +98,7 @@ class Validation {
                                       const std::string &nodeName) {
     // If the key exists at the current level, return it
     if (jsonObj.contains(nodeName)) {
-      return jsonObj;
+      return jsonObj[nodeName];
     }
 
     // Otherwise, look through all objects in the current level
@@ -142,7 +142,28 @@ class Validation {
     return;
   }
 
- private:
+  /**
+   * @brief Checking Uuid values
+   * @details Loops over a map of null options and checks if they exist in the
+   * request
+   * @param nullVec
+   */
+  inline bool checkNullOptionsVec(
+      const std::vector<std::pair<std::string, std::string>> &nullVec) {
+
+    for (const auto &[fieldName, fieldUuid] : nullVec) {
+      // Retrieve field from JSON
+      nlohmann::json nullCheckField = findJsonField(request_, fieldName);
+
+      // If the field exists and doesn't match the UUID, return false
+      if (!nullCheckField.is_null() && nullCheckField != fieldUuid) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+private:
   /**
    * @brief Field names from the request
    * @details Keeps track of fields and removes them when validated so we can
@@ -155,4 +176,4 @@ class Validation {
   NullOptions nullOptions_;
   std::shared_ptr<spdlog::logger> logger_;
 };
-}  // namespace validation_api
+} // namespace validation_api

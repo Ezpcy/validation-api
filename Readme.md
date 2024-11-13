@@ -105,15 +105,18 @@ Note that capitalization of the tag names is important. For options like `notNul
 With Null Nesting you can specify that a field can be null if other fields satisfy a given a `UUID`:
 
 ```xml
-<Institution type="uuid">
-    <Null>
-        <TypeOfProvision uuid="123e4567-e89b-12d3-a456-526614174000"/>
-        <Profession uuid="123e4567-e89b-12d3-a456-226614174000"/>
-    </Null>
+<Institution type="Uuid">
+    <AllowNullIf>
+      <TypeOfProvision uuid="123e4567-e89b-12d3-a456-526614174000" />
+      <Profession uuid="123e4567-e89b-12d3-a456-226614174000" />
+    </AllowNullIf>
+    <AllowNullIf>
+      <SalaryType uuid="123e4567-e89b-12d3-a456-226614174000" />
+    </AllowNullIf>
 </Institution>
 ```
 
-- `Instution` can be null if `TypeOfProvision` and `Profession` are not null and have the given `UUID`.
+- `Instution` can be null if `TypeOfProvision` and `Profession` or `SalaryType` are not null and have the given `UUID`.
 
 ## Example
 
@@ -135,41 +138,28 @@ With Null Nesting you can specify that a field can be null if other fields satis
     <Units type="Number" notNull="true" />
   </InsuranceProductConfig>
   <Institution type="Uuid">
-    <Null>
+    <AllowNullIf>
       <TypeOfProvision uuid="123e4567-e89b-12d3-a456-526614174000" />
       <Profession uuid="123e4567-e89b-12d3-a456-226614174000" />
-    </Null>
+    </AllowNullIf>
+    <AllowNullIf>
+      <SalaryType uuid="123e4567-e89b-12d3-a456-226614174000" />
+    </AllowNullIf>
   </Institution>
   <School type="String" notNull="false" />
-  <ApprenticeshipType type="Uuid" notNull="false" />
   <Location type="Uuid" notNull="false" />
 </Test>
 ```
 
+
 This configuration file will validate the incoming data. The data must be in `JSON` format. A valid request would look like this:
 
 ```json
-{
-  "Test": {
-    "Provision": { "ProvisionNumber": 12345678901234, "CostApproval": true },
-    "TypeOfProvision": "123e4567-e89b-12d3-a456-526614174000",
-    "Profession": "123e4567-e89b-12d3-a456-226614174000",
-    "SalaryType": "123e4567-e89b-12d3-a456-426614174000",
-    "DateFrom": "2020-01-01",
-    "DateTo": "2020-12-31",
-    "InsuranceProductConfig": {
-      "TarifNumber": 1234567,
-      "BillingCategory": "Test",
-      "Price": 123.45,
-      "Units": 3
-    },
-    "Institution": "",
-    "School": "Test",
-    "ApprenticeshipType ": "123e4567-e89b-12d3-a456-426614174000",
-    "Location": ""
-  }
-}
+{"Test":{"Provision":{"ProvisionNumber":14,"CostApproval":true},"TypeOfProvision":"123e4567-e89b-12d3-a456-526614174000","Profession":"123e4567-e89b-12d3-a456-526614174001","SalaryType":"123e4567-e89b-12d3-a456-526614174000","DateFrom":"2024-01-01","DateTo":"2024-12-31","InsuranceProductConfig":{"TarifNumber":7,"BillingCategory":"c","Price":0.0,"Units":1},"Institution":"","School":"","Loaction":""}}
+
 ```
+
+The API will return a Json object with either all errors that have occured or just an "ok" message if the request is valid.
 
 Connect to the API (can be done with Netcat or Telnet): 
 
