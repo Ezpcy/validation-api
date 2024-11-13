@@ -190,15 +190,15 @@ void validateXmlConfig(const pugi::xml_node &node,
 /*
  * @brief Creates a json object from ConfigService::Errors
  */
-inline nlohmann::json errorsToJson(const ConfigService::Errors &errors) {
-  nlohmann::json res;
-  for (const auto &[key, value] : errors) {
-    if (!res[key].empty()) {
-      res[key] = value;
-    } else {
-      res[key] = value;
-    }
-  }
-  return res;
-}
+// inline nlohmann::json errorsToJson(const ConfigService::Errors &errors) {
+//   nlohmann::json res;
+//   for (const auto &[key, value] : errors) {
+//     if (!res[key].empty()) {
+//       res[key] = value;
+//     } else {
+//       res[key] = value;
+//     }
+//   }
+//   return res;
+// }
 } // namespace validation_api

@@ -15,7 +15,7 @@ namespace validation_api {
  * It provides methods to create, delete, get and validate configuration files.
  */
 class ConfigService {
- public:
+public:
   /**
    * @brief Configs typedef
    *
@@ -30,7 +30,7 @@ class ConfigService {
    * @details This typedef is used to store the errors found in the
    * configuration files.
    */
-  typedef std::vector<std::pair<std::string, std::string>> Errors;
+  typedef nlohmann::json Errors;
 
   /**
    * @brief ConfigService constructor
@@ -74,7 +74,7 @@ class ConfigService {
    */
   Errors validateConfig(const nlohmann::json &jsonData);
 
- private:
+private:
   /**
    * @brief rwMutex_ member
    *
@@ -96,4 +96,4 @@ class ConfigService {
    */
   std::shared_ptr<spdlog::logger> logger_;
 };
-}  // namespace validation_api
+} // namespace validation_api

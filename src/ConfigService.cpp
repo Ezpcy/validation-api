@@ -53,13 +53,13 @@ ConfigService::validateConfig(const nlohmann::json &jsonData) {
   std::string key = jsonData.begin().key();
 
   if (configs_.find(key) == configs_.end()) {
-    errors.push_back({"Can't find configuration: ", key});
+    errors["error"] = {"Can't find configuration: ", key};
     return errors;
   }
 
   pugi::xml_node doc = configs_[key]->child(key.c_str());
   if (!doc) {
-    errors.push_back({"Can't find child node in configuration: ", key});
+    errors["erorr"] = {"Can't find child node in configuration: ", key};
     return errors;
   }
 
