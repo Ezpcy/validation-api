@@ -1,5 +1,6 @@
 #pragma once
 #include <format>
+#include <nlohmann/json.hpp>
 
 namespace validation_api {
 
@@ -11,13 +12,11 @@ namespace validation_api {
  */
 enum class ErrorType {
   Default,
-  ValidationError,
-  ValidationEmptyError,
-  XmlConfigError,
-  XmlConfigValueError,
-  XmlConfigEmptyError,
-  JsonMissingField,
-  JsonAdditionalField,
+  CannotBeEmpty,
+  NotCorrectType,
+  MaxError,
+  MinError,
+  EqError,
 };
 
 /**
@@ -27,11 +26,11 @@ enum class ErrorType {
 class ErrorBuilder {
 public:
   /**
-   * @brief Construct a new Error Builder object
+   * @brief Construct a new Error Builder object f
    * @param type Error type
    * @param fieldName Field name
    */
-  ErrorBuilder(ErrorType type = ErrorType::Default,
+  ErrorBuilder(const ErrorType &type = ErrorType::Default,
                const std::string &fieldName = "");
 
   /**
@@ -43,33 +42,28 @@ public:
                                     const std::string &msgSec = "") {
     switch (type_) {
     case ErrorType::Default:
-      secondMsg_ = "";
       break;
-    case ErrorType::ValidationEmptyError:
+    case ErrorType::CannotBeEmpty:
       break;
-    case ErrorType::XmlConfigError:
-      secondMsg_ = msgMain;
-      break;
-    case ErrorType::ValidationError:
-    case ErrorType::XmlConfigValueError:
-      secondMsg_ = std::format("Expected {}, received {}", msgMain, msgSec);
-      break;
-    case ErrorType::XmlConfigEmptyError:
-      secondMsg_ = std::format("Option {} can not be empty", msgMain);
-      break;
-    case ErrorType::JsonMissingField:
-    case ErrorType::JsonAdditionalField:
+    case ErrorType::NotCorrectType:
+    case ErrorType::MaxError:
+    case ErrorType::MinError:
+    case ErrorType::EqError:
+      nlohmann::json exp;
+      exp["Expected"] = msgMain;
+      exp["Received"] = msgSec;
+      res_[fieldName_] += exp;
       break;
     }
     return *this;
   }
 
-  inline std::pair<std::string, std::string> build() const {
-    return std::pair(firstMsg_, secondMsg_);
-  }
+  nlohmann::json build() const { return res_; }
 
 private:
+  nlohmann::json res_;
   ErrorType type_;
+  std::string fieldName_;
   std::string firstMsg_;
   std::string secondMsg_;
 };

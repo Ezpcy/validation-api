@@ -2,29 +2,26 @@
 #include <lib/ErrorBuilder.hpp>
 
 namespace validation_api {
-ErrorBuilder::ErrorBuilder(ErrorType type, const std::string &fieldName)
-    : type_(type) {
-  switch (type) {
+ErrorBuilder::ErrorBuilder(const ErrorType &type, const std::string &fieldName)
+    : type_(type), fieldName_(fieldName) {
+  switch (type_) {
   case ErrorType::Default:
     firstMsg_ = "An Error occured";
     break;
-  case ErrorType::ValidationError:
-    firstMsg_ = std::format("{}", fieldName);
+  case ErrorType::CannotBeEmpty:
+    res_[fieldName_] += "RIO.CannotBeEmpty";
     break;
-  case ErrorType::ValidationEmptyError:
-    firstMsg_ = std::format("{}", fieldName);
-    secondMsg_ = std::string("Field is not allowed to be empty");
+  case ErrorType::NotCorrectType:
+    res_[fieldName_] += "RIO.NotCorrectType";
     break;
-  case ErrorType::XmlConfigError:
-  case ErrorType::XmlConfigValueError:
-  case ErrorType::XmlConfigEmptyError:
-  case ErrorType::JsonMissingField:
-    firstMsg_ = std::format("{}", fieldName);
-    secondMsg_ = std::string("Missing Field");
+  case ErrorType::MaxError:
+    res_[fieldName_] += "RIO.MaxError";
     break;
-  case ErrorType::JsonAdditionalField:
-    firstMsg_ = std::format("{}", fieldName);
-    secondMsg_ = std::string("Field from request not found");
+  case ErrorType::MinError:
+    res_[fieldName_] += "RIO.MinError";
+    break;
+  case ErrorType::EqError:
+    res_[fieldName_] += "RIO.EqError";
     break;
   }
 }
