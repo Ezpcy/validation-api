@@ -1,6 +1,7 @@
 #pragma once
 #include <format>
 #include <nlohmann/json.hpp>
+#include <string>
 
 namespace validation_api {
 
@@ -16,7 +17,6 @@ enum class ErrorType {
   MaxError,
   MinError,
   EqError,
-  XmlConfigValueError,
 };
 
 /**
@@ -48,19 +48,16 @@ inline void errorBuilder(nlohmann::json &res, const ErrorType &type,
     res[fieldName] = "RIO.CannotBeEmpty";
     break;
   case ErrorType::NotCorrectType:
-    res[fieldName] = std::format("RIO.NotCorrectType {} {}", exp, rec);
+    res[fieldName] = std::format("RIO.NotCorrectType {} {}", rec, exp);
     break;
   case ErrorType::MaxError:
-    res[fieldName] = std::format("RIO.MaxError {} {}", exp, rec);
+    res[fieldName] = std::format("RIO.MaxError {} {}", rec, exp);
     break;
   case ErrorType::MinError:
-    res[fieldName] = std::format("RIO.MinError {} {}", exp, rec);
+    res[fieldName] = std::format("RIO.MinError {} {}", rec, exp);
     break;
   case ErrorType::EqError:
-    res[fieldName] = std::format("RIO.EqError {} {}", exp, rec);
-    break;
-  case ErrorType::XmlConfigValueError:
-    res[fieldName] = std::format("{} is not a valid type option", exp);
+    res[fieldName] = std::format("RIO.EqError {} {}", rec, exp);
     break;
   }
 }

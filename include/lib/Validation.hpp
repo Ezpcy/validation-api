@@ -7,9 +7,11 @@
 #include <unordered_set>
 #include <utility>
 
+#include "lib/ErrorBuilder.hpp"
 #include "validation-api/ConfigService.hpp"
 
 namespace validation_api {
+
 /**
  * @brief NullOptions
  * @details An unordered map of <string, unordered_map<int, pair<string,
@@ -29,6 +31,33 @@ public:
 
   void run();
 
+  /**
+   * @brief Validates len options
+  * @param fieldName
+  * @param value
+  * @param max
+  * @param min
+  * @param eq
+  * @details Validates the length of the field with the max, min, and eq if they
+  have a value
+  */
+  inline void validateConstraints(const std::string &fieldName, float value,
+                                  std::optional<float> max,
+                                  std::optional<float> min,
+                                  std::optional<float> eq) {
+    if (max && value > max.value()) {
+      errorBuilder(errors_, ErrorType::MaxError, fieldName,
+                   std::format("{}", max.value()), std::format("{}", value));
+    }
+    if (min && value < min.value()) {
+      errorBuilder(errors_, ErrorType::MinError, fieldName,
+                   std::format("{}", min.value()), std::format("{}", value));
+    }
+    if (eq && value != eq.value()) {
+      errorBuilder(errors_, ErrorType::EqError, fieldName,
+                   std::format("{}", eq.value()), std::format("{}", value));
+    }
+  }
   /*
    * @brief validate a field
    * @details validates one field with the help of the xml field
