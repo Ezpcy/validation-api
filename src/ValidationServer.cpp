@@ -5,8 +5,6 @@
 #include <string>
 #include <validation-api/ValidationServer.hpp>
 
-#include "lib/Helpers.hpp"
-
 // For formatting the endpoint for the logger
 FMT_BEGIN_NAMESPACE
 
@@ -172,10 +170,9 @@ void ValidationServer::accept(
             response[keyName] = "Ok";
             asyncWriter(response.dump() + "\n", socket);
           } else {
-            // Convert errors to JSON and send them to the client
-            nlohmann::json errorResponse = errorsToJson(errors);
+            // Return validation errors to the client
             nlohmann::json errorWrap;
-            errorWrap["error"] = errorResponse;
+            errorWrap["error"] += errors;
 
             logger_->warn(
                 "Validation request from {} with configuration {} failed",

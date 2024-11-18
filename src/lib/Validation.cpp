@@ -1,9 +1,11 @@
 #include <cctype>
 #include <cstdio>
+#include <format>
 #include <lib/Helpers.hpp>
 #include <lib/Validation.hpp>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
+#include <string>
 #include <unordered_map>
 
 #include "lib/ErrorBuilder.hpp"
@@ -35,8 +37,7 @@ void Validation::run() {
 
   if (!requestList_.empty()) {
     for (const auto &field : requestList_) {
-      errors_.push_back(
-          {ErrorBuilder(ErrorType::JsonAdditionalField, field).build()});
+      errorBuilder(errors_, ErrorType::RequestFieldNotFound, field);
     }
   }
 }
@@ -95,8 +96,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         (canBeEmpty &&
          (reqValue.empty() || reqValue.is_null() || reqValue == ""))) {
       if (!canBeEmpty) {
-        errors_.push_back(
-            {ErrorBuilder(ErrorType::ValidationEmptyError, fieldName).build()});
+        errorBuilder(errors_, ErrorType::RequestFieldNotFound, fieldName);
       }
       return;
     }
@@ -107,90 +107,102 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     if (it != getType.end()) {
       switch (it->second) {
       case 1:
-        // Chedk if the value is a string
+        // Check if the value is a string
         if (!reqValue.is_string()) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue.type_name())
-                                 .build()});
-        } else if (max.has_value()) {
+          errorBuilder(errors_, ErrorType::NotCorrectType, it->first,
+                       reqValue.type_name());
+          break;
+        }
+        if (max.has_value() || min.has_value() || eq.has_value()) {
           // Get the string and its length
           std::string valueStr = reqValue;
           size_t length = valueStr.length();
 
           // Check against 'max' constraint
           if (max.has_value() && length > max.value()) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(
-                         std::format("max length of {},", max.value()),
-                         valueStr)
-                     .build()});
+            errorBuilder(errors_, ErrorType::MaxError,
+                         std::format("{}", max.value()),
+                         std::format("{}", length));
           }
 
           // Check against 'min' constraint
           if (min.has_value() && length < min.value()) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(
-                         std::format("min length of {}.", min.value()),
-                         valueStr)
-                     .build()});
+            errorBuilder(errors_, ErrorType::MinError, fieldName,
+                         std::format("{}", min.value()),
+                         std::format("{}", length));
           }
 
           // Check against 'eq' constraint (exact length)
           if (eq.has_value() && length != eq.value()) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(
-                         std::format("exact length of {}.", eq.value()),
-                         valueStr)
-                     .build()});
+            errorBuilder(errors_, ErrorType::MinError, fieldName,
+                         std::format("{}", eq.value()),
+                         std::format("{}", length));
           }
         }
         break;
       case 2:
         // Check if the value is a float
         if (!reqValue.is_number_float()) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue.type_name())
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       reqValue.type_name());
+          break;
+        }
+        if (max.has_value() || min.has_value() || eq.has_value()) {
           float value = reqValue;
 
           // Check against 'max' constraint
           if (max.has_value() && value > max.value()) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(
-                         std::format("value lower than {}", max.value()),
-                         std::format("{:.2f}", value))
-                     .build()});
+            errorBuilder(errors_, ErrorType::MaxError, fieldName,
+                         std::format("{}", max.value()),
+                         std::format("{}", value));
           }
 
           // Check against 'min' constraint
           if (min.has_value() && value < min.value()) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(
-                         std::format("value higher than {}.", min.value()))
-                     .build()});
+            errorBuilder(errors_, ErrorType::MinError, fieldName,
+                         std::format("{}", min.value()),
+                         std::format("{}", value));
           }
 
           // Check against 'eq' constraint (exact value)
           if (eq.has_value() && value != eq.value()) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(
-                         std::format("exact value of {}.", eq.value()))
-                     .build()});
+            errorBuilder(errors_, ErrorType::EqError, fieldName,
+                         std::format("{}", eq.value()),
+                         std::format("{}", value));
           }
         }
         break;
       case 3:
         // Check if the value is a number
         if (!reqValue.is_number_integer()) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue.type_name())
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, it->first,
+                       reqValue.type_name());
+          break;
+        }
+        if (max.has_value() || min.has_value() || eq.has_value()) {
+          float value = reqValue;
+
+          // Check against 'max' constraint
+          if (max.has_value() && value > max.value()) {
+            errorBuilder(errors_, ErrorType::MaxError, fieldName,
+                         std::format("{}", max.value()),
+                         std::format("{}", value));
+          }
+
+          // Check against 'min' constraint
+          if (min.has_value() && value < min.value()) {
+            errorBuilder(errors_, ErrorType::MinError, fieldName,
+
+                         std::format("{}", min.value()),
+                         std::format("{}", value));
+          }
+
+          // Check against 'eq' constraint (exact value)
+          if (eq.has_value() && value != eq.value()) {
+            errorBuilder(errors_, ErrorType::EqError, fieldName,
+                         std::format("{}", eq.value()),
+                         std::format("{}", value));
+          }
         }
         break;
       case 4: {
@@ -204,26 +216,19 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
               R"(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$)");
           std::string date = reqValue.get<std::string>();
           if (!std::regex_match(date, date_regex)) {
-            errors_.push_back(
-                {ErrorBuilder(ErrorType::ValidationError, fieldName)
-                     .setSecondMsg(std::string("\"yyyy-mm-dd\" date format"),
-                                   date)
-                     .build()});
-          };
+            errorBuilder(errors_, ErrorType::NotCorrectType, "date", date);
+          }
         }
         break;
-      }
       case 5: {
         // Check if the value is an email
         const std::regex email_regex(R"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+$)");
         std::string email = reqValue.get<std::string>();
         if (!std::regex_match(email, email_regex)) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue)
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       reqValue);
         }
-        break;
-      }
+      } break;
       case 6: {
         // Check if the value is a uuid
         if (canBeEmpty && reqValue.get<std::string>() == "" ||
@@ -231,21 +236,17 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           break;
         }
         if (!isValidUuid(reqValue.get<std::string>())) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue)
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       reqValue);
         }
         break;
-      }
       case 7: {
         // Check if the value is a boolean
         if (!reqValue.is_boolean()) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue.type_name())
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       reqValue);
         }
-        break;
-      }
+      } break;
       case 8: {
         // Check if the value is a valid Ahv
         std::string val = reqValue.get<std::string>();
@@ -253,12 +254,10 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           break;
         }
         if (!validateAhv(val)) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue)
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       reqValue);
         }
-        break;
-      }
+      } break;
       case 9: {
         // Check if the value is a valid Iban
         std::string val = reqValue.get<std::string>();
@@ -266,18 +265,18 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           break;
         }
         if (!validateIban(val)) {
-          errors_.push_back({ErrorBuilder(ErrorType::ValidationError, fieldName)
-                                 .setSecondMsg(it->first, reqValue)
-                                 .build()});
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       reqValue);
         }
-        break;
-      }
+      } break;
       default:
         break;
       }
+      }
+      }
     }
   } catch (const std::exception &e) {
-    errors_.push_back({std::string(fieldName), std::string(e.what())});
+    errors_ += std::string(fieldName), std::string(e.what());
   }
 }
 
@@ -298,8 +297,7 @@ void Validation::traverseAndValidate(const pugi::xml_node &node) {
       validate(field, jsonField, nodeName);
       requestList_.erase(nodeName);
     } else {
-      errors_.push_back(
-          {ErrorBuilder(ErrorType::JsonMissingField, nodeName).build()});
+      errorBuilder(errors_, ErrorType::MissingField, nodeName);
       continue;
     }
 

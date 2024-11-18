@@ -5,8 +5,6 @@
 #include <pugixml.hpp>
 #include <validation-api/ConfigService.hpp>
 
-#include "lib/Helpers.hpp"
-
 static const std::string xml = R"(
 <Test>
     <Provision notNull="true">
@@ -78,9 +76,7 @@ TEST(ConfigServiceTest, CreatingConfig) {
 
   validation_api::ConfigService::Errors errors = service.validateConfig(jj);
 
-  for (const auto &error : errors) {
-    std::cout << error.first << error.second << '\n';
-  }
+  std::cout << errors.dump() << '\n';
 
   // if(!errors.empty)
 
