@@ -5,66 +5,64 @@
 namespace validation_api {
 
 /**
- * @brief Set the Second Msg object
- * @param msgMain Main message
- * @param msgSec Secondary message
- * @return ErrorBuilder&
+ * @brief Enum to map error message
  */
 enum class ErrorType {
   Default,
+  RequestFieldNotFound,
+  MissingField,
   CannotBeEmpty,
   NotCorrectType,
   MaxError,
   MinError,
   EqError,
+  XmlConfigValueError,
 };
 
 /**
- * @brief ErrorBuilder class
- * @details This class is used to build error messages
+ * @brief Error builder
+ * @param type Error type
+ * @param fieldName Field name
+ * @param exp Expected value
+ * @param rec Received value
+ *
+ * Function to build a json error message which can occur at the validation
+ * process .
  */
-class ErrorBuilder {
-public:
-  /**
-   * @brief Construct a new Error Builder object f
-   * @param type Error type
-   * @param fieldName Field name
-   */
-  ErrorBuilder(const ErrorType &type = ErrorType::Default,
-               const std::string &fieldName = "");
+inline void errorBuilder(nlohmann::json &res, const ErrorType &type,
+                         const std::string &fieldName,
+                         const std::string &exp = "",
+                         const std::string &rec = "") {
 
-  /**
-   * @brief Set the First Msg object
-   * @param msg Main message
-   * @return ErrorBuilder&
-   */
-  inline ErrorBuilder &setSecondMsg(const std::string &msgMain = "",
-                                    const std::string &msgSec = "") {
-    switch (type_) {
-    case ErrorType::Default:
-      break;
-    case ErrorType::CannotBeEmpty:
-      break;
-    case ErrorType::NotCorrectType:
-    case ErrorType::MaxError:
-    case ErrorType::MinError:
-    case ErrorType::EqError:
-      nlohmann::json exp;
-      exp["Expected"] = msgMain;
-      exp["Received"] = msgSec;
-      res_[fieldName_] += exp;
-      break;
-    }
-    return *this;
+  switch (type) {
+  case ErrorType::Default:
+    res[fieldName] = "RIO.Unknown";
+    break;
+  case ErrorType::RequestFieldNotFound:
+    res[fieldName] = "RIO.RequestFieldNotFound";
+    break;
+  case ErrorType::MissingField:
+    res[fieldName] = "RIO.MissingField";
+    break;
+  case ErrorType::CannotBeEmpty:
+    res[fieldName] = "RIO.CannotBeEmpty";
+    break;
+  case ErrorType::NotCorrectType:
+    res[fieldName] = std::format("RIO.NotCorrectType {} {}", exp, rec);
+    break;
+  case ErrorType::MaxError:
+    res[fieldName] = std::format("RIO.MaxError {} {}", exp, rec);
+    break;
+  case ErrorType::MinError:
+    res[fieldName] = std::format("RIO.MinError {} {}", exp, rec);
+    break;
+  case ErrorType::EqError:
+    res[fieldName] = std::format("RIO.EqError {} {}", exp, rec);
+    break;
+  case ErrorType::XmlConfigValueError:
+    res[fieldName] = std::format("{} is not a valid type option", exp);
+    break;
   }
+}
 
-  nlohmann::json build() const { return res_; }
-
-private:
-  nlohmann::json res_;
-  ErrorType type_;
-  std::string fieldName_;
-  std::string firstMsg_;
-  std::string secondMsg_;
-};
 } // namespace validation_api

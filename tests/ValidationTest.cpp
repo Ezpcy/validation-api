@@ -45,7 +45,7 @@ TEST(ValidationTest, Types) {
     "Number": 10.2,
     "Date": "202401-01", 
     "Email": "testmail.com", 
-    "Uuid": "23e4567-e89b-12d3-a456-526614174000",
+    "Uuid": "123e4567-e89b-12d3-a456-52661174000",
     "Bool": "false",
     "Ahv": "756.861.0558.61",
     "Iban": "CH898914482746782894"
@@ -62,21 +62,21 @@ TEST(ValidationTest, Types) {
   std::cout << "Running correct" << '\n';
   validation_api::Validation(jj, doc, errors).run();
 
-  for (const auto &[key, value] : errors) {
-    std::cout << key << value << '\n';
-  }
+  std::cout << errors.dump() << '\n';
 
   ASSERT_TRUE(errors.empty());
-  errors.clear();
 
-  validation_api::Validation(jjf, doc, errors).run();
+  nlohmann::json errorsf;
+
+  validation_api::Validation(jjf, doc, errorsf).run();
   std::cout << "Running fails" << '\n';
-  for (const auto &[key, value] : errors) {
-    std::cout << key << value << '\n';
-  }
 
-  ASSERT_FALSE(errors.empty());
-  ASSERT_EQ(errors.size(), 9);
+  nlohmann::json errorWrap;
+  errorWrap["error"] = errorsf;
+  std::cout << errorWrap.dump() << '\n';
+
+  ASSERT_FALSE(errorsf.empty());
+  ASSERT_EQ(errorsf.size(), 9);
 }
 
 TEST(ValidationTest, Options) {
@@ -104,9 +104,7 @@ TEST(ValidationTest, Options) {
 
   validation_api::Validation(jj, doc, errors).run();
 
-  for (const auto &[key, value] : errors) {
-    std::cout << key << value << '\n';
-  }
+  std::cout << errors.dump() << '\n';
 }
 
 TEST(ValidationTest, XmlParsing) {
@@ -145,24 +143,22 @@ TEST(ValidationTest, XmlParsing) {
   pugi::xml_node node = doc.child(doc.begin()->name());
 
   validation_api::validateXmlConfig(node, errors);
+  errors[doc.begin()->name()] = errors;
 
-  for (const auto &error : errors) {
-    std::cout << error.first << error.second << '\n';
-  }
+  std::cout << errors.dump() << '\n';
 
-  ASSERT_EQ(errors.size(), 13);
+  ASSERT_EQ(errors.size(), 7);
 
   validation_api::ConfigService::Errors errorst;
   pugi::xml_document docT;
 
   docT.load_string(xmlT.c_str());
 
-  pugi::xml_node nodeT = docT.child(doc.begin()->name());
+  pugi::xml_node nodeT = docT.child(docT.begin()->name());
 
   validation_api::validateXmlConfig(nodeT, errorst);
-  for (const auto &error : errorst) {
-    std::cout << error.first << error.second << '\n';
-  }
+
+  std::cout << errorst.dump() << '\n';
 
   ASSERT_EQ(errorst.size(), 0);
 }

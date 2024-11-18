@@ -1,5 +1,6 @@
 #pragma once
 
+#include <boost/algorithm/string/trim.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
@@ -9,23 +10,34 @@
 
 namespace validation_api {
 
+/**
+ * @brief Insert an error into a json object
+ * @param json The json to insert to
+ * @param key The parent
+ * @ param value The value to append to the key
+ */
+inline void insertToJson(nlohmann::json &json, const std::string &key,
+                         const std::string &value) {
+  json[key] += value;
+}
+
 /*
  * @brief checks of an Uuid is valid
  * @param uuidStr
  */
 inline bool isValidUuid(const std::string &uuidStr) {
   try {
+    std::string trimmedUuid =
+        boost::algorithm::trim_copy(uuidStr); // Trim whitespace
     boost::uuids::string_generator gen;
-    boost::uuids::uuid u = gen(uuidStr);
+    boost::uuids::uuid u = gen(trimmedUuid);
     return true;
   } catch (const std::exception &) {
     return false;
   }
-}
-
-/**
- * @brief Convert string to float
- */
+} /**
+   * @brief Convert string to float
+   */
 inline bool isFloat(const std::string &str, float &out) {
   try {
     size_t pos;
@@ -187,18 +199,4 @@ inline bool validateIban(const std::string &val) {
 void validateXmlConfig(const pugi::xml_node &node,
                        validation_api::ConfigService::Errors &erros);
 
-/*
- * @brief Creates a json object from ConfigService::Errors
- */
-// inline nlohmann::json errorsToJson(const ConfigService::Errors &errors) {
-//   nlohmann::json res;
-//   for (const auto &[key, value] : errors) {
-//     if (!res[key].empty()) {
-//       res[key] = value;
-//     } else {
-//       res[key] = value;
-//     }
-//   }
-//   return res;
-// }
 } // namespace validation_api

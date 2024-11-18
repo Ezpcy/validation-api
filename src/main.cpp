@@ -8,7 +8,7 @@
 #include <validation-api/ConfigService.hpp>
 #include <validation-api/ConfigWatcher.hpp>
 #include <validation-api/Logger.hpp>
-#include <validation-api/ValidationServer.hpp>  // Include your server class
+#include <validation-api/ValidationServer.hpp> // Include your server class
 
 int main(int argc, char *argv[]) {
   std::string path = "./configs";
@@ -58,6 +58,7 @@ int main(int argc, char *argv[]) {
     validation_api::ValidationServer server(io_context, port, service,
                                             maxConnections);
 
+    // TODO Maybe Boost thread?
     // Determine the number of threads
     std::size_t num_threads = std::thread::hardware_concurrency();
     // std::vector<std::thread> threads;

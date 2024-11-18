@@ -1,7 +1,6 @@
 #pragma once
 
 #include <boost/uuid.hpp>
-#include <iostream>
 #include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>

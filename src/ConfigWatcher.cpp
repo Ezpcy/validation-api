@@ -3,10 +3,8 @@
 #include <sys/inotify.h>
 
 #include <boost/filesystem.hpp>
-#include <format>
 #include <fstream>
 #include <semaphore>
-#include <vector>
 
 #include "lib/Helpers.hpp"
 
@@ -14,13 +12,7 @@ constexpr int MAX_CONCURRENT_READS = 5;
 std::counting_semaphore<MAX_CONCURRENT_READS> semaphore(MAX_CONCURRENT_READS);
 
 namespace validation_api {
-/**
- * @brief Construct a new validation api::ConfigWatcher::ConfigWatcher object
- *
- * @param io_context
- * @param path
- * @param callback
- */
+
 ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
                              const std::string &path, ConfigService &service,
                              Callback callback)
@@ -39,18 +31,8 @@ ConfigWatcher::ConfigWatcher(boost::asio::io_context &io_context,
   });
 }
 
-/**
- * @brief Destroy the validation api::ConfigWatcher::ConfigWatcher object and
- * close the inotify instance.
- *
- */
 ConfigWatcher::~ConfigWatcher() { stop(); }
 
-/**
- * @brief Reads a file
- * @details Reads and validates a file expecting a Xml configuration
- * @param file_name
- */
 void ConfigWatcher::read_file(const std::string &file_name) {
   // Assemble the direct path
   std::string endPath = path_ + "/" + file_name;
@@ -78,14 +60,11 @@ void ConfigWatcher::read_file(const std::string &file_name) {
     ConfigService::Errors errors;
     validateXmlConfig(node, errors);
     if (!errors.empty()) {
-      errors.push_back({std::format("Errors on configuration file: "),
-                        std::format("\"{} ", file_name)});
-      for (const auto &error : errors) {
-        // debugging
-        logger_->error("{}{}", error.first, error.second);
-      }
-      return;
+      errors[file_name] += errors;
+      logger_->error("Configuration error: \n");
+      logger_->error("{}", errors.dump());
     }
+    return;
     if (service_.createConfig(name, doc)) {
       fileAssocation_[file_name] = name;
     }
@@ -94,12 +73,6 @@ void ConfigWatcher::read_file(const std::string &file_name) {
   }
 }
 
-/**
- * @brief Sets up the inotify instance.
- *
- * @return true if the setup is successful
- * @return false if the setup fails
- */
 bool ConfigWatcher::setup() {
   inotify_fd_ = inotify_init();
   if (inotify_fd_ < 0) {
@@ -107,7 +80,7 @@ bool ConfigWatcher::setup() {
     return false;
   }
 
-  // Read the files inside the "confgis" folder
+  // Read the files inside the "configs" folder
   if (std::filesystem::exists(path_)) {
     for (const auto &entry : std::filesystem::directory_iterator(path_)) {
       const auto &path = entry.path();
@@ -118,12 +91,6 @@ bool ConfigWatcher::setup() {
   }
   return true;
 }
-
-/**
- * @brief Run the inotify instance and watch for changes in the directory.
- *
- * @return * void
- */
 
 void ConfigWatcher::run() {
   watch_descriptor_ = inotify_add_watch(inotify_fd_, path_.c_str(),
