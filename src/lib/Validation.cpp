@@ -1,15 +1,7 @@
-#include <cctype>
-#include <cstdio>
-#include <format>
 #include <lib/Helpers.hpp>
 #include <lib/Validation.hpp>
-#include <nlohmann/json.hpp>
-#include <pugixml.hpp>
-#include <string>
-#include <unordered_map>
 
 #include "lib/ErrorBuilder.hpp"
-#include "validation-api/ConfigService.hpp"
 
 namespace validation_api {
 using json = nlohmann::json;
@@ -109,7 +101,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
       case 1:
         // Check if the value is a string
         if (!reqValue.is_string()) {
-          errorBuilder(errors_, ErrorType::NotCorrectType, it->first,
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
                        reqValue.type_name());
           break;
         }
@@ -118,91 +110,48 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
           std::string valueStr = reqValue;
           size_t length = valueStr.length();
 
-          // Check against 'max' constraint
-          if (max.has_value() && length > max.value()) {
-            errorBuilder(errors_, ErrorType::MaxError,
-                         std::format("{}", max.value()),
-                         std::format("{}", length));
-          }
-
-          // Check against 'min' constraint
-          if (min.has_value() && length < min.value()) {
-            errorBuilder(errors_, ErrorType::MinError, fieldName,
-                         std::format("{}", min.value()),
-                         std::format("{}", length));
-          }
-
-          // Check against 'eq' constraint (exact length)
-          if (eq.has_value() && length != eq.value()) {
-            errorBuilder(errors_, ErrorType::MinError, fieldName,
-                         std::format("{}", eq.value()),
-                         std::format("{}", length));
-          }
+          Validation::validateConstraints(fieldName, length, max, min, eq);
         }
         break;
       case 2:
         // Check if the value is a float
         if (!reqValue.is_number_float()) {
-          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                       reqValue.type_name());
+          std::string val;
+          if (reqValue.is_string()) {
+            val = reqValue.get<std::string>();
+          } else if (reqValue.is_number_integer()) {
+            val = std::to_string(reqValue.get<int>());
+          } else {
+            val = "";
+          }
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, "float",
+                       val);
+
           break;
         }
         if (max.has_value() || min.has_value() || eq.has_value()) {
           float value = reqValue;
 
-          // Check against 'max' constraint
-          if (max.has_value() && value > max.value()) {
-            errorBuilder(errors_, ErrorType::MaxError, fieldName,
-                         std::format("{}", max.value()),
-                         std::format("{}", value));
-          }
-
-          // Check against 'min' constraint
-          if (min.has_value() && value < min.value()) {
-            errorBuilder(errors_, ErrorType::MinError, fieldName,
-                         std::format("{}", min.value()),
-                         std::format("{}", value));
-          }
-
-          // Check against 'eq' constraint (exact value)
-          if (eq.has_value() && value != eq.value()) {
-            errorBuilder(errors_, ErrorType::EqError, fieldName,
-                         std::format("{}", eq.value()),
-                         std::format("{}", value));
-          }
+          Validation::validateConstraints(fieldName, value, max, min, eq);
         }
         break;
       case 3:
         // Check if the value is a number
         if (!reqValue.is_number_integer()) {
-          errorBuilder(errors_, ErrorType::NotCorrectType, it->first,
-                       reqValue.type_name());
+          std::string val;
+          if (reqValue.is_string()) {
+            val = reqValue.get<std::string>();
+          } else if (reqValue.is_number_float()) {
+            val = std::format("{}", reqValue.get<double>());
+          } else {
+            val = "";
+          }
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, "integer",
+                       val);
           break;
         }
         if (max.has_value() || min.has_value() || eq.has_value()) {
           float value = reqValue;
-
-          // Check against 'max' constraint
-          if (max.has_value() && value > max.value()) {
-            errorBuilder(errors_, ErrorType::MaxError, fieldName,
-                         std::format("{}", max.value()),
-                         std::format("{}", value));
-          }
-
-          // Check against 'min' constraint
-          if (min.has_value() && value < min.value()) {
-            errorBuilder(errors_, ErrorType::MinError, fieldName,
-
-                         std::format("{}", min.value()),
-                         std::format("{}", value));
-          }
-
-          // Check against 'eq' constraint (exact value)
-          if (eq.has_value() && value != eq.value()) {
-            errorBuilder(errors_, ErrorType::EqError, fieldName,
-                         std::format("{}", eq.value()),
-                         std::format("{}", value));
-          }
         }
         break;
       case 4: {
@@ -216,7 +165,8 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
               R"(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$)");
           std::string date = reqValue.get<std::string>();
           if (!std::regex_match(date, date_regex)) {
-            errorBuilder(errors_, ErrorType::NotCorrectType, "date", date);
+            errorBuilder(errors_, ErrorType::NotCorrectType, fieldName,
+                         it->first, date);
           }
         }
         break;
@@ -244,7 +194,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         // Check if the value is a boolean
         if (!reqValue.is_boolean()) {
           errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                       reqValue);
+                       reqValue.get<std::string>());
         }
       } break;
       case 8: {
@@ -276,7 +226,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
       }
     }
   } catch (const std::exception &e) {
-    errors_ += std::string(fieldName), std::string(e.what());
+    errors_[fieldName] += std::string(e.what());
   }
 }
 
