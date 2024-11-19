@@ -4,9 +4,9 @@
 \Hypertarget{index_md_Readme}%
  \href{https://ezpcy.github.io/validation-api/}{\texttt{ Docs}}
 
-{\bfseries{Version}}\+: 0.\+5
+{\bfseries{Version}}\+: 0.\+6
 
-{\bfseries{Creation date}}\+: August 29, 2023 2\+:33 PM\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Code Structure}{Code Structure}}\label{index_autotoc_md1}
+{\bfseries{Creation date}}\+: August 29, 2024 2\+:33 PM\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Code Structure}{Code Structure}}\label{index_autotoc_md1}
 
 \begin{DoxyItemize}
 \item \mbox{[}{\ttfamily src}\mbox{]} contains\+:
@@ -179,12 +179,20 @@ This configuration file will validate the incoming data. The data must be in {\t
 
 The API will return a Json object with either all errors that have occured or just an "{}ok"{} message if the request is valid.
 
-Connect to the API (can be done with Netcat or Telnet)\+:
+The error message will look like this\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{telnet\ 127.0.0.1\ 8080}
+\DoxyCodeLine{\{"{}error"{}:\ \{"{}FieldName"{}:\ "{}NotCorrectType\ string\ boolean"{}\}\}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Logs}{Logs}}\label{index_autotoc_md10}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Field\+Name} the unvalid field in the rquest
+\item {\ttfamily Not\+Correct\+Type} type of the error
+\item {\ttfamily string} received this
+\item {\ttfamily boolean} expected this
+\end{DoxyItemize}\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Logs}{Logs}}\label{index_autotoc_md10}
 Information and error logs can be found within the {\ttfamily logs} folder (created at runtime). 

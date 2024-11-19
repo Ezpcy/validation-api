@@ -4,182 +4,175 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid\_generators.hpp>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <pugixml.hpp>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <regex>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ConfigService_8hpp}{validation-\/api/ConfigService.hpp}}"{}}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ @brief\ checks\ of\ an\ Uuid\ is\ valid}}
-\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ @param\ uuidStr}}
-\DoxyCodeLine{00015\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00016\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{isValidUuid}}(\textcolor{keyword}{const}\ std::string\ \&uuidStr)\ \{}
-\DoxyCodeLine{00017\ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ boost::uuids::string\_generator\ gen;}
-\DoxyCodeLine{00019\ \ \ \ \ boost::uuids::uuid\ u\ =\ gen(uuidStr);}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00021\ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&)\ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00023\ \ \ \}}
-\DoxyCodeLine{00024\ \}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa}{isFloat}}(\textcolor{keyword}{const}\ std::string\ \&str,\ \textcolor{keywordtype}{float}\ \&out)\ \{}
-\DoxyCodeLine{00030\ \ \ \textcolor{keywordflow}{try}\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos;}
-\DoxyCodeLine{00032\ \ \ \ \ out\ =\ std::stof(str,\ \&pos);}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{return}\ pos\ ==\ str.length();\ \textcolor{comment}{//\ Ensure\ entire\ string\ is\ a\ valid\ number}}
-\DoxyCodeLine{00034\ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00036\ \ \ \}}
-\DoxyCodeLine{00037\ \}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacevalidation__api_a6dd56dcf7358b332bb906a2d27fddd0b}{toLower}}(std::string\ value)\ \{}
-\DoxyCodeLine{00044\ \ \ std::transform(value.begin(),\ value.end(),\ value.begin(),\ ::tolower);}
-\DoxyCodeLine{00045\ \ \ \textcolor{keywordflow}{return}\ value;}
-\DoxyCodeLine{00046\ \}}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00054\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_aae32fd7a0b5886a49454679d46ed4bd1}{validateAhv}}(std::string\ \&val)\ \{}
-\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ AHV\ regex}}
-\DoxyCodeLine{00056\ \ \ \textcolor{keyword}{const}\ std::regex\ ahv\_regex(R\textcolor{stringliteral}{"{}(\string^[7][5][6][.][\(\backslash\)d]\{4\}[.][\(\backslash\)d]\{4\}[.][\(\backslash\)d]\{2\}\$)"{});}}
-\DoxyCodeLine{00057\ \textcolor{stringliteral}{}}
-\DoxyCodeLine{00058\ \textcolor{stringliteral}{\ \ }\textcolor{comment}{//\ Match\ the\ val\ with\ the\ regex}}
-\DoxyCodeLine{00059\ \ \ \textcolor{keywordflow}{if}\ (!std::regex\_match(val,\ ahv\_regex))\ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00061\ \ \ \}}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00063\ \ \ \textcolor{comment}{//\ Get\ the\ last\ char\ of\ the\ parameter}}
-\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{char}\ lastChar\ =\ val.back();}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \ \ \textcolor{comment}{//\ Check\ if\ it's\ a\ digit}}
-\DoxyCodeLine{00067\ \ \ \textcolor{keywordflow}{if}\ (!std::isdigit(lastChar))\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00069\ \ \ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \textcolor{comment}{//\ Cast\ the\ last\ digit\ as\ an\ integer}}
-\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ lastDigit\ =\ lastChar\ -\/\ \textcolor{charliteral}{'0'};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\ Remove\ the\ last\ digit\ from\ the\ original\ string}}
-\DoxyCodeLine{00075\ \ \ val.pop\_back();}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \textcolor{comment}{//\ Remove\ dots\ from\ the\ string}}
-\DoxyCodeLine{00078\ \ \ val.erase(std::remove(val.begin(),\ val.end(),\ \textcolor{charliteral}{'.'}),\ val.end());}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \textcolor{comment}{//\ Reverse\ the\ string\ for\ the\ next\ part\ of\ the\ calculation}}
-\DoxyCodeLine{00081\ \ \ std::reverse(val.begin(),\ val.end());}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <boost/algorithm/string/trim.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <boost/uuid/uuid\_generators.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <pugixml.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ConfigService_8hpp}{validation-\/api/ConfigService.hpp}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9}{insertToJson}}(nlohmann::json\ \&\mbox{\hyperlink{namespacevalidation__api_a469734aa94b796d2c4565b1d121cd6f3}{json}},\ \textcolor{keyword}{const}\ std::string\ \&key,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&value)\ \{}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{namespacevalidation__api_a469734aa94b796d2c4565b1d121cd6f3}{json}}[key]\ +=\ value;}
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ @brief\ checks\ of\ an\ Uuid\ is\ valid}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ @param\ uuidStr}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{isValidUuid}}(\textcolor{keyword}{const}\ std::string\ \&uuidStr)\ \{}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ std::string\ trimmedUuid\ =}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ boost::algorithm::trim\_copy(uuidStr);\ \textcolor{comment}{//\ Trim\ whitespace}}
+\DoxyCodeLine{00032\ \ \ \ \ boost::uuids::string\_generator\ gen;}
+\DoxyCodeLine{00033\ \ \ \ \ boost::uuids::uuid\ u\ =\ gen(trimmedUuid);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00035\ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00037\ \ \ \}}
+\DoxyCodeLine{00038\ \}\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa}{isFloat}}(\textcolor{keyword}{const}\ std::string\ \&str,\ \textcolor{keywordtype}{float}\ \&out)\ \{}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos;}
+\DoxyCodeLine{00044\ \ \ \ \ out\ =\ std::stof(str,\ \&pos);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ pos\ ==\ str.length();\ \textcolor{comment}{//\ Ensure\ entire\ string\ is\ a\ valid\ number}}
+\DoxyCodeLine{00046\ \ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00048\ \ \ \}}
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacevalidation__api_a6dd56dcf7358b332bb906a2d27fddd0b}{toLower}}(std::string\ value)\ \{}
+\DoxyCodeLine{00056\ \ \ std::transform(value.begin(),\ value.end(),\ value.begin(),\ ::tolower);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_aae32fd7a0b5886a49454679d46ed4bd1}{validateAhv}}(std::string\ \&val)\ \{}
+\DoxyCodeLine{00067\ \ \ \textcolor{comment}{//\ AHV\ regex}}
+\DoxyCodeLine{00068\ \ \ \textcolor{keyword}{const}\ std::regex\ ahv\_regex(R\textcolor{stringliteral}{"{}(\string^[7][5][6][.][\(\backslash\)d]\{4\}[.][\(\backslash\)d]\{4\}[.][\(\backslash\)d]\{2\}\$)"{});}}
+\DoxyCodeLine{00069\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00070\ \textcolor{stringliteral}{\ \ }\textcolor{comment}{//\ Match\ the\ val\ with\ the\ regex}}
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordflow}{if}\ (!std::regex\_match(val,\ ahv\_regex))\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00073\ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{comment}{//\ Get\ the\ last\ char\ of\ the\ parameter}}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{char}\ lastChar\ =\ val.back();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{comment}{//\ Check\ if\ it's\ a\ digit}}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordflow}{if}\ (!std::isdigit(lastChar))\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00081\ \ \ \}}
 \DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \textcolor{comment}{//\ Calculate\ the\ sum\ by\ multiplying\ every\ second\ digit\ by\ 3}}
-\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{int}\ sum\ =\ 0;}
-\DoxyCodeLine{00085\ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 0;\ i\ <\ val.size();\ ++i)\ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ val[i];}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Make\ sure\ we\ only\ work\ with\ digits}}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::isdigit(c))\ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00091\ \ \ \ \ \}}
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ Convert\ char\ to\ int}}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ digit\ =\ c\ -\/\ \textcolor{charliteral}{'0'};}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Multiply\ every\ second\ digit\ by\ 3}}
-\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ add\ =\ (i\ \%\ 2\ ==\ 0)\ ?\ digit\ *\ 3\ :\ digit;}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ sum\ +=\ add;}
-\DoxyCodeLine{00100\ \ \ \}}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//\ Calculate\ the\ next\ ten\ by\ rounding\ up\ the\ sum\ divided\ by\ 10}}
-\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{int}\ nextTen\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::ceil(sum\ /\ 10.0)\ *\ 10);}
+\DoxyCodeLine{00083\ \ \ \textcolor{comment}{//\ Cast\ the\ last\ digit\ as\ an\ integer}}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{int}\ lastDigit\ =\ lastChar\ -\/\ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//\ Remove\ the\ last\ digit\ from\ the\ original\ string}}
+\DoxyCodeLine{00087\ \ \ val.pop\_back();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \textcolor{comment}{//\ Remove\ dots\ from\ the\ string}}
+\DoxyCodeLine{00090\ \ \ val.erase(std::remove(val.begin(),\ val.end(),\ \textcolor{charliteral}{'.'}),\ val.end());}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \textcolor{comment}{//\ Reverse\ the\ string\ for\ the\ next\ part\ of\ the\ calculation}}
+\DoxyCodeLine{00093\ \ \ std::reverse(val.begin(),\ val.end());}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \textcolor{comment}{//\ Calculate\ the\ sum\ by\ multiplying\ every\ second\ digit\ by\ 3}}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{int}\ sum\ =\ 0;}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 0;\ i\ <\ val.size();\ ++i)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{char}\ c\ =\ val[i];}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Make\ sure\ we\ only\ work\ with\ digits}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::isdigit(c))\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
 \DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ \ \ \textcolor{comment}{//\ Calculate\ the\ checksum\ by\ subtracting\ the\ sum\ from\ the\ next\ ten}}
-\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{int}\ checkSum\ =\ nextTen\ -\/\ sum;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ Convert\ char\ to\ int}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ digit\ =\ c\ -\/\ \textcolor{charliteral}{'0'};}
 \DoxyCodeLine{00107\ }
-\DoxyCodeLine{00108\ \ \ \textcolor{comment}{//\ Compare\ the\ checksum\ with\ the\ original\ last\ digit}}
-\DoxyCodeLine{00109\ \ \ \textcolor{keywordflow}{if}\ (checkSum\ !=\ lastDigit)\ \{}
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00111\ \ \ \}}
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00113\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00114\ \}}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00123\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_a0a2b975e162ced567ba3a6075684092a}{validateIban}}(\textcolor{keyword}{const}\ std::string\ \&val)\ \{}
-\DoxyCodeLine{00124\ \ \ \textcolor{comment}{//\ Remove\ all\ whitespaces\ from\ the\ IBAN}}
-\DoxyCodeLine{00125\ \ \ std::string\ address;}
-\DoxyCodeLine{00126\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ ch\ :\ val)\ \{}
-\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::isspace(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(ch)))\ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ address\ +=\ ch;}
-\DoxyCodeLine{00129\ \ \ \ \ \}}
-\DoxyCodeLine{00130\ \ \ \}}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \ \ \textcolor{comment}{//\ Check\ if\ the\ IBAN\ is\ 21\ characters\ long}}
-\DoxyCodeLine{00133\ \ \ \textcolor{keywordflow}{if}\ (address.size()\ !=\ 21)\ \{}
-\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00135\ \ \ \}}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ \ \ \textcolor{comment}{//\ Check\ if\ the\ IBAN\ starts\ with\ "{}CH"{}}}
-\DoxyCodeLine{00138\ \ \ \textcolor{keywordflow}{if}\ (address.substr(0,\ 2)\ !=\ \textcolor{stringliteral}{"{}CH"{}})\ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00140\ \ \ \}}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00142\ \ \ \textcolor{comment}{//\ Move\ the\ first\ four\ characters\ to\ the\ back}}
-\DoxyCodeLine{00143\ \ \ std::string\ rearranged\ =\ address.substr(4)\ +\ address.substr(0,\ 4);}
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \textcolor{comment}{//\ Convert\ the\ rearranged\ string\ into\ a\ numerical\ form\ (digits\ where\ letters}}
-\DoxyCodeLine{00146\ \ \ \textcolor{comment}{//\ A-\/Z\ are\ replaced\ by\ 10-\/35)}}
-\DoxyCodeLine{00147\ \ \ std::string\ numerical;}
-\DoxyCodeLine{00148\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ ch\ :\ rearranged)\ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isdigit(ch))\ \{}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ numerical\ +=\ ch;}
-\DoxyCodeLine{00151\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::isalpha(ch))\ \{}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ letters\ 'A'-\/'Z'\ to\ numbers\ '10'-\/'35'}}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ numerical\ +=\ std::to\_string(ch\ -\/\ \textcolor{charliteral}{'A'}\ +\ 10);}
-\DoxyCodeLine{00154\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Invalid\ character}}
-\DoxyCodeLine{00156\ \ \ \ \ \}}
-\DoxyCodeLine{00157\ \ \ \}}
-\DoxyCodeLine{00158\ }
-\DoxyCodeLine{00159\ \ \ \textcolor{comment}{//\ Calculate\ the\ checksum\ using\ modulo\ 97}}
-\DoxyCodeLine{00160\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MOD\ =\ 97;}
-\DoxyCodeLine{00161\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ checksum\ =\ 0;}
-\DoxyCodeLine{00162\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ digit\ :\ numerical)\ \{}
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{comment}{//\ Multiply\ the\ current\ checksum\ by\ 10\ and\ add\ the\ next\ digit}}
-\DoxyCodeLine{00164\ \ \ \ \ checksum\ =\ (checksum\ *\ 10\ +\ (digit\ -\/\ \textcolor{charliteral}{'0'}))\ \%\ MOD;}
-\DoxyCodeLine{00165\ \ \ \}}
-\DoxyCodeLine{00166\ }
-\DoxyCodeLine{00167\ \ \ \textcolor{comment}{//\ The\ IBAN\ is\ valid\ if\ the\ result\ of\ modulo\ 97\ is\ 1}}
-\DoxyCodeLine{00168\ \ \ \textcolor{keywordflow}{if}\ (checksum\ !=\ 1)\ \{}
-\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00170\ \ \ \}}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \ \ \textcolor{comment}{//\ Additionally\ check\ that\ the\ digits\ between\ index\ 2\ and\ 4\ are\ not\ "{}00"{}\ or}}
-\DoxyCodeLine{00173\ \ \ \textcolor{comment}{//\ "{}01"{}}}
-\DoxyCodeLine{00174\ \ \ std::string\ checkDigits\ =\ address.substr(2,\ 2);}
-\DoxyCodeLine{00175\ \ \ \textcolor{keywordflow}{if}\ (checkDigits\ ==\ \textcolor{stringliteral}{"{}00"{}}\ ||\ checkDigits\ ==\ \textcolor{stringliteral}{"{}01"{}})\ \{}
-\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{//\ Multiply\ every\ second\ digit\ by\ 3}}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ add\ =\ (i\ \%\ 2\ ==\ 0)\ ?\ digit\ *\ 3\ :\ digit;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ sum\ +=\ add;}
+\DoxyCodeLine{00112\ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \textcolor{comment}{//\ Calculate\ the\ next\ ten\ by\ rounding\ up\ the\ sum\ divided\ by\ 10}}
+\DoxyCodeLine{00115\ \ \ \textcolor{keywordtype}{int}\ nextTen\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(std::ceil(sum\ /\ 10.0)\ *\ 10);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \textcolor{comment}{//\ Calculate\ the\ checksum\ by\ subtracting\ the\ sum\ from\ the\ next\ ten}}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{int}\ checkSum\ =\ nextTen\ -\/\ sum;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \textcolor{comment}{//\ Compare\ the\ checksum\ with\ the\ original\ last\ digit}}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordflow}{if}\ (checkSum\ !=\ lastDigit)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00123\ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00126\ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevalidation__api_a0a2b975e162ced567ba3a6075684092a}{validateIban}}(\textcolor{keyword}{const}\ std::string\ \&val)\ \{}
+\DoxyCodeLine{00136\ \ \ \textcolor{comment}{//\ Remove\ all\ whitespaces\ from\ the\ IBAN}}
+\DoxyCodeLine{00137\ \ \ std::string\ address;}
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ ch\ :\ val)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::isspace(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(ch)))\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ address\ +=\ ch;}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \textcolor{comment}{//\ Check\ if\ the\ IBAN\ is\ 21\ characters\ long}}
+\DoxyCodeLine{00145\ \ \ \textcolor{keywordflow}{if}\ (address.size()\ !=\ 21)\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00147\ \ \ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \textcolor{comment}{//\ Check\ if\ the\ IBAN\ starts\ with\ "{}CH"{}}}
+\DoxyCodeLine{00150\ \ \ \textcolor{keywordflow}{if}\ (address.substr(0,\ 2)\ !=\ \textcolor{stringliteral}{"{}CH"{}})\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00152\ \ \ \}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \textcolor{comment}{//\ Move\ the\ first\ four\ characters\ to\ the\ back}}
+\DoxyCodeLine{00155\ \ \ std::string\ rearranged\ =\ address.substr(4)\ +\ address.substr(0,\ 4);}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \textcolor{comment}{//\ Convert\ the\ rearranged\ string\ into\ a\ numerical\ form\ (digits\ where\ letters}}
+\DoxyCodeLine{00158\ \ \ \textcolor{comment}{//\ A-\/Z\ are\ replaced\ by\ 10-\/35)}}
+\DoxyCodeLine{00159\ \ \ std::string\ numerical;}
+\DoxyCodeLine{00160\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ ch\ :\ rearranged)\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{if}\ (std::isdigit(ch))\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ numerical\ +=\ ch;}
+\DoxyCodeLine{00163\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (std::isalpha(ch))\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ letters\ 'A'-\/'Z'\ to\ numbers\ '10'-\/'35'}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ numerical\ +=\ std::to\_string(ch\ -\/\ \textcolor{charliteral}{'A'}\ +\ 10);}
+\DoxyCodeLine{00166\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Invalid\ character}}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \textcolor{comment}{//\ Calculate\ the\ checksum\ using\ modulo\ 97}}
+\DoxyCodeLine{00172\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MOD\ =\ 97;}
+\DoxyCodeLine{00173\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ checksum\ =\ 0;}
+\DoxyCodeLine{00174\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ digit\ :\ numerical)\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ Multiply\ the\ current\ checksum\ by\ 10\ and\ add\ the\ next\ digit}}
+\DoxyCodeLine{00176\ \ \ \ \ checksum\ =\ (checksum\ *\ 10\ +\ (digit\ -\/\ \textcolor{charliteral}{'0'}))\ \%\ MOD;}
 \DoxyCodeLine{00177\ \ \ \}}
 \DoxyCodeLine{00178\ }
-\DoxyCodeLine{00179\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00180\ \}}
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00187\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validateXmlConfig}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&node,}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{validation\_api::ConfigService::Errors}}\ \&erros);}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00191\ \textcolor{comment}{\ *\ @brief\ Creates\ a\ json\ object\ from\ ConfigService::Errors}}
-\DoxyCodeLine{00192\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00193\ \textcolor{keyword}{inline}\ nlohmann::json\ \mbox{\hyperlink{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718}{errorsToJson}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{ConfigService::Errors}}\ \&errors)\ \{}
-\DoxyCodeLine{00194\ \ \ nlohmann::json\ res;}
-\DoxyCodeLine{00195\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[key,\ value]\ :\ errors)\ \{}
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordflow}{if}\ (!res[key].empty())\ \{}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ res[key]\ =\ value;}
-\DoxyCodeLine{00198\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ res[key]\ =\ value;}
-\DoxyCodeLine{00200\ \ \ \ \ \}}
-\DoxyCodeLine{00201\ \ \ \}}
-\DoxyCodeLine{00202\ \ \ \textcolor{keywordflow}{return}\ res;}
-\DoxyCodeLine{00203\ \}}
-\DoxyCodeLine{00204\ \}\ \textcolor{comment}{//\ namespace\ validation\_api}}
+\DoxyCodeLine{00179\ \ \ \textcolor{comment}{//\ The\ IBAN\ is\ valid\ if\ the\ result\ of\ modulo\ 97\ is\ 1}}
+\DoxyCodeLine{00180\ \ \ \textcolor{keywordflow}{if}\ (checksum\ !=\ 1)\ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00182\ \ \ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \textcolor{comment}{//\ Additionally\ check\ that\ the\ digits\ between\ index\ 2\ and\ 4\ are\ not\ "{}00"{}\ or}}
+\DoxyCodeLine{00185\ \ \ \textcolor{comment}{//\ "{}01"{}}}
+\DoxyCodeLine{00186\ \ \ std::string\ checkDigits\ =\ address.substr(2,\ 2);}
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordflow}{if}\ (checkDigits\ ==\ \textcolor{stringliteral}{"{}00"{}}\ ||\ checkDigits\ ==\ \textcolor{stringliteral}{"{}01"{}})\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00189\ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00192\ \}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validateXmlConfig}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&node,}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{validation\_api::ConfigService::Errors}}\ \&erros);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \}\ \textcolor{comment}{//\ namespace\ validation\_api}}
 
 \end{DoxyCode}

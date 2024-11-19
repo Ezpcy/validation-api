@@ -99,9 +99,9 @@ Public Types</h2></td></tr>
 <tr class="memitem:a863af262797a07b40fbf56c6ab86600c" id="r_a863af262797a07b40fbf56c6ab86600c"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; std::string, std::shared_ptr&lt; pugi::xml_document &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a863af262797a07b40fbf56c6ab86600c">Configs</a></td></tr>
 <tr class="memdesc:a863af262797a07b40fbf56c6ab86600c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configs typedef.  <br /></td></tr>
 <tr class="separator:a863af262797a07b40fbf56c6ab86600c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac485eb4f4ae5c047bfee51a51d7a848d" id="r_ac485eb4f4ae5c047bfee51a51d7a848d"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac485eb4f4ae5c047bfee51a51d7a848d">Errors</a></td></tr>
-<tr class="memdesc:ac485eb4f4ae5c047bfee51a51d7a848d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Errors typedef.  <br /></td></tr>
-<tr class="separator:ac485eb4f4ae5c047bfee51a51d7a848d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6d3ea95ba9eed83b185b834ed4a395c" id="r_ac6d3ea95ba9eed83b185b834ed4a395c"><td class="memItemLeft" align="right" valign="top">typedef nlohmann::json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6d3ea95ba9eed83b185b834ed4a395c">Errors</a></td></tr>
+<tr class="memdesc:ac6d3ea95ba9eed83b185b834ed4a395c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Errors typedef.  <br /></td></tr>
+<tr class="separator:ac6d3ea95ba9eed83b185b834ed4a395c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a72b9695e86a85502ea559e009a878e4c" id="r_a72b9695e86a85502ea559e009a878e4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72b9695e86a85502ea559e009a878e4c">deleteConfig</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:a72b9695e86a85502ea559e009a878e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">getConfigs method  <br /></td></tr>
 <tr class="separator:a72b9695e86a85502ea559e009a878e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a654e84f4f588f7391f93210c1e08344f" id="r_a654e84f4f588f7391f93210c1e08344f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac485eb4f4ae5c047bfee51a51d7a848d">Errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a654e84f4f588f7391f93210c1e08344f">validateConfig</a> (const nlohmann::json &amp;jsonData)</td></tr>
+<tr class="memitem:a654e84f4f588f7391f93210c1e08344f" id="r_a654e84f4f588f7391f93210c1e08344f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac6d3ea95ba9eed83b185b834ed4a395c">Errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a654e84f4f588f7391f93210c1e08344f">validateConfig</a> (const nlohmann::json &amp;jsonData)</td></tr>
 <tr class="memdesc:a654e84f4f588f7391f93210c1e08344f"><td class="mdescLeft">&#160;</td><td class="mdescRight">getConfigs method  <br /></td></tr>
 <tr class="separator:a654e84f4f588f7391f93210c1e08344f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -157,14 +157,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac485eb4f4ae5c047bfee51a51d7a848d" name="ac485eb4f4ae5c047bfee51a51d7a848d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac485eb4f4ae5c047bfee51a51d7a848d">&#9670;&#160;</a></span>Errors</h2>
+<a id="ac6d3ea95ba9eed83b185b834ed4a395c" name="ac6d3ea95ba9eed83b185b834ed4a395c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6d3ea95ba9eed83b185b834ed4a395c">&#9670;&#160;</a></span>Errors</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;std::pair&lt;std::string, std::string&gt; &gt; <a class="el" href="#ac485eb4f4ae5c047bfee51a51d7a848d">validation_api::ConfigService::Errors</a></td>
+          <td class="memname">typedef nlohmann::json <a class="el" href="#ac6d3ea95ba9eed83b185b834ed4a395c">validation_api::ConfigService::Errors</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -305,7 +305,7 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#ac485eb4f4ae5c047bfee51a51d7a848d">ConfigService::Errors</a> validation_api::ConfigService::validateConfig </td>
+          <td class="memname"><a class="el" href="#ac6d3ea95ba9eed83b185b834ed4a395c">ConfigService::Errors</a> validation_api::ConfigService::validateConfig </td>
           <td>(</td>
           <td class="paramtype">const nlohmann::json &amp;</td>          <td class="paramname"><span class="paramname"><em>jsonData</em></span></td><td>)</td>
           <td></td>
@@ -319,7 +319,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f_cgraph.svg" width="1438" height="431"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f_cgraph.svg" width="1450" height="714"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

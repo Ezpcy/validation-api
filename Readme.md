@@ -2,9 +2,9 @@
 
 [Docs](https://ezpcy.github.io/validation-api/)
 
-**Version**: 0.5
+**Version**: 0.6
 
-**Creation date**: August 29, 2023 2:33 PM
+**Creation date**: August 29, 2024 2:33 PM
 
 ## Code Structure
 
@@ -161,11 +161,16 @@ This configuration file will validate the incoming data. The data must be in `JS
 
 The API will return a Json object with either all errors that have occured or just an "ok" message if the request is valid.
 
-Connect to the API (can be done with Netcat or Telnet): 
+The error message will look like this:
 
-```bash
-telnet 127.0.0.1 8080
+```json
+{"error": {"FieldName": "NotCorrectType string boolean"}}
 ```
+
+- `FieldName` the unvalid field in the rquest
+- `NotCorrectType` type of the error
+- `string` received this
+- `boolean` expected this
 
 ## Logs
 

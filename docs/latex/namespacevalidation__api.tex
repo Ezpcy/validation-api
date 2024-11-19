@@ -7,8 +7,6 @@ class \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classvalidation__api_1_1ConfigService}{Config\+Service} class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}}
 \begin{DoxyCompactList}\small\item\em Class to watch for changes in a directory. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classvalidation__api_1_1ErrorBuilder}{Error\+Builder}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classvalidation__api_1_1ErrorBuilder}{Error\+Builder} class. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1IService}{IService}}
 \begin{DoxyCompactList}\small\item\em Interface for all services. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classvalidation__api_1_1Validation}{Validation}}
@@ -27,23 +25,30 @@ typedef std\+::unordered\+\_\+map$<$ std\+::string, std\+::unordered\+\_\+map$<$
 \item 
 enum class \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \{ \newline
 \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{Default}}
-, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba8180c46099f957f51b2bc31f7f0f5c42}{Validation\+Error}}
-, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba25d5eb853600229eb2a90e5575a90378}{Validation\+Empty\+Error}}
-, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baffdb4b4dc2e3087490b8c8be8b6ba50d}{Xml\+Config\+Error}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba3a4758ff767a24a3e0c90df1cc78abe5}{Configuration\+Not\+Found}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba119c9a8937f2b805a1f4a4201aa12acb}{Child\+Node\+Not\+Found}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba0c580c3bd753bfe2f772fc8b5fc5f336}{Request\+Field\+Not\+Found}}
 , \newline
-\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15}{Xml\+Config\+Value\+Error}}
-, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871}{Xml\+Config\+Empty\+Error}}
-, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448}{Json\+Missing\+Field}}
-, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7af8f56a012f5b92871283c02f6d76df}{Json\+Additional\+Field}}
+\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba52b3444945e5a6d87424458a7f774453}{Missing\+Field}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba4423fe3253fe8cdad6435ddcfeb1a8e0}{Cannot\+Be\+Empty}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{Not\+Correct\+Type}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23}{Max\+Error}}
+, \newline
+\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb}{Min\+Error}}
+, \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942}{Eq\+Error}}
  \}
-\begin{DoxyCompactList}\small\item\em Set the Second Msg object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enum to map error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c}{setup\+\_\+logger}} ()
 \begin{DoxyCompactList}\small\item\em Sets up and configures the logger using spdlog. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validate\+Xml\+Config}} (const pugi\+::xml\+\_\+node \&node, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&erros)
+void \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validate\+Xml\+Config}} (const pugi\+::xml\+\_\+node \&node, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&erros)
 \begin{DoxyCompactList}\small\item\em Ensures valid Xml configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{error\+Builder}} (nlohmann\+::json \&res, const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&type, const std\+::string \&field\+Name, const std\+::string \&exp="{}"{}, const std\+::string \&rec="{}"{})
+\begin{DoxyCompactList}\small\item\em Error builder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9}{insert\+To\+Json}} (nlohmann\+::json \&\mbox{\hyperlink{namespacevalidation__api_a469734aa94b796d2c4565b1d121cd6f3}{json}}, const std\+::string \&key, const std\+::string \&value)
+\begin{DoxyCompactList}\small\item\em Insert an error into a json object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{is\+Valid\+Uuid}} (const std\+::string \&uuid\+Str)
 \item 
 bool \mbox{\hyperlink{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa}{is\+Float}} (const std\+::string \&str, float \&out)
@@ -53,9 +58,7 @@ std\+::string \mbox{\hyperlink{namespacevalidation__api_a6dd56dcf7358b332bb906a2
 bool \mbox{\hyperlink{namespacevalidation__api_aae32fd7a0b5886a49454679d46ed4bd1}{validate\+Ahv}} (std\+::string \&val)
 \begin{DoxyCompactList}\small\item\em Validates Ahv string. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{namespacevalidation__api_a0a2b975e162ced567ba3a6075684092a}{validate\+Iban}} (const std\+::string \&val)
-\begin{DoxyCompactList}\small\item\em Validates Iban string. \end{DoxyCompactList}\item 
-nlohmann\+::json \mbox{\hyperlink{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718}{errors\+To\+Json}} (const \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&errors)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Validates Iban string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -91,66 +94,103 @@ An unordered map of \texorpdfstring{$<$}{<}string, unordered\+\_\+map\texorpdfst
 
 
 
-Set the Second Msg object. 
+Enum to map error message. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em msg\+Main} & Main message \\
-\hline
-{\em msg\+Sec} & Secondary message \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{classvalidation__api_1_1ErrorBuilder}{Error\+Builder}\& 
-\end{DoxyReturn}
 \begin{DoxyEnumFields}{Enumerator}
 \raisebox{\heightof{T}}[0pt][0pt]{\index{Default@{Default}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!Default@{Default}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67} 
 Default&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ValidationError@{ValidationError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!ValidationError@{ValidationError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba8180c46099f957f51b2bc31f7f0f5c42}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba8180c46099f957f51b2bc31f7f0f5c42} 
-Validation\+Error&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ConfigurationNotFound@{ConfigurationNotFound}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!ConfigurationNotFound@{ConfigurationNotFound}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba3a4758ff767a24a3e0c90df1cc78abe5}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba3a4758ff767a24a3e0c90df1cc78abe5} 
+Configuration\+Not\+Found&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ValidationEmptyError@{ValidationEmptyError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!ValidationEmptyError@{ValidationEmptyError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba25d5eb853600229eb2a90e5575a90378}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba25d5eb853600229eb2a90e5575a90378} 
-Validation\+Empty\+Error&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ChildNodeNotFound@{ChildNodeNotFound}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!ChildNodeNotFound@{ChildNodeNotFound}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba119c9a8937f2b805a1f4a4201aa12acb}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba119c9a8937f2b805a1f4a4201aa12acb} 
+Child\+Node\+Not\+Found&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{XmlConfigError@{XmlConfigError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!XmlConfigError@{XmlConfigError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baffdb4b4dc2e3087490b8c8be8b6ba50d}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baffdb4b4dc2e3087490b8c8be8b6ba50d} 
-Xml\+Config\+Error&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RequestFieldNotFound@{RequestFieldNotFound}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!RequestFieldNotFound@{RequestFieldNotFound}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba0c580c3bd753bfe2f772fc8b5fc5f336}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba0c580c3bd753bfe2f772fc8b5fc5f336} 
+Request\+Field\+Not\+Found&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{XmlConfigValueError@{XmlConfigValueError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!XmlConfigValueError@{XmlConfigValueError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba23b02e0a461ec588fcd86f02d0f65b15} 
-Xml\+Config\+Value\+Error&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MissingField@{MissingField}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!MissingField@{MissingField}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba52b3444945e5a6d87424458a7f774453}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba52b3444945e5a6d87424458a7f774453} 
+Missing\+Field&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{XmlConfigEmptyError@{XmlConfigEmptyError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!XmlConfigEmptyError@{XmlConfigEmptyError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baeec324d2100688a8a5b3ea41d4d00871} 
-Xml\+Config\+Empty\+Error&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CannotBeEmpty@{CannotBeEmpty}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!CannotBeEmpty@{CannotBeEmpty}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba4423fe3253fe8cdad6435ddcfeb1a8e0}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba4423fe3253fe8cdad6435ddcfeb1a8e0} 
+Cannot\+Be\+Empty&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{JsonMissingField@{JsonMissingField}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!JsonMissingField@{JsonMissingField}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8baaae08669fceb31f8d11dc1cb739ec448} 
-Json\+Missing\+Field&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NotCorrectType@{NotCorrectType}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!NotCorrectType@{NotCorrectType}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888} 
+Not\+Correct\+Type&\\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{JsonAdditionalField@{JsonAdditionalField}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!JsonAdditionalField@{JsonAdditionalField}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7af8f56a012f5b92871283c02f6d76df}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7af8f56a012f5b92871283c02f6d76df} 
-Json\+Additional\+Field&\\
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MaxError@{MaxError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!MaxError@{MaxError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23} 
+Max\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MinError@{MinError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!MinError@{MinError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb} 
+Min\+Error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EqError@{EqError}!validation\_api@{validation\_api}}\index{validation\_api@{validation\_api}!EqError@{EqError}}}\Hypertarget{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942}\label{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942} 
+Eq\+Error&\\
 \hline
 
 \end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718}\label{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718} 
-\index{validation\_api@{validation\_api}!errorsToJson@{errorsToJson}}
-\index{errorsToJson@{errorsToJson}!validation\_api@{validation\_api}}
-\doxysubsubsection{\texorpdfstring{errorsToJson()}{errorsToJson()}}
-{\footnotesize\ttfamily nlohmann\+::json validation\+\_\+api\+::errors\+To\+Json (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&}]{errors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\Hypertarget{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}\label{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2} 
+\index{validation\_api@{validation\_api}!errorBuilder@{errorBuilder}}
+\index{errorBuilder@{errorBuilder}!validation\_api@{validation\_api}}
+\doxysubsubsection{\texorpdfstring{errorBuilder()}{errorBuilder()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::error\+Builder (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{res,  }\item[{const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&}]{type,  }\item[{const std\+::string \&}]{field\+Name,  }\item[{const std\+::string \&}]{exp = {\ttfamily "{}"{}},  }\item[{const std\+::string \&}]{rec = {\ttfamily "{}"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Error builder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Error type \\
+\hline
+{\em field\+Name} & Field name \\
+\hline
+{\em exp} & Expected value \\
+\hline
+{\em rec} & Received value\\
+\hline
+\end{DoxyParams}
+Function to build a json error message which can occur at the validation process . Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9}\label{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9} 
+\index{validation\_api@{validation\_api}!insertToJson@{insertToJson}}
+\index{insertToJson@{insertToJson}!validation\_api@{validation\_api}}
+\doxysubsubsection{\texorpdfstring{insertToJson()}{insertToJson()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::insert\+To\+Json (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{json,  }\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Insert an error into a json object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The json to insert to \\
+\hline
+{\em key} & The parent @ param value The value to append to the key \\
+\hline
+\end{DoxyParams}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacevalidation__api_ad94de3de52c70b315f5b36cce4642718_icgraph}
+\includegraphics[width=350pt]{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa}\label{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa} 
@@ -270,7 +310,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{validation\_api@{validation\_api}!validateXmlConfig@{validateXmlConfig}}
 \index{validateXmlConfig@{validateXmlConfig}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{validateXmlConfig()}{validateXmlConfig()}}
-{\footnotesize\ttfamily void validation\+\_\+api\+::validate\+Xml\+Config (\begin{DoxyParamCaption}\item[{const pugi\+::xml\+\_\+node \&}]{node,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&}]{erros }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void validation\+\_\+api\+::validate\+Xml\+Config (\begin{DoxyParamCaption}\item[{const pugi\+::xml\+\_\+node \&}]{node,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&}]{erros }\end{DoxyParamCaption})}
 
 
 

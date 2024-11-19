@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['deleteconfig_0',['deleteConfig',['../classvalidation__api_1_1ConfigService.html#a72b9695e86a85502ea559e009a878e4c',1,'validation_api::ConfigService']]]
+  ['errorbuilder_0',['errorBuilder',['../namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2',1,'validation_api']]],
+  ['extractnulloptions_1',['extractNullOptions',['../classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4',1,'validation_api::Validation']]]
 ];

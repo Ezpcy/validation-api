@@ -23,7 +23,7 @@ Collaboration diagram for validation\+\_\+api\+::Config\+Service\+:\nopagebreak
 \item 
 typedef std\+::unordered\+\_\+map$<$ std\+::string, std\+::shared\+\_\+ptr$<$ pugi\+::xml\+\_\+document $>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{Configs}}
 \begin{DoxyCompactList}\small\item\em Configs typedef. \end{DoxyCompactList}\item 
-typedef std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Errors}}
+typedef nlohmann\+::json \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Errors}}
 \begin{DoxyCompactList}\small\item\em Errors typedef. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -38,7 +38,7 @@ bool \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a8fee54d1f3f5eb92a17
 \begin{DoxyCompactList}\small\item\em get\+Configs method \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a72b9695e86a85502ea559e009a878e4c}{delete\+Config}} (const std\+::string \&name)
 \begin{DoxyCompactList}\small\item\em get\+Configs method \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Errors}} \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f}{validate\+Config}} (const nlohmann\+::json \&json\+Data)
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Errors}} \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f}{validate\+Config}} (const nlohmann\+::json \&json\+Data)
 \begin{DoxyCompactList}\small\item\em get\+Configs method \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -67,11 +67,11 @@ This class is responsible for managing the configuration files. It provides meth
 
 Configs typedef. 
 
-This typedef is used to store the configuration files in a map. \Hypertarget{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}\label{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d} 
+This typedef is used to store the configuration files in a map. \Hypertarget{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}\label{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c} 
 \index{validation\_api::ConfigService@{validation\_api::ConfigService}!Errors@{Errors}}
 \index{Errors@{Errors}!validation\_api::ConfigService@{validation\_api::ConfigService}}
 \doxysubsubsection{\texorpdfstring{Errors}{Errors}}
-{\footnotesize\ttfamily typedef std\+::vector$<$std\+::pair$<$std\+::string, std\+::string$>$ $>$ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}}}
+{\footnotesize\ttfamily typedef nlohmann\+::json \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}}}
 
 
 
@@ -159,7 +159,7 @@ Configs
 \index{validation\_api::ConfigService@{validation\_api::ConfigService}!validateConfig@{validateConfig}}
 \index{validateConfig@{validateConfig}!validation\_api::ConfigService@{validation\_api::ConfigService}}
 \doxysubsubsection{\texorpdfstring{validateConfig()}{validateConfig()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} validation\+\_\+api\+::\+Config\+Service\+::validate\+Config (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Data }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Config\+Service\+::\+Errors}} validation\+\_\+api\+::\+Config\+Service\+::validate\+Config (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Data }\end{DoxyParamCaption})}
 
 
 

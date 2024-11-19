@@ -36,11 +36,11 @@ using \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a3c875eeff66dd9e457
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_ae52bfdab8da3ff71ba788f1929a9a053}{Config\+Watcher}} (boost\+::asio\+::io\+\_\+context \&io\+\_\+context, const std\+::string \&path, \mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}} \&service, \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a3c875eeff66dd9e457cd4220f3370758}{Callback}} callback)
-\begin{DoxyCompactList}\small\item\em Construct a new validation api\+::\+Config\+Watcher\+::\+Config\+Watcher object. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_aa5d21697f9480b92ba184e0f006952cc}{\texorpdfstring{$\sim$}{\string~}\+Config\+Watcher}} () override
-\begin{DoxyCompactList}\small\item\em Destroy the validation api\+::\+Config\+Watcher\+::\+Config\+Watcher object and close the inotify instance. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a78820bcf2ebf9135785e207aae042e72}{read\+\_\+file}} (const std\+::string \&file\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Reads a file. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a13e118f62a6b13b780f44e12d5afed78}{run}} () override
 \begin{DoxyCompactList}\small\item\em Start \doxylink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{setup}} () override
@@ -104,19 +104,6 @@ This class uses the boost\+::asio library to watch for changes in a directory. W
 \doxysubsubsection{\texorpdfstring{ConfigWatcher()}{ConfigWatcher()}}
 {\footnotesize\ttfamily validation\+\_\+api\+::\+Config\+Watcher\+::\+Config\+Watcher (\begin{DoxyParamCaption}\item[{boost\+::asio\+::io\+\_\+context \&}]{io\+\_\+context,  }\item[{const std\+::string \&}]{path,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigService}{Config\+Service}} \&}]{service,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigWatcher_a3c875eeff66dd9e457cd4220f3370758}{Callback}}}]{callback }\end{DoxyParamCaption})}
 
-
-
-Construct a new validation api\+::\+Config\+Watcher\+::\+Config\+Watcher object. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em io\+\_\+context} & \\
-\hline
-{\em path} & \\
-\hline
-{\em callback} & \\
-\hline
-\end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -129,10 +116,6 @@ Here is the call graph for this function\+:\nopagebreak
 \index{````~ConfigWatcher@{\texorpdfstring{$\sim$}{\string~}ConfigWatcher}!validation\_api::ConfigWatcher@{validation\_api::ConfigWatcher}}
 \doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ConfigWatcher()}{\string~ConfigWatcher()}}
 {\footnotesize\ttfamily validation\+\_\+api\+::\+Config\+Watcher\+::\texorpdfstring{$\sim$}{\string~}\+Config\+Watcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
-
-
-
-Destroy the validation api\+::\+Config\+Watcher\+::\+Config\+Watcher object and close the inotify instance. 
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -150,15 +133,6 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
 {\footnotesize\ttfamily void validation\+\_\+api\+::\+Config\+Watcher\+::read\+\_\+file (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+\_\+name }\end{DoxyParamCaption})}
 
-
-
-Reads a file. 
-
-Reads and validates a file expecting a Xml configuration 
-\begin{DoxyParams}{Parameters}
-{\em file\+\_\+name} & \\
-\hline
-\end{DoxyParams}
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -183,14 +157,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Start \doxylink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}. 
 
-Run the inotify instance and watch for changes in the directory.
-
-Also callls \mbox{[}\doxylink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{Config\+Watcher\+::setup}\mbox{]} to setup the watcher.
-
-\begin{DoxyReturn}{Returns}
-\texorpdfstring{$\ast$}{*} void 
-\end{DoxyReturn}
-
+Also callls \mbox{[}\doxylink{classvalidation__api_1_1ConfigWatcher_a6f8a66478001a8a0515344aac1fd0395}{Config\+Watcher\+::setup}\mbox{]} to setup the watcher. 
 
 Implements \mbox{\hyperlink{classvalidation__api_1_1IService_a5b9b0bb70e360af3dd2c9bb1239f2a20}{validation\+\_\+api\+::\+IService}}.
 
@@ -218,14 +185,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Setup the \doxylink{classvalidation__api_1_1ConfigWatcher}{Config\+Watcher}. 
 
-Sets up the inotify instance.
-
 This function sets up the inotify watcher and starts the watcher thread. \begin{DoxyReturn}{Returns}
-bool Returns true if the setup was successful.
-
-true if the setup is successful 
-
-false if the setup fails 
+bool Returns true if the setup was successful. 
 \end{DoxyReturn}
 
 

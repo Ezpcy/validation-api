@@ -86,187 +86,224 @@ $(function() { codefold.init(0); });
 <a href="Validation_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;boost/uuid.hpp&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="Helpers_8hpp.html">lib/Helpers.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;pugixml.hpp&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="Helpers_8hpp.html">lib/Helpers.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;pugixml.hpp&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ErrorBuilder_8hpp.html">lib/ErrorBuilder.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="ConfigService_8hpp.html">validation-api/ConfigService.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacevalidation__api.html">validation_api</a> {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">typedef</span> std::unordered_map&lt;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    std::string,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    std::unordered_map&lt;int, std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&gt;&gt;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">   22</a></span>    <a class="code hl_typedef" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">NullOptions</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classvalidation__api_1_1Validation.html">Validation</a> {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a9a856ca57a90247560b7af5716735979">Validation</a>(<span class="keyword">const</span> nlohmann::json &amp;jsonObj, <span class="keyword">const</span> pugi::xml_node &amp;doc,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>             <a class="code hl_typedef" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">ConfigService::Errors</a> &amp;errors);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a4a76db167ba08ba51d1c5751ea2179be">   29</a></span>  <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a4a76db167ba08ba51d1c5751ea2179be">~Validation</a>();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a">run</a>();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="comment">/*</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">   * @brief validate a field</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">   * @details validates one field with the help of the xml field</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">   * @param optName optValue reqValue fieldName errors</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">   */</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12">validate</a>(<span class="keyword">const</span> pugi::xml_node &amp;node, <span class="keyword">const</span> nlohmann::json &amp;reqValue,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keyword">const</span> std::string &amp;fieldName);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">   47</a></span>  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">extractNullOptions</a>(<span class="keyword">const</span> pugi::xml_node &amp;doc) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// Store the name</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    std::string forField = std::string(doc.name());</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">int</span> currentKey = 0;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">for</span> (pugi::xml_node node : doc.children()) {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="comment">// Recursive call for child nodes</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      <a class="code hl_function" href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">extractNullOptions</a>(node);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      <span class="keywordflow">if</span> (std::string(node.name()) == <span class="stringliteral">&quot;AllowNullIf&quot;</span>) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">for</span> (pugi::xml_node nullId : node.children()) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>          <span class="comment">// Iterate over attributes of the current &lt;Null&gt; child</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>          <span class="keywordflow">for</span> (pugi::xml_attribute_iterator attr = nullId.attributes_begin();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>               attr != nullId.attributes_end(); ++attr) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="comment">// Check if the UUID is valid</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda">isValidUuid</a>(std::string(attr-&gt;value()))) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>              <span class="keyword">auto</span> it = <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>.find(forField);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>              <span class="comment">// If the key is not found, insert it with a new vector</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>              <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>.end()) {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>[forField].insert(</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    {currentKey, {{nullId.name(), attr-&gt;value()}}});</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>              } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="comment">// If the key is found, append the new value to the vector</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>[forField][currentKey].push_back(</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    {nullId.name(), attr-&gt;value()});</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>              }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>              <span class="comment">// If the UUID is invalid, log an error</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>              <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>.push_back(</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                  {std::format(<span class="stringliteral">&quot;XML Null option: &quot;</span>),</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                   std::format(<span class="stringliteral">&quot;Field {} skipped because of invalid Uuid.&quot;</span>,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                               std::string(nullId.name()))});</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>          }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        currentKey++;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">typedef</span> std::unordered_map&lt;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    std::string,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    std::unordered_map&lt;int, std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;&gt;&gt;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">   23</a></span>    <a class="code hl_typedef" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">NullOptions</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="classvalidation__api_1_1Validation.html">Validation</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a9a856ca57a90247560b7af5716735979">Validation</a>(<span class="keyword">const</span> nlohmann::json &amp;jsonObj, <span class="keyword">const</span> pugi::xml_node &amp;doc,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>             <a class="code hl_typedef" href="classvalidation__api_1_1ConfigService.html#ac6d3ea95ba9eed83b185b834ed4a395c">ConfigService::Errors</a> &amp;errors);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a4a76db167ba08ba51d1c5751ea2179be">   30</a></span>  <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a4a76db167ba08ba51d1c5751ea2179be">~Validation</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a">run</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a512e2e0c3be1bea95ebfab280ec919ba">   44</a></span>  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a512e2e0c3be1bea95ebfab280ec919ba">validateConstraints</a>(<span class="keyword">const</span> std::string &amp;fieldName, <span class="keywordtype">float</span> value,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                                  std::optional&lt;float&gt; max,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                                  std::optional&lt;float&gt; min,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                                  std::optional&lt;float&gt; eq) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (max &amp;&amp; value &gt; max.value()) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <a class="code hl_function" href="namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2">errorBuilder</a>(<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>, <a class="code hl_enumvalue" href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23">ErrorType::MaxError</a>, fieldName,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                   std::format(<span class="stringliteral">&quot;{}&quot;</span>, max.value()), std::format(<span class="stringliteral">&quot;{}&quot;</span>, value));</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">if</span> (min &amp;&amp; value &lt; min.value()) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <a class="code hl_function" href="namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2">errorBuilder</a>(<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>, <a class="code hl_enumvalue" href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb">ErrorType::MinError</a>, fieldName,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                   std::format(<span class="stringliteral">&quot;{}&quot;</span>, min.value()), std::format(<span class="stringliteral">&quot;{}&quot;</span>, value));</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (eq &amp;&amp; value != eq.value()) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      <a class="code hl_function" href="namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2">errorBuilder</a>(<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>, <a class="code hl_enumvalue" href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942">ErrorType::EqError</a>, fieldName,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                   std::format(<span class="stringliteral">&quot;{}&quot;</span>, eq.value()), std::format(<span class="stringliteral">&quot;{}&quot;</span>, value));</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  }</div>
 </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="comment">/*</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">   * @brief validate a field</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">   * @details validates one field with the help of the xml field</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">   * @param optName optValue reqValue fieldName errors</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12">validate</a>(<span class="keyword">const</span> pugi::xml_node &amp;node, <span class="keyword">const</span> nlohmann::json &amp;reqValue,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keyword">const</span> std::string &amp;fieldName);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">   75</a></span>  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">extractNullOptions</a>(<span class="keyword">const</span> pugi::xml_node &amp;doc) {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Store the name</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::string forField = std::string(doc.name());</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">int</span> currentKey = 0;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">for</span> (pugi::xml_node node : doc.children()) {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>      <span class="comment">// Recursive call for child nodes</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      <a class="code hl_function" href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">extractNullOptions</a>(node);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      <span class="keywordflow">if</span> (std::string(node.name()) == <span class="stringliteral">&quot;AllowNullIf&quot;</span>) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">for</span> (pugi::xml_node nullId : node.children()) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>          <span class="comment">// Iterate over attributes of the current &lt;Null&gt; child</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>          <span class="keywordflow">for</span> (pugi::xml_attribute_iterator attr = nullId.attributes_begin();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>               attr != nullId.attributes_end(); ++attr) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="comment">// Check if the UUID is valid</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda">isValidUuid</a>(std::string(attr-&gt;value()))) {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  <span class="comment">/*</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">   * @brief findJsonField</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">   * @param jsonObj nodeName</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">   * @details Recursive function to find a field in a JSON object</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">   */</span></div>
-<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a1931562aaf3ed21afc7d5f0fade04aa0">   97</a></span>  <span class="keyword">inline</span> nlohmann::json <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a1931562aaf3ed21afc7d5f0fade04aa0">findJsonField</a>(<span class="keyword">const</span> nlohmann::json &amp;jsonObj,</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                                      <span class="keyword">const</span> std::string &amp;nodeName) {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// If the key exists at the current level, return it</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (jsonObj.contains(nodeName)) {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="keywordflow">return</span> jsonObj[nodeName];</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// Otherwise, look through all objects in the current level</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[key, value] : jsonObj.items()) {</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>      <span class="keywordflow">if</span> (value.is_object() || value.is_array()) {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="comment">// Recursively search in nested JSON objects</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        nlohmann::json result = <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a1931562aaf3ed21afc7d5f0fade04aa0">findJsonField</a>(value, nodeName);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">if</span> (result != <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>          <span class="keywordflow">return</span> result;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        }</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      }</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="comment">// Return null if the key was not found</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>  }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>              <span class="keyword">auto</span> it = <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>.find(forField);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>              <span class="comment">// If the key is not found, insert it with a new vector</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>              <span class="keywordflow">if</span> (it == <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>.end()) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>                <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>[forField].insert(</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>                    {currentKey, {{nullId.name(), attr-&gt;value()}}});</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>              } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                <span class="comment">// If the key is found, append the new value to the vector</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>[forField][currentKey].push_back(</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                    {nullId.name(), attr-&gt;value()});</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>              }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>              <span class="comment">// If the UUID is invalid, log an error</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>              <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>.push_back(</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                  {std::format(<span class="stringliteral">&quot;XML Null option: &quot;</span>),</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                   std::format(<span class="stringliteral">&quot;Field {} skipped because of invalid Uuid.&quot;</span>,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                               std::string(nullId.name()))});</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>          }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        currentKey++;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  }</div>
 </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2">traverseAndValidate</a>(<span class="keyword">const</span> pugi::xml_node &amp;node);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="comment">/*</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">   * @brief Fills the `requestList_` with fields from the `request_`</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">   * @details Recursive function to iterate over the `request_`</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">   */</span></div>
-<div class="foldopen" id="foldopen00130" data-start="{" data-end="}">
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">  130</a></span>  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">fillRequestList</a>(<span class="keyword">const</span> nlohmann::json &amp;request) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[key, value] : request.items()) {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      <span class="keywordflow">if</span> (key == <span class="stringliteral">&quot;AllowNullIf&quot;</span>) {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>      }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  <span class="comment">/*</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">   * @brief findJsonField</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">   * @param jsonObj nodeName</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">   * @details Recursive function to find a field in a JSON object</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">   * @return std::pair&lt;bool, nlohmann::json&gt; We need return a pair, in case the</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">   * key exists but the value is a nullptr</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="keyword">inline</span> std::pair&lt;bool, nlohmann::json&gt;</div>
+<div class="foldopen" id="foldopen00128" data-start="{" data-end="}">
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a49e598a8189b6bd6edf1ecdb00ae8b9d">  128</a></span>  <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a49e598a8189b6bd6edf1ecdb00ae8b9d">findJsonField</a>(<span class="keyword">const</span> nlohmann::json &amp;jsonObj, <span class="keyword">const</span> std::string &amp;nodeName) {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="comment">// If the key exists at the current level, return it</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">if</span> (jsonObj.contains(nodeName)) {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      <span class="keywordflow">return</span> std::pair(<span class="keyword">true</span>, jsonObj[nodeName]);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="comment">// Otherwise, look through all objects in the current level</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[key, value] : jsonObj.items()) {</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>      <span class="keywordflow">if</span> (value.is_object() || value.is_array()) {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">fillRequestList</a>(value);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">requestList_</a>.insert(key);</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>      }</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>  }</div>
-</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// Recursively search in nested JSON objects</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        nlohmann::json result = <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a49e598a8189b6bd6edf1ecdb00ae8b9d">findJsonField</a>(value, nodeName);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">if</span> (result != std::pair(<span class="keyword">false</span>, <span class="keyword">nullptr</span>)) {</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>          <span class="keywordflow">return</span> result;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>      }</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    }</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="foldopen" id="foldopen00151" data-start="{" data-end="}">
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7">  151</a></span>  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7">checkNullOptionsVec</a>(</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      <span class="keyword">const</span> std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; &amp;nullVec) {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[fieldName, fieldUuid] : nullVec) {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      <span class="comment">// Retrieve field from JSON</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      nlohmann::json nullCheckField = <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a1931562aaf3ed21afc7d5f0fade04aa0">findJsonField</a>(<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">request_</a>, fieldName);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      <span class="comment">// If the field exists and doesn&#39;t match the UUID, return false</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      <span class="keywordflow">if</span> (!nullCheckField.is_null() &amp;&amp; nullCheckField != fieldUuid) {</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      }</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="comment">// Return null if the key was not found</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">return</span> std::pair(<span class="keyword">false</span>, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>  }</div>
 </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2">traverseAndValidate</a>(<span class="keyword">const</span> pugi::xml_node &amp;node);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>  <span class="comment">/*</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">   * @brief Fills the `requestList_` with fields from the `request_`</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">   * @details Recursive function to iterate over the `request_`</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">   */</span></div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">  160</a></span>  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">fillRequestList</a>(<span class="keyword">const</span> nlohmann::json &amp;request) {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;[key, value] : request.items()) {</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      <span class="keywordflow">if</span> (key == <span class="stringliteral">&quot;AllowNullIf&quot;</span>) {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      }</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">  172</a></span>  <span class="keyword">mutable</span> std::unordered_set&lt;std::string&gt; <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">requestList_</a>;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">  173</a></span>  <span class="keyword">const</span> nlohmann::json &amp;<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">request_</a>;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#ae7f1e69d12d69c2673e6d7ba5925fd10">  174</a></span>  <span class="keyword">const</span> pugi::xml_node &amp;<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#ae7f1e69d12d69c2673e6d7ba5925fd10">config_</a>;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">  175</a></span>  <a class="code hl_typedef" href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">ConfigService::Errors</a> &amp;<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">  176</a></span>  <a class="code hl_typedef" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">NullOptions</a> <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#af2f7b69e02765c73c6e648d24fa38ed4">  177</a></span>  std::shared_ptr&lt;spdlog::logger&gt; <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#af2f7b69e02765c73c6e648d24fa38ed4">logger_</a>;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>};</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      <span class="keywordflow">if</span> (value.is_object() || value.is_array()) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">fillRequestList</a>(value);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">requestList_</a>.insert(key);</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>      }</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    }</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>  }</div>
 </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>} <span class="comment">// namespace validation_api</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="foldopen" id="foldopen00181" data-start="{" data-end="}">
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7">  181</a></span>  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7">checkNullOptionsVec</a>(</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>      <span class="keyword">const</span> std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; &amp;nullVec) {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[fieldName, fieldUuid] : nullVec) {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>      <span class="comment">// Retrieve field from JSON</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>      std::pair&lt;bool, nlohmann::json&gt; nullCheckField =</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>          <a class="code hl_function" href="classvalidation__api_1_1Validation.html#a49e598a8189b6bd6edf1ecdb00ae8b9d">findJsonField</a>(<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">request_</a>, fieldName);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>      <span class="comment">// If the field exists and doesn&#39;t match the UUID, return false</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>      <span class="keywordflow">if</span> (nullCheckField.second != fieldUuid) {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>      }</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    }</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>  }</div>
+</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="foldopen" id="foldopen00201" data-start="{" data-end="}">
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#ac59ae7a00f5fc950a3a572524127c4d3">  201</a></span>  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classvalidation__api_1_1Validation.html#ac59ae7a00f5fc950a3a572524127c4d3">isNullOrEmpty</a>(<span class="keyword">const</span> nlohmann::json &amp;value) {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordflow">return</span> value.is_null() || value.empty() ||</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>           (value.is_string() &amp;&amp; value.get&lt;std::string&gt;().empty());</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>  }</div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">  212</a></span>  <span class="keyword">mutable</span> std::unordered_set&lt;std::string&gt; <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">requestList_</a>;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">  213</a></span>  <span class="keyword">const</span> nlohmann::json &amp;<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">request_</a>;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#ae7f1e69d12d69c2673e6d7ba5925fd10">  214</a></span>  <span class="keyword">const</span> pugi::xml_node &amp;<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#ae7f1e69d12d69c2673e6d7ba5925fd10">config_</a>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">  215</a></span>  <a class="code hl_typedef" href="classvalidation__api_1_1ConfigService.html#ac6d3ea95ba9eed83b185b834ed4a395c">ConfigService::Errors</a> &amp;<a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">errors_</a>;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">  216</a></span>  <a class="code hl_typedef" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">NullOptions</a> <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">nullOptions_</a>;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="classvalidation__api_1_1Validation.html#af2f7b69e02765c73c6e648d24fa38ed4">  217</a></span>  std::shared_ptr&lt;spdlog::logger&gt; <a class="code hl_variable" href="classvalidation__api_1_1Validation.html#af2f7b69e02765c73c6e648d24fa38ed4">logger_</a>;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>};</div>
+</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>} <span class="comment">// namespace validation_api</span></div>
 <div class="ttc" id="aConfigService_8hpp_html"><div class="ttname"><a href="ConfigService_8hpp.html">ConfigService.hpp</a></div></div>
+<div class="ttc" id="aErrorBuilder_8hpp_html"><div class="ttname"><a href="ErrorBuilder_8hpp.html">ErrorBuilder.hpp</a></div></div>
 <div class="ttc" id="aHelpers_8hpp_html"><div class="ttname"><a href="Helpers_8hpp.html">Helpers.hpp</a></div></div>
-<div class="ttc" id="aclassvalidation__api_1_1ConfigService_html_ac485eb4f4ae5c047bfee51a51d7a848d"><div class="ttname"><a href="classvalidation__api_1_1ConfigService.html#ac485eb4f4ae5c047bfee51a51d7a848d">validation_api::ConfigService::Errors</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; Errors</div><div class="ttdoc">Errors typedef.</div><div class="ttdef"><b>Definition</b> ConfigService.hpp:33</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html"><div class="ttname"><a href="classvalidation__api_1_1Validation.html">validation_api::Validation</a></div><div class="ttdef"><b>Definition</b> Validation.hpp:24</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a1931562aaf3ed21afc7d5f0fade04aa0"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a1931562aaf3ed21afc7d5f0fade04aa0">validation_api::Validation::findJsonField</a></div><div class="ttdeci">nlohmann::json findJsonField(const nlohmann::json &amp;jsonObj, const std::string &amp;nodeName)</div><div class="ttdef"><b>Definition</b> Validation.hpp:97</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a1cc0802269d88c233ad3c3d1d6c3dd12"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12">validation_api::Validation::validate</a></div><div class="ttdeci">void validate(const pugi::xml_node &amp;node, const nlohmann::json &amp;reqValue, const std::string &amp;fieldName)</div><div class="ttdef"><b>Definition</b> Validation.cpp:45</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a21b9aefd80be5a639d2aa5e4c8ebe945"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">validation_api::Validation::fillRequestList</a></div><div class="ttdeci">void fillRequestList(const nlohmann::json &amp;request)</div><div class="ttdef"><b>Definition</b> Validation.hpp:130</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a3c8146fc89af5b8cef0c1bb6c9d473f2"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2">validation_api::Validation::traverseAndValidate</a></div><div class="ttdeci">void traverseAndValidate(const pugi::xml_node &amp;node)</div><div class="ttdoc">Traverse through the json object and validate the fields.</div><div class="ttdef"><b>Definition</b> Validation.cpp:285</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1ConfigService_html_ac6d3ea95ba9eed83b185b834ed4a395c"><div class="ttname"><a href="classvalidation__api_1_1ConfigService.html#ac6d3ea95ba9eed83b185b834ed4a395c">validation_api::ConfigService::Errors</a></div><div class="ttdeci">nlohmann::json Errors</div><div class="ttdoc">Errors typedef.</div><div class="ttdef"><b>Definition</b> ConfigService.hpp:33</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html"><div class="ttname"><a href="classvalidation__api_1_1Validation.html">validation_api::Validation</a></div><div class="ttdef"><b>Definition</b> Validation.hpp:25</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a1cc0802269d88c233ad3c3d1d6c3dd12"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12">validation_api::Validation::validate</a></div><div class="ttdeci">void validate(const pugi::xml_node &amp;node, const nlohmann::json &amp;reqValue, const std::string &amp;fieldName)</div><div class="ttdef"><b>Definition</b> Validation.cpp:38</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a21b9aefd80be5a639d2aa5e4c8ebe945"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a21b9aefd80be5a639d2aa5e4c8ebe945">validation_api::Validation::fillRequestList</a></div><div class="ttdeci">void fillRequestList(const nlohmann::json &amp;request)</div><div class="ttdef"><b>Definition</b> Validation.hpp:160</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a3c8146fc89af5b8cef0c1bb6c9d473f2"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2">validation_api::Validation::traverseAndValidate</a></div><div class="ttdeci">void traverseAndValidate(const pugi::xml_node &amp;node)</div><div class="ttdoc">Traverse through the json object and validate the fields.</div><div class="ttdef"><b>Definition</b> Validation.cpp:232</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a49e598a8189b6bd6edf1ecdb00ae8b9d"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a49e598a8189b6bd6edf1ecdb00ae8b9d">validation_api::Validation::findJsonField</a></div><div class="ttdeci">std::pair&lt; bool, nlohmann::json &gt; findJsonField(const nlohmann::json &amp;jsonObj, const std::string &amp;nodeName)</div><div class="ttdef"><b>Definition</b> Validation.hpp:128</div></div>
 <div class="ttc" id="aclassvalidation__api_1_1Validation_html_a4a76db167ba08ba51d1c5751ea2179be"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a4a76db167ba08ba51d1c5751ea2179be">validation_api::Validation::~Validation</a></div><div class="ttdeci">~Validation()</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a55ea1d238672ca7b011dcd584be34b80"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">validation_api::Validation::nullOptions_</a></div><div class="ttdeci">NullOptions nullOptions_</div><div class="ttdef"><b>Definition</b> Validation.hpp:176</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a7b6995b4592eb861af42e45b095382b7"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7">validation_api::Validation::checkNullOptionsVec</a></div><div class="ttdeci">bool checkNullOptionsVec(const std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &amp;nullVec)</div><div class="ttdoc">Checking Uuid values.</div><div class="ttdef"><b>Definition</b> Validation.hpp:151</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a88a25d3748477bdded1fbc5bde81f264"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">validation_api::Validation::request_</a></div><div class="ttdeci">const nlohmann::json &amp; request_</div><div class="ttdef"><b>Definition</b> Validation.hpp:173</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a9a856ca57a90247560b7af5716735979"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a9a856ca57a90247560b7af5716735979">validation_api::Validation::Validation</a></div><div class="ttdeci">Validation(const nlohmann::json &amp;jsonObj, const pugi::xml_node &amp;doc, ConfigService::Errors &amp;errors)</div><div class="ttdef"><b>Definition</b> Validation.cpp:20</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a9e197506aa69689cc4d3a6c386b7c54f"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">validation_api::Validation::errors_</a></div><div class="ttdeci">ConfigService::Errors &amp; errors_</div><div class="ttdef"><b>Definition</b> Validation.hpp:175</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_abb370b5dc3a977d02bbdea727c638919"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">validation_api::Validation::requestList_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; requestList_</div><div class="ttdoc">Field names from the request.</div><div class="ttdef"><b>Definition</b> Validation.hpp:172</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_ac6c337d3af39943a8e603a5f21f5922a"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a">validation_api::Validation::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition</b> Validation.cpp:31</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_acd198b4de9ea7c78800719a53eabc1a4"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">validation_api::Validation::extractNullOptions</a></div><div class="ttdeci">void extractNullOptions(const pugi::xml_node &amp;doc)</div><div class="ttdoc">Extract the NullOptions from a XML Configuration.</div><div class="ttdef"><b>Definition</b> Validation.hpp:47</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_ae7f1e69d12d69c2673e6d7ba5925fd10"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#ae7f1e69d12d69c2673e6d7ba5925fd10">validation_api::Validation::config_</a></div><div class="ttdeci">const pugi::xml_node &amp; config_</div><div class="ttdef"><b>Definition</b> Validation.hpp:174</div></div>
-<div class="ttc" id="aclassvalidation__api_1_1Validation_html_af2f7b69e02765c73c6e648d24fa38ed4"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#af2f7b69e02765c73c6e648d24fa38ed4">validation_api::Validation::logger_</a></div><div class="ttdeci">std::shared_ptr&lt; spdlog::logger &gt; logger_</div><div class="ttdef"><b>Definition</b> Validation.hpp:177</div></div>
-<div class="ttc" id="anamespacevalidation__api_html"><div class="ttname"><a href="namespacevalidation__api.html">validation_api</a></div><div class="ttdef"><b>Definition</b> ConfigService.cpp:8</div></div>
-<div class="ttc" id="anamespacevalidation__api_html_a31ba8a1f3c413529eccf1fd96717b5d6"><div class="ttname"><a href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">validation_api::NullOptions</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::unordered_map&lt; int, std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &gt; &gt; NullOptions</div><div class="ttdoc">NullOptions.</div><div class="ttdef"><b>Definition</b> Validation.hpp:22</div></div>
-<div class="ttc" id="anamespacevalidation__api_html_ac19e25b4d8364b0f52152440dd5ecbda"><div class="ttname"><a href="namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda">validation_api::isValidUuid</a></div><div class="ttdeci">bool isValidUuid(const std::string &amp;uuidStr)</div><div class="ttdef"><b>Definition</b> Helpers.hpp:16</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a512e2e0c3be1bea95ebfab280ec919ba"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a512e2e0c3be1bea95ebfab280ec919ba">validation_api::Validation::validateConstraints</a></div><div class="ttdeci">void validateConstraints(const std::string &amp;fieldName, float value, std::optional&lt; float &gt; max, std::optional&lt; float &gt; min, std::optional&lt; float &gt; eq)</div><div class="ttdoc">Validates len options.</div><div class="ttdef"><b>Definition</b> Validation.hpp:44</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a55ea1d238672ca7b011dcd584be34b80"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80">validation_api::Validation::nullOptions_</a></div><div class="ttdeci">NullOptions nullOptions_</div><div class="ttdef"><b>Definition</b> Validation.hpp:216</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a7b6995b4592eb861af42e45b095382b7"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7">validation_api::Validation::checkNullOptionsVec</a></div><div class="ttdeci">bool checkNullOptionsVec(const std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &amp;nullVec)</div><div class="ttdoc">Checking Uuid values.</div><div class="ttdef"><b>Definition</b> Validation.hpp:181</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a88a25d3748477bdded1fbc5bde81f264"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264">validation_api::Validation::request_</a></div><div class="ttdeci">const nlohmann::json &amp; request_</div><div class="ttdef"><b>Definition</b> Validation.hpp:213</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a9a856ca57a90247560b7af5716735979"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a9a856ca57a90247560b7af5716735979">validation_api::Validation::Validation</a></div><div class="ttdeci">Validation(const nlohmann::json &amp;jsonObj, const pugi::xml_node &amp;doc, ConfigService::Errors &amp;errors)</div><div class="ttdef"><b>Definition</b> Validation.cpp:14</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_a9e197506aa69689cc4d3a6c386b7c54f"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#a9e197506aa69689cc4d3a6c386b7c54f">validation_api::Validation::errors_</a></div><div class="ttdeci">ConfigService::Errors &amp; errors_</div><div class="ttdef"><b>Definition</b> Validation.hpp:215</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_abb370b5dc3a977d02bbdea727c638919"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919">validation_api::Validation::requestList_</a></div><div class="ttdeci">std::unordered_set&lt; std::string &gt; requestList_</div><div class="ttdoc">Field names from the request.</div><div class="ttdef"><b>Definition</b> Validation.hpp:212</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_ac59ae7a00f5fc950a3a572524127c4d3"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#ac59ae7a00f5fc950a3a572524127c4d3">validation_api::Validation::isNullOrEmpty</a></div><div class="ttdeci">bool isNullOrEmpty(const nlohmann::json &amp;value)</div><div class="ttdoc">Checks if a json object is empty.</div><div class="ttdef"><b>Definition</b> Validation.hpp:201</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_ac6c337d3af39943a8e603a5f21f5922a"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a">validation_api::Validation::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition</b> Validation.cpp:25</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_acd198b4de9ea7c78800719a53eabc1a4"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4">validation_api::Validation::extractNullOptions</a></div><div class="ttdeci">void extractNullOptions(const pugi::xml_node &amp;doc)</div><div class="ttdoc">Extract the NullOptions from a XML Configuration.</div><div class="ttdef"><b>Definition</b> Validation.hpp:75</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_ae7f1e69d12d69c2673e6d7ba5925fd10"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#ae7f1e69d12d69c2673e6d7ba5925fd10">validation_api::Validation::config_</a></div><div class="ttdeci">const pugi::xml_node &amp; config_</div><div class="ttdef"><b>Definition</b> Validation.hpp:214</div></div>
+<div class="ttc" id="aclassvalidation__api_1_1Validation_html_af2f7b69e02765c73c6e648d24fa38ed4"><div class="ttname"><a href="classvalidation__api_1_1Validation.html#af2f7b69e02765c73c6e648d24fa38ed4">validation_api::Validation::logger_</a></div><div class="ttdeci">std::shared_ptr&lt; spdlog::logger &gt; logger_</div><div class="ttdef"><b>Definition</b> Validation.hpp:217</div></div>
+<div class="ttc" id="anamespacevalidation__api_html"><div class="ttname"><a href="namespacevalidation__api.html">validation_api</a></div><div class="ttdef"><b>Definition</b> ConfigService.cpp:9</div></div>
+<div class="ttc" id="anamespacevalidation__api_html_a31ba8a1f3c413529eccf1fd96717b5d6"><div class="ttname"><a href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">validation_api::NullOptions</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::unordered_map&lt; int, std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &gt; &gt; NullOptions</div><div class="ttdoc">NullOptions.</div><div class="ttdef"><b>Definition</b> Validation.hpp:23</div></div>
+<div class="ttc" id="anamespacevalidation__api_html_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23"><div class="ttname"><a href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23">validation_api::ErrorType::MaxError</a></div><div class="ttdeci">@ MaxError</div></div>
+<div class="ttc" id="anamespacevalidation__api_html_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb"><div class="ttname"><a href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb">validation_api::ErrorType::MinError</a></div><div class="ttdeci">@ MinError</div></div>
+<div class="ttc" id="anamespacevalidation__api_html_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942"><div class="ttname"><a href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942">validation_api::ErrorType::EqError</a></div><div class="ttdeci">@ EqError</div></div>
+<div class="ttc" id="anamespacevalidation__api_html_ac19e25b4d8364b0f52152440dd5ecbda"><div class="ttname"><a href="namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda">validation_api::isValidUuid</a></div><div class="ttdeci">bool isValidUuid(const std::string &amp;uuidStr)</div><div class="ttdef"><b>Definition</b> Helpers.hpp:28</div></div>
+<div class="ttc" id="anamespacevalidation__api_html_ac3e8e6ef097973f55220fc4fdeb08dc2"><div class="ttname"><a href="namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2">validation_api::errorBuilder</a></div><div class="ttdeci">void errorBuilder(nlohmann::json &amp;res, const ErrorType &amp;type, const std::string &amp;fieldName, const std::string &amp;exp=&quot;&quot;, const std::string &amp;rec=&quot;&quot;)</div><div class="ttdoc">Error builder.</div><div class="ttdef"><b>Definition</b> ErrorBuilder.hpp:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
