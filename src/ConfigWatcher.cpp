@@ -63,8 +63,8 @@ void ConfigWatcher::read_file(const std::string &file_name) {
       errors[file_name] += errors;
       logger_->error("Configuration error: \n");
       logger_->error("{}", errors.dump());
+      return;
     }
-    return;
     if (service_.createConfig(name, doc)) {
       fileAssocation_[file_name] = name;
     }
