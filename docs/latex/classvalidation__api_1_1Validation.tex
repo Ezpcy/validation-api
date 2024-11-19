@@ -6,7 +6,8 @@
 
 
 
-Collaboration diagram for validation\+\_\+api\+::Validation\+:\nopagebreak
+Collaboration diagram for validation\+\_\+api\+::Validation\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,24 +17,28 @@ Collaboration diagram for validation\+\_\+api\+::Validation\+:\nopagebreak
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classvalidation__api_1_1Validation_a9a856ca57a90247560b7af5716735979}{Validation}} (const nlohmann\+::json \&json\+Obj, const pugi\+::xml\+\_\+node \&doc, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&errors)
+\mbox{\hyperlink{classvalidation__api_1_1Validation_a9a856ca57a90247560b7af5716735979}{Validation}} (const nlohmann\+::json \&json\+Obj, const pugi\+::xml\+\_\+node \&doc, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Config\+Service\+::\+Errors}} \&errors)
 \item 
 \mbox{\hyperlink{classvalidation__api_1_1Validation_a4a76db167ba08ba51d1c5751ea2179be}{\texorpdfstring{$\sim$}{\string~}\+Validation}} ()
 \item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a}{run}} ()
 \item 
+void \mbox{\hyperlink{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba}{validate\+Constraints}} (const std\+::string \&field\+Name, float value, std\+::optional$<$ float $>$ max, std\+::optional$<$ float $>$ min, std\+::optional$<$ float $>$ eq)
+\begin{DoxyCompactList}\small\item\em Validates len options. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12}{validate}} (const pugi\+::xml\+\_\+node \&node, const nlohmann\+::json \&req\+Value, const std\+::string \&field\+Name)
 \item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_acd198b4de9ea7c78800719a53eabc1a4}{extract\+Null\+Options}} (const pugi\+::xml\+\_\+node \&doc)
 \begin{DoxyCompactList}\small\item\em Extract the Null\+Options from a XML Configuration. \end{DoxyCompactList}\item 
-nlohmann\+::json \mbox{\hyperlink{classvalidation__api_1_1Validation_a1931562aaf3ed21afc7d5f0fade04aa0}{find\+Json\+Field}} (const nlohmann\+::json \&json\+Obj, const std\+::string \&node\+Name)
+std\+::pair$<$ bool, nlohmann\+::json $>$ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{find\+Json\+Field}} (const nlohmann\+::json \&json\+Obj, const std\+::string \&node\+Name)
 \item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_a3c8146fc89af5b8cef0c1bb6c9d473f2}{traverse\+And\+Validate}} (const pugi\+::xml\+\_\+node \&node)
 \begin{DoxyCompactList}\small\item\em Traverse through the json object and validate the fields. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_a21b9aefd80be5a639d2aa5e4c8ebe945}{fill\+Request\+List}} (const nlohmann\+::json \&request)
 \item 
 bool \mbox{\hyperlink{classvalidation__api_1_1Validation_a7b6995b4592eb861af42e45b095382b7}{check\+Null\+Options\+Vec}} (const std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$ $>$ \&null\+Vec)
-\begin{DoxyCompactList}\small\item\em Checking Uuid values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checking Uuid values. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvalidation__api_1_1Validation_ac59ae7a00f5fc950a3a572524127c4d3}{is\+Null\+Or\+Empty}} (const nlohmann\+::json \&value)
+\begin{DoxyCompactList}\small\item\em Checks if a json object is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,7 +48,7 @@ const nlohmann\+::json \& \mbox{\hyperlink{classvalidation__api_1_1Validation_a8
 \item 
 const pugi\+::xml\+\_\+node \& \mbox{\hyperlink{classvalidation__api_1_1Validation_ae7f1e69d12d69c2673e6d7ba5925fd10}{config\+\_\+}}
 \item 
-\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \& \mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\+\_\+}}
+\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Config\+Service\+::\+Errors}} \& \mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\+\_\+}}
 \item 
 \mbox{\hyperlink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{Null\+Options}} \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{null\+Options\+\_\+}}
 \item 
@@ -56,7 +61,7 @@ std\+::shared\+\_\+ptr$<$ spdlog\+::logger $>$ \mbox{\hyperlink{classvalidation_
 \index{validation\_api::Validation@{validation\_api::Validation}!Validation@{Validation}}
 \index{Validation@{Validation}!validation\_api::Validation@{validation\_api::Validation}}
 \doxysubsubsection{\texorpdfstring{Validation()}{Validation()}}
-{\footnotesize\ttfamily validation\+\_\+api\+::\+Validation\+::\+Validation (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Obj,  }\item[{const pugi\+::xml\+\_\+node \&}]{doc,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}} \&}]{errors }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily validation\+\_\+api\+::\+Validation\+::\+Validation (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Obj,  }\item[{const pugi\+::xml\+\_\+node \&}]{doc,  }\item[{\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Config\+Service\+::\+Errors}} \&}]{errors }\end{DoxyParamCaption})}
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -89,7 +94,8 @@ Loops over a map of null options and checks if they exist in the request
 {\em null\+Vec} & \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -152,24 +158,49 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{classvalidation__api_1_1Validation_a21b9aefd80be5a639d2aa5e4c8ebe945_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classvalidation__api_1_1Validation_a1931562aaf3ed21afc7d5f0fade04aa0}\label{classvalidation__api_1_1Validation_a1931562aaf3ed21afc7d5f0fade04aa0} 
+\Hypertarget{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}\label{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d} 
 \index{validation\_api::Validation@{validation\_api::Validation}!findJsonField@{findJsonField}}
 \index{findJsonField@{findJsonField}!validation\_api::Validation@{validation\_api::Validation}}
 \doxysubsubsection{\texorpdfstring{findJsonField()}{findJsonField()}}
-{\footnotesize\ttfamily nlohmann\+::json validation\+\_\+api\+::\+Validation\+::find\+Json\+Field (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Obj,  }\item[{const std\+::string \&}]{node\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::pair$<$ bool, nlohmann\+::json $>$ validation\+\_\+api\+::\+Validation\+::find\+Json\+Field (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{json\+Obj,  }\item[{const std\+::string \&}]{node\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=220pt]{classvalidation__api_1_1Validation_a1931562aaf3ed21afc7d5f0fade04aa0_cgraph}
+\includegraphics[width=220pt]{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a1931562aaf3ed21afc7d5f0fade04aa0_icgraph}
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1Validation_ac59ae7a00f5fc950a3a572524127c4d3}\label{classvalidation__api_1_1Validation_ac59ae7a00f5fc950a3a572524127c4d3} 
+\index{validation\_api::Validation@{validation\_api::Validation}!isNullOrEmpty@{isNullOrEmpty}}
+\index{isNullOrEmpty@{isNullOrEmpty}!validation\_api::Validation@{validation\_api::Validation}}
+\doxysubsubsection{\texorpdfstring{isNullOrEmpty()}{isNullOrEmpty()}}
+{\footnotesize\ttfamily bool validation\+\_\+api\+::\+Validation\+::is\+Null\+Or\+Empty (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if a json object is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_ac59ae7a00f5fc950a3a572524127c4d3_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a}\label{classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a} 
@@ -178,7 +209,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
 {\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -207,7 +239,8 @@ Traverse through the json object and validate the fields.
 {\em node} & \\
 \hline
 \end{DoxyParams}
-Validates the json with passed xml doc object. Here is the call graph for this function\+:\nopagebreak
+Validates the json with passed xml doc object. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -227,7 +260,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{validate()}{validate()}}
 {\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+::validate (\begin{DoxyParamCaption}\item[{const pugi\+::xml\+\_\+node \&}]{node,  }\item[{const nlohmann\+::json \&}]{req\+Value,  }\item[{const std\+::string \&}]{field\+Name }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -239,6 +273,45 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba}\label{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba} 
+\index{validation\_api::Validation@{validation\_api::Validation}!validateConstraints@{validateConstraints}}
+\index{validateConstraints@{validateConstraints}!validation\_api::Validation@{validation\_api::Validation}}
+\doxysubsubsection{\texorpdfstring{validateConstraints()}{validateConstraints()}}
+{\footnotesize\ttfamily void validation\+\_\+api\+::\+Validation\+::validate\+Constraints (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{field\+Name,  }\item[{float}]{value,  }\item[{std\+::optional$<$ float $>$}]{max,  }\item[{std\+::optional$<$ float $>$}]{min,  }\item[{std\+::optional$<$ float $>$}]{eq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Validates len options. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field\+Name} & \\
+\hline
+{\em value} & \\
+\hline
+{\em max} & \\
+\hline
+{\em min} & \\
+\hline
+{\em eq} & \\
+\hline
+\end{DoxyParams}
+Validates the length of the field with the max, min, and eq if they have a value Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba_icgraph}
 \end{center}
 \end{figure}
 
@@ -254,7 +327,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{validation\_api::Validation@{validation\_api::Validation}!errors\_@{errors\_}}
 \index{errors\_@{errors\_}!validation\_api::Validation@{validation\_api::Validation}}
 \doxysubsubsection{\texorpdfstring{errors\_}{errors\_}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac485eb4f4ae5c047bfee51a51d7a848d}{Config\+Service\+::\+Errors}}\& validation\+\_\+api\+::\+Validation\+::errors\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Config\+Service\+::\+Errors}}\& validation\+\_\+api\+::\+Validation\+::errors\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{classvalidation__api_1_1Validation_af2f7b69e02765c73c6e648d24fa38ed4}\label{classvalidation__api_1_1Validation_af2f7b69e02765c73c6e648d24fa38ed4} 
 \index{validation\_api::Validation@{validation\_api::Validation}!logger\_@{logger\_}}

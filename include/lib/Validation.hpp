@@ -121,12 +121,14 @@ public:
    * @brief findJsonField
    * @param jsonObj nodeName
    * @details Recursive function to find a field in a JSON object
+   * @return std::pair<bool, nlohmann::json> We need return a pair, in case the
+   * key exists but the value is a nullptr
    */
-  inline nlohmann::json findJsonField(const nlohmann::json &jsonObj,
-                                      const std::string &nodeName) {
+  inline std::pair<bool, nlohmann::json>
+  findJsonField(const nlohmann::json &jsonObj, const std::string &nodeName) {
     // If the key exists at the current level, return it
     if (jsonObj.contains(nodeName)) {
-      return jsonObj[nodeName];
+      return std::pair(true, jsonObj[nodeName]);
     }
 
     // Otherwise, look through all objects in the current level
@@ -134,14 +136,14 @@ public:
       if (value.is_object() || value.is_array()) {
         // Recursively search in nested JSON objects
         nlohmann::json result = findJsonField(value, nodeName);
-        if (result != nullptr) {
+        if (result != std::pair(false, nullptr)) {
           return result;
         }
       }
     }
 
     // Return null if the key was not found
-    return nullptr;
+    return std::pair(false, nullptr);
   }
 
   /**
@@ -181,14 +183,24 @@ public:
 
     for (const auto &[fieldName, fieldUuid] : nullVec) {
       // Retrieve field from JSON
-      nlohmann::json nullCheckField = findJsonField(request_, fieldName);
+      std::pair<bool, nlohmann::json> nullCheckField =
+          findJsonField(request_, fieldName);
 
       // If the field exists and doesn't match the UUID, return false
-      if (!nullCheckField.is_null() && nullCheckField != fieldUuid) {
+      if (nullCheckField.second != fieldUuid) {
         return false;
       }
     }
     return true;
+  }
+
+  /**
+   * @brief Checks if a json object is empty
+   * @param value
+   */
+  inline bool isNullOrEmpty(const nlohmann::json &value) {
+    return value.is_null() || value.empty() ||
+           (value.is_string() && value.get<std::string>().empty());
   }
 
 private:

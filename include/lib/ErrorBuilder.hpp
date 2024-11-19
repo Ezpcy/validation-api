@@ -10,6 +10,8 @@ namespace validation_api {
  */
 enum class ErrorType {
   Default,
+  ConfigurationNotFound,
+  ChildNodeNotFound,
   RequestFieldNotFound,
   MissingField,
   CannotBeEmpty,
@@ -37,6 +39,12 @@ inline void errorBuilder(nlohmann::json &res, const ErrorType &type,
   switch (type) {
   case ErrorType::Default:
     res[fieldName] = "RIO.Unknown";
+    break;
+  case ErrorType::ConfigurationNotFound:
+    res[fieldName] = "RIO.ConfigurationNotFound";
+    break;
+  case ErrorType::ChildNodeNotFound:
+    res[fieldName] = "RIO.ChildNodeNotFound";
     break;
   case ErrorType::RequestFieldNotFound:
     res[fieldName] = "RIO.RequestFieldNotFound";

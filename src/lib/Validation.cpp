@@ -83,12 +83,9 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
     }
 
     // Check if field is empty
-    if ((!canBeEmpty &&
-         (reqValue.empty() || reqValue.is_null() || reqValue == "")) ||
-        (canBeEmpty &&
-         (reqValue.empty() || reqValue.is_null() || reqValue == ""))) {
+    if (isNullOrEmpty(reqValue)) {
       if (!canBeEmpty) {
-        errorBuilder(errors_, ErrorType::RequestFieldNotFound, fieldName);
+        errorBuilder(errors_, ErrorType::CannotBeEmpty, fieldName);
       }
       return;
     }
@@ -152,6 +149,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         }
         if (max.has_value() || min.has_value() || eq.has_value()) {
           float value = reqValue;
+          Validation::validateConstraints(fieldName, value, max, min, eq);
         }
         break;
       case 4: {
@@ -194,7 +192,7 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
         // Check if the value is a boolean
         if (!reqValue.is_boolean()) {
           errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                       reqValue.get<std::string>());
+                       reqValue.type_name());
         }
       } break;
       case 8: {
@@ -241,10 +239,10 @@ void Validation::traverseAndValidate(const pugi::xml_node &node) {
     }
 
     // Check if json request has the field
-    json jsonField = findJsonField(request_, nodeName);
+    std::pair<bool, json> jsonField = findJsonField(request_, nodeName);
 
-    if (jsonField != nullptr) {
-      validate(field, jsonField, nodeName);
+    if (jsonField.first) {
+      validate(field, jsonField.second, nodeName);
       requestList_.erase(nodeName);
     } else {
       errorBuilder(errors_, ErrorType::MissingField, nodeName);

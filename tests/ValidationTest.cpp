@@ -79,20 +79,81 @@ TEST(ValidationTest, Types) {
   ASSERT_EQ(errorsf.size(), 9);
 }
 
+bool containsSlice(const std::string &str, const std::string &slice) {
+  return str.find(slice) != std::string::npos;
+}
 TEST(ValidationTest, Options) {
   using json = nlohmann::json;
   static const std::string xml = R"(
     <Options>
-      <String type="string" min="5" max="10" eq="5" />
-      <Float type="float" min="5" max="10" eq="5" />
-      <Number type="number" min="5" max="10" eq="5" />
+      <String type="string" eq="5" />
+      <String1 type="string" min="5" max="8" />
+      <String2 type="string" min="5" max="8" />
+      <String3 type="string" notNull="true" />
+      <Float notNull="true" />
+      <Null type="number">
+        <AllowNullIf>
+          <Uuid uuid="123e4567-e89b-12d3-a456-526614174000" />
+        </AllowNullIf>
+      </Null>
+      <Uuid type="uuid" />
+      <Number0 type="number" min="4" max="8" />
+      <Float0 type="float" min="4.2" max="5.2" />
+      <Number1 type="number" min="4" max="5" />
+      <Float1 type="float" min="4" max="5"/>     
+      <Number2 type="number" eq="4" />
+      <Float2 type="float" eq="4.5" />
+      <Nested notNull="true">
+        <Null2 type="number">
+          <AllowNullIf>
+            <Uuid uuid="123e4567-e89b-12d3-a456-526614174000" />
+          </AllowNullIf>
+        </Null2>
+        <Float3 type="float" notNull="true"/>
+      </Nested>
     </Options>
   )";
   static const std::string json_true = R"({
   "Options": {
-    "String": "test",
-    "Float": 10.2,
-    "Number": 10
+    "String": "World",
+    "String1": "Hello",
+    "String2": "Hello",
+    "String3": "t",
+    "Float": 5.2,
+    "Null": null,
+    "Uuid": "123e4567-e89b-12d3-a456-526614174000",
+    "Number0": 5,
+    "Float0": 5.0,
+    "Number1": 4,
+    "Float1": 4.5,    
+    "Number2": 4,
+    "Float2": 4.5,
+    "Nested": {
+      "Null2": 20,
+      "Float3": 20.2
+    }
+  }
+  })";
+
+  static const std::string json_false = R"({
+  "Options": {
+    "String": "Longer than expected",
+    "String1": "if",
+    "String2": "shrt",
+    "String3": "",
+    "Float": null,
+    "Null": null,
+    "Uuid": "123e4567-e89b-12d3-a456-526614174001",
+    "Number0": 20,
+    "Float0": 10.5,
+    "Number1": 2,
+    "Float1": 29.3,
+    "Number2": 2,
+    "Float2": 4.29,
+    "Nested": {
+      "Null2": null,
+      "Float3": null
+    }
   }
   })";
 
@@ -103,8 +164,29 @@ TEST(ValidationTest, Options) {
   validation_api::ConfigService::Errors errors;
 
   validation_api::Validation(jj, doc, errors).run();
-
   std::cout << errors.dump() << '\n';
+  ASSERT_EQ(errors.size(), 0);
+
+  json jjf = json::parse(json_false);
+  validation_api::ConfigService::Errors errorsf;
+
+  validation_api::Validation(jjf, doc, errorsf).run();
+  std::cout << errorsf.dump() << '\n';
+
+  ASSERT_TRUE(containsSlice(errorsf["Float"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["Float0"], "MaxError 10.5 5.2"));
+  ASSERT_TRUE(containsSlice(errorsf["Float1"], "MaxError 29.3 5"));
+  ASSERT_TRUE(containsSlice(errorsf["Float2"], "EqError 4.29 4.5"));
+  ASSERT_TRUE(containsSlice(errorsf["Null"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["String"], "EqError 20 5"));
+  ASSERT_TRUE(containsSlice(errorsf["String1"], "MinError 2 5"));
+  ASSERT_TRUE(containsSlice(errorsf["String3"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["String3"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["Null2"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["Float3"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["Number0"], "MaxError 20 8"));
+  ASSERT_TRUE(containsSlice(errorsf["Number1"], "MinError 2 4"));
+  ASSERT_TRUE(containsSlice(errorsf["Number2"], "EqError 2 4"));
 }
 
 TEST(ValidationTest, XmlParsing) {

@@ -1,3 +1,4 @@
+#include "lib/ErrorBuilder.hpp"
 #include <format>
 #include <spdlog/spdlog.h>
 
@@ -53,13 +54,13 @@ ConfigService::validateConfig(const nlohmann::json &jsonData) {
   std::string key = jsonData.begin().key();
 
   if (configs_.find(key) == configs_.end()) {
-    errors[key] = {"Can't find configuration"};
+    errorBuilder(errors, ErrorType::ConfigurationNotFound, key);
     return errors;
   }
 
   pugi::xml_node doc = configs_[key]->child(key.c_str());
   if (!doc) {
-    errors[key] = {"Can't find child node in configuration"};
+    errorBuilder(errors, ErrorType::ChildNodeNotFound, key);
     return errors;
   }
 
