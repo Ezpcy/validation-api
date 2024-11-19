@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_Readme"></a> <a href="https://ezpcy.github.io/validation-api/">Docs</a></p>
-<p><b>Version</b>: 0.5</p>
+<p><b>Version</b>: 0.6</p>
 <p><b>Creation date</b>: August 29, 2023 2:33 PM</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Code Structure</h1>
@@ -209,9 +209,15 @@ Example</h1>
 </div><!-- fragment --><p>This configuration file will validate the incoming data. The data must be in <code>JSON</code> format. A valid request would look like this:</p>
 <div class="fragment"><div class="line">{&quot;Test&quot;:{&quot;Provision&quot;:{&quot;ProvisionNumber&quot;:14,&quot;CostApproval&quot;:true},&quot;TypeOfProvision&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;Profession&quot;:&quot;123e4567-e89b-12d3-a456-526614174001&quot;,&quot;SalaryType&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;DateFrom&quot;:&quot;2024-01-01&quot;,&quot;DateTo&quot;:&quot;2024-12-31&quot;,&quot;InsuranceProductConfig&quot;:{&quot;TarifNumber&quot;:7,&quot;BillingCategory&quot;:&quot;c&quot;,&quot;Price&quot;:0.0,&quot;Units&quot;:1},&quot;Institution&quot;:&quot;&quot;,&quot;School&quot;:&quot;&quot;,&quot;Loaction&quot;:&quot;&quot;}}</div>
 </div><!-- fragment --><p>The API will return a Json object with either all errors that have occured or just an "ok" message if the request is valid.</p>
-<p>Connect to the API (can be done with Netcat or Telnet):</p>
-<div class="fragment"><div class="line">telnet 127.0.0.1 8080</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+<p>The error message will look like this:</p>
+<div class="fragment"><div class="line">{&quot;error&quot;: {&quot;FieldName&quot;: &quot;NotCorrectType string boolean&quot;}}</div>
+</div><!-- fragment --><ul>
+<li><code>FieldName</code> the unvalid field in the rquest</li>
+<li><code>NotCorrectType</code> type of the error</li>
+<li><code>string</code> received this</li>
+<li><code>boolean</code> expected this</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Logs</h1>
 <p>Information and error logs can be found within the <code>logs</code> folder (created at runtime). </p>
 </div></div><!-- PageDoc -->

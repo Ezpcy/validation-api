@@ -36,28 +36,28 @@ inline void errorBuilder(nlohmann::json &res, const ErrorType &type,
 
   switch (type) {
   case ErrorType::Default:
-    res[fieldName] = "RIO.Unknown";
+    res[fieldName] = "Unknown";
     break;
   case ErrorType::RequestFieldNotFound:
-    res[fieldName] = "RIO.RequestFieldNotFound";
+    res[fieldName] = "RequestFieldNotFound";
     break;
   case ErrorType::MissingField:
-    res[fieldName] = "RIO.MissingField";
+    res[fieldName] = "MissingField";
     break;
   case ErrorType::CannotBeEmpty:
-    res[fieldName] = "RIO.CannotBeEmpty";
+    res[fieldName] = "CannotBeEmpty";
     break;
   case ErrorType::NotCorrectType:
-    res[fieldName] = std::format("RIO.NotCorrectType {} {}", rec, exp);
+    res[fieldName] = std::format("NotCorrectType {} {}", rec, exp);
     break;
   case ErrorType::MaxError:
-    res[fieldName] = std::format("RIO.MaxError {} {}", rec, exp);
+    res[fieldName] = std::format("MaxError {} {}", rec, exp);
     break;
   case ErrorType::MinError:
-    res[fieldName] = std::format("RIO.MinError {} {}", rec, exp);
+    res[fieldName] = std::format("MinError {} {}", rec, exp);
     break;
   case ErrorType::EqError:
-    res[fieldName] = std::format("RIO.EqError {} {}", rec, exp);
+    res[fieldName] = std::format("EqError {} {}", rec, exp);
     break;
   }
 }

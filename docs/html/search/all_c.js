@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['nesting_0',['Nesting',['../index.html#autotoc_md7',1,'Nesting'],['../index.html#autotoc_md8',1,'Null Nesting']]],
-  ['null_20nesting_1',['Null Nesting',['../index.html#autotoc_md8',1,'']]],
-  ['nulloptions_2',['NullOptions',['../namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6',1,'validation_api']]],
-  ['nulloptions_5f_3',['nullOptions_',['../classvalidation__api_1_1Validation.html#a55ea1d238672ca7b011dcd584be34b80',1,'validation_api::Validation']]]
+  ['parse_0',['parse',['../structformatter_3_01boost_1_1asio_1_1ip_1_1tcp_1_1endpoint_01_4.html#a2258bdabd46b8a0bbc5737e5cf4707c9',1,'formatter&lt; boost::asio::ip::tcp::endpoint &gt;']]],
+  ['path_5f_1',['path_',['../classvalidation__api_1_1ConfigWatcher.html#ae4dbdae438f59175c85acabeb2bd3cd2',1,'validation_api::ConfigWatcher']]],
+  ['pre_20requisites_2',['Pre-requisites',['../index.html#autotoc_md3',1,'']]]
 ];

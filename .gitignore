@@ -11,5 +11,6 @@ cmake_install.cmake
 CMakeUserPresets.json
 Makefile
 Tasks.xlsx
-~Task.xlsx
+~Tasks.xlsx
+.~Tasks.xlsx
 messages_global.json
