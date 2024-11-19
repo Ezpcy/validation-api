@@ -172,7 +172,7 @@ void ValidationServer::accept(
           } else {
             // Return validation errors to the client
             nlohmann::json errorWrap;
-            errorWrap["error"] += errors;
+            errorWrap["error"] = errors;
 
             logger_->warn(
                 "Validation request from {} with configuration {} failed",
