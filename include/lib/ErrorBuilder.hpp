@@ -41,10 +41,10 @@ inline void errorBuilder(nlohmann::json &res, const ErrorType &type,
     res[fieldName] = "Unknown";
     break;
   case ErrorType::ConfigurationNotFound:
-    res[fieldName] = "RIO.ConfigurationNotFound";
+    res[fieldName] = "ConfigurationNotFound";
     break;
   case ErrorType::ChildNodeNotFound:
-    res[fieldName] = "RIO.ChildNodeNotFound";
+    res[fieldName] = "ChildNodeNotFound";
     break;
   case ErrorType::RequestFieldNotFound:
     res[fieldName] = "RequestFieldNotFound";
