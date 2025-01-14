@@ -14,7 +14,7 @@ namespace validation_api {
  * stored.
  */
 class ConfigWatcher : public IService {
- public:
+public:
   using Callback =
       std::function<void(const std::string &path, const std::string &action)>;
 
@@ -45,7 +45,7 @@ class ConfigWatcher : public IService {
    */
   void stop() override;
 
- private:
+private:
   std::unordered_map<std::string, std::string> fileAssocation_;
   Callback callback_;
 
@@ -103,4 +103,4 @@ class ConfigWatcher : public IService {
    */
   std::shared_ptr<spdlog::logger> logger_;
 };
-}  // namespace validation_api
+} // namespace validation_api
