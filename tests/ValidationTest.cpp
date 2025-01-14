@@ -8,7 +8,8 @@
 #include "lib/Helpers.hpp"
 #include "lib/Validation.hpp"
 
-TEST(ValidationTest, Types) {
+TEST(ValidationTest, Types)
+{
   using json = nlohmann::json;
   static const std::string xml = R"(
     <Types>
@@ -79,10 +80,12 @@ TEST(ValidationTest, Types) {
   ASSERT_EQ(errorsf.size(), 9);
 }
 
-bool containsSlice(const std::string &str, const std::string &slice) {
+bool containsSlice(const std::string &str, const std::string &slice)
+{
   return str.find(slice) != std::string::npos;
 }
-TEST(ValidationTest, Options) {
+TEST(ValidationTest, Options)
+{
   using json = nlohmann::json;
   static const std::string xml = R"(
     <Options>
@@ -189,7 +192,8 @@ TEST(ValidationTest, Options) {
   ASSERT_TRUE(containsSlice(errorsf["Number2"], "EqError 2 4"));
 }
 
-TEST(ValidationTest, XmlParsing) {
+TEST(ValidationTest, XmlParsing)
+{
   static const std::string xml = R"(
     <Options>
       <String type="uuid" max="1" min="2" eq="3"/>
