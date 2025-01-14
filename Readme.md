@@ -155,7 +155,7 @@ With Null Nesting you can specify that a field can be null if other fields satis
 This configuration file will validate the incoming data. The data must be in `JSON` format. A valid request would look like this:
 
 ```json
-{"Test":{"Provision":{"ProvisionNumber":14,"CostApproval":true},"TypeOfProvision":"123e4567-e89b-12d3-a456-526614174000","Profession":"123e4567-e89b-12d3-a456-526614174001","SalaryType":"123e4567-e89b-12d3-a456-526614174000","DateFrom":"2024-01-01","DateTo":"2024-12-31","InsuranceProductConfig":{"TarifNumber":7,"BillingCategory":"c","Price":0.0,"Units":1},"Institution":"","School":"","Loaction":""}}
+{"Test":{"Provision":{"ProvisionNumber":14,"CostApproval":true},"TypeOfProvision":"123e4567-e89b-12d3-a456-526614174000","Profession":"123e4567-e89b-12d3-a456-526614174001","SalaryType":"123e4567-e89b-12d3-a456-526614174000","DateFrom":"2024-01-01","DateTo":"2024-12-31","InsuranceProductConfig":{"TarifNumber":7,"BillingCategory":"c","Price":0.0,"Units":1},"Institution":"123e4567-e89b-12d3-a456-526614174000","School":"","Location":""}}
 
 ```
 
