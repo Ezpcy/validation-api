@@ -1,3 +1,4 @@
+#include <boost/asio/ip/address.hpp>
 #include <fmt/format.h>
 
 #include <boost/asio/steady_timer.hpp>
@@ -28,11 +29,11 @@ namespace validation_api
 {
 
   ValidationServer::ValidationServer(boost::asio::io_context &io_context,
-                                     short port, ConfigService &configService,
+                                     short port, std::string endpoint, ConfigService &configService,
                                      short maxConnections)
       : io_context_(io_context),
         acceptor_(io_context, boost::asio::ip::tcp::endpoint(
-                                  boost::asio::ip::tcp::v4(), port)),
+                                  boost::asio::ip::make_address(endpoint), port)),
         service_(configService), semaphore_(maxConnections),
         logger_(spdlog::get("Logger") ? spdlog::get("Logger")
                                       : spdlog::default_logger()),
