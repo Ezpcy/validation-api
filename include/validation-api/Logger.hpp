@@ -7,4 +7,4 @@ namespace validation_api {
 
 bool setup_logger();
 
-}  // namespace validation_api
+}  

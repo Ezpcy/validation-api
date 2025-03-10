@@ -104,3 +104,4 @@ private:
   std::shared_ptr<spdlog::logger> logger_;
 };
 } // namespace validation_api
+
