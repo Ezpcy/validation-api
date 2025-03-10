@@ -1,0 +1,46 @@
+\doxysection{include/lib/\+Helpers.hpp File Reference}
+\hypertarget{Helpers_8hpp}{}\label{Helpers_8hpp}\index{include/lib/Helpers.hpp@{include/lib/Helpers.hpp}}
+{\ttfamily \#include $<$boost/algorithm/string/trim.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/uuid/uuid\+\_\+generators.\+hpp$>$}\newline
+{\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+{\ttfamily \#include $<$pugixml.\+hpp$>$}\newline
+{\ttfamily \#include $<$regex$>$}\newline
+{\ttfamily \#include "{}validation-\/api/\+Config\+Service.\+hpp"{}}\newline
+Include dependency graph for Helpers.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Helpers_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Helpers_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevalidation__api}{validation\+\_\+api}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9}{validation\+\_\+api\+::insert\+To\+Json}} (nlohmann\+::json \&\mbox{\hyperlink{namespacevalidation__api_a469734aa94b796d2c4565b1d121cd6f3}{json}}, const std\+::string \&key, const std\+::string \&value)
+\begin{DoxyCompactList}\small\item\em Insert an error into a json object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{validation\+\_\+api\+::is\+Valid\+Uuid}} (const std\+::string \&uuid\+Str)
+\item 
+bool \mbox{\hyperlink{namespacevalidation__api_ac497c1198e4e7f0fe71ffbdb3e6beeaa}{validation\+\_\+api\+::is\+Float}} (const std\+::string \&str, float \&out)
+\begin{DoxyCompactList}\small\item\em Convert string to float. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacevalidation__api_a6dd56dcf7358b332bb906a2d27fddd0b}{validation\+\_\+api\+::to\+Lower}} (std\+::string value)
+\begin{DoxyCompactList}\small\item\em Converts string to all lowercase. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacevalidation__api_aae32fd7a0b5886a49454679d46ed4bd1}{validation\+\_\+api\+::validate\+Ahv}} (std\+::string \&val)
+\begin{DoxyCompactList}\small\item\em Validates Ahv string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacevalidation__api_a0a2b975e162ced567ba3a6075684092a}{validation\+\_\+api\+::validate\+Iban}} (const std\+::string \&val)
+\begin{DoxyCompactList}\small\item\em Validates Iban string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validation\+\_\+api\+::validate\+Xml\+Config}} (const pugi\+::xml\+\_\+node \&node, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&erros)
+\begin{DoxyCompactList}\small\item\em Ensures valid Xml configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}

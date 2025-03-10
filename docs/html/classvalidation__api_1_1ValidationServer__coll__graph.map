@@ -1,0 +1,7 @@
+<map id="validation_api::ValidationServer" name="validation_api::ValidationServer">
+<area shape="rect" id="Node000001" title="Class for exposing the application to the network." alt="" coords="95,288,248,608"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1IService.html" title="Interface for all services." alt="" coords="5,48,151,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,195,129,288,124,289,98,197"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigService.html" title="ConfigService class." alt="" coords="175,5,355,224"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,225,223,273,218,271,232,223"/>
+</map>

@@ -1,0 +1,28 @@
+<map id="validation_api::Validation::traverseAndValidate" name="validation_api::Validation::traverseAndValidate">
+<area shape="rect" id="Node000001" title="Traverse through the json object and validate the fields." alt="" coords="5,117,170,160"/>
+<area shape="poly" id="edge4_Node000001_Node000001" title=" " alt="" coords="47,117,45,107,52,98,66,93,88,91,110,93,124,99,122,104,109,98,87,96,68,98,55,103,51,109,52,116"/>
+<area shape="rect" id="Node000002" href="$namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2" title="Error builder." alt="" coords="656,379,831,405"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,131,282,127,410,127,528,137,575,147,610,162,637,182,660,206,697,261,722,317,738,364,733,365,717,319,692,264,656,209,633,186,607,166,573,153,527,143,410,133,282,132,170,136"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1Validation.html#a49e598a8189b6bd6edf1ecdb00ae8b9d" title=" " alt="" coords="661,29,826,72"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,114,278,76,353,57,430,44,480,39,519,40,608,44,646,45,646,50,608,49,519,45,480,45,430,49,354,63,279,81,151,119"/>
+<area shape="rect" id="Node000004" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="218,269,382,312"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="120,158,258,258,255,262,117,163"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="701,29,699,19,706,10,721,5,744,3,768,5,782,11,780,16,766,10,743,8,722,10,709,15,704,21,706,28"/>
+<area shape="poly" id="edge8_Node000004_Node000002" title=" " alt="" coords="331,310,376,340,431,364,483,378,538,386,641,393,641,398,537,391,482,383,429,369,374,344,328,315"/>
+<area shape="rect" id="Node000005" href="$classvalidation__api_1_1Validation.html#a7b6995b4592eb861af42e45b095382b7" title="Checking Uuid values." alt="" coords="437,59,601,101"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="321,267,428,162,482,110,486,114,432,166,325,271"/>
+<area shape="rect" id="Node000006" href="$classvalidation__api_1_1Validation.html#ac59ae7a00f5fc950a3a572524127c4d3" title="Checks if a json object is empty." alt="" coords="437,496,601,539"/>
+<area shape="poly" id="edge9_Node000004_Node000006" title=" " alt="" coords="313,311,330,348,356,394,390,441,432,482,436,485,433,490,428,486,386,444,352,396,325,350,308,314"/>
+<area shape="rect" id="Node000007" href="$namespacevalidation__api.html#ac19e25b4d8364b0f52152440dd5ecbda" title=" " alt="" coords="432,176,606,203"/>
+<area shape="poly" id="edge10_Node000004_Node000007" title=" " alt="" coords="331,267,377,239,429,212,447,205,449,210,431,217,379,244,334,271"/>
+<area shape="rect" id="Node000008" href="$namespacevalidation__api.html#a6dd56dcf7358b332bb906a2d27fddd0b" title="Converts string to all lowercase." alt="" coords="442,227,596,253"/>
+<area shape="poly" id="edge11_Node000004_Node000008" title=" " alt="" coords="382,269,443,255,444,260,383,274"/>
+<area shape="rect" id="Node000009" href="$namespacevalidation__api.html#aae32fd7a0b5886a49454679d46ed4bd1" title="Validates Ahv string." alt="" coords="431,277,607,304"/>
+<area shape="poly" id="edge12_Node000004_Node000009" title=" " alt="" coords="382,288,416,288,416,293,382,293"/>
+<area shape="rect" id="Node000010" href="$classvalidation__api_1_1Validation.html#a512e2e0c3be1bea95ebfab280ec919ba" title="Validates len options." alt="" coords="437,429,601,472"/>
+<area shape="poly" id="edge13_Node000004_Node000010" title=" " alt="" coords="322,311,370,358,432,408,450,420,448,424,428,413,366,362,318,314"/>
+<area shape="rect" id="Node000011" href="$namespacevalidation__api.html#a0a2b975e162ced567ba3a6075684092a" title="Validates Iban string." alt="" coords="430,328,608,355"/>
+<area shape="poly" id="edge15_Node000004_Node000011" title=" " alt="" coords="383,307,444,321,443,327,382,312"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="601,67,645,61,646,66,602,72"/>
+<area shape="poly" id="edge14_Node000010_Node000002" title=" " alt="" coords="601,427,674,407,676,412,602,432"/>
+</map>
