@@ -1,7 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,49,60,76"/>
-<area shape="rect" id="Node000002" href="$namespacevalidation__api.html#add9de92f1283937ab6d7688462f67c3c" title="Sets up and configures the logger using spdlog." alt="" coords="122,5,280,50"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,54,107,44,108,50,61,59"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ValidationServer.html#a666522eafc9b935cae058688df4f7f9d" title="Stop the server." alt="" coords="108,75,294,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="61,65,93,72,92,77,60,70"/>
-</map>
