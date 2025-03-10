@@ -30,4 +30,4 @@ class IService {
   virtual void stop() = 0;
 };
 
-}  // namespace validation_api
+} 
