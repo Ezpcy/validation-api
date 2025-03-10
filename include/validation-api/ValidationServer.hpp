@@ -14,7 +14,7 @@ namespace validation_api {
  */
 class ValidationServer : public IService {
  public:
-  ValidationServer(boost::asio::io_context& io_context, short port,
+  ValidationServer(boost::asio::io_context& io_context, short port, std::string endpoint,
                    ConfigService& configService, short maxConnections);
 
   ~ValidationServer() override;
@@ -114,3 +114,4 @@ class ValidationServer : public IService {
 };
 
 }  // namespace validation_api
+
