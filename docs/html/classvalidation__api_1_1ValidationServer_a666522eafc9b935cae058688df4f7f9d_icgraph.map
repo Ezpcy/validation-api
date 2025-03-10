@@ -1,0 +1,7 @@
+<map id="validation_api::ValidationServer::stop" name="validation_api::ValidationServer::stop">
+<area shape="rect" id="Node000001" title="Stop the server." alt="" coords="223,27,387,69"/>
+<area shape="rect" id="Node000002" href="$main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="65,5,115,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="207,37,115,25,115,19,207,32"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ValidationServer.html#af7984f7e7c6eca3e68b09a0857859520" title=" " alt="" coords="5,56,175,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,64,175,68,175,63,207,59"/>
+</map>

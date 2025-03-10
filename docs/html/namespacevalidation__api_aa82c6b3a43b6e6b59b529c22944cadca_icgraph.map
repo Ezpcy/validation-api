@@ -1,0 +1,13 @@
+<map id="validation_api::validateXmlConfig" name="validation_api::validateXmlConfig">
+<area shape="rect" id="Node000001" title="Ensures valid Xml configuration." alt="" coords="758,29,912,72"/>
+<area shape="poly" id="edge6_Node000001_Node000001" title=" " alt="" coords="871,16,857,10,835,8,814,10,801,15,796,21,798,28,793,29,791,19,798,10,813,5,835,3,859,5,873,11"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title=" " alt="" coords="516,29,710,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="743,53,711,53,711,48,743,48"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78" title="Start ConfigWatcher." alt="" coords="248,8,468,35"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="500,40,468,37,469,31,501,35"/>
+<area shape="rect" id="Node000005" href="$classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395" title="Setup the ConfigWatcher." alt="" coords="261,59,455,101"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="501,66,456,71,455,66,500,61"/>
+<area shape="rect" id="Node000004" href="$classvalidation__api_1_1ConfigWatcher.html#ae52bfdab8da3ff71ba788f1929a9a053" title=" " alt="" coords="5,29,200,72"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,38,201,42,200,37,232,33"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="245,70,200,65,201,59,246,64"/>
+</map>

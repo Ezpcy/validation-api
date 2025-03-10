@@ -1,0 +1,70 @@
+\doxysection{Error\+Builder.\+hpp}
+\hypertarget{ErrorBuilder_8hpp_source}{}\label{ErrorBuilder_8hpp_source}\index{include/lib/ErrorBuilder.hpp@{include/lib/ErrorBuilder.hpp}}
+\mbox{\hyperlink{ErrorBuilder_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}}
+\DoxyCodeLine{00013\ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{Default}},}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba3a4758ff767a24a3e0c90df1cc78abe5}{ConfigurationNotFound}},}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba119c9a8937f2b805a1f4a4201aa12acb}{ChildNodeNotFound}},}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba0c580c3bd753bfe2f772fc8b5fc5f336}{RequestFieldNotFound}},}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba52b3444945e5a6d87424458a7f774453}{MissingField}},}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba4423fe3253fe8cdad6435ddcfeb1a8e0}{CannotBeEmpty}},}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{NotCorrectType}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23}{MaxError}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb}{MinError}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942}{EqError}},}
+\DoxyCodeLine{00024\ \ \ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{errorBuilder}}(nlohmann::json\ \&res,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{ErrorType}}\ \&type,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fieldName,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&exp\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&rec\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{00040\ \ \ \{}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba7a1920d61156abc05a60135aefe8bc67}{ErrorType::Default}}:}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ res[fieldName]\ =\ \textcolor{stringliteral}{"{}Unknown"{}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba3a4758ff767a24a3e0c90df1cc78abe5}{ErrorType::ConfigurationNotFound}}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ res[fieldName]\ =\ \textcolor{stringliteral}{"{}ConfigurationNotFound"{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba119c9a8937f2b805a1f4a4201aa12acb}{ErrorType::ChildNodeNotFound}}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ res[fieldName]\ =\ \textcolor{stringliteral}{"{}ChildNodeNotFound"{}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba0c580c3bd753bfe2f772fc8b5fc5f336}{ErrorType::RequestFieldNotFound}}:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ res[fieldName]\ =\ \textcolor{stringliteral}{"{}RequestFieldNotFound"{}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba52b3444945e5a6d87424458a7f774453}{ErrorType::MissingField}}:}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ res[fieldName]\ =\ \textcolor{stringliteral}{"{}MissingField"{}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba4423fe3253fe8cdad6435ddcfeb1a8e0}{ErrorType::CannotBeEmpty}}:}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ res[fieldName]\ =\ \textcolor{stringliteral}{"{}CannotBeEmpty"{}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}}:}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ res[fieldName]\ =\ std::format(\textcolor{stringliteral}{"{}NotCorrectType\ \{\}\ \{\}"{}},\ rec,\ exp);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23}{ErrorType::MaxError}}:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ res[fieldName]\ =\ std::format(\textcolor{stringliteral}{"{}MaxError\ \{\}\ \{\}"{}},\ rec,\ exp);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb}{ErrorType::MinError}}:}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ res[fieldName]\ =\ std::format(\textcolor{stringliteral}{"{}MinError\ \{\}\ \{\}"{}},\ rec,\ exp);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942}{ErrorType::EqError}}:}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ res[fieldName]\ =\ std::format(\textcolor{stringliteral}{"{}EqError\ \{\}\ \{\}"{}},\ rec,\ exp);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \}\ \textcolor{comment}{//\ namespace\ validation\_api}}
+
+\end{DoxyCode}

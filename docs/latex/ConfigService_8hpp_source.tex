@@ -1,0 +1,44 @@
+\doxysection{Config\+Service.\+hpp}
+\hypertarget{ConfigService_8hpp_source}{}\label{ConfigService_8hpp_source}\index{include/validation-\/api/ConfigService.hpp@{include/validation-\/api/ConfigService.hpp}}
+\mbox{\hyperlink{ConfigService_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <spdlog/spdlog.h>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <boost/thread.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <pugixml.hpp>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvalidation__api_1_1ConfigService_ae78fa8e3a91b9c5245f7a494a7d56bc2}{ConfigService}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{typedef}\ std::unordered\_map<std::string,\ std::shared\_ptr<pugi::xml\_document>>}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{Configs}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{typedef}\ nlohmann::json\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Errors}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ae78fa8e3a91b9c5245f7a494a7d56bc2}{ConfigService}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac044ac2b2884a0cde8afbb5c198302a5}{\string~ConfigService}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00053\ \ \ pugi::xml\_document\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a8f07a8cc4ed07c7de2d67981ccd1835c}{getConfig}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a8fee54d1f3f5eb92a17c3ecd72780f00}{createConfig}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ pugi::xml\_document\ \&doc);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a72b9695e86a85502ea559e009a878e4c}{deleteConfig}}(\textcolor{keyword}{const}\ std::string\ \&name);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{Errors}}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a654e84f4f588f7391f93210c1e08344f}{validateConfig}}(\textcolor{keyword}{const}\ nlohmann::json\ \&jsonData);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{mutable}\ boost::shared\_mutex\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a6ba13abe172e1597477cea1ae4870601}{rwMutex\_}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a863af262797a07b40fbf56c6ab86600c}{Configs}}\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a0b154ed905abb80d6e79d505c65b5b4a}{configs\_}};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00097\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_a26e4feb5b0b16ea8b8e1b847778ba4dd}{logger\_}};}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ \}\ \textcolor{comment}{//\ namespace\ validation\_api}}
+\DoxyCodeLine{00100\ }
+
+\end{DoxyCode}
