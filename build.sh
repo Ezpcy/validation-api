@@ -8,10 +8,10 @@ if [ "$1" == "r" ]; then
   cd build/Release
   cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=build/Release/generators/conan_toolchain.cmake
   cmake --build .
-  ./rio-validator-server example
+  ./validation-api example
 else
   cd build/Debug
   cmake ../.. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=build/Debug/generators/conan_toolchain.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
   cmake --build .
-  ./rio-validator-server example
+  ./validation-api example
 fi
