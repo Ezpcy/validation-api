@@ -1,17 +1,23 @@
-
+#include <cstdlib>
+#include <filesystem>
+#include <fmt/core.h>
+#include <fstream>
+#include <nlohmann/json_fwd.hpp>
 #include <spdlog/spdlog.h>
 
 #include <boost/asio.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 #include <iostream>
+#include <string>
 #include <validation-api/ConfigService.hpp>
 #include <validation-api/ConfigWatcher.hpp>
 #include <validation-api/Logger.hpp>
 #include <validation-api/ValidationServer.hpp> // Include your server class
 
 int main(int argc, char *argv[]) {
-  std::string path = "./configs";
+  std::string path = "./templates";
+  std::string configs_path = "./server.json";
 
   // Check for command-line arguments
   if (argc > 1) {
@@ -20,7 +26,7 @@ int main(int argc, char *argv[]) {
       std::transform(arg.begin(), arg.end(), arg.begin(), ::tolower);
       if (arg == "example") {
         if (!boost::filesystem::exists(path)) {
-          boost::filesystem::create_directory("./configs");
+          boost::filesystem::create_directory("./templates");
         }
         std::cout << "Example argument detected" << std::endl;
       }
@@ -53,9 +59,21 @@ int main(int argc, char *argv[]) {
         });
 
     // Initialize and run the ValidationServer on port 8080 with max connections
-    short port = 8080;
+    short port;
+    std::string endpoint;
+
+    if(std::filesystem::exists(configs_path)) {
+      std::ifstream config(configs_path);
+      nlohmann::json json_config = nlohmann::json::parse(config);
+      endpoint = json_config.value("Endpoint", "0.0.0.0");
+      port = json_config.value("Port", 8080);
+    } else {
+      port = 8080;
+      endpoint = "0.0.0.0";
+    }
+
     short maxConnections = 1000;
-    validation_api::ValidationServer server(io_context, port, service,
+    validation_api::ValidationServer server(io_context, port, endpoint, service,
                                             maxConnections);
 
     // TODO Maybe Boost thread?
@@ -73,7 +91,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Output information about server and watcher
-    std::cout << "Server running on port " << port
+    std::cout << "Server running on " << endpoint << " " << port
               << " and watching directory: " << path << std::endl;
 
     // Wait for all threads to finish

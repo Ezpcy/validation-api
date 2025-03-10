@@ -2,7 +2,7 @@
 
 [Docs](https://ezpcy.github.io/validation-api/)
 
-**Version**: 0.6
+**Version**: 0.9
 
 **Creation date**: August 29, 2024 2:33 PM
 
@@ -43,9 +43,13 @@ Clone the repository and run `./build.sh r` inside the root folder.
 ./validation-api example
 ```
 
+## Configuration
+
+You can set the endpoint and port inside `server.json`.
+
 ## XML Configuration
 
-The XML configuration files should be stored inside the folder called `configs` next to the executable. The files can be modified at runtime and the changes will be reflected in the API.
+The XML configuration files should be stored inside the folder called `templates` next to the executable. The files can be modified at runtime and the changes will be reflected in the API.
 
 ### XML Configuration Structure
 
@@ -150,7 +154,6 @@ With Null Nesting you can specify that a field can be null if other fields satis
   <Location type="Uuid" notNull="false" />
 </Test>
 ```
-
 
 This configuration file will validate the incoming data. The data must be in `JSON` format. A valid request would look like this:
 

@@ -6,16 +6,12 @@ conan install . -s build_type=Debug --build=missing
 # Get argument if it's passed
 if [ "$1" == "r" ]; then
   cd build/Release
-  cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=build/Release/generators/conan_toolchain.cmake 
+  cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=build/Release/generators/conan_toolchain.cmake
   cmake --build .
-  ./validation-api example
-else 
+  ./rio-validator-server example
+else
   cd build/Debug
   cmake ../.. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=build/Debug/generators/conan_toolchain.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
   cmake --build .
-  ./validation-api example
+  ./rio-validator-server example
 fi
-
-
-
-
