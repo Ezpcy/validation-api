@@ -47,15 +47,15 @@ public:
                                   std::optional<float> eq) {
     if (max && value > max.value()) {
       errorBuilder(errors_, ErrorType::MaxError, fieldName,
-                   std::format("{}", max.value()), std::format("{}", value));
+                   fmt::format("{}", max.value()), fmt::format("{}", value));
     }
     if (min && value < min.value()) {
       errorBuilder(errors_, ErrorType::MinError, fieldName,
-                   std::format("{}", min.value()), std::format("{}", value));
+                   fmt::format("{}", min.value()), fmt::format("{}", value));
     }
     if (eq && value != eq.value()) {
       errorBuilder(errors_, ErrorType::EqError, fieldName,
-                   std::format("{}", eq.value()), std::format("{}", value));
+                   fmt::format("{}", eq.value()), fmt::format("{}", value));
     }
   }
   /*
@@ -104,8 +104,8 @@ public:
             } else {
               // If the UUID is invalid, log an error
               errors_.push_back(
-                  {std::format("XML Null option: "),
-                   std::format("Field {} skipped because of invalid Uuid.",
+                  {fmt::format("XML Null option: "),
+                   fmt::format("Field {} skipped because of invalid Uuid.",
                                std::string(nullId.name()))});
             }
           }
