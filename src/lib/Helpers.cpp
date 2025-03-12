@@ -9,7 +9,9 @@ namespace validation_api {
 void validateXmlConfig(const pugi::xml_node &node,
                        validation_api::ConfigService::Errors &errors) {
   std::unordered_set<std::string> validTypes = {
-      "string", "number", "float", "date", "uuid", "boolean", "ahv", "iban"};
+      "string", "float",   "number", "date", "email",
+      "uuid",   "boolean", "ahv",    "iban",
+  };
 
   const std::unordered_set<std::string> lenCheckType = {"string", "number",
                                                         "float"};

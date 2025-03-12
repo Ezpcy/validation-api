@@ -11,7 +11,7 @@
 #include "validation-api/ConfigService.hpp"
 
 class FileWatcherTest : public ::testing::Test {
- protected:
+protected:
   boost::asio::io_context io_context;
   std::optional<
       boost::asio::executor_work_guard<boost::asio::io_context::executor_type>>
@@ -33,8 +33,8 @@ class FileWatcherTest : public ::testing::Test {
   }
 
   void TearDown() override {
-    work_guard.reset();  // Allow the io_context to exit when no more work
-    io_context.stop();   // Ensure io_context stops if it's still running
+    work_guard.reset(); // Allow the io_context to exit when no more work
+    io_context.stop();  // Ensure io_context stops if it's still running
     if (io_thread.joinable()) {
       io_thread.join();
     }
@@ -42,7 +42,7 @@ class FileWatcherTest : public ::testing::Test {
 
   validation_api::ConfigWatcher initializeWatcher() {
     return validation_api::ConfigWatcher(
-        io_context, "./configs", service,
+        io_context, "./templates", service,
         [this](const std::string &p, const std::string &a) {
           std::lock_guard<std::mutex> lock(mtx);
           path = p;
@@ -60,9 +60,9 @@ class FileWatcherTest : public ::testing::Test {
 };
 
 TEST_F(FileWatcherTest, InitializationAndRunningAndStopping) {
-  boost::filesystem::path dir("./configs");
+  boost::filesystem::path dir("./templates");
   if (boost::filesystem::exists(dir)) {
-    (void)system("rm -rf ./configs");
+    (void)system("rm -rf ./templates");
   }
   bool dirTest = boost::filesystem::create_directory(dir);
   ASSERT_TRUE(dirTest);
@@ -86,7 +86,7 @@ TEST_F(FileWatcherTest, CreatingFile) {
 
   {
     std::unique_lock<std::mutex> lock(mtx);
-    (void)system("touch ./configs/test.xml");
+    (void)system("touch ./templates/test.xml");
     if (!cv.wait_for(lock, std::chrono::seconds(2),
                      [this] { return event_received; })) {
       FAIL() << "Timeout waiting for file creation event";
@@ -102,7 +102,10 @@ TEST_F(FileWatcherTest, ModifyingFile) {
 
   {
     std::unique_lock<std::mutex> lock(mtx);
-    std::ofstream file("configs/test.xml");
+    
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));  
+
+    std::ofstream file("templates/test.xml");
     std::string content = R"(
       <Types>
         <String type="string" />
@@ -133,7 +136,7 @@ TEST_F(FileWatcherTest, DeletingFile) {
 
   {
     std::unique_lock<std::mutex> lock(mtx);
-    (void)system("rm ./configs/test.xml");
+    (void)system("rm ./templates/test.xml");
     if (!cv.wait_for(lock, std::chrono::seconds(2),
                      [this] { return event_received; })) {
       FAIL() << "Timeout waiting for file deletion event";

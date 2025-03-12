@@ -32,9 +32,21 @@ int main(int argc, char *argv[]) {
       }
     }
   }
+  // Initialize and run the ValidationServer on port 8080 with max connections
+  short port;
+  std::string endpoint;
+  std::string logpath;
+
+  if (std::filesystem::exists(configs_path)) {
+    std::ifstream config(configs_path);
+    nlohmann::json json_config = nlohmann::json::parse(config);
+    endpoint = json_config.value("Endpoint", "0.0.0.0");
+    port = json_config.value("Port", 8080);
+    logpath = json_config.value("Logpath", "logs/");
+  }
 
   // Set up logger
-  if (!validation_api::setup_logger()) {
+  if (!validation_api::setup_logger(logpath)) {
     std::cerr << "Logger setup failed" << std::endl;
     return 1;
   }
@@ -57,20 +69,6 @@ int main(int argc, char *argv[]) {
         [&logger](const std::string &path, const std::string &action) {
           logger->info("File {} was {}", path, action);
         });
-
-    // Initialize and run the ValidationServer on port 8080 with max connections
-    short port;
-    std::string endpoint;
-
-    if(std::filesystem::exists(configs_path)) {
-      std::ifstream config(configs_path);
-      nlohmann::json json_config = nlohmann::json::parse(config);
-      endpoint = json_config.value("Endpoint", "0.0.0.0");
-      port = json_config.value("Port", 8080);
-    } else {
-      port = 8080;
-      endpoint = "0.0.0.0";
-    }
 
     short maxConnections = 1000;
     validation_api::ValidationServer server(io_context, port, endpoint, service,
