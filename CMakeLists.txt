@@ -38,7 +38,7 @@ set(Boost_USE_MULTITHREAD ON)
 # "${CMAKE_BINARY_DIR}/Release/generators/conan_toolchain.cmake") endif()
 
 # Find Boost, spdlog, and gtest components
-find_package(Boost REQUIRED)
+find_package(Boost CONFIG)
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
 find_package(pugixml REQUIRED)

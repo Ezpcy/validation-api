@@ -30,6 +30,31 @@ void Validation::run() {
   }
 }
 
+// Recursive function to traverse and validate the request
+void Validation::traverseAndValidate(const pugi::xml_node &node) {
+  for (pugi::xml_node field : node.children()) {
+    // Convert to string
+    std::string nodeName = field.name();
+    // Check if it is a Null field
+    if (nodeName == "AllowNullIf") {
+      continue;
+    }
+
+    // Check if json request has the field
+    std::pair<bool, json> jsonField = findJsonField(request_, nodeName);
+
+    if (jsonField.first) {
+      validate(field, jsonField.second, nodeName);
+      requestList_.erase(nodeName);
+    } else {
+      errorBuilder(errors_, ErrorType::MissingField, nodeName);
+      continue;
+    }
+
+    traverseAndValidate(field);
+  }
+}
+
 // Validate a field
 void Validation::validate(const pugi::xml_node &node, const json &reqValue,
                           const std::string &fieldName) {
@@ -100,28 +125,5 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
   }
 }
 
-// Recursive function to traverse and validate the request
-void Validation::traverseAndValidate(const pugi::xml_node &node) {
-  for (pugi::xml_node field : node.children()) {
-    // Convert to string
-    std::string nodeName = field.name();
-    // Check if it is a Null field
-    if (nodeName == "AllowNullIf") {
-      continue;
-    }
 
-    // Check if json request has the field
-    std::pair<bool, json> jsonField = findJsonField(request_, nodeName);
-
-    if (jsonField.first) {
-      validate(field, jsonField.second, nodeName);
-      requestList_.erase(nodeName);
-    } else {
-      errorBuilder(errors_, ErrorType::MissingField, nodeName);
-      continue;
-    }
-
-    traverseAndValidate(field);
-  }
-}
 } // namespace validation_api

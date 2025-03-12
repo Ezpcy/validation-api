@@ -2,10 +2,12 @@
 
 #include <boost/uuid.hpp>
 #include <cstddef>
+#include <iostream>
 #include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
+#include <ostream>
 #include <pugixml.hpp>
 #include <unordered_set>
 #include <utility>
@@ -156,7 +158,7 @@ public:
                        date);
         }
       }
-      break;
+    } break;
     case 5: {
       // Check if the value is an email
       const std::regex email_regex(R"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+$)");
@@ -208,7 +210,7 @@ public:
     } break;
     case 10: {
       // Check if empty first
-      if (canBeEmpty && reqValue.is_null() || canBeEmpty && reqValue.empty()) {
+      if (canBeEmpty && (reqValue.is_null() || reqValue.empty())) {
         break;
       }
       if (!reqValue.is_array()) {
@@ -222,12 +224,14 @@ public:
         std::optional<float> elementMax;
         std::optional<float> elementMin;
         std::optional<float> elementEq;
-        std::optional<bool> elementCanBeEmpty;
+      
         std::string elementType =
             toLower(node->attribute("elementType").value());
         auto elementIt = getType.find(elementType);
-        int elementNumber =
-            getType.find(toLower(node->attribute("elementType").value()))->second;
+        if (elementIt == getType.end()) {
+          throw std::runtime_error("Unknown element type: " + elementType);
+        }
+        int elementNumber = elementIt->second;
         // Check for list options
         if (node->attribute("elementMax")) {
           elementMax = node->attribute("elementMax").as_float();
@@ -238,25 +242,14 @@ public:
         if (node->attribute("elementEq")) {
           elementEq = node->attribute("elementEq").as_float();
         }
-        if (node->attribute("elementCanBeEmpty")) {
-          std::string notNullVal =
-              toLower(node->attribute("elementCanBeEmpty").value());
-          // Set the bool accordingly to the attribute
-          if (notNullVal == "true") {
-            elementCanBeEmpty = false;
-          } else if (notNullVal == "false") {
-            elementCanBeEmpty = true;
-            // Default
-          } else {
-            elementCanBeEmpty = false;
-          }
-        }
-        for (auto ele = reqValue.begin(); ele != reqValue.end(); ele++) {
-                validateOne(elementNumber, ele.value(), fieldName, elementCanBeEmpty.value(), elementIt, elementMax, elementMin, elementEq);
+       
+        for (auto ele : reqValue.items()) {
+          validateOne(elementNumber, ele.value(), fieldName,
+                      canBeEmpty, elementIt, elementMax,
+                      elementMin, elementEq);
         }
       }
 
-    } break;
     } break;
     default:
       break;
@@ -361,7 +354,7 @@ public:
         continue;
       }
 
-      if (value.is_object() || value.is_array()) {
+      if (value.is_object()) {
         fillRequestList(value);
       } else {
         requestList_.insert(key);
