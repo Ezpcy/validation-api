@@ -31,7 +31,7 @@ namespace validation_api
    * @param rec Received value
    *
    * Function to build a json error message which can occur at the validation
-   * process .
+   * process.
    */
   inline void errorBuilder(nlohmann::json &res, const ErrorType &type,
                            const std::string &fieldName,
