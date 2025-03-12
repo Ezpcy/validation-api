@@ -248,3 +248,36 @@ TEST(ValidationTest, XmlParsing)
 
   ASSERT_EQ(errorst.size(), 0);
 }
+
+TEST(ValidationTest, ListValidation)
+{
+  static const std::string xml = R"(
+    <Options>
+      <List type="list" elementType="string" notNull="true"/>
+    </Options> 
+  )";
+
+ static const std::string json_true = R"({
+    "Options": {
+      "List": [
+        "value",
+        "value2"
+    ]
+  }
+  })";
+  pugi::xml_document doc;
+
+  pugi::xml_parse_result result = doc.load_string(xml.c_str());
+
+  validation_api::ConfigService::Errors errors;
+
+  pugi::xml_node node = doc.child(doc.begin()->name());
+
+  validation_api::validateXmlConfig(node, errors);
+  errors[doc.begin()->name()] = errors;
+
+  std::cerr << errors.dump() << '\n';
+
+  ASSERT_EQ(errors.size(), 0);
+
+}
