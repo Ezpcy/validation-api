@@ -1,5 +1,5 @@
 #pragma once
-#include <format>
+#include <fmt/core.h>
 #include <nlohmann/json.hpp>
 #include <string>
 
@@ -60,16 +60,16 @@ namespace validation_api
       res[fieldName] = "RIO.CannotBeEmpty";
       break;
     case ErrorType::NotCorrectType:
-      res[fieldName] = std::format("RIO.NotCorrectType {} {}", rec, exp);
+      res[fieldName] = fmt::format("RIO.NotCorrectType {} {}", rec, exp);
       break;
     case ErrorType::MaxError:
-      res[fieldName] = std::format("RIO.MaxError {} {}", rec, exp);
+      res[fieldName] = fmt::format("RIO.MaxError {} {}", rec, exp);
       break;
     case ErrorType::MinError:
-      res[fieldName] = std::format("RIO.MinError {} {}", rec, exp);
+      res[fieldName] = fmt::format("RIO.MinError {} {}", rec, exp);
       break;
     case ErrorType::EqError:
-      res[fieldName] = std::format("RIO.EqError {} {}", rec, exp);
+      res[fieldName] = fmt::format("RIO.EqError {} {}", rec, exp);
       break;
     }
   }

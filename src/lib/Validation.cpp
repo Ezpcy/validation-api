@@ -173,7 +173,7 @@ namespace validation_api
             }
             else if (reqValue.is_number_float())
             {
-              val = std::format("{}", reqValue.get<double>());
+              val = fmt::format("{}", reqValue.get<double>());
             }
             else
             {
