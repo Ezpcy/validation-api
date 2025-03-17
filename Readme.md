@@ -2,7 +2,7 @@
 
 [Docs](https://ezpcy.github.io/validation-api/)
 
-**Version**: 0.9
+**Version**: 0.9.1
 
 **Creation date**: August 29, 2024 2:33 PM
 
