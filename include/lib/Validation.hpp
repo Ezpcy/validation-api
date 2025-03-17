@@ -1,8 +1,11 @@
 #pragma once
 
 #include <boost/uuid.hpp>
+#include <cstddef>
 #include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
+#include <optional>
 #include <pugixml.hpp>
 #include <unordered_set>
 #include <utility>
@@ -11,7 +14,10 @@
 #include "validation-api/ConfigService.hpp"
 
 namespace validation_api {
-
+// Map to decide which type needs to be validated
+inline std::unordered_map<std::string, int> getType = {
+    {"string", 1}, {"float", 2},   {"number", 3}, {"date", 4}, {"email", 5},
+    {"uuid", 6},   {"boolean", 7}, {"ahv", 8},    {"iban", 9}, {"list", 10}};
 /**
  * @brief NullOptions
  * @details An unordered map of <string, unordered_map<int, pair<string,
@@ -44,27 +50,212 @@ public:
   inline void validateConstraints(const std::string &fieldName, float value,
                                   std::optional<float> max,
                                   std::optional<float> min,
-                                  std::optional<float> eq) {
+                                  std::optional<float> eq,
+                                  bool isList = false) {
     if (max && value > max.value()) {
       errorBuilder(errors_, ErrorType::MaxError, fieldName,
-                   fmt::format("{}", max.value()), fmt::format("{}", value));
+                   fmt::format("{}", max.value()), fmt::format("{}", value), isList);
     }
     if (min && value < min.value()) {
       errorBuilder(errors_, ErrorType::MinError, fieldName,
-                   fmt::format("{}", min.value()), fmt::format("{}", value));
+                   fmt::format("{}", min.value()), fmt::format("{}", value), isList);
     }
     if (eq && value != eq.value()) {
       errorBuilder(errors_, ErrorType::EqError, fieldName,
-                   fmt::format("{}", eq.value()), fmt::format("{}", value));
+                   fmt::format("{}", eq.value()), fmt::format("{}", value), isList);
     }
   }
   /*
-   * @brief validate a field
+   * @brief Validate a field
    * @details validates one field with the help of the xml field
    * @param optName optValue reqValue fieldName errors
    */
   void validate(const pugi::xml_node &node, const nlohmann::json &reqValue,
                 const std::string &fieldName);
+
+  /*
+   * @brief Validation function for one
+   * @details Contains a switch for validation, it can be reused for recursion
+   * in case of a list type
+   * @param typeNumber reqValue fieldName canBeEmpty it max min eq node isList
+   */
+  inline void
+  validateOne(const int typeNumber, const nlohmann::json &reqValue,
+              const std::string &fieldName, const bool &canBeEmpty,
+              const auto it, const std::optional<float> &max = std::nullopt,
+              const std::optional<float> &min = std::nullopt,
+              const std::optional<float> &eq = std::nullopt,
+              bool isList = false,
+              const std::optional<pugi::xml_node> &node = std::nullopt
+              ) {
+    switch (typeNumber) {
+    case 1:
+      // Check if the value is a string
+      if (!reqValue.is_string()) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue.type_name());
+        break;
+      }
+      if (max.has_value() || min.has_value() || eq.has_value()) {
+        // Get the string and its length
+        std::string valueStr = reqValue;
+        size_t length = valueStr.length();
+
+        Validation::validateConstraints(fieldName, length, max, min, eq, isList);
+      }
+      break;
+    case 2:
+      // Check if the value is a float
+      if (!reqValue.is_number_float()) {
+        std::string val;
+        if (reqValue.is_string()) {
+          val = "string";
+        } else if (reqValue.is_number_integer()) {
+          val = "integer";
+        } else {
+          val = reqValue.type_name();
+        }
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     val, isList);
+        break;
+      }
+      if (max.has_value() || min.has_value() || eq.has_value()) {
+        float value = reqValue;
+
+        Validation::validateConstraints(fieldName, value, max, min, eq, isList);
+      }
+      break;
+    case 3:
+      // Check if the value is a number
+      if (!reqValue.is_number_integer()) {
+        std::string val;
+        if (reqValue.is_string()) {
+          val = "string";
+        } else if (reqValue.is_number_float()) {
+          val = "float";
+        } else {
+          val = reqValue.type_name();
+        }
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, "integer",
+                     val, isList);
+        break;
+      }
+      if (max.has_value() || min.has_value() || eq.has_value()) {
+        float value = reqValue;
+        Validation::validateConstraints(fieldName, value, max, min, eq, isList);
+      }
+      break;
+    case 4: {
+      // Check if the value is a date
+      // We can skip special string types when it's empty and allowed to be
+      if (canBeEmpty && reqValue.get<std::string>() == "") {
+        break;
+      } else {
+        const std::regex date_regex(
+            R"(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$)");
+        std::string date = reqValue.get<std::string>();
+        if (!std::regex_match(date, date_regex)) {
+          errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                       date, isList);
+        }
+      }
+    } break;
+    case 5: {
+      // Check if the value is an email
+      const std::regex email_regex(R"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-.]+$)");
+      std::string email = reqValue.get<std::string>();
+      if (!std::regex_match(email, email_regex)) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue, isList);
+      }
+    } break;
+    case 6: {
+      // Check if the value is a uuid
+      if (canBeEmpty && reqValue.get<std::string>() == "" ||
+          reqValue.is_null() || reqValue.empty()) {
+        break;
+      }
+      if (!isValidUuid(reqValue.get<std::string>())) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue, isList);
+      }
+      break;
+    case 7: {
+      // Check if the value is a boolean
+      if (!reqValue.is_boolean()) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue.type_name(), isList);
+      }
+    } break;
+    case 8: {
+      // Check if the value is a valid Ahv
+      std::string val = reqValue.get<std::string>();
+      if (canBeEmpty && val == "" || reqValue.is_null() || reqValue.empty()) {
+        break;
+      }
+      if (!validateAhv(val)) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue, isList);
+      }
+    } break;
+    case 9: {
+      // Check if the value is a valid Iban
+      std::string val = reqValue.get<std::string>();
+      if (canBeEmpty && val == "" || reqValue.is_null() || reqValue.empty()) {
+        break;
+      }
+      if (!validateIban(val)) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue, isList);
+      }
+    } break;
+    case 10: {
+      // Check if empty first
+      if (canBeEmpty && (reqValue.is_null() || reqValue.empty())) {
+        break;
+      }
+      if (!reqValue.is_array()) {
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     reqValue.type_name(), isList);
+      } else {
+        if (max.has_value() || min.has_value() || eq.has_value()) {
+          float value = reqValue.size();
+          Validation::validateConstraints(fieldName, value, max, min, eq);
+        }
+        std::optional<float> elementMax;
+        std::optional<float> elementMin;
+        std::optional<float> elementEq;
+
+        std::string elementType =
+            toLower(node->attribute("elementType").value());
+        auto elementIt = getType.find(elementType);
+        if (elementIt == getType.end()) {
+          throw std::runtime_error("Unknown element type: " + elementType);
+        }
+        int elementNumber = elementIt->second;
+        // Check for list options
+        if (node->attribute("elementMax")) {
+          elementMax = node->attribute("elementMax").as_float();
+        }
+        if (node->attribute("elementMin")) {
+          elementMin = node->attribute("elementMin").as_float();
+        }
+        if (node->attribute("elementEq")) {
+          elementEq = node->attribute("elementEq").as_float();
+        }
+
+        for (auto ele : reqValue.items()) {
+          validateOne(elementNumber, ele.value(), fieldName, canBeEmpty,
+                      elementIt, elementMax, elementMin, elementEq, true, node);
+        }
+      }
+
+    } break;
+    default:
+      break;
+    }
+    }
+  }
 
   /**
    * @brief Extract the NullOptions from a XML Configuration
@@ -163,7 +354,7 @@ public:
         continue;
       }
 
-      if (value.is_object() || value.is_array()) {
+      if (value.is_object()) {
         fillRequestList(value);
       } else {
         requestList_.insert(key);
