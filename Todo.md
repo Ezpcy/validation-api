@@ -1,2 +1,0 @@
-- Two different min max error for list type
-- Update Readme
