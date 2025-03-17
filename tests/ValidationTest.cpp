@@ -8,9 +8,8 @@
 #include "lib/Helpers.hpp"
 #include "lib/Validation.hpp"
 
-TEST(ValidationTest, Types)
-{
-  using json = nlohmann::json;
+using json = nlohmann::json;
+TEST(ValidationTest, Types) {
   static const std::string xml = R"(
     <Types>
       <String type="string" />
@@ -80,13 +79,65 @@ TEST(ValidationTest, Types)
   ASSERT_EQ(errorsf.size(), 9);
 }
 
-bool containsSlice(const std::string &str, const std::string &slice)
-{
+bool containsSlice(const std::string &str, const std::string &slice) {
   return str.find(slice) != std::string::npos;
 }
-TEST(ValidationTest, Options)
-{
-  using json = nlohmann::json;
+
+TEST(ValidationTest, AllowNull) {
+  static const std::string xml = R"(
+    <Options>
+      <Null type="number">
+        <AllowNullIf>
+          <Uuid uuid="123e4567-e89b-12d3-a456-526614174000" />
+        </AllowNullIf>
+      </Null>
+      <List type="list" elementType="string">
+        <AllowNullIf>
+          <Uuid uuid="123e4567-e89b-12d3-a456-526614174000" />
+        </AllowNullIf>
+      </List>
+      <Uuid type="uuid" />
+    </Options>
+  )";
+
+  static const std::string json_true = R"({
+  "Options": {
+    "Null": null,
+    "List": ["item1", "item2"],
+    "Uuid": "123e4567-e89b-12d3-a456-526614174000"
+  }
+  })";
+
+  static const std::string json_false = R"({
+  "Options": {
+    "Null": null,
+    "List": null,
+    "Uuid": "123e4567-e89b-12d3-a456-526614174001"
+  }
+  })";
+
+  pugi::xml_document doc;
+
+  pugi::xml_parse_result result = doc.load_string(xml.c_str());
+
+  json jj = json::parse(json_true);
+  validation_api::ConfigService::Errors errors;
+
+  validation_api::Validation(jj, doc, errors).run();
+  std::cout << errors.dump() << '\n';
+  ASSERT_EQ(errors.size(), 0);
+
+  json jjf = json::parse(json_false);
+  validation_api::ConfigService::Errors errorsf;
+
+  validation_api::Validation(jjf, doc, errorsf).run();
+  std::cout << errorsf.dump() << '\n';
+
+  ASSERT_TRUE(containsSlice(errorsf["Null"], "CannotBeEmpty"));
+  ASSERT_TRUE(containsSlice(errorsf["List"], "CannotBeEmpty"));
+}
+
+TEST(ValidationTest, Options) {
   static const std::string xml = R"(
     <Options>
       <String type="string" eq="5" />
@@ -192,8 +243,7 @@ TEST(ValidationTest, Options)
   ASSERT_TRUE(containsSlice(errorsf["Number2"], "EqError 2 4"));
 }
 
-TEST(ValidationTest, XmlParsing)
-{
+TEST(ValidationTest, XmlParsing) {
   static const std::string xml = R"(
     <Options>
       <String type="uuid" max="1" min="2" eq="3"/>
@@ -247,4 +297,228 @@ TEST(ValidationTest, XmlParsing)
   std::cout << errorst.dump() << '\n';
 
   ASSERT_EQ(errorst.size(), 0);
+}
+
+TEST(ValidationTest, ListValidation) {
+  static const std::string xml = R"(
+    <Options>
+      <List type="list" elementType="string" notNull="true"/>
+      <List2 type="list" elementType="string" notNull="true"/>
+      <List3 type="list" elementType="number" elementMax="10" elementMin="5"/>
+      <List4 type="list" elementType="string" notNull="false"/>
+      <List5 type="list" elementType="boolean"/>
+      <List6 type="list" elementType="float" elementEq="4"/>
+      <List7 type="list" elementType="number" elementMin="3" elementMax="6" min="2" max="8"/>
+      <List8 type="list" elementType="number" elementMin="3" elementMax="6" eq="3"/>
+    </Options> 
+  )";
+
+  static const std::string json_valid = R"({
+  "Options": {
+    "List": ["validString1", "validString2"],
+    "List2": ["item1", "item2"],
+    "List3": [5, 6, 7, 8, 9],
+    "List4": [],
+    "List5": [true, false, true],
+    "List6": [4.0, 4.0, 4.0, 4.0],
+    "List7": [5, 6, 4],
+    "List8": [3, 3, 3]
+  }
+})";
+
+  static const std::string json_missing_list2 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List3": [5, 6, 7, 8, 9],
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2, 3, 4],
+      "List8": [3, 3, 3]
+    }
+  })";
+
+  static const std::string json_invalid_list3 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List2": ["item1", "item2"],
+      "List3": ["wrong", "types", "here"],
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2, 3, 4],
+      "List8": [3, 3, 3]
+    }
+  })";
+
+  static const std::string json_below_min_list3 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List2": ["item1", "item2"],
+      "List3": [1, 2, 3, 4, 2], 
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2, 3, 4],
+      "List8": [3, 3, 3]
+    }
+  })";
+
+  static const std::string json_not_matching_eq_list6 = R"({
+    "Options": {
+    "List": ["value", "value2"],
+    "List2": ["item1", "item2"],
+    "List3": [5, 6, 7, 8, 9],
+    "List4": [],
+    "List5": [true, false, true],
+    "List6": [1.1, 2.2, 3.3, 4.4],  
+    "List7": [1, 2, 3, 4],
+    "List8": [3, 3, 3]
+    }
+    })";
+
+  static const std::string json_exceeding_max_list7 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List2": ["item1", "item2"],
+      "List3": [5, 6, 7, 8, 9],
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2, 3, 4, 5, 6, 7],
+      "List8": [3, 3, 3]
+    }
+  })";
+
+  static const std::string json_below_element_min_list7 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List2": ["item1", "item2"],
+      "List3": [5, 6, 7, 8, 9],
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2],
+      "List8": [3, 3, 3]
+    }
+  })";
+
+  static const std::string json_exceeding_element_max_list7 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List2": ["item1", "item2"],
+      "List3": [5, 6, 7, 8, 9],
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2, 3, 4, 5, 6, 7, 8],
+      "List8": [3, 3, 3]
+    }
+  })";
+
+  static const std::string json_not_matching_eq_list8 = R"({
+    "Options": {
+      "List": ["value", "value2"],
+      "List2": ["item1", "item2"],
+      "List3": [5, 6, 7, 8, 9],
+      "List4": [],
+      "List5": [true, false, true],
+      "List6": [4.0, 4.0, 4.0, 4.0],
+      "List7": [1, 2, 3, 4],
+      "List8": [3, 3, 4, 5]
+    }
+  })";
+
+  pugi::xml_document doc;
+  pugi::xml_parse_result result = doc.load_string(xml.c_str());
+  ASSERT_TRUE(result) << "XML Parsing failed: " << result.description();
+
+  // ✅ Test Valid JSON (should pass)
+  {
+    json jj = json::parse(json_valid);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Valid JSON Errors: " << errors.dump() << '\n';
+    ASSERT_EQ(errors.size(), 0);
+  }
+
+  // ❌ Test Missing Required List2
+  {
+    json jj = json::parse(json_missing_list2);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Missing List2 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List2"));
+  }
+
+  // ❌ Test Invalid List3 Type
+  {
+    json jj = json::parse(json_invalid_list3);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Invalid List3 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List3"));
+  }
+
+  // ❌ Test Below Min List3
+  {
+    json jj = json::parse(json_below_min_list3);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Below Min List3 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List3"));
+  }
+
+  // ❌ Test Exceeding Max List7
+  {
+    json jj = json::parse(json_exceeding_max_list7);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Exceeding Max List7 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List7"));
+  }
+
+  // ❌ Test Not Matching Exact Size List6
+  {
+    json jj = json::parse(json_not_matching_eq_list6);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Not Matching Eq List6 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List6"));
+  }
+
+  // ❌ Test Below Element Min List7
+  {
+    json jj = json::parse(json_below_element_min_list7);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Below Element Min List7 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List7"));
+  }
+
+  // ❌ Test Exceeding Element Max List7
+  {
+    json jj = json::parse(json_exceeding_element_max_list7);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Exceeding Element Max List7 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List7"));
+  }
+
+  // ❌ Test Not Matching Eq List8
+  {
+    json jj = json::parse(json_not_matching_eq_list8);
+    validation_api::ConfigService::Errors errors;
+    validation_api::Validation(jj, doc, errors).run();
+    std::cout << "Not Matching Eq List8 Errors: " << errors.dump() << '\n';
+    ASSERT_GT(errors.size(), 0);
+    ASSERT_TRUE(errors.contains("List8"));
+  }
 }

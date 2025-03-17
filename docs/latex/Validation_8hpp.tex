@@ -1,8 +1,11 @@
 \doxysection{include/lib/\+Validation.hpp File Reference}
 \hypertarget{Validation_8hpp}{}\label{Validation_8hpp}\index{include/lib/Validation.hpp@{include/lib/Validation.hpp}}
 {\ttfamily \#include $<$boost/uuid.\+hpp$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
 {\ttfamily \#include $<$lib/\+Helpers.\+hpp$>$}\newline
 {\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
+{\ttfamily \#include $<$nlohmann/json\+\_\+fwd.\+hpp$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
 {\ttfamily \#include $<$pugixml.\+hpp$>$}\newline
 {\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
 {\ttfamily \#include $<$utility$>$}\newline
@@ -39,3 +42,8 @@ namespace \mbox{\hyperlink{namespacevalidation__api}{validation\+\_\+api}}
 \item 
 typedef std\+::unordered\+\_\+map$<$ std\+::string, std\+::unordered\+\_\+map$<$ int, std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$ $>$ $>$ $>$ \mbox{\hyperlink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{validation\+\_\+api\+::\+Null\+Options}}
 \begin{DoxyCompactList}\small\item\em \doxylink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{Null\+Options}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, int $>$ \mbox{\hyperlink{namespacevalidation__api_a60a49aeea786f40d01bd41ce5c20d7dd}{validation\+\_\+api\+::get\+Type}}
+\end{DoxyCompactItemize}

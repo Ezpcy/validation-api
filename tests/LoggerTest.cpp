@@ -1,6 +1,9 @@
+#include "lib/Helpers.hpp"
+#include <filesystem>
 #include <gtest/gtest.h>
 
 #include <fstream>
+#include <spdlog/spdlog.h>
 #include <validation-api/Logger.hpp>
 
 // Test the logger initialization
@@ -39,6 +42,11 @@ TEST(LoggerTest, Initialization)
 
   errorLog.close();
   infoLog.close();
+  spdlog::drop_all();
 
+  std::string logpath = "test/logs/";
+  ASSERT_TRUE(validation_api::setup_logger(logpath));
+
+  ASSERT_TRUE(std::filesystem::exists(logpath));
 }
 

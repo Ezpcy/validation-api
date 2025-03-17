@@ -1,5 +1,5 @@
 #include "lib/ErrorBuilder.hpp"
-#include <format>
+#include <fmt/core.h>
 #include <spdlog/spdlog.h>
 
 #include <lib/Helpers.hpp>
@@ -86,7 +86,7 @@ namespace validation_api
     catch (const std::exception &e)
     {
       errors.push_back(
-          {std::format("{}", key), std::format("{}", std::string(e.what()))});
+          {fmt::format("{}", key), fmt::format("{}", std::string(e.what()))});
       logger_->error("{}: {}", key, e.what());
     }
 

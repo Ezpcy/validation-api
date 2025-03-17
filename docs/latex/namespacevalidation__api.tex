@@ -41,11 +41,13 @@ enum class \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecef
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c}{setup\+\_\+logger}} ()
+bool \mbox{\hyperlink{namespacevalidation__api_a882e4d58fdd01ef56f455be40bd89866}{setup\+\_\+logger}} (std\+::string logpath)
 \begin{DoxyCompactList}\small\item\em Sets up and configures the logger using spdlog. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacevalidation__api_aa82c6b3a43b6e6b59b529c22944cadca}{validate\+Xml\+Config}} (const pugi\+::xml\+\_\+node \&node, \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{validation\+\_\+api\+::\+Config\+Service\+::\+Errors}} \&erros)
 \begin{DoxyCompactList}\small\item\em Ensures valid Xml configuration. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{error\+Builder}} (nlohmann\+::json \&res, const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&type, const std\+::string \&field\+Name, const std\+::string \&exp="{}"{}, const std\+::string \&rec="{}"{})
+std\+::string \mbox{\hyperlink{namespacevalidation__api_a701271391f61b2712479b44f10656427}{Error\+Type\+To\+String}} (\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} error\+Type, bool is\+List=false)
+\item 
+void \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{error\+Builder}} (nlohmann\+::json \&res, const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&type, const std\+::string \&field\+Name, const std\+::string \&exp="{}"{}, const std\+::string \&rec="{}"{}, bool is\+List=false)
 \begin{DoxyCompactList}\small\item\em Error builder. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9}{insert\+To\+Json}} (nlohmann\+::json \&\mbox{\hyperlink{namespacevalidation__api_a469734aa94b796d2c4565b1d121cd6f3}{json}}, const std\+::string \&key, const std\+::string \&value)
 \begin{DoxyCompactList}\small\item\em Insert an error into a json object. \end{DoxyCompactList}\item 
@@ -141,11 +143,11 @@ Eq\+Error&\\
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}\index{validation\_api@{validation\_api}!errorBuilder@{errorBuilder}}
+\Hypertarget{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}\index{validation\_api@{validation\_api}!errorBuilder@{errorBuilder}}
 \index{errorBuilder@{errorBuilder}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{errorBuilder()}{errorBuilder()}}
-{\footnotesize\ttfamily \label{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2} 
-void validation\+\_\+api\+::error\+Builder (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{res}{, }\item[{const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&}]{type}{, }\item[{const std\+::string \&}]{field\+Name}{, }\item[{const std\+::string \&}]{exp}{ = {\ttfamily "{}"{}}, }\item[{const std\+::string \&}]{rec}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd} 
+void validation\+\_\+api\+::error\+Builder (\begin{DoxyParamCaption}\item[{nlohmann\+::json \&}]{res}{, }\item[{const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&}]{type}{, }\item[{const std\+::string \&}]{field\+Name}{, }\item[{const std\+::string \&}]{exp}{ = {\ttfamily "{}"{}}, }\item[{const std\+::string \&}]{rec}{ = {\ttfamily "{}"{}}, }\item[{bool}]{is\+List}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -162,12 +164,34 @@ Error builder.
 {\em rec} & Received value\\
 \hline
 \end{DoxyParams}
-Function to build a json error message which can occur at the validation process . Here is the caller graph for this function\+:
+Function to build a json error message which can occur at the validation process. Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2_icgraph}
+\includegraphics[width=350pt]{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacevalidation__api_a701271391f61b2712479b44f10656427}\index{validation\_api@{validation\_api}!ErrorTypeToString@{ErrorTypeToString}}
+\index{ErrorTypeToString@{ErrorTypeToString}!validation\_api@{validation\_api}}
+\doxysubsubsection{\texorpdfstring{ErrorTypeToString()}{ErrorTypeToString()}}
+{\footnotesize\ttfamily \label{namespacevalidation__api_a701271391f61b2712479b44f10656427} 
+std\+::string validation\+\_\+api\+::\+Error\+Type\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}}}]{error\+Type}{, }\item[{bool}]{is\+List}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacevalidation__api_a701271391f61b2712479b44f10656427_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{namespacevalidation__api_a0c0f34d744f57bb06458867fbee4b7a9}\index{validation\_api@{validation\_api}!insertToJson@{insertToJson}}
@@ -227,11 +251,11 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c}\index{validation\_api@{validation\_api}!setup\_logger@{setup\_logger}}
+\Hypertarget{namespacevalidation__api_a882e4d58fdd01ef56f455be40bd89866}\index{validation\_api@{validation\_api}!setup\_logger@{setup\_logger}}
 \index{setup\_logger@{setup\_logger}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{setup\_logger()}{setup\_logger()}}
-{\footnotesize\ttfamily \label{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c} 
-bool validation\+\_\+api\+::setup\+\_\+logger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespacevalidation__api_a882e4d58fdd01ef56f455be40bd89866} 
+bool validation\+\_\+api\+::setup\+\_\+logger (\begin{DoxyParamCaption}\item[{std\+::string}]{logpath}{}\end{DoxyParamCaption})}
 
 
 
@@ -242,7 +266,7 @@ This function initializes the logger with a file sink and a console sink. It ens
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=258pt]{namespacevalidation__api_add9de92f1283937ab6d7688462f67c3c_icgraph}
+\includegraphics[width=258pt]{namespacevalidation__api_a882e4d58fdd01ef56f455be40bd89866_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{namespacevalidation__api_a6dd56dcf7358b332bb906a2d27fddd0b}\index{validation\_api@{validation\_api}!toLower@{toLower}}
@@ -347,11 +371,12 @@ Here is the caller graph for this function\+:
 \index{getType@{getType}!validation\_api@{validation\_api}}
 \doxysubsubsection{\texorpdfstring{getType}{getType}}
 {\footnotesize\ttfamily \label{namespacevalidation__api_a60a49aeea786f40d01bd41ce5c20d7dd} 
-std\+::unordered\+\_\+map$<$std\+::string, int$>$ validation\+\_\+api\+::get\+Type}
+std\+::unordered\+\_\+map$<$std\+::string, int$>$ validation\+\_\+api\+::get\+Type\hspace{0.3cm}{\ttfamily [inline]}}
 
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{=\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \{\textcolor{stringliteral}{"{}string"{}},\ 1\},\ \{\textcolor{stringliteral}{"{}float"{}},\ 2\},\ \{\textcolor{stringliteral}{"{}number"{}},\ 3\},\ \{\textcolor{stringliteral}{"{}date"{}},\ 4\},\ \{\textcolor{stringliteral}{"{}email"{}},\ 5\},\ \{\textcolor{stringliteral}{"{}uuid"{}},\ 6\},\ \{\textcolor{stringliteral}{"{}boolean"{}},\ 7\},\ \{\textcolor{stringliteral}{"{}ahv"{}},\ 8\},\ \{\textcolor{stringliteral}{"{}iban"{}},\ 9\}\}}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}string"{}},\ 1\},\ \{\textcolor{stringliteral}{"{}float"{}},\ 2\},\ \ \ \{\textcolor{stringliteral}{"{}number"{}},\ 3\},\ \{\textcolor{stringliteral}{"{}date"{}},\ 4\},\ \{\textcolor{stringliteral}{"{}email"{}},\ 5\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}uuid"{}},\ 6\},\ \ \ \{\textcolor{stringliteral}{"{}boolean"{}},\ 7\},\ \{\textcolor{stringliteral}{"{}ahv"{}},\ 8\},\ \ \ \ \{\textcolor{stringliteral}{"{}iban"{}},\ 9\},\ \{\textcolor{stringliteral}{"{}list"{}},\ 10\}\}}
 
 \end{DoxyCode}

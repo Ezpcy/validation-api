@@ -95,13 +95,13 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">ErrorBuilder.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;format&gt;</code><br />
+<div class="textblock"><code>#include &lt;fmt/core.h&gt;</code><br />
 <code>#include &lt;nlohmann/json.hpp&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ErrorBuilder.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="ErrorBuilder_8hpp__incl.svg" width="302" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="ErrorBuilder_8hpp__incl.svg" width="323" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -138,9 +138,11 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac3e8e6ef097973f55220fc4fdeb08dc2" id="r_ac3e8e6ef097973f55220fc4fdeb08dc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevalidation__api.html#ac3e8e6ef097973f55220fc4fdeb08dc2">validation_api::errorBuilder</a> (nlohmann::json &amp;res, const <a class="el" href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8b">ErrorType</a> &amp;type, const std::string &amp;fieldName, const std::string &amp;exp=&quot;&quot;, const std::string &amp;rec=&quot;&quot;)</td></tr>
-<tr class="memdesc:ac3e8e6ef097973f55220fc4fdeb08dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error builder.  <br /></td></tr>
-<tr class="separator:ac3e8e6ef097973f55220fc4fdeb08dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a701271391f61b2712479b44f10656427" id="r_a701271391f61b2712479b44f10656427"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevalidation__api.html#a701271391f61b2712479b44f10656427">validation_api::ErrorTypeToString</a> (<a class="el" href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8b">ErrorType</a> errorType, bool isList=false)</td></tr>
+<tr class="separator:a701271391f61b2712479b44f10656427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bae631d887d296c01423cf04d9714fd" id="r_a5bae631d887d296c01423cf04d9714fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevalidation__api.html#a5bae631d887d296c01423cf04d9714fd">validation_api::errorBuilder</a> (nlohmann::json &amp;res, const <a class="el" href="namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8b">ErrorType</a> &amp;type, const std::string &amp;fieldName, const std::string &amp;exp=&quot;&quot;, const std::string &amp;rec=&quot;&quot;, bool isList=false)</td></tr>
+<tr class="memdesc:a5bae631d887d296c01423cf04d9714fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error builder.  <br /></td></tr>
+<tr class="separator:a5bae631d887d296c01423cf04d9714fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
