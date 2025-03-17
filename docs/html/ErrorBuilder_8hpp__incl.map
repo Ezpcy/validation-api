@@ -1,9 +1,9 @@
 <map id="include/lib/ErrorBuilder.hpp" name="include/lib/ErrorBuilder.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="69,5,266,33"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,71,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,36,75,75,73,71,143,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="95,81,240,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,34,170,65,165,65,165,34"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="264,81,322,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="191,31,259,71,256,75,188,36"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="87,5,263,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,86,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,35,83,74,80,70,151,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,80,240,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,33,178,64,172,64,172,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="264,80,318,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="196,30,259,69,256,74,194,35"/>
 </map>
