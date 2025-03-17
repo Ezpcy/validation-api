@@ -63,7 +63,7 @@ Example of a field:
 - `notNull`: If the field can be null or not
 - `eq`: The length of the field it must be equal to
 
-**Types**:
+### Types:
 
 - `string`: Example: "Hello"
 - `number`: Example: 123
@@ -74,18 +74,26 @@ Example of a field:
 - `boolean`: Example: true
 - `ahv`: Example: "756.1234.5678.12" (you can generate a random AHV number here [uhutools.ch](https://www.uhutools.ch/ahv-nummer/de))
 - `iban`: Example: "CH9300762011623852957"
+- `list`: Example: ["value1", "value2"]
 
-**Options**:
+### Options:
 
 - `uuid`: uuid value inside null option
 - `notNull`: If the field can be null or not
 
-For `string`, `number` and `float`:
+For `string`, `number`, `float` and `list`:
 
-- `eq`: Length (for strings) or value (for numbers)
-- `min`: The minimum value of the field (for numbers) or the minimum length of the field (for strings)
-- `max`: The maximum value of the field (for numbers) or the maximum length of the field (for strings)
+- `eq`: Length (for strings), value (for numbers) or value of the list elements (for lists) it must be equal to
+- `min`: The minimum value of the field (for numbers), the minimum length of the field (for strings) or the minimum length of the list elements (for lists)
+- `max`: The maximum value of the field (for numbers), the maximum length of the field (for strings) or the maximum length of the list elements (for lists)
 
+
+For `list`:
+
+- `elementType`: The type of the list elements (see [Types](#Types))
+- `elementMin`: The minimum value of the list elements (for numbers) or the minimum length of the list elements (for strings)
+- `elementMax`: The maximum value of the list elements (for numbers) or the maximum length of the list elements (for strings)
+- `elementEq`: Length of the list elements (for strings) or value of the list elements (for numbers)
 
 ## Nesting
 
@@ -99,6 +107,7 @@ Example:
       <BillingCategory type="String" notNull="true" />
       <Price type="float" notNull="true" />
       <Units type="number" notNull="true" />
+      <Tags type="list" notNull="true" min="1" max="5" elementType="string" elementMin="1" elementMax="10" elementEq="5" />
   </InsuranceProductConfig>
 ```
 
