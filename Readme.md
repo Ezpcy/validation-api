@@ -45,7 +45,7 @@ Clone the repository and run `./build.sh r` inside the root folder.
 
 ## Configuration
 
-You can set the endpoint and port inside `server.json`.
+You can set the endpoint, log path, templates path and port inside `server.json`.
 
 ## XML Configuration
 
@@ -86,7 +86,6 @@ For `string`, `number`, `float` and `list`:
 - `eq`: Length (for strings), value (for numbers) or value of the list elements (for lists) it must be equal to
 - `min`: The minimum value of the field (for numbers), the minimum length of the field (for strings) or the minimum length of the list elements (for lists)
 - `max`: The maximum value of the field (for numbers), the maximum length of the field (for strings) or the maximum length of the list elements (for lists)
-
 
 For `list`:
 
@@ -168,7 +167,6 @@ This configuration file will validate the incoming data. The data must be in `JS
 
 ```json
 {"Test":{"Provision":{"ProvisionNumber":14,"CostApproval":true},"TypeOfProvision":"123e4567-e89b-12d3-a456-526614174000","Profession":"123e4567-e89b-12d3-a456-526614174001","SalaryType":"123e4567-e89b-12d3-a456-526614174000","DateFrom":"2024-01-01","DateTo":"2024-12-31","InsuranceProductConfig":{"TarifNumber":7,"BillingCategory":"c","Price":0.0,"Units":1},"Institution":"123e4567-e89b-12d3-a456-526614174000","School":"","Location":""}}
-
 ```
 
 The API will return a Json object with either all errors that have occured or just an "ok" message if the request is valid.
@@ -177,7 +175,7 @@ The error message will look like this:
 
 ```json
 {"error": {"FieldName": "NotCorrectType string boolean"}}
-```
+````
 
 - `FieldName` the unvalid field in the rquest
 - `NotCorrectType` type of the error
