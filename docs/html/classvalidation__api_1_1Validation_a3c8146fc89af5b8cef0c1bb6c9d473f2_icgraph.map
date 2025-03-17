@@ -1,15 +1,8 @@
 <map id="validation_api::Validation::traverseAndValidate" name="validation_api::Validation::traverseAndValidate">
-<area shape="rect" id="Node000001" title="Traverse through the json object and validate the fields." alt="" coords="1230,29,1416,74"/>
-<area shape="poly" id="edge7_Node000001_Node000001" title=" " alt="" coords="1364,17,1349,10,1323,8,1300,10,1285,15,1280,21,1281,28,1276,29,1274,19,1282,10,1299,5,1323,3,1350,5,1366,12"/>
-<area shape="rect" id="Node000002" href="$classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a" title=" " alt="" coords="967,38,1182,66"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1214,54,1183,54,1183,49,1214,49"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigService.html#a654e84f4f588f7391f93210c1e08344f" title="getConfigs method" alt="" coords="708,29,919,74"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="951,54,919,54,919,49,951,49"/>
-<area shape="rect" id="Node000004" href="$classvalidation__api_1_1ValidationServer.html#a7f5c5252fa7a28bef0345e6248139215" title="Accept a connection." alt="" coords="474,29,660,74"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="693,54,661,54,661,49,693,49"/>
-<area shape="rect" id="Node000005" href="$classvalidation__api_1_1ValidationServer.html#ad67c7031c85ea1cd6eb84f6b01c424df" title="Start the server." alt="" coords="240,29,426,74"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="459,54,426,54,426,49,459,49"/>
-<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="371,17,357,10,333,8,311,10,297,15,292,21,293,28,288,29,287,19,294,10,310,5,333,3,358,5,373,12"/>
-<area shape="rect" id="Node000006" href="$classvalidation__api_1_1ValidationServer.html#a36098376f43a053f42d163d77a893e89" title=" " alt="" coords="5,29,192,74"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="224,54,192,54,192,49,224,49"/>
+<area shape="rect" id="Node000001" title="Traverse through the json object and validate the fields." alt="" coords="482,29,646,72"/>
+<area shape="poly" id="edge3_Node000001_Node000001" title=" " alt="" coords="601,16,587,10,564,8,543,10,530,15,525,21,527,28,521,29,520,19,527,10,542,5,564,3,588,5,603,11"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a" title=" " alt="" coords="244,37,434,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="467,53,434,53,434,48,467,48"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1ConfigService.html#a654e84f4f588f7391f93210c1e08344f" title="getConfigs method" alt="" coords="5,29,196,72"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="228,53,196,53,196,48,228,48"/>
 </map>
