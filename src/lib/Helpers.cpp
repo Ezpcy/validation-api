@@ -9,10 +9,11 @@ namespace validation_api {
 void validateXmlConfig(const pugi::xml_node &node,
                        validation_api::ConfigService::Errors &errors) {
   std::unordered_set<std::string> validTypes = {
-      "string", "number", "float", "date", "uuid", "boolean", "ahv", "iban"};
+      "string", "float",   "number", "date", "email",
+      "uuid",   "boolean", "ahv",    "iban", "list"};
 
   const std::unordered_set<std::string> lenCheckType = {"string", "number",
-                                                        "float"};
+                                                        "list", "float"};
 
   // Recursively traverse child nodes
   for (pugi::xml_node child = node.first_child(); child;
@@ -60,6 +61,36 @@ void validateXmlConfig(const pugi::xml_node &node,
   validateLenOption(node.attribute("max"), "max", max);
   validateLenOption(node.attribute("min"), "min", min);
   validateLenOption(node.attribute("eq"), "eq", eq);
+
+  if (toLower(attrType.value()) == "list") {
+
+    // check list option: elementType, elementMax, elementMin
+    pugi::xml_attribute attrElementType = node.attribute("elementType");
+    if (!attrElementType) {
+      insertToJson(errors, nodeName,
+                   "List type must have elementType attribute");
+    } else {
+      std::string elementType = toLower(attrElementType.value());
+      if (validTypes.find(elementType) == validTypes.end()) {
+        insertToJson(errors, nodeName,
+                     fmt::format("Type '{}' is not valid", elementType));
+      }
+    }
+
+    std::optional<float> elementMax, elementMin, elementEq;
+
+    auto validateElementLenOption = [&](const pugi::xml_attribute &attr,
+                                        const char *optionName,
+                                        std::optional<int> &value) {
+      validateLenOption(node.attribute("elementMax"), "elementMax", elementMax);
+      validateLenOption(node.attribute("elementMin"), "elementMin", elementMin);
+      validateLenOption(node.attribute("elementEq"), "elementEq", elementEq);
+      // if (node.attribute("eq")) {
+      //   insertToJson(errors, nodeName,
+      //                fmt::format("List type doesn't support eq option"));
+      // }
+    };
+  }
 
   if ((max || min || eq) &&
       (attrType &&

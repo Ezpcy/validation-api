@@ -14,7 +14,7 @@ namespace validation_api {
  * @details This function initializes the logger with a file sink and a console
  * sink. It ensures thread-safe access and supports multi-threaded logging.
  */
-bool setup_logger() {
+bool setup_logger(std::string logpath) {
   try {
     // Initialize the logger
     spdlog::init_thread_pool(8192, 1);
@@ -27,13 +27,13 @@ bool setup_logger() {
     // Create error file sink
     auto error_file_sink =
         std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
-            "logs/error.log", 1024 * 1024 * 5, 3);
+            logpath + "error.log", 1024 * 1024 * 5, 3);
     error_file_sink->set_level(spdlog::level::err);
 
     // Create info file sink
     auto info_file_sink =
         std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
-            "logs/info.log", 1024 * 1024 * 5, 3);
+            logpath + "info.log", 1024 * 1024 * 5, 3);
     info_file_sink->set_level(spdlog::level::info);
 
     // Logger with multiple sinks
@@ -47,9 +47,9 @@ bool setup_logger() {
     spdlog::register_logger(logger);
 
     return true;
-  } catch (const spdlog::spdlog_ex& ex) {
+  } catch (const spdlog::spdlog_ex &ex) {
     std::cerr << "Log init failed: " << ex.what() << std::endl;
     return false;
   }
 }
-}  // namespace validation_api
+} // namespace validation_api
