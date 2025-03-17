@@ -5,180 +5,371 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <boost/uuid.hpp>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Helpers_8hpp}{lib/Helpers.hpp}}>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <pugixml.hpp>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ErrorBuilder_8hpp}{lib/ErrorBuilder.hpp}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ConfigService_8hpp}{validation-\/api/ConfigService.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Helpers_8hpp}{lib/Helpers.hpp}}>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <nlohmann/json\_fwd.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <pugixml.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <utility>}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ std::unordered\_map<}
-\DoxyCodeLine{00021\ \ \ \ \ std::string,}
-\DoxyCodeLine{00022\ \ \ \ \ std::unordered\_map<int,\ std::vector<std::pair<std::string,\ std::string>>>>}
-\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{NullOptions}};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvalidation__api_1_1Validation}{Validation}}\ \{}
-\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a9a856ca57a90247560b7af5716735979}{Validation}}(\textcolor{keyword}{const}\ nlohmann::json\ \&jsonObj,\ \textcolor{keyword}{const}\ pugi::xml\_node\ \&doc,}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{ConfigService::Errors}}\ \&errors);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a4a76db167ba08ba51d1c5751ea2179be}{\string~Validation}}();}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a}{run}}();}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00044\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba}{validateConstraints}}(\textcolor{keyword}{const}\ std::string\ \&fieldName,\ \textcolor{keywordtype}{float}\ value,}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<float>\ max,}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<float>\ min,}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<float>\ eq)\ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ \&\&\ value\ >\ max.value())\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23}{ErrorType::MaxError}},\ fieldName,}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ max.value()),\ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ value));}
-\DoxyCodeLine{00051\ \ \ \ \ \}}
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ \&\&\ value\ <\ min.value())\ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb}{ErrorType::MinError}},\ fieldName,}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ min.value()),\ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ value));}
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}\ (eq\ \&\&\ value\ !=\ eq.value())\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942}{ErrorType::EqError}},\ fieldName,}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ eq.value()),\ std::format(\textcolor{stringliteral}{"{}\{\}"{}},\ value));}
-\DoxyCodeLine{00059\ \ \ \ \ \}}
-\DoxyCodeLine{00060\ \ \ \}}
-\DoxyCodeLine{00061\ \ \ \textcolor{comment}{/*}}
-\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ *\ @brief\ validate\ a\ field}}
-\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ *\ @details\ validates\ one\ field\ with\ the\ help\ of\ the\ xml\ field}}
-\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ *\ @param\ optName\ optValue\ reqValue\ fieldName\ errors}}
-\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12}{validate}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&node,\ \textcolor{keyword}{const}\ nlohmann::json\ \&reqValue,}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fieldName);}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_acd198b4de9ea7c78800719a53eabc1a4}{extractNullOptions}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&doc)\ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Store\ the\ name}}
-\DoxyCodeLine{00077\ \ \ \ \ std::string\ forField\ =\ std::string(doc.name());}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ currentKey\ =\ 0;}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{for}\ (pugi::xml\_node\ node\ :\ doc.children())\ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \textcolor{comment}{//\ Recursive\ call\ for\ child\ nodes}}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_acd198b4de9ea7c78800719a53eabc1a4}{extractNullOptions}}(node);}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::string(node.name())\ ==\ \textcolor{stringliteral}{"{}AllowNullIf"{}})\ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (pugi::xml\_node\ nullId\ :\ node.children())\ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ attributes\ of\ the\ current\ <Null>\ child}}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (pugi::xml\_attribute\_iterator\ attr\ =\ nullId.attributes\_begin();}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\ !=\ nullId.attributes\_end();\ ++attr)\ \{}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ UUID\ is\ valid}}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{isValidUuid}}(std::string(attr-\/>value())))\ \{}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}.find(forField);}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ key\ is\ not\ found,\ insert\ it\ with\ a\ new\ vector}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}.end())\ \{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}[forField].insert(}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{currentKey,\ \{\{nullId.name(),\ attr-\/>value()\}\}\});}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ key\ is\ found,\ append\ the\ new\ value\ to\ the\ vector}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}[forField][currentKey].push\_back(}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{nullId.name(),\ attr-\/>value()\});}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ UUID\ is\ invalid,\ log\ an\ error}}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}}.push\_back(}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{std::format(\textcolor{stringliteral}{"{}XML\ Null\ option:\ "{}}),}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::format(\textcolor{stringliteral}{"{}Field\ \{\}\ skipped\ because\ of\ invalid\ Uuid."{}},}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string(nullId.name()))\});}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ currentKey++;}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00117\ \ \ \ \ \}}
-\DoxyCodeLine{00118\ \ \ \}}
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00120\ \ \ \textcolor{comment}{/*}}
-\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ *\ @brief\ findJsonField}}
-\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ *\ @param\ jsonObj\ nodeName}}
-\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ *\ @details\ Recursive\ function\ to\ find\ a\ field\ in\ a\ JSON\ object}}
-\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ *\ @return\ std::pair<bool,\ nlohmann::json>\ We\ need\ return\ a\ pair,\ in\ case\ the}}
-\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ *\ key\ exists\ but\ the\ value\ is\ a\ nullptr}}
-\DoxyCodeLine{00126\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{inline}\ std::pair<bool,\ nlohmann::json>}
-\DoxyCodeLine{00128\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{findJsonField}}(\textcolor{keyword}{const}\ nlohmann::json\ \&jsonObj,\ \textcolor{keyword}{const}\ std::string\ \&nodeName)\ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ If\ the\ key\ exists\ at\ the\ current\ level,\ return\ it}}
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (jsonObj.contains(nodeName))\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::pair(\textcolor{keyword}{true},\ jsonObj[nodeName]);}
-\DoxyCodeLine{00132\ \ \ \ \ \}}
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ Otherwise,\ look\ through\ all\ objects\ in\ the\ current\ level}}
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&[key,\ value]\ :\ jsonObj.items())\ \{}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.is\_object()\ ||\ value.is\_array())\ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Recursively\ search\ in\ nested\ JSON\ objects}}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ nlohmann::json\ result\ =\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{findJsonField}}(value,\ nodeName);}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ std::pair(\textcolor{keyword}{false},\ \textcolor{keyword}{nullptr}))\ \{}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ErrorBuilder_8hpp}{lib/ErrorBuilder.hpp}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ConfigService_8hpp}{validation-\/api/ConfigService.hpp}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevalidation__api}{validation\_api}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Map\ to\ decide\ which\ type\ needs\ to\ be\ validated}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{inline}\ std::unordered\_map<std::string,\ int>\ \mbox{\hyperlink{namespacevalidation__api_a60a49aeea786f40d01bd41ce5c20d7dd}{getType}}\ =\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \{\textcolor{stringliteral}{"{}string"{}},\ 1\},\ \{\textcolor{stringliteral}{"{}float"{}},\ 2\},\ \ \ \{\textcolor{stringliteral}{"{}number"{}},\ 3\},\ \{\textcolor{stringliteral}{"{}date"{}},\ 4\},\ \{\textcolor{stringliteral}{"{}email"{}},\ 5\},}
+\DoxyCodeLine{00020\ \ \ \ \ \{\textcolor{stringliteral}{"{}uuid"{}},\ 6\},\ \ \ \{\textcolor{stringliteral}{"{}boolean"{}},\ 7\},\ \{\textcolor{stringliteral}{"{}ahv"{}},\ 8\},\ \ \ \ \{\textcolor{stringliteral}{"{}iban"{}},\ 9\},\ \{\textcolor{stringliteral}{"{}list"{}},\ 10\}\};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ std::unordered\_map<}
+\DoxyCodeLine{00027\ \ \ \ \ std::string,}
+\DoxyCodeLine{00028\ \ \ \ \ std::unordered\_map<int,\ std::vector<std::pair<std::string,\ std::string>>>>}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{NullOptions}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classvalidation__api_1_1Validation_a9a856ca57a90247560b7af5716735979}{Validation}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a9a856ca57a90247560b7af5716735979}{Validation}}(\textcolor{keyword}{const}\ nlohmann::json\ \&jsonObj,\ \textcolor{keyword}{const}\ pugi::xml\_node\ \&doc,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{ConfigService::Errors}}\ \&errors);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a4a76db167ba08ba51d1c5751ea2179be}{\string~Validation}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a}{run}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}{validateConstraints}}(\textcolor{keyword}{const}\ std::string\ \&fieldName,\ \textcolor{keywordtype}{float}\ value,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<float>\ max,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<float>\ min,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::optional<float>\ eq,}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isList\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (max\ \&\&\ value\ >\ max.value())\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba37629a320956e810d7220599b15b7e23}{ErrorType::MaxError}},\ fieldName,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmt::format(\textcolor{stringliteral}{"{}\{\}"{}},\ max.value()),\ fmt::format(\textcolor{stringliteral}{"{}\{\}"{}},\ value),\ isList);}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (min\ \&\&\ value\ <\ min.value())\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac56733c011d77e95b0ef2141c9e611bb}{ErrorType::MinError}},\ fieldName,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmt::format(\textcolor{stringliteral}{"{}\{\}"{}},\ min.value()),\ fmt::format(\textcolor{stringliteral}{"{}\{\}"{}},\ value),\ isList);}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{if}\ (eq\ \&\&\ value\ !=\ eq.value())\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8bac90f1f51a0c1d363ae06250e1cdc2942}{ErrorType::EqError}},\ fieldName,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmt::format(\textcolor{stringliteral}{"{}\{\}"{}},\ eq.value()),\ fmt::format(\textcolor{stringliteral}{"{}\{\}"{}},\ value),\ isList);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ *\ @brief\ Validate\ a\ field}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ *\ @details\ validates\ one\ field\ with\ the\ help\ of\ the\ xml\ field}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ *\ @param\ optName\ optValue\ reqValue\ fieldName\ errors}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12}{validate}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&node,\ \textcolor{keyword}{const}\ nlohmann::json\ \&reqValue,}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fieldName);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ *\ @brief\ Validation\ function\ for\ one}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ *\ @details\ Contains\ a\ switch\ for\ validation,\ it\ can\ be\ reused\ for\ recursion}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ *\ in\ case\ of\ a\ list\ type}}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ *\ @param\ typeNumber\ reqValue\ fieldName\ canBeEmpty\ it\ max\ min\ eq\ node\ isList}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}}
+\DoxyCodeLine{00083\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e}{validateOne}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ typeNumber,\ \textcolor{keyword}{const}\ nlohmann::json\ \&reqValue,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&fieldName,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \&canBeEmpty,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ it,\ \textcolor{keyword}{const}\ std::optional<float>\ \&max\ =\ std::nullopt,}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<float>\ \&min\ =\ std::nullopt,}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<float>\ \&eq\ =\ std::nullopt,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isList\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<pugi::xml\_node>\ \&node\ =\ std::nullopt}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{switch}\ (typeNumber)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ string}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!reqValue.is\_string())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue.type\_name());}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max.has\_value()\ ||\ min.has\_value()\ ||\ eq.has\_value())\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ string\ and\ its\ length}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::string\ valueStr\ =\ reqValue;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ length\ =\ valueStr.length();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}{Validation::validateConstraints}}(fieldName,\ length,\ max,\ min,\ eq,\ isList);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ float}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!reqValue.is\_number\_float())\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ std::string\ val;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reqValue.is\_string())\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ val\ =\ \textcolor{stringliteral}{"{}string"{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (reqValue.is\_number\_integer())\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ val\ =\ \textcolor{stringliteral}{"{}integer"{}};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ val\ =\ reqValue.type\_name();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ val,\ isList);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max.has\_value()\ ||\ min.has\_value()\ ||\ eq.has\_value())\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ value\ =\ reqValue;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}{Validation::validateConstraints}}(fieldName,\ value,\ max,\ min,\ eq,\ isList);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ number}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!reqValue.is\_number\_integer())\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ std::string\ val;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reqValue.is\_string())\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ val\ =\ \textcolor{stringliteral}{"{}string"{}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (reqValue.is\_number\_float())\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ val\ =\ \textcolor{stringliteral}{"{}float"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ val\ =\ reqValue.type\_name();}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ \textcolor{stringliteral}{"{}integer"{}},}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ val,\ isList);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00142\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00143\ \ \ \ \ \}}
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Return\ null\ if\ the\ key\ was\ not\ found}}
-\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{return}\ std::pair(\textcolor{keyword}{false},\ \textcolor{keyword}{nullptr});}
-\DoxyCodeLine{00147\ \ \ \}}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00154\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a3c8146fc89af5b8cef0c1bb6c9d473f2}{traverseAndValidate}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&node);}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \ \ \textcolor{comment}{/*}}
-\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ *\ @brief\ Fills\ the\ \`{}requestList\_`\ with\ fields\ from\ the\ \`{}request\_`}}
-\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ *\ @details\ Recursive\ function\ to\ iterate\ over\ the\ \`{}request\_`}}
-\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{00160\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a21b9aefd80be5a639d2aa5e4c8ebe945}{fillRequestList}}(\textcolor{keyword}{const}\ nlohmann::json\ \&request)\ \{}
-\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&[key,\ value]\ :\ request.items())\ \{}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ ==\ \textcolor{stringliteral}{"{}AllowNullIf"{}})\ \{}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.is\_object()\ ||\ value.is\_array())\ \{}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a21b9aefd80be5a639d2aa5e4c8ebe945}{fillRequestList}}(value);}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_abb370b5dc3a977d02bbdea727c638919}{requestList\_}}.insert(key);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max.has\_value()\ ||\ min.has\_value()\ ||\ eq.has\_value())\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ value\ =\ reqValue;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}{Validation::validateConstraints}}(fieldName,\ value,\ max,\ min,\ eq,\ isList);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{case}\ 4:\ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ date}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \textcolor{comment}{//\ We\ can\ skip\ special\ string\ types\ when\ it's\ empty\ and\ allowed\ to\ be}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canBeEmpty\ \&\&\ reqValue.get<std::string>()\ ==\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::regex\ date\_regex(}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(\string^\(\backslash\)d\{4\}-\/(0[1-\/9]|1[0-\/2])-\/(0[1-\/9]|[12]\(\backslash\)d|3[01])\$)"{});}}
+\DoxyCodeLine{00156\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ std::string\ date\ =\ reqValue.get<std::string>();}}
+\DoxyCodeLine{00157\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{keywordflow}{if}\ (!std::regex\_match(date,\ date\_regex))\ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ date,\ isList);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordflow}{case}\ 5:\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ an\ email}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::regex\ email\_regex(R\textcolor{stringliteral}{"{}(\string^[a-\/zA-\/Z0-\/9\_.+-\/]+@[a-\/zA-\/Z0-\/9-\/.]+\$)"{});}}
+\DoxyCodeLine{00166\ \textcolor{stringliteral}{\ \ \ \ \ \ std::string\ email\ =\ reqValue.get<std::string>();}}
+\DoxyCodeLine{00167\ \textcolor{stringliteral}{\ \ \ \ \ \ }\textcolor{keywordflow}{if}\ (!std::regex\_match(email,\ email\_regex))\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue,\ isList);}
 \DoxyCodeLine{00170\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00171\ \ \ \ \ \}}
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00173\ \ \ \}}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00181\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a7b6995b4592eb861af42e45b095382b7}{checkNullOptionsVec}}(}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<std::string,\ std::string>>\ \&nullVec)\ \{}
-\DoxyCodeLine{00183\ }
-\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[fieldName,\ fieldUuid]\ :\ nullVec)\ \{}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \textcolor{comment}{//\ Retrieve\ field\ from\ JSON}}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ std::pair<bool,\ nlohmann::json>\ nullCheckField\ =}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{findJsonField}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a88a25d3748477bdded1fbc5bde81f264}{request\_}},\ fieldName);}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ field\ exists\ and\ doesn't\ match\ the\ UUID,\ return\ false}}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nullCheckField.second\ !=\ fieldUuid)\ \{}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00193\ \ \ \ \ \}}
-\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00195\ \ \ \}}
-\DoxyCodeLine{00196\ }
-\DoxyCodeLine{00201\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_ac59ae7a00f5fc950a3a572524127c4d3}{isNullOrEmpty}}(\textcolor{keyword}{const}\ nlohmann::json\ \&value)\ \{}
-\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordflow}{return}\ value.is\_null()\ ||\ value.empty()\ ||}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ (value.is\_string()\ \&\&\ value.get<std::string>().empty());}
-\DoxyCodeLine{00204\ \ \ \}}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00212\ \ \ \textcolor{keyword}{mutable}\ std::unordered\_set<std::string>\ \mbox{\hyperlink{classvalidation__api_1_1Validation_abb370b5dc3a977d02bbdea727c638919}{requestList\_}};}
-\DoxyCodeLine{00213\ \ \ \textcolor{keyword}{const}\ nlohmann::json\ \&\mbox{\hyperlink{classvalidation__api_1_1Validation_a88a25d3748477bdded1fbc5bde81f264}{request\_}};}
-\DoxyCodeLine{00214\ \ \ \textcolor{keyword}{const}\ pugi::xml\_node\ \&\mbox{\hyperlink{classvalidation__api_1_1Validation_ae7f1e69d12d69c2673e6d7ba5925fd10}{config\_}};}
-\DoxyCodeLine{00215\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{ConfigService::Errors}}\ \&\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}};}
-\DoxyCodeLine{00216\ \ \ \mbox{\hyperlink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{NullOptions}}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}};}
-\DoxyCodeLine{00217\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1Validation_af2f7b69e02765c73c6e648d24fa38ed4}{logger\_}};}
-\DoxyCodeLine{00218\ \};}
-\DoxyCodeLine{00219\ \}\ \textcolor{comment}{//\ namespace\ validation\_api}}
+\DoxyCodeLine{00171\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{case}\ 6:\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ uuid}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canBeEmpty\ \&\&\ reqValue.get<std::string>()\ ==\ \textcolor{stringliteral}{"{}"{}}\ ||}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ reqValue.is\_null()\ ||\ reqValue.empty())\ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{isValidUuid}}(reqValue.get<std::string>()))\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue,\ isList);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{case}\ 7:\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ boolean}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!reqValue.is\_boolean())\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue.type\_name(),\ isList);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordflow}{case}\ 8:\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ valid\ Ahv}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ std::string\ val\ =\ reqValue.get<std::string>();}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canBeEmpty\ \&\&\ val\ ==\ \textcolor{stringliteral}{"{}"{}}\ ||\ reqValue.is\_null()\ ||\ reqValue.empty())\ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespacevalidation__api_aae32fd7a0b5886a49454679d46ed4bd1}{validateAhv}}(val))\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue,\ isList);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordflow}{case}\ 9:\ \{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ value\ is\ a\ valid\ Iban}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ std::string\ val\ =\ reqValue.get<std::string>();}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canBeEmpty\ \&\&\ val\ ==\ \textcolor{stringliteral}{"{}"{}}\ ||\ reqValue.is\_null()\ ||\ reqValue.empty())\ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespacevalidation__api_a0a2b975e162ced567ba3a6075684092a}{validateIban}}(val))\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue,\ isList);}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{case}\ 10:\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ empty\ first}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canBeEmpty\ \&\&\ (reqValue.is\_null()\ ||\ reqValue.empty()))\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!reqValue.is\_array())\ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{errorBuilder}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}},\ \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8ba79b9453cb4fc85da51ee567f916cb888}{ErrorType::NotCorrectType}},\ fieldName,\ it-\/>first,}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ reqValue.type\_name(),\ isList);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max.has\_value()\ ||\ min.has\_value()\ ||\ eq.has\_value())\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ value\ =\ reqValue.size();}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}{Validation::validateConstraints}}(fieldName,\ value,\ max,\ min,\ eq);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ std::optional<float>\ elementMax;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ std::optional<float>\ elementMin;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ std::optional<float>\ elementEq;}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ std::string\ elementType\ =}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacevalidation__api_a6dd56dcf7358b332bb906a2d27fddd0b}{toLower}}(node-\/>attribute(\textcolor{stringliteral}{"{}elementType"{}}).value());}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ elementIt\ =\ \mbox{\hyperlink{namespacevalidation__api_a60a49aeea786f40d01bd41ce5c20d7dd}{getType}}.find(elementType);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (elementIt\ ==\ \mbox{\hyperlink{namespacevalidation__api_a60a49aeea786f40d01bd41ce5c20d7dd}{getType}}.end())\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unknown\ element\ type:\ "{}}\ +\ elementType);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ elementNumber\ =\ elementIt-\/>second;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ list\ options}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>attribute(\textcolor{stringliteral}{"{}elementMax"{}}))\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ elementMax\ =\ node-\/>attribute(\textcolor{stringliteral}{"{}elementMax"{}}).as\_float();}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>attribute(\textcolor{stringliteral}{"{}elementMin"{}}))\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ elementMin\ =\ node-\/>attribute(\textcolor{stringliteral}{"{}elementMin"{}}).as\_float();}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node-\/>attribute(\textcolor{stringliteral}{"{}elementEq"{}}))\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ elementEq\ =\ node-\/>attribute(\textcolor{stringliteral}{"{}elementEq"{}}).as\_float();}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ ele\ :\ reqValue.items())\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e}{validateOne}}(elementNumber,\ ele.value(),\ fieldName,\ canBeEmpty,}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ elementIt,\ elementMax,\ elementMin,\ elementEq,\ \textcolor{keyword}{true},\ node);}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00266\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_acd198b4de9ea7c78800719a53eabc1a4}{extractNullOptions}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&doc)\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ Store\ the\ name}}
+\DoxyCodeLine{00268\ \ \ \ \ std::string\ forField\ =\ std::string(doc.name());}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordtype}{int}\ currentKey\ =\ 0;}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{for}\ (pugi::xml\_node\ node\ :\ doc.children())\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \textcolor{comment}{//\ Recursive\ call\ for\ child\ nodes}}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_acd198b4de9ea7c78800719a53eabc1a4}{extractNullOptions}}(node);}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::string(node.name())\ ==\ \textcolor{stringliteral}{"{}AllowNullIf"{}})\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (pugi::xml\_node\ nullId\ :\ node.children())\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ attributes\ of\ the\ current\ <Null>\ child}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (pugi::xml\_attribute\_iterator\ attr\ =\ nullId.attributes\_begin();}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ attr\ !=\ nullId.attributes\_end();\ ++attr)\ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ UUID\ is\ valid}}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespacevalidation__api_ac19e25b4d8364b0f52152440dd5ecbda}{isValidUuid}}(std::string(attr-\/>value())))\ \{}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}.find(forField);}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ key\ is\ not\ found,\ insert\ it\ with\ a\ new\ vector}}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}.end())\ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}[forField].insert(}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{currentKey,\ \{\{nullId.name(),\ attr-\/>value()\}\}\});}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ key\ is\ found,\ append\ the\ new\ value\ to\ the\ vector}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}}[forField][currentKey].push\_back(}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{nullId.name(),\ attr-\/>value()\});}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ UUID\ is\ invalid,\ log\ an\ error}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}}.push\_back(}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{fmt::format(\textcolor{stringliteral}{"{}XML\ Null\ option:\ "{}}),}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmt::format(\textcolor{stringliteral}{"{}Field\ \{\}\ skipped\ because\ of\ invalid\ Uuid."{}},}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string(nullId.name()))\});}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ currentKey++;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ *\ @brief\ findJsonField}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ *\ @param\ jsonObj\ nodeName}}
+\DoxyCodeLine{00314\ \textcolor{comment}{\ \ \ *\ @details\ Recursive\ function\ to\ find\ a\ field\ in\ a\ JSON\ object}}
+\DoxyCodeLine{00315\ \textcolor{comment}{\ \ \ *\ @return\ std::pair<bool,\ nlohmann::json>\ We\ need\ return\ a\ pair,\ in\ case\ the}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ \ \ *\ key\ exists\ but\ the\ value\ is\ a\ nullptr}}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00318\ \ \ \textcolor{keyword}{inline}\ std::pair<bool,\ nlohmann::json>}
+\DoxyCodeLine{00319\ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{findJsonField}}(\textcolor{keyword}{const}\ nlohmann::json\ \&jsonObj,\ \textcolor{keyword}{const}\ std::string\ \&nodeName)\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{comment}{//\ If\ the\ key\ exists\ at\ the\ current\ level,\ return\ it}}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordflow}{if}\ (jsonObj.contains(nodeName))\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::pair(\textcolor{keyword}{true},\ jsonObj[nodeName]);}
+\DoxyCodeLine{00323\ \ \ \ \ \}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{comment}{//\ Otherwise,\ look\ through\ all\ objects\ in\ the\ current\ level}}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&[key,\ value]\ :\ jsonObj.items())\ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.is\_object()\ ||\ value.is\_array())\ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Recursively\ search\ in\ nested\ JSON\ objects}}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ nlohmann::json\ result\ =\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{findJsonField}}(value,\ nodeName);}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ std::pair(\textcolor{keyword}{false},\ \textcolor{keyword}{nullptr}))\ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00334\ \ \ \ \ \}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{comment}{//\ Return\ null\ if\ the\ key\ was\ not\ found}}
+\DoxyCodeLine{00337\ \ \ \ \ \textcolor{keywordflow}{return}\ std::pair(\textcolor{keyword}{false},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00338\ \ \ \}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00345\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a3c8146fc89af5b8cef0c1bb6c9d473f2}{traverseAndValidate}}(\textcolor{keyword}{const}\ pugi::xml\_node\ \&node);}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00348\ \textcolor{comment}{\ \ \ *\ @brief\ Fills\ the\ \`{}requestList\_`\ with\ fields\ from\ the\ \`{}request\_`}}
+\DoxyCodeLine{00349\ \textcolor{comment}{\ \ \ *\ @details\ Recursive\ function\ to\ iterate\ over\ the\ \`{}request\_`}}
+\DoxyCodeLine{00350\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00351\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a21b9aefd80be5a639d2aa5e4c8ebe945}{fillRequestList}}(\textcolor{keyword}{const}\ nlohmann::json\ \&request)\ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&[key,\ value]\ :\ request.items())\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ ==\ \textcolor{stringliteral}{"{}AllowNullIf"{}})\ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value.is\_object())\ \{}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a21b9aefd80be5a639d2aa5e4c8ebe945}{fillRequestList}}(value);}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_abb370b5dc3a977d02bbdea727c638919}{requestList\_}}.insert(key);}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00364\ \ \ \}}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00372\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a7b6995b4592eb861af42e45b095382b7}{checkNullOptionsVec}}(}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<std::string,\ std::string>>\ \&nullVec)\ \{}
+\DoxyCodeLine{00374\ }
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[fieldName,\ fieldUuid]\ :\ nullVec)\ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \textcolor{comment}{//\ Retrieve\ field\ from\ JSON}}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ std::pair<bool,\ nlohmann::json>\ nullCheckField\ =}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classvalidation__api_1_1Validation_a49e598a8189b6bd6edf1ecdb00ae8b9d}{findJsonField}}(\mbox{\hyperlink{classvalidation__api_1_1Validation_a88a25d3748477bdded1fbc5bde81f264}{request\_}},\ fieldName);}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ field\ exists\ and\ doesn't\ match\ the\ UUID,\ return\ false}}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nullCheckField.second\ !=\ fieldUuid)\ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00384\ \ \ \ \ \}}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00386\ \ \ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00392\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_ac59ae7a00f5fc950a3a572524127c4d3}{isNullOrEmpty}}(\textcolor{keyword}{const}\ nlohmann::json\ \&value)\ \{}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordflow}{return}\ value.is\_null()\ ||\ value.empty()\ ||}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ (value.is\_string()\ \&\&\ value.get<std::string>().empty());}
+\DoxyCodeLine{00395\ \ \ \}}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00397\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00403\ \ \ \textcolor{keyword}{mutable}\ std::unordered\_set<std::string>\ \mbox{\hyperlink{classvalidation__api_1_1Validation_abb370b5dc3a977d02bbdea727c638919}{requestList\_}};}
+\DoxyCodeLine{00404\ \ \ \textcolor{keyword}{const}\ nlohmann::json\ \&\mbox{\hyperlink{classvalidation__api_1_1Validation_a88a25d3748477bdded1fbc5bde81f264}{request\_}};}
+\DoxyCodeLine{00405\ \ \ \textcolor{keyword}{const}\ pugi::xml\_node\ \&\mbox{\hyperlink{classvalidation__api_1_1Validation_ae7f1e69d12d69c2673e6d7ba5925fd10}{config\_}};}
+\DoxyCodeLine{00406\ \ \ \mbox{\hyperlink{classvalidation__api_1_1ConfigService_ac6d3ea95ba9eed83b185b834ed4a395c}{ConfigService::Errors}}\ \&\mbox{\hyperlink{classvalidation__api_1_1Validation_a9e197506aa69689cc4d3a6c386b7c54f}{errors\_}};}
+\DoxyCodeLine{00407\ \ \ \mbox{\hyperlink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{NullOptions}}\ \mbox{\hyperlink{classvalidation__api_1_1Validation_a55ea1d238672ca7b011dcd584be34b80}{nullOptions\_}};}
+\DoxyCodeLine{00408\ \ \ std::shared\_ptr<spdlog::logger>\ \mbox{\hyperlink{classvalidation__api_1_1Validation_af2f7b69e02765c73c6e648d24fa38ed4}{logger\_}};}
+\DoxyCodeLine{00409\ \};}
+\DoxyCodeLine{00410\ \}\ \textcolor{comment}{//\ namespace\ validation\_api}}
 
 \end{DoxyCode}

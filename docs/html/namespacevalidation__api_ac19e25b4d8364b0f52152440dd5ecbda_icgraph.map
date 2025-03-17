@@ -1,36 +1,32 @@
 <map id="validation_api::isValidUuid" name="validation_api::isValidUuid">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1762,107,1956,135"/>
-<area shape="rect" id="Node000002" href="$classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4" title="Extract the NullOptions from a XML Configuration." alt="" coords="1527,29,1714,74"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1793,105,1699,77,1701,72,1795,100"/>
-<area shape="rect" id="Node000004" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="1527,99,1714,143"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="1746,124,1714,124,1714,118,1746,118"/>
-<area shape="rect" id="Node000011" href="$namespacevalidation__api.html#aa82c6b3a43b6e6b59b529c22944cadca" title="Ensures valid Xml configuration." alt="" coords="1533,192,1708,237"/>
-<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="1808,143,1681,194,1679,189,1806,138"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1659,17,1645,10,1620,8,1598,10,1584,15,1579,21,1580,28,1575,29,1574,19,1581,10,1597,5,1621,3,1646,5,1662,12"/>
-<area shape="rect" id="Node000003" href="$classvalidation__api_1_1Validation.html#a9a856ca57a90247560b7af5716735979" title=" " alt="" coords="1279,17,1465,62"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="1511,49,1465,47,1466,42,1512,44"/>
-<area shape="rect" id="Node000005" href="$classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2" title="Traverse through the json object and validate the fields." alt="" coords="1279,111,1465,155"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="1512,129,1466,131,1465,126,1511,124"/>
-<area shape="poly" id="edge12_Node000005_Node000005" title=" " alt="" coords="1412,98,1397,92,1372,89,1348,91,1334,96,1328,102,1330,110,1324,111,1323,101,1331,92,1347,86,1372,84,1399,87,1414,93"/>
-<area shape="rect" id="Node000006" href="$classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a" title=" " alt="" coords="986,119,1202,147"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="1263,136,1202,136,1202,130,1263,130"/>
-<area shape="rect" id="Node000007" href="$classvalidation__api_1_1ConfigService.html#a654e84f4f588f7391f93210c1e08344f" title="getConfigs method" alt="" coords="711,111,921,155"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="971,136,922,136,922,130,971,130"/>
-<area shape="rect" id="Node000008" href="$classvalidation__api_1_1ValidationServer.html#a7f5c5252fa7a28bef0345e6248139215" title="Accept a connection." alt="" coords="474,111,660,155"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="695,136,661,136,661,130,695,130"/>
-<area shape="rect" id="Node000009" href="$classvalidation__api_1_1ValidationServer.html#ad67c7031c85ea1cd6eb84f6b01c424df" title="Start the server." alt="" coords="240,111,426,155"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="459,136,426,136,426,130,459,130"/>
-<area shape="poly" id="edge10_Node000009_Node000009" title=" " alt="" coords="371,98,357,92,333,89,311,91,297,96,292,102,293,110,288,111,287,101,294,92,310,86,333,84,358,87,373,93"/>
-<area shape="rect" id="Node000010" href="$classvalidation__api_1_1ValidationServer.html#a36098376f43a053f42d163d77a893e89" title=" " alt="" coords="5,111,192,155"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="224,136,192,136,192,130,224,130"/>
-<area shape="poly" id="edge19_Node000011_Node000011" title=" " alt="" coords="1659,179,1645,173,1620,171,1598,173,1584,177,1579,183,1580,191,1575,192,1574,182,1581,173,1597,167,1621,165,1646,168,1662,174"/>
-<area shape="rect" id="Node000012" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title=" " alt="" coords="1264,192,1479,237"/>
-<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="1518,217,1480,217,1480,212,1518,212"/>
-<area shape="rect" id="Node000013" href="$classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78" title="Start ConfigWatcher." alt="" coords="972,179,1216,207"/>
-<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="1248,208,1216,205,1217,200,1249,202"/>
-<area shape="rect" id="Node000015" href="$classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395" title="Setup the ConfigWatcher." alt="" coords="986,231,1202,275"/>
-<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="1249,234,1202,241,1202,235,1248,229"/>
-<area shape="rect" id="Node000014" href="$classvalidation__api_1_1ConfigWatcher.html#ae52bfdab8da3ff71ba788f1929a9a053" title=" " alt="" coords="708,205,924,250"/>
-<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="963,212,924,217,924,212,962,207"/>
-<area shape="poly" id="edge18_Node000015_Node000014" title=" " alt="" coords="971,244,924,240,924,235,971,239"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1209,128,1382,155"/>
+<area shape="rect" id="Node000002" href="$classvalidation__api_1_1Validation.html#acd198b4de9ea7c78800719a53eabc1a4" title="Extract the NullOptions from a XML Configuration." alt="" coords="997,29,1161,72"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1248,124,1160,86,1133,75,1135,70,1162,82,1250,119"/>
+<area shape="rect" id="Node000004" href="$classvalidation__api_1_1Validation.html#a4d77d8b938e4241f346b0360f4eec61e" title=" " alt="" coords="997,120,1161,163"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="1193,144,1162,144,1162,139,1193,139"/>
+<area shape="rect" id="Node000009" href="$namespacevalidation__api.html#aa82c6b3a43b6e6b59b529c22944cadca" title="Ensures valid Xml configuration." alt="" coords="1002,211,1156,253"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="1249,164,1133,213,1131,208,1246,159"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="1114,16,1101,10,1079,8,1058,10,1046,15,1041,21,1043,28,1038,29,1036,19,1043,10,1057,5,1079,3,1102,5,1116,11"/>
+<area shape="rect" id="Node000003" href="$classvalidation__api_1_1Validation.html#a9a856ca57a90247560b7af5716735979" title=" " alt="" coords="769,29,934,72"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="981,53,934,53,934,48,981,48"/>
+<area shape="poly" id="edge10_Node000004_Node000004" title=" " alt="" coords="1114,107,1101,101,1079,99,1058,101,1046,105,1041,111,1043,119,1038,120,1036,110,1043,101,1057,95,1079,93,1102,96,1116,102"/>
+<area shape="rect" id="Node000005" href="$classvalidation__api_1_1Validation.html#a1cc0802269d88c233ad3c3d1d6c3dd12" title=" " alt="" coords="769,120,934,163"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="981,144,934,144,934,139,981,139"/>
+<area shape="rect" id="Node000006" href="$classvalidation__api_1_1Validation.html#a3c8146fc89af5b8cef0c1bb6c9d473f2" title="Traverse through the json object and validate the fields." alt="" coords="514,120,678,163"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="754,144,679,144,679,139,754,139"/>
+<area shape="poly" id="edge9_Node000006_Node000006" title=" " alt="" coords="638,107,622,101,596,99,572,101,557,105,551,111,553,119,548,120,546,110,554,101,571,95,596,93,623,96,640,102"/>
+<area shape="rect" id="Node000007" href="$classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a" title=" " alt="" coords="246,128,436,155"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="498,144,437,144,437,139,498,139"/>
+<area shape="rect" id="Node000008" href="$classvalidation__api_1_1ConfigService.html#a654e84f4f588f7391f93210c1e08344f" title="getConfigs method" alt="" coords="5,120,196,163"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="230,144,196,144,196,139,230,139"/>
+<area shape="poly" id="edge17_Node000009_Node000009" title=" " alt="" coords="1114,197,1101,192,1079,189,1058,191,1046,196,1041,202,1043,210,1038,211,1036,201,1043,192,1057,186,1079,184,1102,186,1116,193"/>
+<area shape="rect" id="Node000010" href="$classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72" title=" " alt="" coords="754,211,949,253"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="987,235,949,235,949,229,987,229"/>
+<area shape="rect" id="Node000011" href="$classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78" title="Start ConfigWatcher." alt="" coords="486,187,706,213"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="739,221,707,217,707,211,739,215"/>
+<area shape="rect" id="Node000013" href="$classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395" title="Setup the ConfigWatcher." alt="" coords="499,237,693,280"/>
+<area shape="poly" id="edge15_Node000010_Node000013" title=" " alt="" coords="739,246,694,251,694,246,739,241"/>
+<area shape="rect" id="Node000012" href="$classvalidation__api_1_1ConfigWatcher.html#ae52bfdab8da3ff71ba788f1929a9a053" title=" " alt="" coords="244,208,438,251"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="471,217,439,221,438,215,470,212"/>
+<area shape="poly" id="edge16_Node000013_Node000012" title=" " alt="" coords="483,248,438,243,439,238,484,243"/>
 </map>
