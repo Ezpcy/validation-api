@@ -118,12 +118,11 @@ void Validation::validate(const pugi::xml_node &node, const json &reqValue,
       int typeNumber = it->second;
       std::optional<int> elementNumber;
       Validation::validateOne(typeNumber, reqValue, fieldName, canBeEmpty, it,
-                              max, min, eq, node);
+                              max, min, eq, false, node);
     }
   } catch (const std::exception &e) {
     errors_[fieldName] += std::string(e.what());
   }
 }
-
 
 } // namespace validation_api

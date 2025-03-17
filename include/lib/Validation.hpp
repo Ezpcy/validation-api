@@ -2,12 +2,10 @@
 
 #include <boost/uuid.hpp>
 #include <cstddef>
-#include <iostream>
 #include <lib/Helpers.hpp>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
-#include <ostream>
 #include <pugixml.hpp>
 #include <unordered_set>
 #include <utility>
@@ -52,22 +50,23 @@ public:
   inline void validateConstraints(const std::string &fieldName, float value,
                                   std::optional<float> max,
                                   std::optional<float> min,
-                                  std::optional<float> eq) {
+                                  std::optional<float> eq,
+                                  bool isList = false) {
     if (max && value > max.value()) {
       errorBuilder(errors_, ErrorType::MaxError, fieldName,
-                   fmt::format("{}", max.value()), fmt::format("{}", value));
+                   fmt::format("{}", max.value()), fmt::format("{}", value), isList);
     }
     if (min && value < min.value()) {
       errorBuilder(errors_, ErrorType::MinError, fieldName,
-                   fmt::format("{}", min.value()), fmt::format("{}", value));
+                   fmt::format("{}", min.value()), fmt::format("{}", value), isList);
     }
     if (eq && value != eq.value()) {
       errorBuilder(errors_, ErrorType::EqError, fieldName,
-                   fmt::format("{}", eq.value()), fmt::format("{}", value));
+                   fmt::format("{}", eq.value()), fmt::format("{}", value), isList);
     }
   }
   /*
-   * @brief validate a field
+   * @brief Validate a field
    * @details validates one field with the help of the xml field
    * @param optName optValue reqValue fieldName errors
    */
@@ -75,9 +74,10 @@ public:
                 const std::string &fieldName);
 
   /*
-   * @brief validation function for one
-   * @details contains a switch for validation so it can be reused for recursion
-   * @param
+   * @brief Validation function for one
+   * @details Contains a switch for validation, it can be reused for recursion
+   * in case of a list type
+   * @param typeNumber reqValue fieldName canBeEmpty it max min eq node isList
    */
   inline void
   validateOne(const int typeNumber, const nlohmann::json &reqValue,
@@ -85,7 +85,9 @@ public:
               const auto it, const std::optional<float> &max = std::nullopt,
               const std::optional<float> &min = std::nullopt,
               const std::optional<float> &eq = std::nullopt,
-              const std::optional<pugi::xml_node> &node = std::nullopt) {
+              bool isList = false,
+              const std::optional<pugi::xml_node> &node = std::nullopt
+              ) {
     switch (typeNumber) {
     case 1:
       // Check if the value is a string
@@ -99,7 +101,7 @@ public:
         std::string valueStr = reqValue;
         size_t length = valueStr.length();
 
-        Validation::validateConstraints(fieldName, length, max, min, eq);
+        Validation::validateConstraints(fieldName, length, max, min, eq, isList);
       }
       break;
     case 2:
@@ -107,21 +109,20 @@ public:
       if (!reqValue.is_number_float()) {
         std::string val;
         if (reqValue.is_string()) {
-          val = reqValue.get<std::string>();
+          val = "string";
         } else if (reqValue.is_number_integer()) {
-          val = std::to_string(reqValue.get<int>());
+          val = "integer";
         } else {
-          val = "";
+          val = reqValue.type_name();
         }
-        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, "float",
-                     val);
-
+        errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
+                     val, isList);
         break;
       }
       if (max.has_value() || min.has_value() || eq.has_value()) {
         float value = reqValue;
 
-        Validation::validateConstraints(fieldName, value, max, min, eq);
+        Validation::validateConstraints(fieldName, value, max, min, eq, isList);
       }
       break;
     case 3:
@@ -129,19 +130,19 @@ public:
       if (!reqValue.is_number_integer()) {
         std::string val;
         if (reqValue.is_string()) {
-          val = reqValue.get<std::string>();
+          val = "string";
         } else if (reqValue.is_number_float()) {
-          val = fmt::format("{}", reqValue.get<double>());
+          val = "float";
         } else {
-          val = "";
+          val = reqValue.type_name();
         }
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, "integer",
-                     val);
+                     val, isList);
         break;
       }
       if (max.has_value() || min.has_value() || eq.has_value()) {
         float value = reqValue;
-        Validation::validateConstraints(fieldName, value, max, min, eq);
+        Validation::validateConstraints(fieldName, value, max, min, eq, isList);
       }
       break;
     case 4: {
@@ -155,7 +156,7 @@ public:
         std::string date = reqValue.get<std::string>();
         if (!std::regex_match(date, date_regex)) {
           errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                       date);
+                       date, isList);
         }
       }
     } break;
@@ -165,7 +166,7 @@ public:
       std::string email = reqValue.get<std::string>();
       if (!std::regex_match(email, email_regex)) {
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                     reqValue);
+                     reqValue, isList);
       }
     } break;
     case 6: {
@@ -176,14 +177,14 @@ public:
       }
       if (!isValidUuid(reqValue.get<std::string>())) {
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                     reqValue);
+                     reqValue, isList);
       }
       break;
     case 7: {
       // Check if the value is a boolean
       if (!reqValue.is_boolean()) {
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                     reqValue.type_name());
+                     reqValue.type_name(), isList);
       }
     } break;
     case 8: {
@@ -194,7 +195,7 @@ public:
       }
       if (!validateAhv(val)) {
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                     reqValue);
+                     reqValue, isList);
       }
     } break;
     case 9: {
@@ -205,7 +206,7 @@ public:
       }
       if (!validateIban(val)) {
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                     reqValue);
+                     reqValue, isList);
       }
     } break;
     case 10: {
@@ -215,16 +216,16 @@ public:
       }
       if (!reqValue.is_array()) {
         errorBuilder(errors_, ErrorType::NotCorrectType, fieldName, it->first,
-                     reqValue);
+                     reqValue.type_name(), isList);
       } else {
-        if (max.has_value() || min.has_value()) {
+        if (max.has_value() || min.has_value() || eq.has_value()) {
           float value = reqValue.size();
           Validation::validateConstraints(fieldName, value, max, min, eq);
         }
         std::optional<float> elementMax;
         std::optional<float> elementMin;
         std::optional<float> elementEq;
-      
+
         std::string elementType =
             toLower(node->attribute("elementType").value());
         auto elementIt = getType.find(elementType);
@@ -242,11 +243,10 @@ public:
         if (node->attribute("elementEq")) {
           elementEq = node->attribute("elementEq").as_float();
         }
-       
+
         for (auto ele : reqValue.items()) {
-          validateOne(elementNumber, ele.value(), fieldName,
-                      canBeEmpty, elementIt, elementMax,
-                      elementMin, elementEq);
+          validateOne(elementNumber, ele.value(), fieldName, canBeEmpty,
+                      elementIt, elementMax, elementMin, elementEq, true, node);
         }
       }
 

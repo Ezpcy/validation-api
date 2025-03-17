@@ -1,5 +1,6 @@
 {
     "Endpoint": "0.0.0.0",
     "Port": 8080,
-    "Logpath": "./test/rio-validator-server-logs/"
+    "Logpath": "./rio-validator-server-logs/",
+    "TemplatesPath": "./templates"
 }

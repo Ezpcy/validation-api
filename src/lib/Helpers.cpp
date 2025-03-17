@@ -77,17 +77,18 @@ void validateXmlConfig(const pugi::xml_node &node,
       }
     }
 
-    std::optional<float> elementMax, elementMin;
+    std::optional<float> elementMax, elementMin, elementEq;
 
     auto validateElementLenOption = [&](const pugi::xml_attribute &attr,
                                         const char *optionName,
                                         std::optional<int> &value) {
       validateLenOption(node.attribute("elementMax"), "elementMax", elementMax);
       validateLenOption(node.attribute("elementMin"), "elementMin", elementMin);
-      if (node.attribute("eq")) {
-        insertToJson(errors, nodeName,
-                     fmt::format("List type doesn't support eq option"));
-      }
+      validateLenOption(node.attribute("elementEq"), "elementEq", elementEq);
+      // if (node.attribute("eq")) {
+      //   insertToJson(errors, nodeName,
+      //                fmt::format("List type doesn't support eq option"));
+      // }
     };
   }
 
