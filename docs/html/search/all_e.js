@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['semaphore_0',['semaphore',['../ConfigWatcher_8cpp.html#af492780bc7786abac56fa242d4fc3045',1,'ConfigWatcher.cpp']]],
-  ['semaphore_5f_1',['semaphore_',['../classvalidation__api_1_1ValidationServer.html#a55596c86d27d93e87d08adaef97067ac',1,'validation_api::ValidationServer']]],
-  ['service_5f_2',['service_',['../classvalidation__api_1_1ConfigWatcher.html#a2ed415d6d1c866b60ec2b3a486ea4e51',1,'validation_api::ConfigWatcher::service_'],['../classvalidation__api_1_1ValidationServer.html#a755b8ab5e31b58ef272556e84475cabf',1,'validation_api::ValidationServer::service_']]],
-  ['setup_3',['setup',['../classvalidation__api_1_1ConfigWatcher.html#a6f8a66478001a8a0515344aac1fd0395',1,'validation_api::ConfigWatcher::setup()'],['../classvalidation__api_1_1IService.html#a5e79d17ea6ca3b5bb8661b70f5aaa7b6',1,'validation_api::IService::setup()'],['../classvalidation__api_1_1ValidationServer.html#aee6d6d3e85ff6a2ca7a476f15e341aa8',1,'validation_api::ValidationServer::setup()']]],
-  ['setup_5flogger_4',['setup_logger',['../namespacevalidation__api.html#add9de92f1283937ab6d7688462f67c3c',1,'validation_api']]],
-  ['stop_5',['stop',['../classvalidation__api_1_1ConfigWatcher.html#ac67b7bc5802f99796c903d2fdac92648',1,'validation_api::ConfigWatcher::stop()'],['../classvalidation__api_1_1IService.html#ab9e9658a3495101ae5fada236110e399',1,'validation_api::IService::stop()'],['../classvalidation__api_1_1ValidationServer.html#a666522eafc9b935cae058688df4f7f9d',1,'validation_api::ValidationServer::stop()']]],
-  ['structure_6',['Structure',['../index.html#autotoc_md1',1,'Code Structure'],['../index.html#autotoc_md7',1,'XML Configuration Structure']]]
+  ['read_5ffile_0',['read_file',['../classvalidation__api_1_1ConfigWatcher.html#a78820bcf2ebf9135785e207aae042e72',1,'validation_api::ConfigWatcher']]],
+  ['readme_2emd_1',['Readme.md',['../Readme_8md.html',1,'']]],
+  ['request_5f_2',['request_',['../classvalidation__api_1_1Validation.html#a88a25d3748477bdded1fbc5bde81f264',1,'validation_api::Validation']]],
+  ['requestfieldnotfound_3',['RequestFieldNotFound',['../namespacevalidation__api.html#a730a1da302816a69b20162ecefed2e8ba0c580c3bd753bfe2f772fc8b5fc5f336',1,'validation_api']]],
+  ['requestlist_5f_4',['requestList_',['../classvalidation__api_1_1Validation.html#abb370b5dc3a977d02bbdea727c638919',1,'validation_api::Validation']]],
+  ['requisites_5',['Pre-requisites',['../index.html#autotoc_md3',1,'']]],
+  ['run_6',['run',['../classvalidation__api_1_1ConfigWatcher.html#a13e118f62a6b13b780f44e12d5afed78',1,'validation_api::ConfigWatcher::run()'],['../classvalidation__api_1_1IService.html#a5b9b0bb70e360af3dd2c9bb1239f2a20',1,'validation_api::IService::run()'],['../classvalidation__api_1_1ValidationServer.html#ad67c7031c85ea1cd6eb84f6b01c424df',1,'validation_api::ValidationServer::run()'],['../classvalidation__api_1_1Validation.html#ac6c337d3af39943a8e603a5f21f5922a',1,'validation_api::Validation::run()']]],
+  ['running_5f_7',['running_',['../classvalidation__api_1_1ConfigWatcher.html#ac14d49fde81facaa14c7b9ca4bd57ca4',1,'validation_api::ConfigWatcher::running_'],['../classvalidation__api_1_1ValidationServer.html#a9246f1e3e88c29f1de1d967095538ba7',1,'validation_api::ValidationServer::running_']]],
+  ['rwmutex_5f_8',['rwMutex_',['../classvalidation__api_1_1ConfigService.html#a6ba13abe172e1597477cea1ae4870601',1,'validation_api::ConfigService']]]
 ];

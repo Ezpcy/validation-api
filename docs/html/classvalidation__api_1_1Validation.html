@@ -100,7 +100,7 @@ $(function(){ initResizable(false); });
 <div class="dynheader">
 Collaboration diagram for validation_api::Validation:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation__coll__graph.svg" width="168" height="400"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation__coll__graph.svg" width="168" height="422"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -111,11 +111,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4a76db167ba08ba51d1c5751ea2179be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c337d3af39943a8e603a5f21f5922a" id="r_ac6c337d3af39943a8e603a5f21f5922a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6c337d3af39943a8e603a5f21f5922a">run</a> ()</td></tr>
 <tr class="separator:ac6c337d3af39943a8e603a5f21f5922a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a512e2e0c3be1bea95ebfab280ec919ba" id="r_a512e2e0c3be1bea95ebfab280ec919ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a512e2e0c3be1bea95ebfab280ec919ba">validateConstraints</a> (const std::string &amp;fieldName, float value, std::optional&lt; float &gt; max, std::optional&lt; float &gt; min, std::optional&lt; float &gt; eq)</td></tr>
-<tr class="memdesc:a512e2e0c3be1bea95ebfab280ec919ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates len options.  <br /></td></tr>
-<tr class="separator:a512e2e0c3be1bea95ebfab280ec919ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcaf3ffa9f9242d9fb2577613c6ebf44" id="r_adcaf3ffa9f9242d9fb2577613c6ebf44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcaf3ffa9f9242d9fb2577613c6ebf44">validateConstraints</a> (const std::string &amp;fieldName, float value, std::optional&lt; float &gt; max, std::optional&lt; float &gt; min, std::optional&lt; float &gt; eq, bool isList=false)</td></tr>
+<tr class="memdesc:adcaf3ffa9f9242d9fb2577613c6ebf44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates len options.  <br /></td></tr>
+<tr class="separator:adcaf3ffa9f9242d9fb2577613c6ebf44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cc0802269d88c233ad3c3d1d6c3dd12" id="r_a1cc0802269d88c233ad3c3d1d6c3dd12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cc0802269d88c233ad3c3d1d6c3dd12">validate</a> (const pugi::xml_node &amp;node, const nlohmann::json &amp;reqValue, const std::string &amp;fieldName)</td></tr>
 <tr class="separator:a1cc0802269d88c233ad3c3d1d6c3dd12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d77d8b938e4241f346b0360f4eec61e" id="r_a4d77d8b938e4241f346b0360f4eec61e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d77d8b938e4241f346b0360f4eec61e">validateOne</a> (const int typeNumber, const nlohmann::json &amp;reqValue, const std::string &amp;fieldName, const bool &amp;canBeEmpty, const auto it, const std::optional&lt; float &gt; &amp;max=std::nullopt, const std::optional&lt; float &gt; &amp;min=std::nullopt, const std::optional&lt; float &gt; &amp;eq=std::nullopt, bool isList=false, const std::optional&lt; pugi::xml_node &gt; &amp;node=std::nullopt)</td></tr>
+<tr class="separator:a4d77d8b938e4241f346b0360f4eec61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd198b4de9ea7c78800719a53eabc1a4" id="r_acd198b4de9ea7c78800719a53eabc1a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd198b4de9ea7c78800719a53eabc1a4">extractNullOptions</a> (const pugi::xml_node &amp;doc)</td></tr>
 <tr class="memdesc:acd198b4de9ea7c78800719a53eabc1a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract the <a class="el" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6" title="NullOptions.">NullOptions</a> from a XML Configuration.  <br /></td></tr>
 <tr class="separator:acd198b4de9ea7c78800719a53eabc1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -423,7 +425,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a_cgraph.svg" width="1075" height="686"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a_cgraph.svg" width="1499" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -459,7 +461,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a3c8146fc89af5b8cef0c1bb6c9d473f2_cgraph.svg" width="836" height="544"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a3c8146fc89af5b8cef0c1bb6c9d473f2_cgraph.svg" width="1262" height="536"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -495,7 +497,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12_cgraph.svg" width="624" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12_cgraph.svg" width="1048" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -505,8 +507,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a512e2e0c3be1bea95ebfab280ec919ba" name="a512e2e0c3be1bea95ebfab280ec919ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a512e2e0c3be1bea95ebfab280ec919ba">&#9670;&#160;</a></span>validateConstraints()</h2>
+<a id="adcaf3ffa9f9242d9fb2577613c6ebf44" name="adcaf3ffa9f9242d9fb2577613c6ebf44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcaf3ffa9f9242d9fb2577613c6ebf44">&#9670;&#160;</a></span>validateConstraints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -537,7 +539,12 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; float &gt;</td>          <td class="paramname"><span class="paramname"><em>eq</em></span>&#160;)</td>
+          <td class="paramtype">std::optional&lt; float &gt;</td>          <td class="paramname"><span class="paramname"><em>eq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -562,12 +569,91 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba_cgraph.svg" width="398" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44_cgraph.svg" width="610" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba_icgraph.svg" width="1076" height="78"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44_icgraph.svg" width="1290" height="78"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a4d77d8b938e4241f346b0360f4eec61e" name="a4d77d8b938e4241f346b0360f4eec61e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d77d8b938e4241f346b0360f4eec61e">&#9670;&#160;</a></span>validateOne()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void validation_api::Validation::validateOne </td>
+          <td>(</td>
+          <td class="paramtype">const int</td>          <td class="paramname"><span class="paramname"><em>typeNumber</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const nlohmann::json &amp;</td>          <td class="paramname"><span class="paramname"><em>reqValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>fieldName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool &amp;</td>          <td class="paramname"><span class="paramname"><em>canBeEmpty</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const auto</td>          <td class="paramname"><span class="paramname"><em>it</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>max</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>min</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>eq</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isList</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; pugi::xml_node &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span><span class="paramdefsep"> = </span><span class="paramdefval">std::nullopt</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e_cgraph.svg" width="836" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e_icgraph.svg" width="1076" height="78"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>

@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="namespacevalidation__api.html#add9de92f1283937ab6d7688462f67c3c" target="_top" xlink:title="Sets up and configures the logger using spdlog.">
+<g id="a_Node000002"><a xlink:href="namespacevalidation__api.html#a882e4d58fdd01ef56f455be40bd89866" target="_top" xlink:title="Sets up and configures the logger using spdlog.">
 <polygon fill="white" stroke="#666666" points="187.25,-82 82,-82 82,-50 187.25,-50 187.25,-82"/>
 <text text-anchor="start" x="90" y="-68.5" font-family="Helvetica,sans-Serif" font-size="10.00">validation_api::setup</text>
 <text text-anchor="middle" x="134.62" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_logger</text>

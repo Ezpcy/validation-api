@@ -19,6 +19,10 @@ endif()
 set(CMAKE_CXX_FLAGS_RELEASE
   "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=x86-64 -flto -funroll-loops")
 
+# If building for production server for older cpu architecture and the above doesn't work, try one the below
+# set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=sandybridge -mtune=generic -flto -funroll-loops")
+# set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=nehalem -mtune=generic -mno-avx -flto -funroll-loops")
+
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 20)
 
@@ -34,7 +38,7 @@ set(Boost_USE_MULTITHREAD ON)
 # "${CMAKE_BINARY_DIR}/Release/generators/conan_toolchain.cmake") endif()
 
 # Find Boost, spdlog, and gtest components
-find_package(Boost REQUIRED)
+find_package(Boost CONFIG)
 find_package(spdlog REQUIRED)
 find_package(GTest REQUIRED)
 find_package(pugixml REQUIRED)

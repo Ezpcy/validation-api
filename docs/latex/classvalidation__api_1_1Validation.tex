@@ -23,9 +23,11 @@ Collaboration diagram for validation\+\_\+api\+::Validation\+:
 \item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_ac6c337d3af39943a8e603a5f21f5922a}{run}} ()
 \item 
-void \mbox{\hyperlink{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba}{validate\+Constraints}} (const std\+::string \&field\+Name, float value, std\+::optional$<$ float $>$ max, std\+::optional$<$ float $>$ min, std\+::optional$<$ float $>$ eq)
+void \mbox{\hyperlink{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}{validate\+Constraints}} (const std\+::string \&field\+Name, float value, std\+::optional$<$ float $>$ max, std\+::optional$<$ float $>$ min, std\+::optional$<$ float $>$ eq, bool is\+List=false)
 \begin{DoxyCompactList}\small\item\em Validates len options. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12}{validate}} (const pugi\+::xml\+\_\+node \&node, const nlohmann\+::json \&req\+Value, const std\+::string \&field\+Name)
+\item 
+void \mbox{\hyperlink{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e}{validate\+One}} (const int type\+Number, const nlohmann\+::json \&req\+Value, const std\+::string \&field\+Name, const bool \&can\+Be\+Empty, const auto it, const std\+::optional$<$ float $>$ \&max=std\+::nullopt, const std\+::optional$<$ float $>$ \&min=std\+::nullopt, const std\+::optional$<$ float $>$ \&eq=std\+::nullopt, bool is\+List=false, const std\+::optional$<$ pugi\+::xml\+\_\+node $>$ \&node=std\+::nullopt)
 \item 
 void \mbox{\hyperlink{classvalidation__api_1_1Validation_acd198b4de9ea7c78800719a53eabc1a4}{extract\+Null\+Options}} (const pugi\+::xml\+\_\+node \&doc)
 \begin{DoxyCompactList}\small\item\em Extract the \doxylink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{Null\+Options} from a XML Configuration. \end{DoxyCompactList}\item 
@@ -126,8 +128,7 @@ Extract the \doxylink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6
 {\em doc} & erros nulloptions\\
 \hline
 \end{DoxyParams}
-Recursive function to find and parse all "{}\+Null"{} field values into the \doxylink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{Null\+Options} field Here is the call graph for this function\+:
-\nopagebreak
+Recursive function to find and parse all "{}\+Null"{} field values into the \doxylink{namespacevalidation__api_a31ba8a1f3c413529eccf1fd96717b5d6}{Null\+Options} field Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -284,11 +285,11 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{classvalidation__api_1_1Validation_a1cc0802269d88c233ad3c3d1d6c3dd12_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba}\index{validation\_api::Validation@{validation\_api::Validation}!validateConstraints@{validateConstraints}}
+\Hypertarget{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44}\index{validation\_api::Validation@{validation\_api::Validation}!validateConstraints@{validateConstraints}}
 \index{validateConstraints@{validateConstraints}!validation\_api::Validation@{validation\_api::Validation}}
 \doxysubsubsection{\texorpdfstring{validateConstraints()}{validateConstraints()}}
-{\footnotesize\ttfamily \label{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba} 
-void validation\+\_\+api\+::\+Validation\+::validate\+Constraints (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{field\+Name}{, }\item[{float}]{value}{, }\item[{std\+::optional$<$ float $>$}]{max}{, }\item[{std\+::optional$<$ float $>$}]{min}{, }\item[{std\+::optional$<$ float $>$}]{eq}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44} 
+void validation\+\_\+api\+::\+Validation\+::validate\+Constraints (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{field\+Name}{, }\item[{float}]{value}{, }\item[{std\+::optional$<$ float $>$}]{max}{, }\item[{std\+::optional$<$ float $>$}]{min}{, }\item[{std\+::optional$<$ float $>$}]{eq}{, }\item[{bool}]{is\+List}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -312,7 +313,7 @@ Validates the length of the field with the max, min, and eq if they have a value
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba_cgraph}
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:
@@ -320,7 +321,29 @@ Here is the caller graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a512e2e0c3be1bea95ebfab280ec919ba_icgraph}
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_adcaf3ffa9f9242d9fb2577613c6ebf44_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e}\index{validation\_api::Validation@{validation\_api::Validation}!validateOne@{validateOne}}
+\index{validateOne@{validateOne}!validation\_api::Validation@{validation\_api::Validation}}
+\doxysubsubsection{\texorpdfstring{validateOne()}{validateOne()}}
+{\footnotesize\ttfamily \label{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e} 
+void validation\+\_\+api\+::\+Validation\+::validate\+One (\begin{DoxyParamCaption}\item[{const int}]{type\+Number}{, }\item[{const nlohmann\+::json \&}]{req\+Value}{, }\item[{const std\+::string \&}]{field\+Name}{, }\item[{const bool \&}]{can\+Be\+Empty}{, }\item[{const auto}]{it}{, }\item[{const std\+::optional$<$ float $>$ \&}]{max}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ float $>$ \&}]{min}{ = {\ttfamily std\+:\+:nullopt}, }\item[{const std\+::optional$<$ float $>$ \&}]{eq}{ = {\ttfamily std\+:\+:nullopt}, }\item[{bool}]{is\+List}{ = {\ttfamily false}, }\item[{const std\+::optional$<$ pugi\+::xml\+\_\+node $>$ \&}]{node}{ = {\ttfamily std\+:\+:nullopt}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classvalidation__api_1_1Validation_a4d77d8b938e4241f346b0360f4eec61e_icgraph}
 \end{center}
 \end{figure}
 

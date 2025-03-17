@@ -1,3 +1,4 @@
+#include <boost/filesystem/operations.hpp>
 #include <cstdlib>
 #include <filesystem>
 #include <fmt/core.h>
@@ -16,8 +17,22 @@
 #include <validation-api/ValidationServer.hpp> // Include your server class
 
 int main(int argc, char *argv[]) {
-  std::string path = "./templates";
   std::string configs_path = "./server.json";
+
+  // Initialize and run the ValidationServer on port 8080 with max connections
+  short port;
+  std::string endpoint;
+  std::string logpath;
+  std::string templatespath;
+
+  if (std::filesystem::exists(configs_path)) {
+    std::ifstream config(configs_path);
+    nlohmann::json json_config = nlohmann::json::parse(config);
+    endpoint = json_config.value("Endpoint", "0.0.0.0");
+    port = json_config.value("Port", 8080);
+    logpath = json_config.value("Logpath", "logs/");
+    templatespath = json_config.value("TemplatesPath", "./templates");
+  }
 
   // Check for command-line arguments
   if (argc > 1) {
@@ -25,16 +40,17 @@ int main(int argc, char *argv[]) {
       std::string arg = argv[i];
       std::transform(arg.begin(), arg.end(), arg.begin(), ::tolower);
       if (arg == "example") {
-        if (!boost::filesystem::exists(path)) {
-          boost::filesystem::create_directory("./templates");
+        if (!boost::filesystem::exists(templatespath)) {
+          
+          boost::filesystem::create_directories(templatespath);
         }
         std::cout << "Example argument detected" << std::endl;
       }
     }
   }
-
+  
   // Set up logger
-  if (!validation_api::setup_logger()) {
+  if (!validation_api::setup_logger(logpath)) {
     std::cerr << "Logger setup failed" << std::endl;
     return 1;
   }
@@ -53,24 +69,10 @@ int main(int argc, char *argv[]) {
 
     // Initialize ConfigWatcher to monitor changes in the "./configs" directory
     validation_api::ConfigWatcher watcher(
-        io_context, path, service,
+        io_context, templatespath, service,
         [&logger](const std::string &path, const std::string &action) {
           logger->info("File {} was {}", path, action);
         });
-
-    // Initialize and run the ValidationServer on port 8080 with max connections
-    short port;
-    std::string endpoint;
-
-    if(std::filesystem::exists(configs_path)) {
-      std::ifstream config(configs_path);
-      nlohmann::json json_config = nlohmann::json::parse(config);
-      endpoint = json_config.value("Endpoint", "0.0.0.0");
-      port = json_config.value("Port", 8080);
-    } else {
-      port = 8080;
-      endpoint = "0.0.0.0";
-    }
 
     short maxConnections = 1000;
     validation_api::ValidationServer server(io_context, port, endpoint, service,
@@ -92,7 +94,7 @@ int main(int argc, char *argv[]) {
 
     // Output information about server and watcher
     std::cout << "Server running on " << endpoint << " " << port
-              << " and watching directory: " << path << std::endl;
+              << " and watching directory: " << templatespath << std::endl;
 
     // Wait for all threads to finish
     // for (auto &thread : threads) {

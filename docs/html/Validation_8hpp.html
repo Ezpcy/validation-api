@@ -91,13 +91,17 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Validation.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;boost/uuid.hpp&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;<a class="el" href="Helpers_8hpp_source.html">lib/Helpers.hpp</a>&gt;</code><br />
 <code>#include &lt;nlohmann/json.hpp&gt;</code><br />
+<code>#include &lt;nlohmann/json_fwd.hpp&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;pugixml.hpp&gt;</code><br />
 <code>#include &lt;unordered_set&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
@@ -106,7 +110,7 @@ $(function(){ initResizable(false); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Validation.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="Validation_8hpp__incl.svg" width="1274" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="Validation_8hpp__incl.svg" width="1586" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -131,6 +135,11 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a31ba8a1f3c413529eccf1fd96717b5d6" id="r_a31ba8a1f3c413529eccf1fd96717b5d6"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; std::string, std::unordered_map&lt; int, std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6">validation_api::NullOptions</a></td></tr>
 <tr class="memdesc:a31ba8a1f3c413529eccf1fd96717b5d6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespacevalidation__api.html#a31ba8a1f3c413529eccf1fd96717b5d6" title="NullOptions.">NullOptions</a>.  <br /></td></tr>
 <tr class="separator:a31ba8a1f3c413529eccf1fd96717b5d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a60a49aeea786f40d01bd41ce5c20d7dd" id="r_a60a49aeea786f40d01bd41ce5c20d7dd"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacevalidation__api.html#a60a49aeea786f40d01bd41ce5c20d7dd">validation_api::getType</a></td></tr>
+<tr class="separator:a60a49aeea786f40d01bd41ce5c20d7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

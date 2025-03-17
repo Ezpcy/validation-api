@@ -1,6 +1,6 @@
 \doxysection{include/lib/\+Error\+Builder.hpp File Reference}
 \hypertarget{ErrorBuilder_8hpp}{}\label{ErrorBuilder_8hpp}\index{include/lib/ErrorBuilder.hpp@{include/lib/ErrorBuilder.hpp}}
-{\ttfamily \#include $<$format$>$}\newline
+{\ttfamily \#include $<$fmt/core.\+h$>$}\newline
 {\ttfamily \#include $<$nlohmann/json.\+hpp$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
 Include dependency graph for Error\+Builder.\+hpp\+:
@@ -8,7 +8,7 @@ Include dependency graph for Error\+Builder.\+hpp\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=298pt]{ErrorBuilder_8hpp__incl}
+\includegraphics[width=314pt]{ErrorBuilder_8hpp__incl}
 \end{center}
 \end{figure}
 This graph shows which files directly or indirectly include this file\+:
@@ -45,5 +45,7 @@ enum class \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecef
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{namespacevalidation__api_ac3e8e6ef097973f55220fc4fdeb08dc2}{validation\+\_\+api\+::error\+Builder}} (nlohmann\+::json \&res, const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&type, const std\+::string \&field\+Name, const std\+::string \&exp="{}"{}, const std\+::string \&rec="{}"{})
+std\+::string \mbox{\hyperlink{namespacevalidation__api_a701271391f61b2712479b44f10656427}{validation\+\_\+api\+::\+Error\+Type\+To\+String}} (\mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} error\+Type, bool is\+List=false)
+\item 
+void \mbox{\hyperlink{namespacevalidation__api_a5bae631d887d296c01423cf04d9714fd}{validation\+\_\+api\+::error\+Builder}} (nlohmann\+::json \&res, const \mbox{\hyperlink{namespacevalidation__api_a730a1da302816a69b20162ecefed2e8b}{Error\+Type}} \&type, const std\+::string \&field\+Name, const std\+::string \&exp="{}"{}, const std\+::string \&rec="{}"{}, bool is\+List=false)
 \begin{DoxyCompactList}\small\item\em Error builder. \end{DoxyCompactList}\end{DoxyCompactItemize}

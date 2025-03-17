@@ -144,7 +144,8 @@ XML Configuration Structure</h2>
 <li><code>notNull</code>: If the field can be null or not</li>
 <li><code>eq</code>: The length of the field it must be equal to</li>
 </ul>
-<p><b>Types</b>:</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Types:</h2>
 <ul>
 <li><code>string</code>: Example: "Hello"</li>
 <li><code>number</code>: Example: 123</li>
@@ -155,19 +156,28 @@ XML Configuration Structure</h2>
 <li><code>boolean</code>: Example: true</li>
 <li><code>ahv</code>: Example: "756.1234.5678.12" (you can generate a random AHV number here <a href="https://www.uhutools.ch/ahv-nummer/de">uhutools.ch</a>)</li>
 <li><code>iban</code>: Example: "CH9300762011623852957"</li>
+<li><code>list</code>: Example: ["value1", "value2"]</li>
 </ul>
-<p><b>Options</b>:</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Options:</h2>
 <ul>
 <li><code>uuid</code>: uuid value inside null option</li>
 <li><code>notNull</code>: If the field can be null or not</li>
 </ul>
-<p>For <code>string</code>, <code>number</code> and <code>float</code>:</p>
+<p>For <code>string</code>, <code>number</code>, <code>float</code> and <code>list</code>:</p>
 <ul>
-<li><code>eq</code>: Length (for strings) or value (for numbers)</li>
-<li><code>min</code>: The minimum value of the field (for numbers) or the minimum length of the field (for strings)</li>
-<li><code>max</code>: The maximum value of the field (for numbers) or the maximum length of the field (for strings)</li>
+<li><code>eq</code>: Length (for strings), value (for numbers) or value of the list elements (for lists) it must be equal to</li>
+<li><code>min</code>: The minimum value of the field (for numbers), the minimum length of the field (for strings) or the minimum length of the list elements (for lists)</li>
+<li><code>max</code>: The maximum value of the field (for numbers), the maximum length of the field (for strings) or the maximum length of the list elements (for lists)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<p>For <code>list</code>:</p>
+<ul>
+<li><code>elementType</code>: The type of the list elements (see Types)</li>
+<li><code>elementMin</code>: The minimum value of the list elements (for numbers) or the minimum length of the list elements (for strings)</li>
+<li><code>elementMax</code>: The maximum value of the list elements (for numbers) or the maximum length of the list elements (for strings)</li>
+<li><code>elementEq</code>: Length of the list elements (for strings) or value of the list elements (for numbers)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Nesting</h1>
 <p>You can nest fields in the XML configuration file.</p>
 <p>Example:</p>
@@ -176,9 +186,10 @@ Nesting</h1>
 <div class="line">    &lt;<span class="keywordtype">BillingCategory</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;String&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
 <div class="line">    &lt;<span class="keywordtype">Price</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;float&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
 <div class="line">    &lt;<span class="keywordtype">Units</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Tags</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;list&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">min</span>=<span class="stringliteral">&quot;1&quot;</span> <span class="keyword">max</span>=<span class="stringliteral">&quot;5&quot;</span> <span class="keyword">elementType</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">elementMin</span>=<span class="stringliteral">&quot;1&quot;</span> <span class="keyword">elementMax</span>=<span class="stringliteral">&quot;10&quot;</span> <span class="keyword">elementEq</span>=<span class="stringliteral">&quot;5&quot;</span> /&gt;</div>
 <div class="line">&lt;/<span class="keywordtype">InsuranceProductConfig</span>&gt;</div>
 </div><!-- fragment --><p>Note that capitalization of the tag names is important. For options like <code>notNull</code>, <code>eq</code>, <code>min</code> and <code>max</code> the capitalization is not important.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Null Nesting</h2>
 <p>With Null Nesting you can specify that a field can be null if other fields satisfy a given a <code>UUID</code>:</p>
 <div class="fragment"><div class="line">&lt;<span class="keywordtype">Institution</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;Uuid&quot;</span>&gt;</div>
@@ -193,7 +204,7 @@ Null Nesting</h2>
 </div><!-- fragment --><ul>
 <li><code>Instution</code> can be null if <code>TypeOfProvision</code> and <code>Profession</code> or <code>SalaryType</code> are not null and have the given <code>UUID</code>.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Example</h1>
 <div class="fragment"><div class="line">&lt;<span class="keywordtype">Test</span>&gt;</div>
 <div class="line">  &lt;<span class="keywordtype">Provision</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span>&gt;</div>
@@ -234,7 +245,7 @@ Example</h1>
 <li><code>string</code> received this</li>
 <li><code>boolean</code> expected this</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Logs</h1>
 <p>Information and error logs can be found within the <code>logs</code> folder (created at runtime). </p>
 </div></div><!-- PageDoc -->
