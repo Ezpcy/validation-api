@@ -117,7 +117,7 @@ Description</h1>
 Pre-requisites</h1>
 <ul>
 <li>CMake</li>
-<li>Conan (for installing dependencies)</li>
+<li>Conan</li>
 <li>Linux</li>
 <li>Clang/gcc</li>
 </ul>
@@ -126,15 +126,13 @@ Installation</h1>
 <p>Clone the repository and run <code>./build.sh r</code> inside the root folder.</p>
 <ul>
 <li>This will read the configurations and run the API on <code>127.0.0.1:8080</code>.</li>
-<li>If you want to create a configuration folder run:</li>
 </ul>
-<div class="fragment"><div class="line">./validation-api example</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Configuration</h1>
-<p>You can set the endpoint and port inside <code>server.json</code>.</p>
+<p>You can set the endpoint, log path, templates path and port inside <code>server.json</code>.</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 XML Configuration</h1>
-<p>The XML configuration files should be stored inside the folder called <code>templates</code> next to the executable. The files can be modified at runtime and the changes will be reflected in the API.</p>
+<p>The XML configuration files should be stored inside the folder called <code>templates</code>. The files can be modified at runtime and the changes will be reflected in the API.</p>
 <h2><a class="anchor" id="autotoc_md7"></a>
 XML Configuration Structure</h2>
 <p>Example of a field:</p>
@@ -186,7 +184,7 @@ Nesting</h1>
 <div class="line">    &lt;<span class="keywordtype">BillingCategory</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;String&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
 <div class="line">    &lt;<span class="keywordtype">Price</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;float&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
 <div class="line">    &lt;<span class="keywordtype">Units</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;number&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> /&gt;</div>
-<div class="line">    &lt;<span class="keywordtype">Tags</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;list&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">min</span>=<span class="stringliteral">&quot;1&quot;</span> <span class="keyword">max</span>=<span class="stringliteral">&quot;5&quot;</span> <span class="keyword">elementType</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">elementMin</span>=<span class="stringliteral">&quot;1&quot;</span> <span class="keyword">elementMax</span>=<span class="stringliteral">&quot;10&quot;</span> <span class="keyword">elementEq</span>=<span class="stringliteral">&quot;5&quot;</span> /&gt;</div>
+<div class="line">    &lt;<span class="keywordtype">Tags</span> <span class="keyword">type</span>=<span class="stringliteral">&quot;list&quot;</span> <span class="keyword">notNull</span>=<span class="stringliteral">&quot;true&quot;</span> <span class="keyword">min</span>=<span class="stringliteral">&quot;1&quot;</span> <span class="keyword">max</span>=<span class="stringliteral">&quot;5&quot;</span> <span class="keyword">elementType</span>=<span class="stringliteral">&quot;string&quot;</span> <span class="keyword">elementMin</span>=<span class="stringliteral">&quot;1&quot;</span> <span class="keyword">elementMax</span>=<span class="stringliteral">&quot;10&quot;</span>/&gt;</div>
 <div class="line">&lt;/<span class="keywordtype">InsuranceProductConfig</span>&gt;</div>
 </div><!-- fragment --><p>Note that capitalization of the tag names is important. For options like <code>notNull</code>, <code>eq</code>, <code>min</code> and <code>max</code> the capitalization is not important.</p>
 <h2><a class="anchor" id="autotoc_md11"></a>
@@ -238,8 +236,8 @@ Example</h1>
 <div class="fragment"><div class="line">{&quot;Test&quot;:{&quot;Provision&quot;:{&quot;ProvisionNumber&quot;:14,&quot;CostApproval&quot;:true},&quot;TypeOfProvision&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;Profession&quot;:&quot;123e4567-e89b-12d3-a456-526614174001&quot;,&quot;SalaryType&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;DateFrom&quot;:&quot;2024-01-01&quot;,&quot;DateTo&quot;:&quot;2024-12-31&quot;,&quot;InsuranceProductConfig&quot;:{&quot;TarifNumber&quot;:7,&quot;BillingCategory&quot;:&quot;c&quot;,&quot;Price&quot;:0.0,&quot;Units&quot;:1},&quot;Institution&quot;:&quot;123e4567-e89b-12d3-a456-526614174000&quot;,&quot;School&quot;:&quot;&quot;,&quot;Location&quot;:&quot;&quot;}}</div>
 </div><!-- fragment --><p>The API will return a Json object with either all errors that have occured or just an "ok" message if the request is valid.</p>
 <p>The error message will look like this:</p>
-<div class="fragment"><div class="line">{&quot;error&quot;: {&quot;FieldName&quot;: &quot;NotCorrectType string boolean&quot;}}</div>
-</div><!-- fragment --><ul>
+<p><code>json {"error": {"FieldName": "NotCorrectType string boolean"}} </code>`</p>
+<ul>
 <li><code>FieldName</code> the unvalid field in the rquest</li>
 <li><code>NotCorrectType</code> type of the error</li>
 <li><code>string</code> received this</li>
