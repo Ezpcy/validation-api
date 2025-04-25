@@ -28,7 +28,7 @@ At runtime configurable API to validate data from incoming network requests. The
 ## Pre-requisites
 
 - CMake
-- Conan (for installing dependencies)
+- Conan 
 - Linux
 - Clang/gcc
 
@@ -37,11 +37,6 @@ At runtime configurable API to validate data from incoming network requests. The
 Clone the repository and run `./build.sh r` inside the root folder.
 
 - This will read the configurations and run the API on `127.0.0.1:8080`.
-- If you want to create a configuration folder run:
-
-```bash
-./validation-api example
-```
 
 ## Configuration
 
@@ -49,7 +44,7 @@ You can set the endpoint, log path, templates path and port inside `server.json`
 
 ## XML Configuration
 
-The XML configuration files should be stored inside the folder called `templates` next to the executable. The files can be modified at runtime and the changes will be reflected in the API.
+The XML configuration files should be stored inside the folder called `templates`. The files can be modified at runtime and the changes will be reflected in the API.
 
 ### XML Configuration Structure
 
